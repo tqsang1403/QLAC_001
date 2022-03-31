@@ -16,3 +16,7 @@ footer {
     height: 60px; /* Height of the footer */
 }
 
+.logout {
+    display:flex;
+    flex-direction:row;
+}

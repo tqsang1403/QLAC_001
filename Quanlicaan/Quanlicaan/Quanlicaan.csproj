@@ -502,7 +502,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
-    <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
