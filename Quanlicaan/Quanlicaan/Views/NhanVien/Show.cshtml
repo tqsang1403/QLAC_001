@@ -1,77 +1,80 @@
-﻿@model IEnumerable<Quanlicaan.NhanVien>
-
+﻿
 @{
-    ViewBag.Title = "Danh sách nhân viên";
+    ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/css/nv.css" rel="stylesheet" />
+ 
 }
+@model List<Quanlicaan.NhanVien>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Danh sách nhân viên </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<h2 style="text-align:center">Danh sách nhân viên</h2>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-<p>
-    @Html.ActionLink("Thêm mới", "AddNV")
-</p>
-<table class="table">
-    <tr class="header">
-        <th>ID</th>
-        <th>Họ và tên</th>
-        <th>Địa chỉ</th>
-        <th>Giới tính</th>  
-        <th>Số điện thoại</th>
-        <th>Phòng ban</th>
-        <th> Chức vụ</th>
-        <th>Quyền đăng ký</th>
-        <th>Tên tài khoản</th>
-        <th>Mật khẩu</th>
-        <th>Trạng thái</th>
-        <th> </th>
-    </tr>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ID)
-    </td>
+    <link rel="stylesheet" href="~/css/">
 
-    <td>
-        @Html.DisplayFor(modelItem => item.HoTen)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DiaChi)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.GioiTinh)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SDT)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PhongBan.TenPB)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChucVu)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Role.URole)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.username)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.upassword)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.trangthai)
-    </td>
-    <td>
-        @Html.ActionLink("Sửa", "EditNV", new { id = item.ID }) @*|
-        @Html.ActionLink("Xoá", "Delete", new { id = item.ID })*@
-    </td>
-</tr>
-    }
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-4">
+                    <h2 class="heading-section">Danh sách nhân viên</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                
+                    <div class="table-wrap">
+                        <table class="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Ho Ten</th>
+                                <th>Gioi Tinh</th>
+                                <th>Dia Chi</th>
+                                <th>SDT</th>
+                                <th>Id Phong ban</th>
+                                <th>Chuc vu</th>
+                                <th>username</th>
+                                <th>password</th>
+                                <th>trang thai</th>
+                            </tr>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th>@item.ID</th>
+                                        <th>@item.HoTen</th>
+                                        <th>@item.GioiTinh</th>
+                                        <th>@item.DiaChi</th>
+                                        <th>@item.SDT</th>
+                                        <th>@item.IDPhongBan</th>
+                                        <th>@item.ChucVu</th>
+                                        <th>@item.username</th>
+                                        <th>@item.upassword</th>
+                                        <th>@item.trangthai</th>
+                                    </tr>
+                                  }
+                            </tbody>
 
-</table>
-@*<div class="link">
-    
-</div>*@
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
+
+

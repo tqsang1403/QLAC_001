@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using Quanlicaan.Models.ModelADO;
+
 
 namespace Quanlicaan.Responsity
 {
@@ -20,7 +20,7 @@ namespace Quanlicaan.Responsity
 
         }
         //To Add Employee details    
-        public bool AddPB(Models.ModelADO.PhongBan obj)
+        public bool AddPB(PhongBan obj)
         {
 
             connection();
@@ -47,10 +47,10 @@ namespace Quanlicaan.Responsity
 
         }
         //To view employee details with generic list     
-        public List<Models.ModelADO.PhongBan> GetAllPB()
+        public List<PhongBan> GetAllPB()
         {
             connection();
-            List<Models.ModelADO.PhongBan> EmpList = new List<Models.ModelADO.PhongBan>();
+            List<PhongBan> EmpList = new List<PhongBan>();
 
 
             SqlCommand com = new SqlCommand("GetAllPB", con);
@@ -67,7 +67,7 @@ namespace Quanlicaan.Responsity
 
                 EmpList.Add(
 
-                    new Models.ModelADO.PhongBan
+                    new PhongBan
                     {
 
                         ID = Convert.ToInt32(dr["Id"]),
@@ -81,7 +81,7 @@ namespace Quanlicaan.Responsity
             return EmpList;
         }
         //To Update Employee details    
-        public bool UpdatePB(Models.ModelADO.PhongBan obj)
+        public bool UpdatePB(PhongBan obj)
         {
 
             connection();

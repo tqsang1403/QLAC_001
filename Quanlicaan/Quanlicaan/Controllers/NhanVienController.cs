@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,10 +16,9 @@ namespace Quanlicaan.Controllers
         public ActionResult Show()
 
         {
-
-            var entities = new Model1();
-
-            return View(entities.NhanViens.ToList());
+            var nhanvien = new UserModel();
+            List<NhanVien> list = nhanvien.Listnv();
+            return View(list);
 
         }
        
