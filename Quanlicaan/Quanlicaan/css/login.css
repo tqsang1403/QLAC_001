@@ -73,10 +73,14 @@ input {
     outline: none;
     border: none;
 }
+input[type=text], input[type=password]{
+    font-size:13px;
+}
 
 textarea {
     outline: none;
     border: none;
+    font-size:30px
 }
 
     textarea:focus, input:focus {
@@ -221,7 +225,7 @@ iframe {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 80px 120px;
-    margin:auto;
+    margin: auto;
 }
 
 /*---------------------------------------------*/

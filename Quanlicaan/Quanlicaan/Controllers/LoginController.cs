@@ -31,12 +31,12 @@ namespace Quanlicaan.Controllers
                 Response.Write("<script>alert('Login sucess')</script>");
                 Session["username"] = username;
                 return Redirect("/Home/Home");
-
+               
 
             }
            
             con.Close();
-            Response.Write("<script>alert('Login fail')</script>");
+            Response.Write("<script>alert('Đăng nhập thất bại')</script>");
             return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
         }
 

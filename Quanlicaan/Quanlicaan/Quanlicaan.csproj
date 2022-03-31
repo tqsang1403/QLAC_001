@@ -571,6 +571,7 @@
     <Content Include="fonts\OFL.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bglogin.jpg" />
     <Content Include="images\icons\favicon.ico" />
     <Content Include="images\img-01.png" />
     <Content Include="fonts\BeVietnamPro-Black.ttf" />
@@ -633,6 +634,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
