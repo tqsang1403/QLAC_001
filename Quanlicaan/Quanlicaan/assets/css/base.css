@@ -1,0 +1,132 @@
+:root {
+    /* đây là noi khai báo biến css */
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --primary-color: #EE4D2D;
+    --background-color: lightcyan;
+}
+
+* {
+    /* css cho tất cả các phần tử trong html */
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* mặc định font-size 100% là 16px */
+    /* font-size:100%;
+     */
+    /* để 62.5% để 1 rem = 10px */
+    /* font-size: 62.5%; */
+    font-size: 16px;
+    /* độ cao chữ mặc định */
+    line-height: 1.6rem;
+    /* san-serif là chủng chữ không có chân, nếu roboto chưa được tải thì dùng 1 chủng chữ không chân có sẵn trong máy */
+    font-family: 'Roboto', sans-serif;
+    /* box-sizing: border-box; */
+    /* display: inline-block; */
+}
+
+
+/* chuẩn bị nền móng để code responsive */
+
+.grid {
+    width: 1500px;
+    max-width: 100%;
+    margin: 0 auto;
+    /* tự căn giữa */
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row {
+    /* tất cả các phần tử nằm trên 1 hàng ngang */
+    display: flex;
+    flex-wrap: wrap;
+    /* tổng độ dài vượt quá thì nhảy xuống hàng */
+}
+
+
+/* button style */
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn--primary {
+    color: var(--white-color);
+    background-color: #EE4D2D;
+    border-radius: 3px;
+}
+
+.btn.btn--disabled {
+    cursor: default;
+    background-color: #ccc;
+}
+
+.auth-form__controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 80px;
+    /* margin-bottom: 20px; */
+}
+
+.auth-form__socials {
+    background-color: #F5F5F5;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-form__controls-back {
+    margin-right: 8px;
+}
+
+.btn.btn__size-s {
+    height: 32px;
+    font-size: 12px;
+}
+
+
+/* 1 element có 2 class */
+
+.auth-form__help {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.auth-form__help-link {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.auth-form__help-separate {
+    display: block;
+    height: 22px;
+    margin: 0 16px;
+    border-left: 1px solid var(--border-color);
+}
+
+.auth-form__help-link-forgot {
+    color: #EE4D2D;
+}
