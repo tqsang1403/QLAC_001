@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quanlicaan.Models;
+using System;
 using System.Web.Mvc;
 
 namespace Quanlicaan.Controllers
@@ -8,27 +9,16 @@ namespace Quanlicaan.Controllers
         private Model1 db = new Model1();
         // GET: Regist
         [HttpGet]
-        public ActionResult Regist()
+        public ActionResult Index()
         {
-            return View();
+            return View(); 
         }
 
         [HttpPost]
-        public ActionResult Regist(NhanVien nv)
+        public ActionResult Regist(NhanVienModel nv)
         {
-            if (ModelState.IsValid)
-
-            {
-
-                db.NhanViens.Add(nv);
-
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-
-            }
-
-            return View(nv);
+            
+            return Redirect("/NhanVien/Show");
         }
 
     }

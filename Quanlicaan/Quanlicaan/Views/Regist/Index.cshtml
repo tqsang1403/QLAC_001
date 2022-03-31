@@ -1,6 +1,4 @@
 ﻿
-@model  Quanlicaan.NhanVien
-
 @{
     Layout = null;
 }
@@ -17,7 +15,7 @@
     <div class="limiter">
         <div class="container-regist">
             <div class="wrap-regist">
-                @using (Html.BeginForm(new { @class = "regist-form validate-form" }))
+                @using (Html.BeginForm("Regist", "Regist", FormMethod.Post, new { @class = "regist-form validate-form" }))
                 {
                     <span class="regist-form-title">
                         Đăng kí thông tin người dùng
@@ -26,7 +24,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="wrap-input validate-input" data-validate="User's fullname is required">
                         @Html.TextBoxFor(m => m.fullname, new { @class = "input", @type = "text", @name = "fullname", @placeholder = "Họ tên nhân viên", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.fullname, "bạn chưa nhập mật khẩu", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(m => m.fullname, "", new { @class = "text-danger" })
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -34,8 +32,8 @@
                     </div>
 
                     <div class="wrap-input validate-input" data-validate="Username is required">
-                        @Html.TextBoxFor(m=> m., new { @class = "input", @type = "text", @name = "username", @placeholder = "Tên đăng nhập", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.username, "hãy điền tên đăng nhập vào !", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.username, new { @class = "input", @type = "text", @name = "username", @placeholder = "Tên đăng nhập", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -44,14 +42,14 @@
 
                     <div class="wrap-input validate-input" data-validate="Password is required">
                         @Html.TextBoxFor(model => model.password, new { @class = "input", @type = "password", @name = "password", @placeholder = "Mật khẩu", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password, "hãy điền password vào", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
 
-                    <p>Mã phòng ban</p>
+               
                     <div class="select-department" data-validate="Department is required">
                         @*@Html.LabelFor(model => model.idphongban, "Mã phòng ban", htmlAttributes: new { @class = "container-checkbox" })*@
                         @Html.DropDownList("IDPhongBan", new List<SelectListItem>
@@ -59,20 +57,38 @@
                        new SelectListItem {Text = "Chọn phòng ban", Value = "0" },
                        new SelectListItem {Text = "Kế toán", Value = "1"},
                        new SelectListItem {Text = "Dân sự", Value = "2"},
-                       new SelectListItem {Text = "Kỹ thuật", Value = "3"},
-                       //new SelectListItem {Text = "pb004", Value = "pb004"},
-                       //new SelectListItem {Text = "pb005", Value = "pb005"},
-                       //new SelectListItem {Text = "pb005", Value = "pb005"},
-                   }, htmlAttributes: new { @class = "form-control" });
-                        @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
+                       new SelectListItem {Text = "Kỹ thuật", Value = "3"}
+                   }, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.idPhongBan, "", new { @class = "text-danger" })
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
+                    <div class="wrap-input validate-input" data-validate="yêu cầu chọn quyền đăng ký">
+                        <label>Quyền đăng ký</label>
+                        <br />
+                        <span>Cá nhân </span>@Html.RadioButtonFor(model => model.quyenDangKy, "Ca nhan")
+                        <span>|Tập thể </span>@Html.RadioButtonFor(model => model.quyenDangKy, "Tap the")
+                        <span class="focus-input"></span>
+                        <span class="symbol-input">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input validate-input" data-validate="yêu cầu chọn phân quyền">
+                        <label>Phân quyền</label>
+                        <br />
+                        <span>Admin </span> @Html.RadioButtonFor(model => model.idPhanQuyen, 1)
+                        <span>|User </span> @Html.RadioButtonFor(model => model.idPhanQuyen, 2)
+                        <span class="focus-input"></span>
+                        <span class="symbol-input">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+
                     <div class="container-login-form-btn">
                         <input type="submit" value="Đăng ký" class="login-form-btn">
-                           
                         </input>
                     </div>
                 }
