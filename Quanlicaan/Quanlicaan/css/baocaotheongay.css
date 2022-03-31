@@ -1,0 +1,124 @@
+﻿input[type=text] {
+    width: 40%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: transparent;
+}
+
+.title {
+    text-align: center;
+}
+
+.companyname {
+    display: block;
+    text-align: center;
+    padding-left: 20px;
+}
+
+.chxhcnvn {
+    display: block;
+    text-align: center;
+    padding-right: 20px;
+    width: 20%;
+}
+
+div.banner, .chxhcnvn, .companyname {
+    background-image: linear-gradient(rgb(197, 121, 121),rgb(170, 248, 117));
+}
+
+.banner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+table, th, tr, td {
+    border: 1px solid;
+    width: max-content;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: auto;
+}
+
+th {
+    height: auto;
+    text-align: center;
+}
+
+.content {
+    display: block;
+    width: 100%;
+}
+
+p {
+    background: transparent;
+    
+    font-size: 18px;
+}
+
+* {
+    background-color: rgb(227, 241, 228);
+}
+
+input[type=date], input[type=number] {
+    border: none;
+    font-size: 15px;
+    background: transparent;
+}
+
+#logo {
+    display: block;
+    width: 15%;
+    border-radius: 50%;
+    background: transparent;
+    padding-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logocontainer {
+    margin-left: 160px;
+    text-align: center;
+    background-image: linear-gradient(rgb(197, 121, 121),rgb(170, 248, 117));
+}
+
+#tenphongban {
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    width: 90%;
+}
+
+#iddate {
+    font-size: 20px;
+}
+
+.ngaybaocao {
+    display: block;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+#idcaan {
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.ca {
+    display: block;
+    margin-left: 26%;
+    padding: 5px 0px 0px 0px;
+}
+
+#name {
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+}

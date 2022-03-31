@@ -1,0 +1,34 @@
+﻿table {
+    width: 100%;
+}
+
+th {
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+    vertical-align:central;
+}
+
+tr:hover {
+    background-color: coral;
+}
+
+.header{
+    background-color:aqua;
+   
+}
+
+
+.table td{
+    text-align:center;
+    vertical-align:bottom;
+}
+
+.table{
+    border-style: solid;
+    border-color: gray;
+}
+td th {
+    border: 1px solid ;
+}
+

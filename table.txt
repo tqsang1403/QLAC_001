@@ -1,0 +1,36 @@
+table nhanvien
+	-id(pk)
+	-hovaten
+	-gioitinh
+	-diachi
+	-sdt
+	-idphongban(fk)
+	-username
+	-upassword
+	-trangthai
+
+table phongban
+	-id(pk)
+	-tenpb
+
+table roles
+	-id(pk)
+	-iduser(fk)
+	-tenroles	
+
+table caan
+	-id(pk)
+	-thoigian
+
+table suatan
+	-id(pk)	
+	-idcaan(fk)
+	-timedat
+
+table .chitietsuatan
+	-id(pk)
+	-idcaan(fk)
+	-iduser(fk)
+	-soluong
+	-timedat
+	

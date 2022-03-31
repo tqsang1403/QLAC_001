@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Quanlicaan.NhanVien>
+
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/nv.css" rel="stylesheet" />
+}
+
+<h2 style="text-align:center">Danh sách nhân viên</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "AddNV")
+</p>
+<table class="table">
+    <tr class="header">
+        <th>ID</th>
+        <th>Họ và tên</th>
+        <th>Địa chỉ</th>
+        <th>Giới tính</th>  
+        <th>Số điện thoại</th>
+        <th>Phòng ban</th>
+        <th> Chức vụ</th>
+        <th>Quyền đăng ký</th>
+        <th>Tên tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Trạng thái</th>
+        <th> </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.HoTen)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GioiTinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SDT)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhongBan.TenPB)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ChucVu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Role.URole)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.upassword)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.trangthai)
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "EditNV", new { id = item.ID }) @*|
+        @Html.ActionLink("Xoá", "Delete", new { id = item.ID })*@
+    </td>
+</tr>
+    }
+
+</table>
+@*<div class="link">
+    
+</div>*@

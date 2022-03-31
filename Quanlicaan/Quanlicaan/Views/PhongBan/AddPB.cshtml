@@ -1,0 +1,41 @@
+﻿@model Quanlicaan.PhongBan
+
+@{
+    ViewBag.Title = "Thêm mới phòng ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/addnv.css" rel="stylesheet" />
+}
+
+<h2>Thông tin phòng ban</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Tên Phòng Ban
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenPB, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="btn-bottom" style="padding: 20px 12px">
+            <div class="">
+                <input type="submit" value="Tạo mới" class="btn" />
+            </div>
+
+            <div>
+                @Html.ActionLink("Quay lại", "ShowAll")
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+

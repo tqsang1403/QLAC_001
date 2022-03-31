@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLiCaAnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CaAn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Thoigian" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChiTietSuatAn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" Nullable="false" />
+    <Property Name="Soluong" Type="int" Nullable="false" />
+    <Property Name="IDSuatAn" Type="int" />
+    <Property Name="IDCaan" Type="int" Nullable="false" />
+    <Property Name="Thoigiandat" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="GioiTinh" Type="bit" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="SDT" Type="ntext" Nullable="false" />
+    <Property Name="IDPhongBan" Type="int" Nullable="false" />
+    <Property Name="username" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="upassword" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="trangthai" Type="bit" Nullable="false" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="PhongBan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenPB" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="URole" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SuatAn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="Thoigiandat" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__ChiTietSu__IDCaa__571DF1D5">
+    <End Role="CaAn" Type="Self.CaAn" Multiplicity="1" />
+    <End Role="ChiTietSuatAn" Type="Self.ChiTietSuatAn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaAn">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietSuatAn">
+        <PropertyRef Name="IDCaan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSu__IDSua__5629CD9C">
+    <End Role="SuatAn" Type="Self.SuatAn" Multiplicity="0..1" />
+    <End Role="ChiTietSuatAn" Type="Self.ChiTietSuatAn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SuatAn">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietSuatAn">
+        <PropertyRef Name="IDSuatAn" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietSu__IDUse__5535A963">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+    <End Role="ChiTietSuatAn" Type="Self.ChiTietSuatAn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietSuatAn">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NhanVien__IDPhon__3D5E1FD2">
+    <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="1" />
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongBan">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NhanVien">
+        <PropertyRef Name="IDPhongBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Roles__IDUser__412EB0B6">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SuatAn__IDUser__52593CB8">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="SuatAn" Type="Self.SuatAn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SuatAn">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLiCaAnModelStoreContainer">
+    <EntitySet Name="CaAn" EntityType="Self.CaAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietSuatAn" EntityType="Self.ChiTietSuatAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhongBan" EntityType="Self.PhongBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SuatAn" EntityType="Self.SuatAn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietSu__IDCaa__571DF1D5" Association="Self.FK__ChiTietSu__IDCaa__571DF1D5">
+      <End Role="CaAn" EntitySet="CaAn" />
+      <End Role="ChiTietSuatAn" EntitySet="ChiTietSuatAn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSu__IDSua__5629CD9C" Association="Self.FK__ChiTietSu__IDSua__5629CD9C">
+      <End Role="SuatAn" EntitySet="SuatAn" />
+      <End Role="ChiTietSuatAn" EntitySet="ChiTietSuatAn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietSu__IDUse__5535A963" Association="Self.FK__ChiTietSu__IDUse__5535A963">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="ChiTietSuatAn" EntitySet="ChiTietSuatAn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NhanVien__IDPhon__3D5E1FD2" Association="Self.FK__NhanVien__IDPhon__3D5E1FD2">
+      <End Role="PhongBan" EntitySet="PhongBan" />
+      <End Role="NhanVien" EntitySet="NhanVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Roles__IDUser__412EB0B6" Association="Self.FK__Roles__IDUser__412EB0B6">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SuatAn__IDUser__52593CB8" Association="Self.FK__SuatAn__IDUser__52593CB8">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="SuatAn" EntitySet="SuatAn" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

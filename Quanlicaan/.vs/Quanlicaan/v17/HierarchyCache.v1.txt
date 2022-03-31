@@ -1,0 +1,639 @@
+﻿++Solution 'Quanlicaan' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:Quanlicaan.sln
+++Quanlicaan
+i:{00000000-0000-0000-0000-000000000000}:Quanlicaan
+++Properties
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\properties\
+++AssemblyInfo.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\properties\assemblyinfo.cs
+++Resource1.resx
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\properties\resource1.resx
+++References
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Antlr3.Runtime
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++EntityFramework
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++EntityFramework.SqlServer
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Antiforgery
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Authentication.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Authentication.Core
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Authorization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Authorization.Policy
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Cors
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Cryptography.Internal
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.DataProtection
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.DataProtection.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Diagnostics.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Hosting.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Hosting.Server.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Html.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Http
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Http.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Http.Extensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Http.Features
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.JsonPatch
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Localization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.ApiExplorer
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Core
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Cors
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.DataAnnotations
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Formatters.Json
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Localization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Razor
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.Razor.Extensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.RazorPages
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.TagHelpers
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Mvc.ViewFeatures
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Razor
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Razor.Language
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Razor.Runtime
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.ResponseCaching.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Routing
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.Routing.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.AspNetCore.WebUtilities
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Build.Framework
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.CodeAnalysis
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.CodeAnalysis.CSharp
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.CodeAnalysis.Razor
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.CSharp
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.DotNet.PlatformAbstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Caching.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Caching.Memory
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Configuration.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.DependencyInjection
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.DependencyInjection.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.DependencyModel
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.FileProviders.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.FileProviders.Composite
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.FileSystemGlobbing
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Hosting.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Localization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Localization.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Logging.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.ObjectPool
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Options
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.Primitives
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Extensions.WebEncoders
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Net.Http.Headers
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.SqlServer.Types
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Web.Infrastructure
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Microsoft.Win32.Registry
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Newtonsoft.Json
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++Newtonsoft.Json.Bson
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.AppContext
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Buffers
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Collections.Immutable
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.ComponentModel.Annotations
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.ComponentModel.Composition
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.ComponentModel.DataAnnotations
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Configuration
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Console
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Data
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Data.DataSetExtensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Data.OracleClient
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Diagnostics.DiagnosticSource
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Diagnostics.FileVersionInfo
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Diagnostics.StackTrace
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Drawing
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.EnterpriseServices
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.IO
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.IO.Compression
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.IO.FileSystem
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.IO.FileSystem.Primitives
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Linq
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Linq.Expressions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Memory
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Net
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Net.Http
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Net.Http.WebRequest
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Numerics
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Numerics.Vectors
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Reflection
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Reflection.Metadata
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime.CompilerServices.Unsafe
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime.Extensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime.InteropServices
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime.InteropServices.RuntimeInformation
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Runtime.Serialization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.AccessControl
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Cryptography.Algorithms
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Cryptography.Encoding
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Cryptography.Primitives
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Cryptography.X509Certificates
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Cryptography.Xml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Permissions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Security.Principal.Windows
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.ServiceProcess
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Text.Encoding.CodePages
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Text.Encodings.Web
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Threading.Tasks.Extensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Threading.Thread
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Transactions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.ValueTuple
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Abstractions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.ApplicationServices
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.DynamicData
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Entity
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Extensions
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Helpers
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Mvc
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Optimization
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Razor
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Routing
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.Services
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.WebPages
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.WebPages.Deployment
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Web.WebPages.Razor
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml.Linq
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml.ReaderWriter
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml.XmlDocument
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml.XPath
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++System.Xml.XPath.XDocument
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++WebGrease
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:
+++App_Data
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\app_data\
+++App_Start
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\app_start\
+++BundleConfig.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\app_start\bundleconfig.cs
+++FilterConfig.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\app_start\filterconfig.cs
+++RouteConfig.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\app_start\routeconfig.cs
+++Code
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\code\
+++SessionHelper.cs
+++UserSession.cs
+++Content
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\
+++bootstrap-grid.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.css
+++bootstrap-grid.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.min.css
+++bootstrap-grid.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.rtl.css
+++bootstrap-grid.rtl.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.rtl.min.css
+++bootstrap-grid.rtl.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.css
+++bootstrap-reboot.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.min.css
+++bootstrap-reboot.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.rtl.css
+++bootstrap-reboot.rtl.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.rtl.min.css
+++bootstrap-reboot.rtl.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.css
+++bootstrap-utilities.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.min.css
+++bootstrap-utilities.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.rtl.css
+++bootstrap-utilities.rtl.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.rtl.min.css
+++bootstrap-utilities.rtl.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap-utilities.rtl.min.css.map
+++bootstrap.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.css
+++bootstrap.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.css.map
+++bootstrap.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.min.css
+++bootstrap.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.min.css.map
+++bootstrap.rtl.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.rtl.css
+++bootstrap.rtl.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.rtl.min.css
+++bootstrap.rtl.min.css.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\bootstrap.rtl.min.css.map
+++Site.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\content\site.css
+++Controllers
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\
+++BaocaoController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\baocaocontroller.cs
+++DangkycaanController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\dangkycaancontroller.cs
+++HomeController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\homecontroller.cs
+++LoginController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\logincontroller.cs
+++NhanVienController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\nhanviencontroller.cs
+++RegistController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\registcontroller.cs
+++css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\
+++addnv.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\addnv.css
+++baocaocanhan.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\baocaocanhan.css
+++baocaotheongay.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\baocaotheongay.css
+++baocaotheothang.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\baocaotheothang.css
+++dangkyancanhan.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\dangkyancanhan.css
+++dangkyannhom.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\dangkyannhom.css
+++deletenv.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\deletenv.css
+++editnv.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\editnv.css
+++layout.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\layout.css
+++login.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\login.css
+++nv.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\nv.css
+++regist.css
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\css\regist.css
+++fonts
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\
+++images
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\images\
+++Models
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\
+++Framework
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\
+++CaAn.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\caan.cs
+++ChiTietSuatAn.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\chitietsuatan.cs
+++Model1.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\model1.cs
+++NhanVien.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\nhanvien.cs
+++PhongBan.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\phongban.cs
+++Role.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\role.cs
+++SuatAn.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\suatan.cs
+++sysdiagram.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\framework\sysdiagram.cs
+++LoginModel.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\loginmodel.cs
+++UserModel.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\models\usermodel.cs
+++Scripts
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\
+++SqlServerTypes
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\
+++Views
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\
+++Baocao
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\baocao\
+++Dangkycaan
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\dangkycaan\
+++Home
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\home\
+++Index.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\login\index.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\caan\index.cshtml
+++Login
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\login\
+++NhanVien
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\nhanvien\
+++AddNV.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\nhanvien\addnv.cshtml
+++Delete.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\nhanvien\delete.cshtml
+++EditNV.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\nhanvien\editnv.cshtml
+++Show.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\nhanvien\show.cshtml
+++Regist
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\regist\
+++Regist.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\regist\regist.cshtml
+++Shared
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\shared\
+++_Layout.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\shared\_layout.cshtml
+++Error.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\shared\error.cshtml
+++_ViewStart.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\_viewstart.cshtml
+++Web.config
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\web.config
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\web.config
+++favicon.ico
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\favicon.ico
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\images\icons\favicon.ico
+++Global.asax
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\global.asax
+++packages.config
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\packages.config
+++Resource1.Designer.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\properties\resource1.designer.cs
+++BeVietnamPro-Black.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-black.ttf
+++BeVietnamPro-BlackItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-blackitalic.ttf
+++BeVietnamPro-Bold.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-bold.ttf
+++BeVietnamPro-BoldItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-bolditalic.ttf
+++BeVietnamPro-ExtraBold.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-extrabold.ttf
+++BeVietnamPro-ExtraBoldItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-extrabolditalic.ttf
+++BeVietnamPro-ExtraLight.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-extralight.ttf
+++BeVietnamPro-ExtraLightItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-extralightitalic.ttf
+++BeVietnamPro-Italic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-italic.ttf
+++BeVietnamPro-Light.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-light.ttf
+++BeVietnamPro-LightItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-lightitalic.ttf
+++BeVietnamPro-Medium.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-medium.ttf
+++BeVietnamPro-MediumItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-mediumitalic.ttf
+++BeVietnamPro-Regular.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-regular.ttf
+++BeVietnamPro-SemiBold.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-semibold.ttf
+++BeVietnamPro-SemiBoldItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-semibolditalic.ttf
+++BeVietnamPro-Thin.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-thin.ttf
+++BeVietnamPro-ThinItalic.ttf
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\bevietnampro-thinitalic.ttf
+++OFL.txt
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\fonts\ofl.txt
+++icons
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\images\icons\
+++img-01.png
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\images\img-01.png
+++kkkk.jpg
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\images\kkkk.jpg
+++bootstrap.bundle.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.bundle.js
+++bootstrap.bundle.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.bundle.min.js
+++bootstrap.bundle.min.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.bundle.min.js.map
+++bootstrap.esm.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.esm.js
+++bootstrap.esm.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.esm.min.js
+++bootstrap.esm.min.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.esm.min.js.map
+++bootstrap.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.js
+++bootstrap.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.js.map
+++bootstrap.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.min.js
+++bootstrap.min.js.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\bootstrap.min.js.map
+++jquery-3.4.1.intellisense.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.intellisense.js
+++jquery-3.4.1.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.js
+++jquery-3.4.1.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.min.js
+++jquery-3.4.1.min.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.min.map
+++jquery-3.4.1.slim.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.slim.js
+++jquery-3.4.1.slim.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.slim.min.js
+++jquery-3.4.1.slim.min.map
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery-3.4.1.slim.min.map
+++jquery.validate-vsdoc.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery.validate-vsdoc.js
+++jquery.validate.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery.validate.js
+++jquery.validate.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery.validate.min.js
+++jquery.validate.unobtrusive.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery.validate.unobtrusive.js
+++jquery.validate.unobtrusive.min.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\jquery.validate.unobtrusive.min.js
+++modernizr-2.8.3.js
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\scripts\modernizr-2.8.3.js
+++x64
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x64\
+++x86
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x86\
+++Loader.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\loader.cs
+++readme.htm
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\readme.htm
+++Baocaocanhan.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\baocao\baocaocanhan.cshtml
+++baocaotheongay.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\baocao\baocaotheongay.cshtml
+++baocaotheothang.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\baocao\baocaotheothang.cshtml
+++dangkyancanhan.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\dangkycaan\dangkyancanhan.cshtml
+++dangkyantheonhom.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\dangkycaan\dangkyantheonhom.cshtml
+++Global.asax.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\global.asax.cs
+++Web.Debug.config
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\web.debug.config
+++Web.Release.config
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\web.release.config
+++msvcr120.dll
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x64\msvcr120.dll
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x86\msvcr120.dll
+++SqlServerSpatial140.dll
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x64\sqlserverspatial140.dll
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\sqlservertypes\x86\sqlserverspatial140.dll
+++Canhan.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\dangkycaan\canhan.cshtml
+++CaAn
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\caan\
+++CaAnController.cs
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\controllers\caancontroller.cs
+++Home.cshtml
+i:{053109c2-97ec-4205-ba7a-f44c72aa0f51}:e:\thuc tap\quanlycaan\qlca\quanlicaan\quanlicaan\views\home\home.cshtml

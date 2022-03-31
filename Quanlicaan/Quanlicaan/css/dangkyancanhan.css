@@ -1,0 +1,85 @@
+﻿
+* {
+    background-color: rgb(222, 233, 229);
+}
+
+.container {
+    display: block;
+    padding-left: 20%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+input[type=text], input[type=datetime-local] {
+    border: none;
+    font-size: 40px;
+    width: 45%;
+    padding-left: 10px;
+    background:transparent;
+}
+
+input[type=number] {
+    border: 2px;
+    border-style: solid;
+    font-size: 30px;
+    width: 7%;
+}
+
+input[type=checkbox] {
+    transform: scale(2);
+}
+
+.dkcaan {
+    display: block;
+    padding: 15px 0 15px 0;
+    font-size: 30px;
+    padding-left: 22%;
+}
+
+#slsuatan {
+    border: solid 2px;
+    background-color: gainsboro;
+}
+
+button {
+    background-color: #4abea1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+    button:hover {
+        color: rgb(223, 21, 21);
+        opacity: 0.8;
+        background-color: aquamarine;
+    }
+
+    button:active {
+        background-color: rgb(231, 228, 44);
+    }
+
+.caan {
+    display: inline;
+}
+
+    .caan:hover {
+        background-color: blue;
+    }
+
+.buttoncontainer {
+    display: block;
+    text-align: center;
+}
+
+#btnCancel {
+    padding: 20px;
+    width: 20%;
+}
+
+#btnOk {
+    padding: 20px;
+    width: 20%;
+}

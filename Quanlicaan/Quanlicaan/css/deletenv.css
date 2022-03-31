@@ -1,0 +1,35 @@
+﻿.detail{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+}
+
+dt{
+    width :30%;
+    text-align:left;
+}
+dd{
+    text-align:center;
+    width:30%;  
+}
+dt, dd{
+    height:fit-content;
+    border: 1px;
+}
+.btn-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.btn{
+    background:border-box;
+    background-color:aquamarine;
+}
+.dl-horizontal {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 12px;
+}

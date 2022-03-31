@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký ăn theo nhóm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký suất ăn theo nhóm</title>
+    <link href="~/css/dangkyannhom.css" rel="stylesheet" />
+    
+
+</head>
+<body>
+    <h1>ĐĂNG KÝ CA ĂN</h1>
+    <div class="container">
+
+        <b>
+            <label for="name"> HỌ TÊN: </label>
+            <input type="text" name="name" disabled> <br>
+
+            <label for="phongban">PHÒNG BAN: </label>
+            <input type="text" name="phongban" disabled> <br>
+
+            <label for="date ">NGÀY ĐĂNG KÝ: </label>
+            <input type="datetime-local" name="date" disabled>
+        </b>
+
+
+    </div>
+    <h2>Thông tin nhóm ăn:</h2>
+
+
+    <div class="dkcaan">
+
+        <label for="name">Họ và tên:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="iduser">ID: </label>
+        <input type="text" id="iduser" name="iduser">
+
+
+
+        <label for="ca1">CA 1: </label>
+        <input type="checkbox" style="color: darkgray;" name="ca1" class="caan">
+        <input type="number" id="slsuatan" value="1" disabled>
+
+
+        <label for="ca2">CA 2: </label>
+        <input type="checkbox" style="color: darkgray;" name="ca2" class="caan">
+        <input type="number" id="slsuatan" value="1" disabled>
+
+        <label for="ca3">CA 3: </label>
+        <input type="checkbox" style="color: darkgray;" name="ca3" class="caan">
+        <input type="number" id="slsuatan" value="1" disabled>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div class="buttoncontainer">
+        <button id="btnCancel">Cancel</button>
+        <button type="submit" id="btnOk">OK</button>
+    </div>
+
+</body>
+</html>

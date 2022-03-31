@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Quanlicaan.PhongBan>
+
+@{
+    ViewBag.Title = "Danh sách phòng ban";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/nv.css" rel="stylesheet" />
+}
+
+<h2>Danh sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "AddPB")
+</p>
+<table class="table">
+    <tr class="header">
+        <th>
+            ID
+        </th>
+        <th>
+            Tên Phòng Ban
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPB)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "EditPB", new { id = item.ID })
+                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+            </td>
+        </tr>
+    }
+
+</table>
