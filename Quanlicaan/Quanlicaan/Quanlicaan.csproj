@@ -502,11 +502,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
+    <Compile Include="Models\dbConnect.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
     <Compile Include="Models\Framework\Model1.cs" />
-    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Controllers\BaocaoController.cs" />
     <Compile Include="Controllers\DangkycaanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -522,7 +522,6 @@
     <Compile Include="Models\ModelADO\PhongBan.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
     <Compile Include="Models\ModelADO\SuatAn.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
     <Compile Include="Models\Framework\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
