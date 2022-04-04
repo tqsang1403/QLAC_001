@@ -1,0 +1,96 @@
+﻿@model Quanlicaan.Models.NhanVienModel
+
+@{
+    ViewBag.Title = "Thêm mới nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/addnv.css" rel="stylesheet" />
+}
+
+<h2>Thêm nhân viên mới</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Họ và tên:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.hoTen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" id="idphongban">
+        ID Phòng Ban:
+        <div class="col-md-10" id="colpb">
+            @Html.EditorFor(model => model.IDPhongBan, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IDPhongBan, "1: Kế toán | 2: Dân sự | 3: Kỹ thuật", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        Tên đăng nhập:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Mật khẩu:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group" id="trangthai">
+        Trạng thái:
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.trangThai)
+                @Html.ValidationMessageFor(model => model.trangThai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" id="role">
+        Quyền quản trị hệ thống:
+        <div class="col-md-10" id="colrole">
+            @Html.EditorFor(model => model.IDRole, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IDRole, "1: Admin | 2: User", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        Quyền đăng ký:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.quyen, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.quyen, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="btn-bottom" style="padding: 20px 12px">
+            <div class="">
+                <input type="submit" value="Tạo mới" class="btn" />
+            </div>
+
+            <div>
+                @Html.ActionLink("Quay lại", "Show")
+            </div>
+        </div>
+    </div>
+    @{           if (TempData["msg"] != null)
+                {
+                    <script>alert('@TempData["msg"]')</script>
+                }
+    }
+</div>
+}
+

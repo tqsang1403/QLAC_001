@@ -6,133 +6,176 @@ using System.Web.Mvc;
 using Quanlicaan.Models;
 using System.Linq;
 using System.Data.Entity;
+using System.Data;
+using Quanlicaan.DataAccessLayer;
 
 namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
     {
-        private Model1 db = new Model1(); 
+        db dbLayer = new db();
 
         public ActionResult Show()
 
         {
-
-            var entities = new Model1();
-
-            return View(entities.NhanViens.ToList());
-
+            DataSet ds = dbLayer.Show_All_Data();
+            ViewBag.nv = ds.Tables[0];
+            return View();
         }
-       
-
-        //SỬA NV
-
-        public ActionResult EditNV(int id = 0)
+        public ActionResult Add_Record()
         {
 
-            NhanVien nv = db.NhanViens.Find(id);
-
-            if (nv == null)
-
-            {
-
-                return HttpNotFound();
-
-            }
-
-            return View(nv);
+            return View();
 
         }
-
-
         [HttpPost]
-
-        public ActionResult EditNV(NhanVien nv)
-
+        public ActionResult Add_Record(NhanVienModel fc)
         {
-
-            if (ModelState.IsValid)
-
-            {
-
-                db.Entry(nv).State = EntityState.Modified;
-
-                db.SaveChanges();
-
-                return RedirectToAction("Show");
-
-            }
-
-            return View(nv);
+            NhanVienModel nv = new NhanVienModel();
+            nv.hoTen = fc.hoTen;
+            nv.IDPhongBan = fc.IDPhongBan;
+            nv.username = fc.username;
+            nv.password = fc.password;
+            nv.IDRole = fc.IDRole;
+            nv.quyen = fc.quyen;
+            nv.trangThai = fc.trangThai;
+            dbLayer.Add_Record(nv);
+            TempData["msg"] = "inserted!";
+            return View();
 
         }
+        public ActionResult Update_Record(int ID)
+        {
+            DataSet ds = dbLayer.Show_Record_ById(ID);
+            ViewBag.NhanVienRecord = ds.Tables[0];
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult Update_Record(int ID, NhanVienModel fc)
+        {
+            NhanVienModel nv = new NhanVienModel();
+            nv.ID = ID;
+            nv.hoTen = fc.hoTen;
+            nv.IDPhongBan = fc.IDPhongBan;
+            nv.username = fc.username;
+            nv.password = fc.password;
+            nv.IDRole = fc.IDRole;
+            nv.quyen = fc.quyen;
+            nv.trangThai = fc.trangThai;
+            dbLayer.Update_Record(nv);
+            TempData["msg"] = "đã update dữ liệu !";
+            return View();
+
+        }
+
+        //public ActionResult EditNV(int id = 0)
+        //{
+
+        //    NhanVien nv = db.NhanViens.Find(id);
+
+        //    if (nv == null)
+
+        //    {
+
+        //        return HttpNotFound();
+
+        //    }
+
+        //    return View(nv);
+
+        //}
+
+
+        //[HttpPost]
+
+        //public ActionResult EditNV(NhanVien nv)
+
+        //{
+
+        //    if (ModelState.IsValid)
+
+        //    {
+
+        //        db.Entry(nv).State = EntityState.Modified;
+
+        //        db.SaveChanges();
+
+        //        return RedirectToAction("Show");
+
+        //    }
+
+        //    return View(nv);
+
+        //}
 
         //XOÁ NV
 
-        public ActionResult Delete(int id = 0)
+        //public ActionResult Delete(int id = 0)
 
-        {
+        //{
 
-            NhanVien nv = db.NhanViens.Find(id);
+        //    NhanVien nv = db.NhanViens.Find(id);
 
-            if (nv == null)
+        //    if (nv == null)
 
-            {
+        //    {
 
-                return HttpNotFound();
+        //        return HttpNotFound();
 
-            }
+        //    }
 
-            return View(nv);
+        //    return View(nv);
 
-        }
-
-
-        [HttpPost, ActionName("Delete")]
-
-        public ActionResult DeleteConfirmed(int id)
-
-        {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            db.NhanViens.Remove(nv);
-
-            db.SaveChanges();
-
-            return RedirectToAction("Show");
-
-        }
+        //}
 
 
+        //[HttpPost, ActionName("Delete")]
+
+        //public ActionResult DeleteConfirmed(int id)
+
+        //{
+
+        //    NhanVien nv = db.NhanViens.Find(id);
+
+        //    db.NhanViens.Remove(nv);
+
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Show");
+
+        //}
 
 
 
-        ///THÊM NHÂN VIÊN MƯỚI
-        public ActionResult AddNV()
-        {
-            return View("AddNV");
-        }
 
-        [HttpPost]
 
-        public ActionResult AddNV(NhanVien nv)
+        /////THÊM NHÂN VIÊN MƯỚI
+        //public ActionResult AddNV()
+        //{
+        //    return View("AddNV");
+        //}
 
-        {
+        //[HttpPost]
 
-            if (ModelState.IsValid)
+        //public ActionResult AddNV(NhanVien nv)
 
-            {
+        //{
 
-                db.NhanViens.Add(nv);
+        //    if (ModelState.IsValid)
 
-                db.SaveChanges();
+        //    {
 
-                return RedirectToAction("Show");
+        //        db.NhanViens.Add(nv);
 
-            }
+        //        db.SaveChanges();
 
-            return View(nv);
+        //        return RedirectToAction("Show");
 
-        }
+        //    }
+
+        //    return View(nv);
+
+        //}
     }
 }

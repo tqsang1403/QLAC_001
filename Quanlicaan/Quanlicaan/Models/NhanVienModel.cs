@@ -9,17 +9,23 @@ namespace Quanlicaan.Models
     public class NhanVienModel
     {
         [Required]
-        public string fullname { get; set; }
+        public int ID { get; set; }
+        [Required]
+        public string hoTen { get; set; }
+        [Required]
+        public int IDPhongBan { get;set; }
+
         [Required]
         public string username { get; set; }
         [Required]
         public string password { get; set; }
         [Required]
-        public string idPhongBan { get; set; }
+        public int IDRole { get; set; }
         [Required]
-        public string quyenDangKy { get; set; }
-        [Required]  
-        public int idPhanQuyen { get; set; }
+        public string quyen { get; set; }
+        [Required]
+        public Boolean trangThai { get; set; }
+
        
     }
 }

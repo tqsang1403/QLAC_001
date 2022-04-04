@@ -2,12 +2,16 @@
 @{
     Layout = null;
 }
-@model Quanlicaan.Models.NhanVienModel
+@model Quanlicaan.Models.RegisterModel
 <!DOCTYPE html>
 <html>
 <head>
     <title>Regist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!--=====================================================================-->
     <link rel="stylesheet" href="~/css/regist.css">
 </head>
@@ -15,16 +19,16 @@
     <div class="limiter">
         <div class="container-regist">
             <div class="wrap-regist">
-                @using (Html.BeginForm("Regist", "Regist", FormMethod.Post, new { @class = "regist-form validate-form" }))
+                @using (Html.BeginForm("Index", "Regist", FormMethod.Post, new { @class = "regist-form validate-form" }))
                 {
                     <span class="regist-form-title">
                         Đăng kí thông tin người dùng
                     </span>
                     //hiển thị ra tất cả các validation của form
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="wrap-input validate-input" data-validate="User's fullname is required">
-                        @Html.TextBoxFor(m => m.fullname, new { @class = "input", @type = "text", @name = "fullname", @placeholder = "Họ tên nhân viên", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.fullname, "", new { @class = "text-danger" })
+                    <div class="wrap-input validate-input" data-validate="User's hoTen is required">
+                        @Html.TextBoxFor(m => m.hoTen, new { @class = "input", @type = "text", @name = "hoTen", @placeholder = "Họ tên nhân viên", htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.hoTen)
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -33,7 +37,7 @@
 
                     <div class="wrap-input validate-input" data-validate="Username is required">
                         @Html.TextBoxFor(m => m.username, new { @class = "input", @type = "text", @name = "username", @placeholder = "Tên đăng nhập", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.username)
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -42,24 +46,21 @@
 
                     <div class="wrap-input validate-input" data-validate="Password is required">
                         @Html.TextBoxFor(model => model.password, new { @class = "input", @type = "password", @name = "password", @placeholder = "Mật khẩu", htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.password)
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-
-               
                     <div class="select-department" data-validate="Department is required">
                         @*@Html.LabelFor(model => model.idphongban, "Mã phòng ban", htmlAttributes: new { @class = "container-checkbox" })*@
                         @Html.DropDownList("IDPhongBan", new List<SelectListItem>
                    {
-                       new SelectListItem {Text = "Chọn phòng ban", Value = "0" },
                        new SelectListItem {Text = "Kế toán", Value = "1"},
                        new SelectListItem {Text = "Dân sự", Value = "2"},
                        new SelectListItem {Text = "Kỹ thuật", Value = "3"}
                    }, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.idPhongBan, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.IDPhongBan)
                         <span class="focus-input"></span>
                         <span class="symbol-input">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -85,16 +86,28 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-
-
                     <div class="container-login-form-btn">
+                        <button>
+                            <a href="/Login/Index">Đăng nhập</a>
+                        </button>
                         <input type="submit" value="Đăng ký" class="login-form-btn">
-                        </input>
                     </div>
+                    <script type="text/javascript">
+                     $(function () {
+                         var msg = '@ViewData["result"]';
+                        if (msg == '1')
+                        {
+                            alert("đăng kí thành viên thành công");
+                            window.location.href = "@Url.Action("Index", "Regist")";
+                        }
+                         });
+                </script>
+                  
                 }
 
             </div>
         </div>
+
     </div>
 </body>
 </html>

@@ -502,7 +502,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
-    <Compile Include="DataAccess\DataAccessLayer.cs" />
+    <Compile Include="DataAccessLayer\DataAccessLayer.cs" />
+    <Compile Include="DataAccessLayer\db.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
@@ -525,6 +526,7 @@
     <Compile Include="Models\ModelADO\SuatAn.cs" />
     <Compile Include="Models\NhanVienDBAccessLayer.cs" />
     <Compile Include="Models\NhanVienModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
     <Compile Include="Models\Framework\PhongBan.cs" />
@@ -2779,6 +2781,8 @@
     <Content Include="Views\PhongBan\AddPB.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Regist\Index.cshtml" />
+    <Content Include="Views\NhanVien\Add_Record.cshtml" />
+    <Content Include="Views\NhanVien\Update_Record.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

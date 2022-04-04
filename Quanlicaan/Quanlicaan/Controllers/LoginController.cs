@@ -18,6 +18,7 @@ namespace Quanlicaan.Controllers
             return View();
         }
         [HttpPost]
+
         public ActionResult DangNhapHeThong(string username, string password)
         {
             //kiem tra ten dang nhap va mat khau ok
@@ -45,6 +46,13 @@ namespace Quanlicaan.Controllers
             con.Close();
             Response.Write("<script>alert('Login fail')</script>");
             return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
+        }
+        [HttpPost]
+        public ActionResult logOut()
+        {
+            //Session.Clear();
+            Session.RemoveAll();    
+            return RedirectToAction("Index");
         }
         //[HttpPost]
         //[ValidateAntiForgeryToken]

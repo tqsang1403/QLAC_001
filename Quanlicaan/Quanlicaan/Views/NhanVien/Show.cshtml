@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Quanlicaan.NhanVien>
+﻿
 
 @{
     ViewBag.Title = "Danh sách nhân viên";
@@ -9,69 +9,44 @@
 <h2 style="text-align:center">Danh sách nhân viên</h2>
 
 <p>
-    @Html.ActionLink("Thêm mới", "AddNV")
+    @Html.ActionLink("Thêm mới", "Add_Record")
 </p>
 <table class="table">
     <tr class="header">
         <th>ID</th>
         <th>Họ và tên</th>
-        <th>Địa chỉ</th>
-        <th>Giới tính</th>  
-        <th>Số điện thoại</th>
-        <th>Phòng ban</th>
-        <th> Chức vụ</th>
-        <th>Quyền đăng ký</th>
-        <th>Tên tài khoản</th>
-        <th>Mật khẩu</th>
-        <th>Trạng thái</th>
-        <th> </th>
+        <th>ID phòng ban</th>
+        <th>tên đăng nhập</th>
+        <th>mật khẩu</th>
+        <th>quyền trên hệ thống</th>
+        <th> quyền đăng ký ca ăn</th>
+        <th>Trạng thái tài khoản</th>
+        <th>Actions</th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (System.Data.DataRow item in ViewBag.nv.Rows)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ID)
-    </td>
+        <tr>
+            <td> @item["ID"] </td>
+            <td> @item["hoTen"] </td>
+            <td> @item["IDPhongBan"] </td>
+            <td> @item["username"] </td>
+            <td> @item["upassword"] </td>
+            <td> @item["IDRole"] </td>
+            <td> @item["quyen"] </td>
+            <td> @item["trangThai"] </td>
+            <td>
+                <a href="#">Update</a>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.HoTen)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DiaChi)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.GioiTinh)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SDT)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PhongBan.TenPB)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ChucVu)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Role.URole)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.username)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.upassword)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.trangthai)
-    </td>
-    <td>
-        @Html.ActionLink("Sửa", "EditNV", new { id = item.ID }) @*|
-        @Html.ActionLink("Xoá", "Delete", new { id = item.ID })*@
-    </td>
-</tr>
+                <a href="#">Delete</a>
+            </td>
+
+
+
+        </tr>
     }
 
 </table>
 @*<div class="link">
-    
-</div>*@
+
+    </div>*@
