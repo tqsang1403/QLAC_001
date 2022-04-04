@@ -670,6 +670,7 @@
     <Content Include="Views\PhongBan\ShowAll.cshtml" />
     <Content Include="Views\PhongBan\EditPB.cshtml" />
     <Content Include="Views\PhongBan\AddPB.cshtml" />
+    <Content Include="Views\_ViewImports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

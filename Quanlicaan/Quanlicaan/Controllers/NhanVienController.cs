@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using Quanlicaan.Models;
 using System.Linq;
 using System.Data.Entity;
-
 namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
@@ -17,51 +16,31 @@ namespace Quanlicaan.Controllers
 
         {
             var nhanvien = new UserModel();
-            List<NhanVien> list = nhanvien.Listnv();
+            List<NhanVien> list = nhanvien.Listnv( );
             return View(list);
 
         }
        
 
         //SỬA NV
-
-        public ActionResult EditNV(int id = 0)
+        [HttpGet]
+        public ActionResult EditNV( int id)
         {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            if (nv == null)
-
-            {
-
-                return HttpNotFound();
-
-            }
-
-            return View(nv);
+            var nhanvien = new UserModel();
+            NhanVien employee = nhanvien.ListnvUpdate(id);
+            return View( employee);
 
         }
 
 
         [HttpPost]
-
-        public ActionResult EditNV(NhanVien nv)
+        public ActionResult EditNV(NhanVien nv )
 
         {
+            var nhanvien = new UserModel();
+            nhanvien.UpdateNv(nv);
+            return RedirectToAction("Show" , "NhanVien");
 
-            if (ModelState.IsValid)
-
-            {
-
-                db.Entry(nv).State = EntityState.Modified;
-
-                db.SaveChanges();
-
-                return RedirectToAction("Show");
-
-            }
-
-            return View(nv);
 
         }
 
