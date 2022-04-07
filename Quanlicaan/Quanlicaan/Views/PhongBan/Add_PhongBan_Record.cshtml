@@ -1,0 +1,32 @@
+﻿@model Quanlicaan.Models.ModelADO.PhongBanModel
+@{
+    ViewBag.Title = "Add_NhanVien_Record";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm mới phòng ban</h2>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="form-label">Tên phòng ban</label>
+            <div class="">
+                @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenPB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="">
+            <div class="btn-bottom" style="padding: 20px 12px">
+                <div class="">
+                    <input type="submit" class="btn btn-success" value="Tạo mới" />
+                    <a href="~/PhongBan/Show" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+

@@ -6,22 +6,18 @@
     <link href="~/css/nv.css" rel="stylesheet" />
 }
 
-<h2>Danh sách</h2>
+<h2>Danh sách phòng ban</h2>
 
 <p>
-    @Html.ActionLink("Thêm mới", "AddPB")
-</p>
-<table class="table">
-    <tr class="header">
-        <th>
-            ID
-        </th>
-        <th>
-            Tên Phòng Ban
-        </th>
-        <th></th>
-    </tr>
+    <a href="AddPB" class="btn btn-outline-primary">Thêm mới</a>
 
+</p>
+<table class="table-bordered">
+    <tr class="">
+        <th>ID </th>
+        <th>Tên Phòng Ban</th>
+        <th>Action</th>
+    </tr>
     @foreach (var item in Model)
     {
         <tr>
@@ -32,9 +28,8 @@
                 @Html.DisplayFor(modelItem => item.TenPB)
             </td>
             <td>
-                @Html.ActionLink("Sửa", "EditPB", new { id = item.ID })
-                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                <a href="AddPB" class="btn btn-success">Update</a>
+                <a href="AddPB" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     }

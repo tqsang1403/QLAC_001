@@ -501,6 +501,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="DataAccessLayer\DataAccessLayer.cs" />
     <Compile Include="DataAccessLayer\db.cs" />
@@ -518,15 +519,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelADO\CaAn.cs" />
+    <Compile Include="Models\ModelADO\CaAnModel.cs" />
     <Compile Include="Models\ModelADO\Chitietsuatan.cs" />
     <Compile Include="Models\ModelADO\NhanVien.cs" />
-    <Compile Include="Models\ModelADO\PhongBan.cs" />
+    <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
     <Compile Include="Models\ModelADO\SuatAn.cs" />
-    <Compile Include="Models\NhanVienDBAccessLayer.cs" />
     <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
     <Compile Include="Models\Framework\PhongBan.cs" />
@@ -2783,6 +2784,9 @@
     <Content Include="Views\Regist\Index.cshtml" />
     <Content Include="Views\NhanVien\Add_Record.cshtml" />
     <Content Include="Views\NhanVien\Update_Record.cshtml" />
+    <Content Include="Views\PhongBan\Show.cshtml" />
+    <Content Include="Views\PhongBan\Add_PhongBan_Record.cshtml" />
+    <Content Include="Views\PhongBan\Update_PhongBan_Record.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

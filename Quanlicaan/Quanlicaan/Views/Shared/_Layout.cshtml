@@ -30,7 +30,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Giao diện</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("Show","NhanVien")">Nhân viên</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("ShowAll","PhongBan")">Phòng ban</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Show","PhongBan")">Phòng ban</a></li>
 
 
                                 </ul>
@@ -69,7 +69,7 @@
                                             <p><b>@Session["username"]</b></p>
                                         </li>
                                         <li>
-                                            <button type="submit">Đăng xuất</button>
+                                            <button type="submit" class="btn-danger">Đăng xuất</button>
                                         </li>
                                     </ul>
                                 }

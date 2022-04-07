@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div>
+        <a href="~/PhongBan/Add_PhongBan_Record" class="btn btn-danger">Thêm mới</a>
+    </div>
+    <div class="container">
+        <table class="table-bordered">
+            <tr class="header" style="background-color:#5b9c82;color:white; text-align: center">
+                <th>ID phòng ban</th>
+                <th>Tên phòng ban</th>
+                <th>Actions</th>
+            </tr>
+            @foreach(System.Data.DataRow item in ViewBag.pb.Rows){
+                <tr>
+                    <td>@item["ID"]</td>
+                    <td>@item["TenPB"]</td>
+                    <td>
+                        <a href="~/PhongBan/Update_PhongBan_Record?ID=@item["ID"]" class="btn btn-warning">Update</a>
+                        <a href="~/PhongBan/Delete_PhongBan_Record?ID=@item["ID"]" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+

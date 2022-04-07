@@ -19,7 +19,7 @@ namespace Quanlicaan.Models.ModelADO
 
         public DateTime Thoigiandat { get; set; }
 
-        public virtual CaAn CaAn { get; set; }
+        public virtual CaAnModel CaAn { get; set; }
 
         public virtual SuatAn SuatAn { get; set; }
 

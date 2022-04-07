@@ -7,6 +7,7 @@ using System.Web;
 using System.Configuration;
 using Quanlicaan.Models;
 using System.Data;
+using Quanlicaan.Models.ModelADO;
 
 namespace Quanlicaan.DataAccessLayer
 {
@@ -28,6 +29,15 @@ namespace Quanlicaan.DataAccessLayer
             com.ExecuteNonQuery();
             con.Close();
         }
+        public void Add_Record(PhongBanModel pb)
+        {
+            SqlCommand com = new SqlCommand("Sp_PhongBan_Add", con);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@TenPB", pb.TenPB);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
         public void Update_Record(NhanVienModel nv)
         {
             SqlCommand com = new SqlCommand("Sp_NhanVien_Update", con);
@@ -44,9 +54,29 @@ namespace Quanlicaan.DataAccessLayer
             com.ExecuteNonQuery();
             con.Close();
         }
+        public void Update_Record(PhongBanModel pb)
+        {
+            SqlCommand com = new SqlCommand("Sp_PhongBan_Update", con);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ID", pb.ID);
+            com.Parameters.AddWithValue("@TenPB", pb.TenPB);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
         public DataSet Show_Record_ById(int id)
         {
             SqlCommand com = new SqlCommand("Sp_NhanVien_Id", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ID", id);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+        public DataSet Show_PhongBan_Record_ById(int id)
+        {
+            SqlCommand com = new SqlCommand("Sp_PhongBan_Id", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@ID", id);
             SqlDataAdapter da = new SqlDataAdapter(com);
@@ -63,9 +93,27 @@ namespace Quanlicaan.DataAccessLayer
             da.Fill(ds);
             return ds;
         }
+        public DataSet Show_All_PhongBan_Data()
+        {
+            SqlCommand com = new SqlCommand("Sp_PhongBan_All", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
         public void Delete_Record(int id)
         {
-            SqlCommand com = new SqlCommand("Sp_NhanVien_Id", con);
+            SqlCommand com = new SqlCommand("Sp_NhanVien_Delete", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@ID", id);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
+        public void Delete_PhongBan_Record(int id)
+        {
+            SqlCommand com = new SqlCommand("Sp_PhongBan_Delete", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@ID", id);
             con.Open();

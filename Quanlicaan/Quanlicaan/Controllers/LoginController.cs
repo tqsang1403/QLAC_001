@@ -14,6 +14,7 @@ namespace Quanlicaan.Controllers
         [HttpGet]
         public ActionResult Index(string thongBao)
         {
+
             ViewBag.thongBao = thongBao;
             return View();
         }
@@ -34,15 +35,11 @@ namespace Quanlicaan.Controllers
                 con.Close();
                 Response.Write("<script>alert('Login sucess')</script>");
                 Session["username"] = username;
+                Session["userID"] =     
                 return Redirect("/Home/Index");
 
 
             }
-            //if (username == "root" && password == "123")
-            //{
-            //    // chuyen huong sang trang login tai khoan 
-
-            //}
             con.Close();
             Response.Write("<script>alert('Login fail')</script>");
             return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });

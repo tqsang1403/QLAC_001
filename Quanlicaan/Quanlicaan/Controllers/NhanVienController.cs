@@ -40,8 +40,9 @@ namespace Quanlicaan.Controllers
             nv.quyen = fc.quyen;
             nv.trangThai = fc.trangThai;
             dbLayer.Add_Record(nv);
-            TempData["msg"] = "inserted!";
-            return View();
+            TempData["msg2"] = "inserted!";
+            return RedirectToAction("Show");
+
 
         }
         public ActionResult Update_Record(int ID)
@@ -65,7 +66,14 @@ namespace Quanlicaan.Controllers
             nv.trangThai = fc.trangThai;
             dbLayer.Update_Record(nv);
             TempData["msg"] = "đã update dữ liệu !";
-            return View();
+            return RedirectToAction("Show");
+
+        }
+        public ActionResult Delete_Record(int ID)
+        {
+            dbLayer.Delete_Record(ID);
+            TempData["msg"] = "deleted!";
+            return RedirectToAction("Show");
 
         }
 

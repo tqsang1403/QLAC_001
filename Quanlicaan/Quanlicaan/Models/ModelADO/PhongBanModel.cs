@@ -6,14 +6,12 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelADO
 {
-    public class PhongBan
+    public class PhongBanModel
     {
-      
-        [Key]
+        [Required]
         public int ID { get; set; }
-
-        [Required(ErrorMessage = "Nhap ten phòng ban")]
+        [Required]
         public string TenPB { get; set; }
-        public List<PhongBan> ShowAllPhongBan { get; set; }
+
     }
 }

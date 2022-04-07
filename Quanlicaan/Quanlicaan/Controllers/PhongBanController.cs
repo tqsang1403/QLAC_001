@@ -1,6 +1,9 @@
 ﻿using Quanlicaan.DataAccess;
+using Quanlicaan.DataAccessLayer;
+using Quanlicaan.Models.ModelADO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -11,79 +14,59 @@ namespace Quanlicaan.Controllers
     public class PhongBanController : Controller
 
     {
-        public ActionResult ShowAll()
+        db dbLayer = new db();
+        public ActionResult Show()
         {
 
-            var entities = new Model1();
-
-            return View(entities.PhongBans.ToList());
+            DataSet ds = dbLayer.Show_All_PhongBan_Data();
+            ViewBag.pb = ds.Tables[0];
+            return View();
 
         }
-
-
-        private Model1 db = new Model1();
-
-        public ActionResult EditPB(int id = 0)
+        public ActionResult Add_PhongBan_Record()
         {
-
-            PhongBan pb = db.PhongBans.Find(id);
-
-            if (pb == null)
-
-            {
-
-                return HttpNotFound();
-
-            }
-
-            return View(pb);
-
+            return View();
         }
-
-
         [HttpPost]
-
-        public ActionResult EditPB(PhongBan pb)
-
+        public ActionResult Add_PhongBan_Record(PhongBanModel pb)
         {
-
-            if (ModelState.IsValid)
-
-            {
-
-                db.Entry(pb).State = EntityState.Modified;
-
-                db.SaveChanges();
-
-                return RedirectToAction("ShowAll");
-
-            }
-
-            return View(pb);
+            PhongBanModel pb2 = new PhongBanModel();
+            pb2.TenPB = pb.TenPB;
+            dbLayer.Add_Record(pb2);
+            return RedirectToAction("Show");
+        }
+        public ActionResult Update_PhongBan_Record(int ID)
+        {
+            DataSet ds = dbLayer.Show_PhongBan_Record_ById(ID);
+            ViewBag.PhongBanRecord = ds.Tables[0];
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Update_PhongBan_Record(int ID, PhongBanModel pb)
+        {
+            PhongBanModel pb2 = new PhongBanModel();
+            pb2.ID = pb.ID;
+            pb2.TenPB = pb.TenPB;
+            dbLayer.Update_Record(pb2);
+            return RedirectToAction("Show");
 
         }
-
-
-
-        public ActionResult AddPB(PhongBan pb)
-
+        public ActionResult Delete_PhongBan_Record(int ID)
         {
-
-            if (ModelState.IsValid)
-
+            try
             {
-
-                db.PhongBans.Add(pb);
-
-                db.SaveChanges();
-
-                return RedirectToAction("ShowAll");
-
+                dbLayer.Delete_PhongBan_Record(ID);
+                return RedirectToAction("Show");
+            }   
+            catch (Exception ex)
+            {
+                return View("~/Views/Shared/Error.cshtml");
             }
-
-            return View(pb);
+        
 
         }
 
     }
+
+
 }

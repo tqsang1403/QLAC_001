@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quanlicaan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace Quanlicaan.Controllers
         // GET: CaAn
         public ActionResult Index()
         {
+
             return View();
         }
 

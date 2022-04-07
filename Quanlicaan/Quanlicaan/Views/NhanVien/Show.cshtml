@@ -8,18 +8,17 @@
 
 <h2 style="text-align:center">Danh sách nhân viên</h2>
 
-<p>
-    @Html.ActionLink("Thêm mới", "Add_Record")
-</p>
-<table class="table">
+
+<div><a href="~/NhanVien/Add_Record" class="btn btn-danger">Add</a></div>
+<table class="table-bordered container">
     <tr class="header">
         <th>ID</th>
         <th>Họ và tên</th>
         <th>ID phòng ban</th>
-        <th>tên đăng nhập</th>
-        <th>mật khẩu</th>
-        <th>quyền trên hệ thống</th>
-        <th> quyền đăng ký ca ăn</th>
+        <th>Tên đăng nhập</th>
+        <th>Mật khẩu</th>
+        <th>Quyền trên hệ thống</th>
+        <th>Quyền đăng ký ca ăn</th>
         <th>Trạng thái tài khoản</th>
         <th>Actions</th>
     </tr>
@@ -36,9 +35,10 @@
             <td> @item["quyen"] </td>
             <td> @item["trangThai"] </td>
             <td>
-                <a href="#">Update</a>
 
-                <a href="#">Delete</a>
+                <a href="~/NhanVien/Delete_Record?ID=@item["ID"]" class="btn btn-danger">Delete</a>
+                <a href="~/NhanVien/Update_Record?ID=@item["ID"]" class="btn btn-warning">Update</a>
+
             </td>
 
 
@@ -47,6 +47,4 @@
     }
 
 </table>
-@*<div class="link">
 
-    </div>*@
