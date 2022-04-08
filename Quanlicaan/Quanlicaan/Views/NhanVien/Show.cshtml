@@ -29,16 +29,13 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-
-                    @using (@Html.BeginForm("Show", "NhanVien", FormMethod.Get))
+                    @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get))
                     {
-                        <div class="row">
-                            <div class="col-md-12" style="margin-bottom:10px">
-                                <input type="text" name="search" placeholder="Tên Nhân viên tìm kiếm" />
-                            </div>
-
-                            <button type="submit" style="margin:10px ;width:200px ; height:30px"> Tìm kiếm</button>
-                        </div>
+                        <div class="form-group">
+                            <label>Tìm kiếm nhân viên </label>
+                            <input type="Text" class="form-control mx-sm-3" value="@ViewBag.Keyword"   name="tennv" placeholder="Nhập tên nhân viên cần tìm">
+                            <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
+                        </div><hr />
                     }
                     <div class="table-wrap">
                         <table class="table">
@@ -56,23 +53,23 @@
                                 <th>Edit</th>
                             </tr>
                             <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <th>@item.ID</th>
-                                            <th>@item.HoTen</th>
-                                            <th>@item.GioiTinh</th>
-                                            <th>@item.DiaChi</th>
-                                            <th>@item.SDT</th>
-                                            <th>@item.IDPhongBan</th>
-                                            <th>@item.ChucVu</th>
-                                            <th>@item.username</th>
-                                            <th>@item.upassword</th>
-                                            <th>@item.trangthai</th>
-                                            <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th>@item.ID</th>
+                                        <th>@item.HoTen</th>
+                                        <th>@item.GioiTinh</th>
+                                        <th>@item.DiaChi</th>
+                                        <th>@item.SDT</th>
+                                        <th>@item.IDPhongBan</th>
+                                        <th>@item.ChucVu</th>
+                                        <th>@item.username</th>
+                                        <th>@item.upassword</th>
+                                        <th>@item.trangthai</th>
+                                        <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
 
-                                        </tr>
-                                    }
+                                    </tr>
+                                }
                             </tbody>
 
                         </table>

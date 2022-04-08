@@ -10,36 +10,38 @@ namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
     {
-        private Model1 db = new Model1(); 
+        private Model1 db = new Model1();
 
-        public ActionResult Show()
-
+        // select nhân viên
+        public ActionResult Show(string tennv)
         {
+
+            ViewBag.Keyword = tennv;
             var nhanvien = new UserModel();
-            List<NhanVien> list = nhanvien.Listnv( );
+            List<NhanVien> list = nhanvien.Listnv(tennv);
             return View(list);
 
         }
-       
+
 
         //SỬA NV
         [HttpGet]
-        public ActionResult EditNV( int id)
+        public ActionResult EditNV(int id)
         {
             var nhanvien = new UserModel();
             NhanVien employee = nhanvien.ListnvUpdate(id);
-            return View( employee);
+            return View(employee);
 
         }
 
 
         [HttpPost]
-        public ActionResult EditNV(NhanVien nv )
+        public ActionResult EditNV(NhanVien nv)
 
         {
             var nhanvien = new UserModel();
             nhanvien.UpdateNv(nv);
-            return RedirectToAction("Show" , "NhanVien");
+            return RedirectToAction("Show", "NhanVien");
 
 
         }
@@ -86,31 +88,36 @@ namespace Quanlicaan.Controllers
 
 
         ///THÊM NHÂN VIÊN MƯỚI
-        public ActionResult AddNV()
-        {
-            return View("AddNV");
-        }
-
-        [HttpPost]
-
+        [HttpGet]
         public ActionResult AddNV(NhanVien nv)
-
         {
-
             if (ModelState.IsValid)
-
             {
-
-                db.NhanViens.Add(nv);
-
-                db.SaveChanges();
-
-                return RedirectToAction("Show");
-
+                var nhanvien = new UserModel();
+                bool check = nhanvien.AddNv(nv);
+                if (check)
+                    return RedirectToAction("Show", "NhanVien");
+                else
+                    return View();
             }
-
-            return View(nv);
-
+            else
+            {
+                return View();
+            }
         }
+
+
+        /*
+        // Tìm kiếm nhân viên
+        [HttpGet]
+        public ActionResult FindNV(  )
+        {
+            
+            var nhanvien = new UserModel();
+            List<NhanVien> list = nhanvien.Listnv( );
+            return RedirectToAction("Show", "NhanVien");
+        }
+        */
     }
+
 }
