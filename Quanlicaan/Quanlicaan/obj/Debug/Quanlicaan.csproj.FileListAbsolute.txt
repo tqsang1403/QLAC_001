@@ -976,3 +976,4 @@ F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.csproj.CoreCompileI
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.csproj.CopyComplete
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.dll
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.pdb
+F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.csprojAssemblyReference.cache
