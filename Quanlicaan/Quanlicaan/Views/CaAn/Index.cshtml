@@ -1,50 +1,79 @@
 ﻿@model IEnumerable<Quanlicaan.CaAn>
 
+@using Quanlicaan.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div>
+    <style>
+        .label {
+            cursor: pointer;
+            display: inline-block;
+            padding: 3px 6px;
+            text-align: right;
+            width: 150px;
+            vertical-align: top;
+        }
+
+    </style>
     <div>
         <h1 class="title">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
     </div>
-    <form action="~/CaAn/Index" method="post">
-        <div>
-            <label for="hoTen">HỌ TÊN</label>
-            <input type="text" name="hoTen" value="" placeholder="Nguyễn Văn An">
-        </div>
-        <div>
-            <label for="hoTen">PHÒNG BAN</label>
-            <input type="text" name="hoTen" value="" placeholder="Phòng nhân sự">
-        </div>
-        <div>
-            <label for="hoTen">NGÀY ĐĂNG KÝ</label>
-            <input type="date" name="hoTen" value="" placeholder="15-04-2022">
-        </div>
+    @{
+        var info = (UserLoginModel)Session["UserSession"];
+   
 
-        <div class="chon-ca-an">
-            <div class="ca1">
-                <label for="checkbox-ca1">Ca 1:</label>
-                <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                <input type="text" class="input-ca1"> suất
-            </div>
-            <div class="ca2">
-                <label for="checkbox-ca2">Ca 2:</label>
-                <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                <input type="text" class="input-ca1"> suất
-            </div>
-            <div class="ca3">
-                <label for="checkbox-ca3">Ca 1:</label>
-                <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                <input type="text" class="input-ca1"> suất
-            </div>
+        <div class="container-fluid mt-3">
+            <form action="~/CaAn/Index" method="post">
+                <div>
+                    <label class="label" for="hoTen">HỌ TÊN</label>
+                    <input type="text" name="hoTen" value="@info.hoTen" placeholder="Nguyễn Văn An">
+                </div>
+                <div>
+                    <label class="label" for="hoTen">PHÒNG BAN</label>
+                    <input type="text" name="PhongBan" value="@info.PhongBan" placeholder="Phòng nhân sự">
+                </div>
+                <div>
+                    <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
+                    <input type="date" name="NgayDK"  id="myDate">
+                </div>
+                <div class="chon-ca-an">
+                    <div class="ca1">
+                        <label class="label" for="checkbox-ca1">Ca 1:</label>
+                        <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
+                        <input type="text" class="input-ca1"> suất
+                    </div>
+                    <div class="ca2">
+                        <label class="label" for="checkbox-ca2">Ca 2:</label>
+                        <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
+                        <input type="text" class="input-ca1"> suất
+                    </div>
+                    <div class="ca3">
+                        <label class="label" for="checkbox-ca3">Ca 3:</label>
+                        <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
+                        <input type="text" class="input-ca1"> suất
+                    </div>
+                    <div class="button">
+                        <button class="ok">OK</button>
+                        <button class="cancel">CANCEL</button>
+                    </div>
+                </div>
 
-        </div>
+                <script>
+                    _today: function () {
+                        var myDate = document.querySelector(myDate);
+                        var today = new Date();
+                        myDate.value = today.toISOString().substr(0, 10);
+                    }
+                    function myFunction() {
+                        document.getElementById("myDate").defaultValue = "2014-02-09";
+                    }
+                </script>
 
-        <div class="button">
-            <button class="ok">OK</button>
-            <button class="cancel">CANCEL</button>
+            </form>
         </div>
-    </form>
+       
+    }
 </div>

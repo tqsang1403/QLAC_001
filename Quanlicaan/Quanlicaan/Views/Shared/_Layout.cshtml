@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Quanlicaan.Models;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,16 +11,16 @@
     <link href="~/css/layout.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
-    @RenderSection("head",required:false)
+    @RenderSection("head", required: false)
 </head>
 
 <body>
-    
+
     <section class="clearfix header bg-danger">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="@Url.Action("Home","Home")">Quản lý ăn ca</a>
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")">Quản lý ăn ca</a>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -40,8 +41,8 @@
                                     Đăng ký ca ăn
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="@Url.Action("Canhan","Dangkycaan")">Cá nhân</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Tapthe","Dangkycaan")">Tập thể</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index","CaAn")">Cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Tapthe","CaAn")">Tập thể</a></li>
 
                                 </ul>
                             </li>
@@ -59,14 +60,16 @@
 
                         </ul>
                         <div class="nav-item dropdown">
-                            
-                            @if (HttpContext.Current.Session["username"]!= null && HttpContext.Current.Session["username"] != "")
+                            @{
+                                var info = (UserLoginModel)Session["UserSession"];
+                            }
+                            @if (HttpContext.Current.Session["UserSession"] != null)
                             {
                                 using (Html.BeginForm("logOut", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                 {
                                     <ul class="nav navbar-nav navbar-right">
                                         <li>
-                                            <p><b>@Session["username"]</b></p>
+                                            <p><b>@info.username</b></p>
                                         </li>
                                         <li>
                                             <button type="submit" class="btn-danger">Đăng xuất</button>
@@ -75,15 +78,15 @@
                                 }
                             }
                             @*else
-                            {
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="~/Regist/Index">Đăng ký</a></li>
-                                    <li><a href="~/Login/Index">Đăng nhập</a></li>
-                                </ul>
-                            }*@
+                                {
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="~/Regist/Index">Đăng ký</a></li>
+                                        <li><a href="~/Login/Index">Đăng nhập</a></li>
+                                    </ul>
+                                }*@
                             @*<li class="nav-item">
-            <a class="nav-dangxuat" href="@Url.Action("Index","Login")">Đăng xuất</a>
-        </li>*@
+                                    <a class="nav-dangxuat" href="@Url.Action("Index","Login")">Đăng xuất</a>
+                                </li>*@
                         </div>
                     </div>
                 </div>

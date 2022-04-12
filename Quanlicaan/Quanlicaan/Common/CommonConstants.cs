@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Quanlicaan.Common
 {
-    public class CommonConstants
+    public static class CommonConstants
     {
+        public static  string USER_SESSION = "USER_SESSION";
     }
 }

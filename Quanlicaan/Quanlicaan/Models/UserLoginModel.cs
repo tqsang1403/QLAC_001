@@ -8,7 +8,10 @@ namespace Quanlicaan.Models
     [Serializable]
     public class UserLoginModel
     {
-        public string UserName { get; set; }
+        public string hoTen { get; set; }
         public int UserID { get; set; } 
+        public string PhongBan { get; set; }
+        public string username { get; set; }
+    
     }
 }

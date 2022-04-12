@@ -1,13 +1,20 @@
-﻿
+﻿@using Quanlicaan.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
 <script>alert('bạn đã đăng nhập thành công')</script>
-<p>
+<p class="display-4">
     chào mừng bạn đến với ứng dụng quản lí ca ăn
-<p>tên đăng nhập của bạn là: @Session["username"]</p>
-</p>
+    @{
+        var info = (UserLoginModel)Session["UserSession"];
+        <div>
+            <p class="lead">họ tên của bạn là: @info.hoTen</p>
+            <p class="lead">id phòng ban là: @info.PhongBan</p>
+        </div>
+
+    }
+    </p>
 

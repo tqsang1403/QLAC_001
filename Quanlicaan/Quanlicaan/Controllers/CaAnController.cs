@@ -15,6 +15,11 @@ namespace Quanlicaan.Controllers
 
             return View();
         }
+        public ActionResult TapThe()
+        {
+
+            return View();
+        }
 
         // GET: CaAn/Details/5
         public ActionResult Details(int id)

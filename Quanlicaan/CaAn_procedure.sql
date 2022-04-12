@@ -1,5 +1,8 @@
 create proc Sp_CaAn_Add
-@Thoigian datetime
+@hoTen nvarchar(max),
+@IDPhongBan int,
+
+@thoiGianDat datetime,		
 as
 begin
 	insert into CaAn(Thoigian) values(@Thoigian)
