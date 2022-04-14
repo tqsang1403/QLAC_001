@@ -2,7 +2,7 @@
 
 @using Quanlicaan.Models;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Đăng ký ca ăn cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -23,7 +23,7 @@
     </div>
     @{
         var info = (UserLoginModel)Session["UserSession"];
-   
+
 
         <div class="container-fluid mt-3">
                 <form action="~/CaAn/Index" method="post">
@@ -40,27 +40,31 @@
                         <input type="date" name="NgayDK" id="datePicker">
                     </div>
                     <div class="chon-ca-an">
-                        <div class="ca1">
-                            <label class="label" for="checkbox-ca1">Ca 1:</label>
-                            <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                            <input type="text" class="input-ca1"> suất
-                        </div>
-                        <div class="ca2">
-                            <label class="label" for="checkbox-ca2">Ca 2:</label>
-                            <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                            <input type="text" class="input-ca1"> suất
-                        </div>
-                        <div class="ca3">
-                            <label class="label" for="checkbox-ca3">Ca 3:</label>
-                            <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                            <input type="text" class="input-ca1"> suất
-                        </div>
-                        <div class="button">
-                            <button class="ok">OK</button>
-                            <button class="cancel">CANCEL</button>
-                        </div>
-                    </div>
+                        @{
+                           
+                            <div class="ca1">
+                                <label class="label" for="checkbox_ca1">Ca 1:</label>
+                                <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">
+                                <input type="text" id="input_ca1" class="input-ca1" disabled="disabled"> suất
+                            </div>
+                            <div class="ca1">
+                                <label class="label" for="checkbox_ca2">Ca 2:</label>
+                                <input type="checkbox" class="checkbox-ca2" id="checkbox_ca2" onclick="EnableDisableTextBox('checkbox_ca2', 'input_ca2')" name="checkbox-ca1" value="">
+                                <input type="text" id="input_ca2" class="input-ca1" disabled="disabled"> suất
+                            </div>
+                            <div class="ca1">
+                                <label class="label" for="checkbox_ca2">Ca 3:</label>
+                                <input type="checkbox" class="checkbox-ca3" id="checkbox_ca3" onclick="EnableDisableTextBox('checkbox_ca3', 'input_ca3')" name="checkbox-ca1" value="">
+                                <input type="text" id="input_ca3" class="input-ca1" disabled="disabled"> suất
+                            </div>
+                            <div class="button">
+                                <button class="ok">OK</button>
+                                <button class="cancel">CANCEL</button>
+                            </div>
 
+                        }
+
+                    </div>
                     <script>
                         $(document).ready(function () {
                             var now = new Date();
@@ -79,8 +83,16 @@
                             return local.toJSON().slice(0, 10);
                         });
                     </script>
-                   
-
+                    <script type="text/javascript">
+                        function EnableDisableTextBox(checkbox_caAn, inputCaAn) {
+                            var input_ca1 = document.getElementById(inputCaAn);
+                            var checkbox_caAn = document.getElementById(checkbox_caAn)
+                            input_ca1.disabled = checkbox_caAn.checked ? false : true;
+                            if (!input_ca1.disabled) {
+                                input_ca1.focus();
+                            }
+                        }
+                    </script>
                 </form>
         </div>
        
