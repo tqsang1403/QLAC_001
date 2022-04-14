@@ -26,53 +26,62 @@
    
 
         <div class="container-fluid mt-3">
-            <form action="~/CaAn/Index" method="post">
-                <div>
-                    <label class="label" for="hoTen">HỌ TÊN</label>
-                    <input type="text" name="hoTen" value="@info.hoTen" placeholder="Nguyễn Văn An">
-                </div>
-                <div>
-                    <label class="label" for="hoTen">PHÒNG BAN</label>
-                    <input type="text" name="PhongBan" value="@info.PhongBan" placeholder="Phòng nhân sự">
-                </div>
-                <div>
-                    <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
-                    <input type="date" name="NgayDK"  id="myDate">
-                </div>
-                <div class="chon-ca-an">
-                    <div class="ca1">
-                        <label class="label" for="checkbox-ca1">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                        <input type="text" class="input-ca1"> suất
+                <form action="~/CaAn/Index" method="post">
+                    <div>
+                        <label class="label" for="hoTen">HỌ TÊN</label>
+                        <input type="text" name="hoTen" value="@info.hoTen" placeholder="Nguyễn Văn An">
                     </div>
-                    <div class="ca2">
-                        <label class="label" for="checkbox-ca2">Ca 2:</label>
-                        <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                        <input type="text" class="input-ca1"> suất
+                    <div>
+                        <label class="label" for="hoTen">PHÒNG BAN</label>
+                        <input type="text" name="PhongBan" value="@info.PhongBan" placeholder="Phòng nhân sự">
                     </div>
-                    <div class="ca3">
-                        <label class="label" for="checkbox-ca3">Ca 3:</label>
-                        <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                        <input type="text" class="input-ca1"> suất
+                    <div>
+                        <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
+                        <input type="date" name="NgayDK" id="datePicker">
                     </div>
-                    <div class="button">
-                        <button class="ok">OK</button>
-                        <button class="cancel">CANCEL</button>
+                    <div class="chon-ca-an">
+                        <div class="ca1">
+                            <label class="label" for="checkbox-ca1">Ca 1:</label>
+                            <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
+                            <input type="text" class="input-ca1"> suất
+                        </div>
+                        <div class="ca2">
+                            <label class="label" for="checkbox-ca2">Ca 2:</label>
+                            <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
+                            <input type="text" class="input-ca1"> suất
+                        </div>
+                        <div class="ca3">
+                            <label class="label" for="checkbox-ca3">Ca 3:</label>
+                            <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
+                            <input type="text" class="input-ca1"> suất
+                        </div>
+                        <div class="button">
+                            <button class="ok">OK</button>
+                            <button class="cancel">CANCEL</button>
+                        </div>
                     </div>
-                </div>
 
-                <script>
-                    _today: function () {
-                        var myDate = document.querySelector(myDate);
-                        var today = new Date();
-                        myDate.value = today.toISOString().substr(0, 10);
-                    }
-                    function myFunction() {
-                        document.getElementById("myDate").defaultValue = "2014-02-09";
-                    }
-                </script>
+                    <script>
+                        $(document).ready(function () {
+                            var now = new Date();
+                            var month = (now.getMonth() + 1);
+                            var day = now.getDate();
+                            if (month < 10)
+                                month = "0" + month;
+                            if (day < 10)
+                                day = "0" + day;
+                            var today = now.getFullYear() + '-' + month + '-' + day;
+                            $('#datePicker').val(today);
+                        });
+                        Date.prototype.toDateInputValue = (function () {
+                            var local = new Date(this);
+                            local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                            return local.toJSON().slice(0, 10);
+                        });
+                    </script>
+                   
 
-            </form>
+                </form>
         </div>
        
     }
