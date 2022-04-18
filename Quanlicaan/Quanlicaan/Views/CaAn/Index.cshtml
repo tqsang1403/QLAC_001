@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Quanlicaan.CaAn>
+﻿
 
 @using Quanlicaan.Models;
 @{
@@ -118,14 +118,13 @@
 
         <div class="container">
             <form action="~/CaAn/Index" method="post">
-                <div>
+                <div class="">
                     <div class="col-25">
                         <label class="label" for="hoTen">HỌ TÊN</label>
                     </div>
                     <div class="col-75">
                         <input type="text" name="hoTen" value="@info.hoTen" placeholder="Nguyễn Văn An">
                     </div>
-
                 </div>
                 <div>
                     <div class="col-25">
@@ -144,17 +143,13 @@
                     </div>
 
                 </div>
-                <div class="chon-ca-an">
+                <div class="row">
                     @{
-                        <div class="ca1">
-                            <div class="col-25">
-                                <label class="label" for="checkbox_ca1">Ca 1:</label>
-                            </div>
-                            <div class="col-75">
-                                @*  <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">*@
-                                <input type="text" id="input_ca1" disabled="disabled"> suất
-                            </div>
-
+                      
+                        <div class="">
+                            <label class="label" for="checkbox_ca1">Ca 1:</label>
+                            <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">
+                            <input type="text" id="input_ca1" disabled="disabled"> suất
                         </div>
                         <div class="ca1">
                             <label class="label" for="checkbox_ca2">Ca 2:</label>
