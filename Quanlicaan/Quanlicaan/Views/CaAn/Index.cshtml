@@ -1,5 +1,5 @@
 ﻿
-
+@model Quanlicaan.Models.DangKyCaNhanModel
 @using Quanlicaan.Models;
 @{
     ViewBag.Title = "Đăng ký ca ăn cá nhân";
@@ -113,17 +113,17 @@
         <h1 class="title">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
     </div>
     @{
-        var info = (UserLoginModel)Session["UserSession"];
+        
 
 
         <div class="container">
-            <form action="~/CaAn/Index" method="post">
+            <form action="~/CaAn/XuLyDangKyCaNhan" method="post">
                 <div class="">
                     <div class="col-25">
                         <label class="label" for="hoTen">HỌ TÊN</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name="hoTen" value="@info.hoTen" placeholder="Nguyễn Văn An">
+                        <input type="text" name="hoTen" value="@Model.hoTen" placeholder="Nguyễn Văn An">
                     </div>
                 </div>
                 <div>
@@ -131,7 +131,7 @@
                         <label class="label" for="hoTen">PHÒNG BAN</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" name="PhongBan" value="@info.PhongBan" placeholder="Phòng nhân sự">
+                        <input type="text" name="PhongBan" value="@Model.phongBan" placeholder="Phòng nhân sự">
                     </div>
                 </div>
                 <div>
@@ -139,7 +139,8 @@
                         <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
                     </div>
                     <div class="col-75">
-                        <input type="date" name="NgayDK" id="datePicker">
+                        <input name="NgayDK" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ','T'))" type="datetime-local" />
+
                     </div>
 
                 </div>
@@ -149,26 +150,25 @@
                         <div class="">
                             <label class="label" for="checkbox_ca1">Ca 1:</label>
                             <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca1" disabled="disabled"> suất
+                            <input type="text" id="input_ca1" disabled="disabled" name="@Model.SLCa1" value=""> suất
                         </div>
                         <div class="ca1">
                             <label class="label" for="checkbox_ca2">Ca 2:</label>
                             <input type="checkbox" class="checkbox-ca2" id="checkbox_ca2" onclick="EnableDisableTextBox('checkbox_ca2', 'input_ca2')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca2" class="input-ca1" disabled="disabled"> suất
+                            <input type="text" id="input_ca2" class="input-ca1" disabled="disabled" value="@Model.SLCa2"> suất
                         </div>
                         <div class="ca1">
                             <label class="label" for="checkbox_ca2">Ca 3:</label>
                             <input type="checkbox" class="checkbox-ca3" id="checkbox_ca3" onclick="EnableDisableTextBox('checkbox_ca3', 'input_ca3')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca3" class="input-ca1" disabled="disabled"> suất
+                            <input type="text" id="input_ca3" class="input-ca1" disabled="disabled" value="@Model.SLCa3"> suất
                         </div>
                         <div class="button">
-                            <input type="button" name="name" value="OK" />
+                            <input type="submit" name="name" value="OK" />
                             <input type="button" name="name" value="Cancel" />
 
                         </div>
 
                     }
-
                 </div>
                 <script>
                     $(document).ready(function () {

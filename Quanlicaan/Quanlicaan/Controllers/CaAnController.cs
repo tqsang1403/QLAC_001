@@ -12,6 +12,16 @@ namespace Quanlicaan.Controllers
         // GET: CaAn
         public ActionResult Index()
         {
+            DangKyCaNhanModel model = new DangKyCaNhanModel();
+            UserLoginModel userLogin =(UserLoginModel) Session["UserSession"];
+            model.hoTen = userLogin.hoTen;
+            model.phongBan = userLogin.PhongBan;
+            model.ngayDK = DateTime.Now.AddDays(1);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult XuLyDangKyCaNhan(DangKyCaNhanModel d)
+        {
 
             return View();
         }
