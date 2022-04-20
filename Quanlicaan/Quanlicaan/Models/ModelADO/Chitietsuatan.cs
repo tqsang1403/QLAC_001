@@ -23,6 +23,6 @@ namespace Quanlicaan.Models.ModelADO
 
         public virtual SuatAn SuatAn { get; set; }
 
-        public virtual NhanVien NhanVien { get; set; }
+        public virtual NhanVienModel NhanVien { get; set; }
     }
 }

@@ -1,138 +1,152 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Quanlicaan.Models.ModelADO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Web.Mvc;
-using Quanlicaan.Models;
 using System.Linq;
-using System.Data.Entity;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
     {
-        private Model1 db = new Model1(); 
+        // GET: NhanVien
+        string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
 
-        public ActionResult Show()
-
+        [HttpGet]
+        public ActionResult Index()
         {
-
-            var entities = new Model1();
-
-            return View(entities.NhanViens.ToList());
-
-        }
-       
-
-        //SỬA NV
-
-        public ActionResult EditNV(int id = 0)
-        {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            if (nv == null)
-
+            DataTable dtblNhanVien = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-
-                return HttpNotFound();
-
+                conn.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select * from NhanVien", conn);
+                sqlDataAdapter.Fill(dtblNhanVien);
             }
-
-            return View(nv);
-
+            return View(dtblNhanVien);
         }
 
+        
 
+        [HttpGet]
+
+        // GET: NhanVien/Create
+        public ActionResult Create()
+        {
+            return View(new NhanVienModel());
+        }
+
+        // POST: NhanVien/Create
         [HttpPost]
-
-        public ActionResult EditNV(NhanVien nv)
-
+        public ActionResult Create(NhanVienModel nhanvienModel)
         {
-
-            if (ModelState.IsValid)
-
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
+     
 
-                db.Entry(nv).State = EntityState.Modified;
+                conn.Open();
+                string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, trangthai) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,@IDRole, @ChucVu, @username, @upassword, @trangthai)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
+                cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
+                cmd.Parameters.AddWithValue("@DiaChi", nhanvienModel.DiaChi);
+                cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
+                cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
+                cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
+                cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
+                cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
+                cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword); 
+                cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai); 
 
-                db.SaveChanges();
-
-                return RedirectToAction("Show");
-
+                cmd.ExecuteNonQuery();
             }
 
-            return View(nv);
-
+            return RedirectToAction("Index");
         }
 
-        //XOÁ NV
 
-        public ActionResult Delete(int id = 0)
 
+
+
+
+        // GET: NhanVien/Edit/5
+        public ActionResult Edit(int id)
         {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            if (nv == null)
-
+            NhanVienModel NhanVienModel = new NhanVienModel();
+            DataTable dtblNhanVien = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-
-                return HttpNotFound();
-
+                conn.Open();
+                string query = "Select * from NhanVien where ID=@ID";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
+                sqlDataAdapter.SelectCommand.Parameters.AddWithValue("@ID", id);
+                sqlDataAdapter.Fill(dtblNhanVien);
             }
+            if (dtblNhanVien.Rows.Count == 1)
+            {
+                NhanVienModel.ID = Convert.ToInt32(dtblNhanVien.Rows[0][0].ToString());
+                NhanVienModel.HoTen = Convert.ToString(dtblNhanVien.Rows[0][1].ToString());
+                NhanVienModel.GioiTinh = Convert.ToBoolean(dtblNhanVien.Rows[0][2].ToString());
+                NhanVienModel.DiaChi = Convert.ToString(dtblNhanVien.Rows[0][3].ToString());
+                NhanVienModel.SDT = Convert.ToString(dtblNhanVien.Rows[0][4].ToString());
+                NhanVienModel.IDPhongBan = Convert.ToInt32(dtblNhanVien.Rows[0][5].ToString());
+                NhanVienModel.IDrole = Convert.ToInt32(dtblNhanVien.Rows[0][7].ToString());
+                NhanVienModel.ChucVu = Convert.ToString(dtblNhanVien.Rows[0][6].ToString());
+                NhanVienModel.username = Convert.ToString(dtblNhanVien.Rows[0][8].ToString());
+                NhanVienModel.upassword = Convert.ToString(dtblNhanVien.Rows[0][9].ToString());
+                NhanVienModel.trangthai = Convert.ToBoolean(dtblNhanVien.Rows[0][10].ToString());
+                return View(NhanVienModel);
+            }
+            else
+                return RedirectToAction("Index");
 
-            return View(nv);
 
         }
 
-
-        [HttpPost, ActionName("Delete")]
-
-        public ActionResult DeleteConfirmed(int id)
-
-        {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            db.NhanViens.Remove(nv);
-
-            db.SaveChanges();
-
-            return RedirectToAction("Show");
-
-        }
-
-
-
-
-
-        ///THÊM NHÂN VIÊN MƯỚI
-        public ActionResult AddNV()
-        {
-            return View("AddNV");
-        }
-
+        // POST: NhanVien/Edit/5
         [HttpPost]
-
-        public ActionResult AddNV(NhanVien nv)
-
+        public ActionResult Edit(NhanVienModel NhanVienModel)
         {
-
-            if (ModelState.IsValid)
-
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                conn.Open();
+                string query = "update NhanVien(HoTen, GioiTinh, DiaChi,SDT, IDPhongBan, IDRole, ChucVu,username, upassword, trangthai) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan, @IDRole, @ChucVu,@username, @upassword, @trangthai where ID = @ID ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
+                cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
+                cmd.Parameters.AddWithValue("@GioiTinh", NhanVienModel.GioiTinh);
+                cmd.Parameters.AddWithValue("@DiaChi", NhanVienModel.DiaChi);
+                cmd.Parameters.AddWithValue("@SDT", NhanVienModel.SDT);
+                cmd.Parameters.AddWithValue("@IDPhongBan", NhanVienModel.IDPhongBan);
+                cmd.Parameters.AddWithValue("@IDRole", NhanVienModel.IDrole);
+                cmd.Parameters.AddWithValue("@ChucVu", NhanVienModel.ChucVu);
+                cmd.Parameters.AddWithValue("@username", NhanVienModel.username);
+                cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
+                cmd.Parameters.AddWithValue("@trangthai", NhanVienModel.trangthai);
 
-                db.NhanViens.Add(nv);
-
-                db.SaveChanges();
-
-                return RedirectToAction("Show");
-
+                cmd.ExecuteNonQuery();
             }
 
-            return View(nv);
+            return RedirectToAction("Index");
+        }
 
+        // GET: NhanVien/Delete/5
+        public ActionResult Delete(int id)
+        {
+
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "Delete from NhanVien where ID = @ID ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

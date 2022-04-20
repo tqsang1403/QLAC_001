@@ -20,7 +20,7 @@ namespace Quanlicaan.Responsity
 
         }
         //To Add Employee details    
-        public bool AddPB(Models.ModelADO.PhongBan obj)
+        public bool AddPB(Models.ModelADO.PhongBanModel obj)
         {
 
             connection();
@@ -47,10 +47,10 @@ namespace Quanlicaan.Responsity
 
         }
         //To view employee details with generic list     
-        public List<Models.ModelADO.PhongBan> GetAllPB()
+        public List<Models.ModelADO.PhongBanModel> GetAllPB()
         {
             connection();
-            List<Models.ModelADO.PhongBan> EmpList = new List<Models.ModelADO.PhongBan>();
+            List<Models.ModelADO.PhongBanModel> EmpList = new List<Models.ModelADO.PhongBanModel>();
 
 
             SqlCommand com = new SqlCommand("GetAllPB", con);
@@ -67,7 +67,7 @@ namespace Quanlicaan.Responsity
 
                 EmpList.Add(
 
-                    new Models.ModelADO.PhongBan
+                    new Models.ModelADO.PhongBanModel
                     {
 
                         ID = Convert.ToInt32(dr["Id"]),
@@ -81,7 +81,7 @@ namespace Quanlicaan.Responsity
             return EmpList;
         }
         //To Update Employee details    
-        public bool UpdatePB(Models.ModelADO.PhongBan obj)
+        public bool UpdatePB(Models.ModelADO.PhongBanModel obj)
         {
 
             connection();

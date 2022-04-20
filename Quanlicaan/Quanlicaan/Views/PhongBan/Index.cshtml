@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table tab-content table-bordered table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Tên Phòng Ban</th>
+      
+
+        <th></th>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
+            
+
+            <td>
+                <a href="@Url.Action("Edit","PhongBan", new {@id = Model.Rows[i][0]})">Edit</a>
+                <br />
+                <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("Create","PhongBan")">Add New</a>
+
+

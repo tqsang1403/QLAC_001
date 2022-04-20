@@ -1,146 +1,105 @@
-﻿@model Quanlicaan.NhanVien
+﻿@model Quanlicaan.Models.ModelADO.NhanVienModel
 
 @{
-    ViewBag.Title = "Xoá nhân viên";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/css/deletenv.css" rel="stylesheet" />
 }
 
-<h2>Xoá nhân viên</h2>
+<h2>Delete</h2>
 
-<h5>Bạn có muốn xoá nhân viên này không?</h5>
+<h3>Are you sure you want to delete this?</h3>
 <div>
-
+    <h4>NhanVienModel</h4>
     <hr />
-   
-        <dl class="dl-horizontal">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
 
-            <div class="detail">
-            <dt>
-                Họ và Tên
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.HoTen)
-            </dd>
-</div>
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
 
-<div class="detail">
-    <dt>
-        Giới Tính
-    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.GioiTinh)
-    </dd>
-</div>
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
 
-<div class="detail">
-    <dt>
-        Địa chỉ
-    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.IDPhongBan)
+        </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.DiaChi)
-    </dd>
-</div>
+        <dd>
+            @Html.DisplayFor(model => model.IDPhongBan)
+        </dd>
 
-<div class="detail">
-    <dt>
-        Số điện thoại
-    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu)
+        </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.SDT)
-    </dd>
-</div>
-<div class="detail">
-    <dt>
-        Phòng Ban
-    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu)
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.PhongBan.TenPB)
-    </dd>
-</div>
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
 
-<div class="detail">
-    <dt>
-        Chức vụ
-    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.upassword)
+        </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.ChucVu)
-    </dd>
-</div>
+        <dd>
+            @Html.DisplayFor(model => model.upassword)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.trangthai)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.trangthai)
+        </dd>
 
-<div class="detail">
-    <dt>
-        Quyền đăng ký
-    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.IDrole)
+        </dt>
 
-    <dd>
-        @Html.DisplayFor(model => model.Role.URole)
-    </dd>
-</div>
-
-
-<div class="detail">
-    <dt>
-        Tên đăng nhập
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.username)
-    </dd>
-</div>
-
-
-
-<div class="detail">
-    <dt>
-        Mật khẩu
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.upassword)
-    </dd>
-</div>
-
-
-<div class="detail">
-    <dt>
-        Trạng thái hoạt động
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.trangthai)
-    </dd>
-</div>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="btn-bottom" style="padding: 20px 12px">
-        <div class="">
-            <input type="submit" value="Xoá" class="btn" />
-        </div>
-
-        <div class="link">
-            @Html.ActionLink("Quay lại", "Show")
-        </div>
-    </div>
-}
-</div>
-
+        <dd>
+            @Html.DisplayFor(model => model.IDrole)
+        </dd>
 
     </dl>
 
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
