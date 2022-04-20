@@ -51,28 +51,54 @@
                                 <th>password</th>
                                 <th>trang thai</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <th>@item.ID</th>
-                                        <th>@item.HoTen</th>
-                                        <th>@item.GioiTinh</th>
-                                        <th>@item.DiaChi</th>
-                                        <th>@item.SDT</th>
-                                        <th>@item.IDPhongBan</th>
-                                        <th>@item.ChucVu</th>
-                                        <th>@item.username</th>
-                                        <th>@item.upassword</th>
-                                        <th>@item.trangthai</th>
-                                        <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
+                                    if (item.trangthai == true)
+                                    {
+                                        <tr>
+                                            <th>@item.ID</th>
+                                            <th>@item.HoTen</th>
+                                            @if (@item.GioiTinh)
+                                            {
+                                                <th> Nam </th>
+                                            }
+                                            else
+                                            {
+                                                <th> Nữ</th>
+                                            }
 
-                                    </tr>
+                                            <th>@item.DiaChi</th>
+                                            <th>@item.SDT</th>
+                                            <th>@item.IDPhongBan</th>
+                                            <th>@item.ChucVu</th>
+                                            <th>@item.username</th>
+                                            <th>@item.upassword</th>
+
+                                            @if (@item.trangthai)
+                                            {
+                                                <th> Hoạt động </th>
+                                            }
+                                            else
+                                            {
+                                                <th> Không hoạt động</th>
+                                            }
+                                            <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
+                                            <th><a href="@Url.Action("Delete", "NhanVien" , new { id = item.ID})">Xóa nhân viên</a></th>
+
+                                        </tr>
+                                    }
+
                                 }
                             </tbody>
 
                         </table>
+                    </div>
+
+                    <div>
+                        <button> thêm mới nhân viên</button>
                     </div>
                 </div>
             </div>

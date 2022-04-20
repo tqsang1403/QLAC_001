@@ -48,44 +48,14 @@ namespace Quanlicaan.Controllers
 
         //XOÁ NV
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id)
 
         {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            if (nv == null)
-
-            {
-
-                return HttpNotFound();
-
-            }
-
-            return View(nv);
+            var nhanvien = new UserModel();
+            nhanvien.DeleteNv(id);
+            return RedirectToAction("Show", "NhanVien");
 
         }
-
-
-        [HttpPost, ActionName("Delete")]
-
-        public ActionResult DeleteConfirmed(int id)
-
-        {
-
-            NhanVien nv = db.NhanViens.Find(id);
-
-            db.NhanViens.Remove(nv);
-
-            db.SaveChanges();
-
-            return RedirectToAction("Show");
-
-        }
-
-
-
-
 
         ///THÊM NHÂN VIÊN MƯỚI
         [HttpGet]
@@ -107,17 +77,6 @@ namespace Quanlicaan.Controllers
         }
 
 
-        /*
-        // Tìm kiếm nhân viên
-        [HttpGet]
-        public ActionResult FindNV(  )
-        {
-            
-            var nhanvien = new UserModel();
-            List<NhanVien> list = nhanvien.Listnv( );
-            return RedirectToAction("Show", "NhanVien");
-        }
-        */
     }
 
 }

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Quanlicaan.Models.Session;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Web;
 
 namespace Quanlicaan.Models
 {
@@ -20,10 +22,10 @@ namespace Quanlicaan.Models
 
         }
 
-        
+
         public bool AddNv(NhanVien nhanvien)
         {
-            if(nhanvien != null)
+            if (nhanvien != null)
             {
                 command.CommandText = "insert into NhanVien(HoTen, GioiTinh , DiaChi,SDT , IDPhongBan , ChucVu , username , upassword , trangthai) values(@Hoten , @gioitinh , @Diachi, @SDT ,@IdPb ,@Chucvu ,@username ,@pass ,@trangthai)";
 
@@ -38,12 +40,7 @@ namespace Quanlicaan.Models
                 command.Parameters.AddWithValue("@trangthai", nhanvien.trangthai);
 
                 command.ExecuteNonQuery();
-                //if (num > 0)
-                //    // thêm thành công
-                //    return true;
-                //else
-                //    // thêm thất bại
-                //    return false;
+
 
                 conn.Close();
                 return true;
@@ -52,31 +49,31 @@ namespace Quanlicaan.Models
             {
                 return false;
             }
-           
+
         }
-        
+
 
         // tìm kiếm nhân viên theo tên
         public List<NhanVien> Listnv(string name)
         {
-            
+
             if (!string.IsNullOrEmpty(name))
             {
-                command.CommandText = "Select * from NhanVien where HoTen Like N'%"+name+"%' ";
-              /*  command.CommandText = "Select * from NhanVien where HoTen Like N'%@Hoten%' ";
+                command.CommandText = "Select * from NhanVien where HoTen Like N'%" + name + "%' ";
+                /*  command.CommandText = "Select * from NhanVien where HoTen Like N'%@Hoten%' ";
 
-                SqlParameter param = new SqlParameter();
-                param.ParameterName = "@Hoten";
-                param.Value = name;
-                command.Parameters.Add(param);
-                */
-               
+                  SqlParameter param = new SqlParameter();
+                  param.ParameterName = "@Hoten";
+                  param.Value = name;
+                  command.Parameters.Add(param);
+                  */
+
             }
             else
             {
                 command.CommandText = "Select * from NhanVien";
             }
-            
+
             SqlDataReader reader = command.ExecuteReader();
             List<NhanVien> listnv = new List<NhanVien>();
 
@@ -147,6 +144,74 @@ namespace Quanlicaan.Models
             conn.Close();
 
         }
-       
+
+        // thực hiện xóa nhân viên
+        public void DeleteNv(int id)
+        {
+            command.CommandText = "Update NhanVien Set trangthai = '"+false+"' where ID ="+id+"";
+
+            string sql = command.CommandText;
+            command.ExecuteNonQuery();
+            conn.Close();
+        }
+        /*
+        public bool CheckLogin(LoginModel login)
+        {
+            
+            if(login != null)
+            {
+
+                command.CommandText = "Select * from NhanVien where username = @username and  upassword = @pass ";
+                command.Parameters.AddWithValue("@username", login.username);
+                command.Parameters.AddWithValue("@pass", login.upassword);
+                SqlDataReader rd = command.ExecuteReader();
+                if (rd.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+                rd.Close();
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+        */
+        public UserSession  GetNhanVienLogin(LoginModel login)
+        {
+           
+            UserSession us = new UserSession();
+
+            command.CommandText = "Select * from NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where username = @username and upassword = @pass";
+            command.Parameters.AddWithValue("@username", login.username);
+            command.Parameters.AddWithValue("@pass", login.upassword);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    us.hoTen = reader["HoTen"].ToString();
+                    us.UserID = Convert.ToInt32(reader["ID"]);
+                    us.IdPhongBan = Convert.ToInt32(reader["IDPhongBan"]);
+                    us.TenPhongBan = reader["TenPB"].ToString();
+                }
+                conn.Close();
+                return us;
+            }
+            else
+            {
+                return us = null;
+            }    
+               
+            
+        }
+
     }
 }

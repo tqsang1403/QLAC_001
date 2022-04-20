@@ -517,6 +517,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Session\UserSession.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
     <Compile Include="Models\Framework\PhongBan.cs" />

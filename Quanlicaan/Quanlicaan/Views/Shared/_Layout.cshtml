@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Quanlicaan.Models.Session
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,11 +12,11 @@
     <link href="~/css/layout.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
-    @RenderSection("head",required:false)
+    @RenderSection("head", required: false)
 </head>
 
 <body>
-    
+
     <section class="clearfix header bg-danger">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -58,29 +60,50 @@
                             </li>
 
                         </ul>
-                        <form class="nav-item dropdown">
-                            <li class="nav-item">
-                                <a class="nav-dangxuat" href="@Url.Action("Index","Login")">Đăng xuất</a>
-                            </li>
-                        </form>
-                    </div>
+
+                        <div class="container">
+                            <p class="display-4">
+                                <h3> chào mừng bạn đến với ứng dụng quản lí ca ăn</h3>
+                                @{
+                                    var info = (UserSession)Session["UserSession"];
+                                    <div>
+                                <p class="lead">họ tên của bạn là: @info.hoTen</p>
+                                <p class="lead"> Phòng ban của bạn là: @info.TenPhongBan</p>
+                            </div>
+                                }
+                                </p>
+                            </div>
+
+
+                            @*<form class="nav-item dropdown">
+                                <li class="nav-item">
+                                    <a class="nav-dangxuat" href="@Url.Action("Index","Login")">Đăng xuất</a>
+                                </li>
+                            </form>*@
+                            @using (Html.BeginForm("logOut", "Login", FormMethod.Post, new { @class = "nav-item dropdown" }))
+                            { 
+                                <button type="submit"> Đăng xuất </button>
+                            
+                            }
+
+                            </div>
                 </div>
-            </nav>
-        </div>
-    </section>
-    <section class="clearfix-maincontent py-1">
-        <div class="container-fluid">
-            @RenderBody()
-        </div>
-    </section>
-    <section class="clearfix-footer bg-gradient">
-        <div class="container-fluid text-black-50 text-center">
-            <p> Created by Van Toan </p>
-        </div>
-    </section>
+                </nav>
+                </div>
+            </section>
+            <section class="clearfix-maincontent py-1">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </section>
+            <section class="clearfix-footer bg-gradient">
+                <div class="container-fluid text-black-50 text-center">
+                    <p> Created by Van Toan </p>
+                </div>
+            </section>
 
 
-    @RenderSection("footer", required: false)
-</body>
+            @RenderSection("footer", required: false)
+        </body>
 
-</html>
+    </html>
