@@ -87,6 +87,7 @@ namespace Quanlicaan.Models
                 employ.SDT = reader["SDT"].ToString();
                 employ.IDPhongBan = Convert.ToInt32(reader["IDPhongBan"].ToString());
                 employ.ChucVu = reader["ChucVu"].ToString();
+                employ.IDrole = Convert.ToInt32(reader["IDRole"]);
                 employ.username = reader["username"].ToString();
                 employ.upassword = reader["upassword"].ToString();
                 employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
@@ -128,7 +129,7 @@ namespace Quanlicaan.Models
         // thực hiện update
         public void UpdateNv(NhanVien nhanvien)
         {
-            command.CommandText = "Update NhanVien Set HoTen =@hoten , GioiTinh = @Gioitinh , DiaChi = @Diachi, SDT = @sdt , IDPhongBan = @idpb, ChucVu =@ChucVu, username = @username, upassword = @pass, trangthai=@trangthai where ID = @ID";
+            command.CommandText = "Update NhanVien Set HoTen =@hoten , GioiTinh = @Gioitinh , DiaChi = @Diachi, SDT = @sdt , IDPhongBan = @idpb, ChucVu =@ChucVu,IDRole = @idRole ,username = @username, upassword = @pass, trangthai=@trangthai where ID = @ID";
             command.Parameters.AddWithValue("@ID", nhanvien.ID);
             command.Parameters.AddWithValue("@hoten", nhanvien.HoTen);
             command.Parameters.AddWithValue("@Gioitinh", nhanvien.GioiTinh);
@@ -136,6 +137,7 @@ namespace Quanlicaan.Models
             command.Parameters.AddWithValue("@sdt", nhanvien.SDT);
             command.Parameters.AddWithValue("@idpb", nhanvien.IDPhongBan);
             command.Parameters.AddWithValue("@ChucVu", nhanvien.ChucVu);
+            command.Parameters.AddWithValue("@idRole", nhanvien.IDrole);
             command.Parameters.AddWithValue("@username", nhanvien.username);
             command.Parameters.AddWithValue("@pass", nhanvien.upassword);
             command.Parameters.AddWithValue("@trangthai", nhanvien.trangthai);

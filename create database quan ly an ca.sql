@@ -24,6 +24,7 @@ create table NhanVien(
 	trangthai bit default 1 not null
 
 )
+
 create table Roles(
 	ID int identity(1,1) not null primary key,
 	URole Nvarchar(25) not null,

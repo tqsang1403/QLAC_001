@@ -10,7 +10,7 @@ namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
     {
-        private Model1 db = new Model1();
+   
 
         // select nhân viên
         public ActionResult Show(string tennv)

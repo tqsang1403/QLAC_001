@@ -40,6 +40,9 @@ public partial class NhanVien
     public string ChucVu { get; set; }
 
     [Required]
+    public int IDrole { get; set; }
+
+    [Required]
     [StringLength(10)]
     public string username { get; set; }
 
@@ -49,7 +52,7 @@ public partial class NhanVien
 
     public bool trangthai { get; set; }
 
-    public int? IDrole { get; set; }
+   
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<ChiTietSuatAn> ChiTietSuatAns { get; set; }

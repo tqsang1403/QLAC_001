@@ -8,13 +8,13 @@ values
 	(N'Kỹ thuật')
 
 
-INSERT INTO NhanVien(HoTen,GioiTinh,DiaChi,SDT,IDPhongBan,ChucVu, username,upassword, trangthai)
+INSERT INTO NhanVien(HoTen,GioiTinh,DiaChi,SDT,IDPhongBan,ChucVu,IDRole, username,upassword, trangthai)
 values
-(N'Trần Quang Sang',1,N'Hải Dương','0356203601','1',N'Giám đốc','sang','123456',1),
-(N'Nguyễn Xuân Hưng',1,N'Hải Dương','0320502420','2',N'Nhân viên','hung','123456',1),
-(N'Nguyễn Tuấn Thành',1,N'Nam Định','0923004201','3',N'Kế toán','thanh','123456',1),
-(N'Nguyễn Hoàng Hiệp',1,N'Thanh Hóa','092314124','2',N'Dân sự','hiep','123456',1),
-(N'Lê Văn Toàn',1,N'Nam Định','0321412124','1',N'Nhân viên','toan','123456',1)
+(N'Trần Quang Sang',1,N'Hải Dương','0356203601','1',N'Giám đốc',1,'sang','123456',1),
+(N'Nguyễn Xuân Hưng',1,N'Hải Dương','0320502420','2',N'Nhân viên',2,'hung','123456',1),
+(N'Nguyễn Tuấn Thành',1,N'Nam Định','0923004201','3',N'Kế toán',2,'thanh','123456',1),
+(N'Nguyễn Hoàng Hiệp',1,N'Thanh Hóa','092314124','2',N'Dân sự',2,'hiep','123456',1),
+(N'Lê Văn Toàn',1,N'Nam Định','0321412124','1',N'Nhân viên',1,'toan','123456',1)
 
 select * from NhanVien
 delete from NhanVien

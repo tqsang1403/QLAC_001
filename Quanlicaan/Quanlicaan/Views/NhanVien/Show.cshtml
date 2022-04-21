@@ -47,6 +47,7 @@
                                 <th>SDT</th>
                                 <th>Id Phong ban</th>
                                 <th>Chuc vu</th>
+                                <th>Phân quyền</th>
                                 <th>username</th>
                                 <th>password</th>
                                 <th>trang thai</th>
@@ -74,6 +75,14 @@
                                             <th>@item.SDT</th>
                                             <th>@item.IDPhongBan</th>
                                             <th>@item.ChucVu</th>
+                                            @if (item.IDrole==1)
+                                            {
+                                                <th> Admin</th>
+                                            }
+                                            else
+                                            {
+                                                <th> Nhân viên</th>
+                                            }
                                             <th>@item.username</th>
                                             <th>@item.upassword</th>
 
