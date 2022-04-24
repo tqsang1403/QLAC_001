@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Quanlicaan
+namespace Quanlicaan.Models.Framework
 {
     public partial class Model1 : DbContext
     {

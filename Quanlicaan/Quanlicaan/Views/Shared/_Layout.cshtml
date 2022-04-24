@@ -27,7 +27,6 @@
                                     Quản lý
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Giao diện</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("Show","NhanVien")">Nhân viên</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("ShowAll","PhongBan")">Phòng ban</a></li>
                                 </ul>
@@ -53,35 +52,35 @@
                             </li>
                         </ul>
 
-                        <div >
+                        <div>
                             @{ var info = (UserSession)Session["UserSession"];
                                 <p> Xin chào  @info.hoTen</p>
-                            }
+                                }
                         </div>
 
                         @using (Html.BeginForm("logOut", "Login", FormMethod.Post, new { @class = "nav-item dropdown" }))
                         {
-                                <button type="submit" class="btn btn-danger"> Đăng xuất </button>
+                              <button type="submit" class="btn btn-danger"> Đăng xuất </button>
                         }
 
-                     </div>
+                    </div>
                 </div>
-             </nav>
+            </nav>
         </div>
     </section>
-            <section class="clearfix-maincontent py-1">
-                <div class="container-fluid">
-                    @RenderBody()
-                </div>
-            </section>
-            <section class="clearfix-footer bg-gradient">
-                <div class="container-fluid text-black-50 text-center">
-                    <p> Created by Van Toan </p>
-                </div>
-            </section>
+    <section class="clearfix-maincontent py-1">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+    <section class="clearfix-footer bg-gradient">
+        <div class="container-fluid text-black-50 text-center">
+            <p> Created by Van Toan </p>
+        </div>
+    </section>
 
 
-            @RenderSection("footer", required: false)
-        </body>
+    @RenderSection("footer", required: false)
+</body>
 
-    </html>
+</html>

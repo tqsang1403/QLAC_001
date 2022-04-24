@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Quanlicaan.PhongBan>
-
+﻿@using System.Data
 @{
     ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,22 +18,16 @@
         <th>
             Tên Phòng Ban
         </th>
-        <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (DataRow item in ViewBag.ListPhongBan.Rows)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ID)
+               @item["ID"]
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenPB)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "EditPB", new { id = item.ID })
-                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+            <td>@item["TenPB"]
+                
             </td>
         </tr>
     }

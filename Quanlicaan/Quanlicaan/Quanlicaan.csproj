@@ -503,11 +503,12 @@
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\ConnectDb.cs" />
+    <Compile Include="Models\DAO\RolerModel.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
     <Compile Include="Models\Framework\Model1.cs" />
-    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\DAO\LoginModel.cs" />
     <Compile Include="Controllers\BaocaoController.cs" />
     <Compile Include="Controllers\DangkycaanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -517,9 +518,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PhongbanModel.cs" />
+    <Compile Include="Models\DAO\PhongbanModel.cs" />
     <Compile Include="Models\Session\UserSession.cs" />
-    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\DAO\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
     <Compile Include="Models\Framework\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

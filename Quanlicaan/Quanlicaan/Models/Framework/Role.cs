@@ -1,4 +1,4 @@
-namespace Quanlicaan
+namespace Quanlicaan.Models.Framework
 {
     using System;
     using System.Collections.Generic;

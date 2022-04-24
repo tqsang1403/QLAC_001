@@ -1,10 +1,27 @@
-﻿
+﻿@using System.Data
 @{
     ViewBag.Title = "Edit Nhan vien";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> list = new List<SelectListItem>();
+    List<SelectListItem> listRole = new List<SelectListItem>();
+    foreach(DataRow dr in ViewBag.phongBan.Rows)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Value =dr["ID"].ToString();
+        item.Text = dr["TenPB"].ToString();
+        list.Add(item);
+    }
+
+    foreach (DataRow dr in ViewBag.Role.Rows)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Value = dr["ID"].ToString();
+        item.Text = dr["URole"].ToString();
+        listRole.Add(item);
+    }
 
 }
-@model Quanlicaan.NhanVien
+@model Quanlicaan.Models.Framework.NhanVien
 <!doctype html>
 <html lang="en">
 <head>
@@ -25,108 +42,97 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-4">
                     <h2 class="heading-section">Chỉnh sửa thông tin nhân viên</h2>
+
+                    @*@Html.DropDownListFor("phong ban", , "Chọn phòng ban")*@
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     @using (Html.BeginForm("EditNV", "NhanVien", FormMethod.Post, new { @class = "regist-form validate-form" }))
-                    {
+                                {
 
-                        <div class="wrap-input validate-input" data-validate="Id  is required">
-                            <p> Id nhân viên</p>
-                            @Html.TextBoxFor(model => model.ID, new { @class = "input", @type = "text", @name = "id", @placeholder = Model.ID, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Id  is required">
+                                        <p> Id nhân viên</p>
+                                        @Html.TextBoxFor(model => model.ID, new { @class = "input", @type = "text", @name = "id", @placeholder = Model.ID, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Họ tên is required">
-                            <p>Họ Tên nhân viên</p>
-                            @Html.TextBoxFor(model => model.HoTen, new { @class = "input", @type = "text", @name = "HoTen", @placeholder = Model.HoTen, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Họ tên is required">
+                                        <p>Họ Tên nhân viên</p>
+                                        @Html.TextBoxFor(model => model.HoTen, new { @class = "input", @type = "text", @name = "HoTen", @placeholder = Model.HoTen, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Giới tính is required">
-                            <p> Giới tính</p>
-                            @Html.TextBoxFor(model => model.GioiTinh, new { @class = "input", @type = "text", @name = "GioiTinh", @placeholder = Model.GioiTinh, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Giới tính is required">
+                                        <p> Giới tính</p>
+                                        @Html.TextBoxFor(model => model.GioiTinh, new { @class = "input", @type = "text", @name = "GioiTinh", @placeholder = Model.GioiTinh, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
 
-                        </div>
-                        <div class="wrap-input validate-input" data-validate="Địa chỉ is required">
-                            <p> Địa chỉ nhân viên</p>
-                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "input", @type = "text", @name = "DiaChi", @placeholder = Model.DiaChi, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="wrap-input validate-input" data-validate="Địa chỉ is required">
+                                        <p> Địa chỉ nhân viên</p>
+                                        @Html.TextBoxFor(model => model.DiaChi, new { @class = "input", @type = "text", @name = "DiaChi", @placeholder = Model.DiaChi, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="SDT is required">
-                            <p> SDT</p>
-                            @Html.TextBoxFor(model => model.SDT, new { @class = "input", @type = "text", @name = "SDT", @placeholder = Model.SDT, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="SDT is required">
+                                        <p> SDT</p>
+                                        @Html.TextBoxFor(model => model.SDT, new { @class = "input", @type = "text", @name = "SDT", @placeholder = Model.SDT, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
 
-                        </div>
-
-                        @*<div class="wrap-input validate-input" data-validate="ID phong ban is required">
-                            <p>Id phòng ban </p>
-                            @Html.TextBoxFor(model => model.IDPhongBan, new { @class = "input", @type = "text", @name = "IdPhongBan", @placeholder = Model.IDPhongBan, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
-
-                        </div>*@
+                                    </div>
 
 
-                <div class="wrap-input validate-input" data-validate="Department is required">
-                    Chọn phòng ban
-                    <select>
-                        <option value="1">Kế Toán</option>
-                        <option value="2">Dân Sự</option>
-                        <option value="3">Kí thuật</option>
-                        <option value="4">Nhân sự</option>
-                        <option value="5">Bảo vệ</option>
-                    </select>
-                    @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
-                </div>
+                                    <div class="wrap-input validate-input" data-validate="Department is required">
+                                        <p>Chọn phòng ban</p>
+                                        @Html.DropDownListFor(model => model.IDPhongBan,list , new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Chuc vu is required">
-                            <p> Chức vụ nhân viên</p>
-                            @Html.TextBoxFor(model => model.ChucVu, new { @class = "input", @type = "text", @name = "ChucVu", @placeholder = Model.ChucVu, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Chuc vu is required">
+                                        <p> Chức vụ nhân viên</p>
+                                        @Html.TextBoxFor(model => model.ChucVu, new { @class = "input", @type = "text", @name = "ChucVu", @placeholder = Model.ChucVu, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Id Role is required">
-                            <p> ID Role</p>
-                            @Html.TextBoxFor(model => model.IDrole, new { @class = "input", @type = "text", @name = "IDRole", @placeholder = Model.ChucVu, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Id Role is required">
+                                        <p> ID Role</p>
+                                        @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            <p> Username</p>
-                            @Html.TextBoxFor(model => model.username, new { @class = "input", @type = "text", @name = "username", @placeholder = Model.username, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Username is required">
+                                        <p> Username</p>
+                                        @Html.TextBoxFor(model => model.username, new { @class = "input", @type = "text", @name = "username", @placeholder = Model.username, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Password is required">
-                            <p>Password</p>
-                            @Html.TextBoxFor(model => model.upassword, new { @class = "input", @type = "password", @name = "pass", @placeholder = Model.upassword, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Password is required">
+                                        <p>Password</p>
+                                        @Html.TextBoxFor(model => model.upassword, new { @class = "input", @type = "password", @name = "pass", @placeholder = Model.upassword, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
-                        <div class="wrap-input validate-input" data-validate="Password is required">
-                            <p> Trạng Thái</p>
-                            @Html.TextBoxFor(model => model.trangthai, new { @class = "input", @type = "text", @name = "trangthai", @placeholder = Model.trangthai, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+                                    <div class="wrap-input validate-input" data-validate="Password is required">
+                                        <p> Trạng Thái</p>
+                                        @Html.TextBoxFor(model => model.trangthai, new { @class = "input", @type = "text", @name = "trangthai", @placeholder = Model.trangthai, htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
 
-                        </div>
+                                    </div>
 
 
 
-                        <div class="container-login-form-btn">
-                            <input type="submit" value="Save" class="login-form-btn" />
-                        </div>
-                    }
+                                    <div class="container-login-form-btn">
+                                        <input type="submit" value="Save" class="login-form-btn" />
+                                    </div>
+                                }
 
                 </div>
             </div>

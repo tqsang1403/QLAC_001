@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quanlicaan.Models.Framework;
+using System;
 using System.Web.Mvc;
 
 namespace Quanlicaan.Controllers

@@ -1,4 +1,5 @@
-﻿using Quanlicaan.Models.Session;
+﻿using Quanlicaan.Models.Framework;
+using Quanlicaan.Models.Session;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Quanlicaan.Models
+namespace Quanlicaan.Models.DAO
 {
 
 
@@ -22,12 +23,12 @@ namespace Quanlicaan.Models
 
         }
 
-
+        // thêm mới 1 nhân viên
         public bool AddNv(NhanVien nhanvien)
         {
             if (nhanvien != null)
             {
-                command.CommandText = "insert into NhanVien(HoTen, GioiTinh , DiaChi,SDT , IDPhongBan , ChucVu , username , upassword , trangthai) values(@Hoten , @gioitinh , @Diachi, @SDT ,@IdPb ,@Chucvu ,@username ,@pass ,@trangthai)";
+                command.CommandText = "insert into NhanVien(HoTen, GioiTinh , DiaChi,SDT , IDPhongBan , ChucVu ,IDRole, username , upassword , trangthai) values(@Hoten , @gioitinh , @Diachi, @SDT ,@IdPb ,@Chucvu ,@IdRole,@username ,@pass ,@trangthai)";
 
                 command.Parameters.AddWithValue("@Hoten", nhanvien.HoTen);
                 command.Parameters.AddWithValue("@gioitinh", nhanvien.GioiTinh);
@@ -35,6 +36,7 @@ namespace Quanlicaan.Models
                 command.Parameters.AddWithValue("@SDT", nhanvien.SDT);
                 command.Parameters.AddWithValue("@IdPb", nhanvien.IDPhongBan);
                 command.Parameters.AddWithValue("@Chucvu", nhanvien.ChucVu);
+                command.Parameters.AddWithValue("@IdRole", nhanvien.IDrole);
                 command.Parameters.AddWithValue("@username", nhanvien.username);
                 command.Parameters.AddWithValue("@pass", nhanvien.upassword);
                 command.Parameters.AddWithValue("@trangthai", nhanvien.trangthai);
@@ -118,6 +120,7 @@ namespace Quanlicaan.Models
             employ.SDT = reader["SDT"].ToString();
             employ.IDPhongBan = Convert.ToInt32(reader["IDPhongBan"].ToString());
             employ.ChucVu = reader["ChucVu"].ToString();
+            employ.IDrole = Convert.ToInt32(reader["IDRole"]);
             employ.username = reader["username"].ToString();
             employ.upassword = reader["upassword"].ToString();
             employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
@@ -156,35 +159,8 @@ namespace Quanlicaan.Models
             command.ExecuteNonQuery();
             conn.Close();
         }
-        /*
-        public bool CheckLogin(LoginModel login)
-        {
-            
-            if(login != null)
-            {
-
-                command.CommandText = "Select * from NhanVien where username = @username and  upassword = @pass ";
-                command.Parameters.AddWithValue("@username", login.username);
-                command.Parameters.AddWithValue("@pass", login.upassword);
-                SqlDataReader rd = command.ExecuteReader();
-                if (rd.HasRows)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-
-                rd.Close();
-            }
-            else
-            {
-
-                return false;
-            }
-        }
-        */
+        
+        // thực hiện đăng nhập cho nhân viên
         public UserSession  GetNhanVienLogin(LoginModel login)
         {
            
@@ -203,6 +179,7 @@ namespace Quanlicaan.Models
                     us.UserID = Convert.ToInt32(reader["ID"]);
                     us.IdPhongBan = Convert.ToInt32(reader["IDPhongBan"]);
                     us.TenPhongBan = reader["TenPB"].ToString();
+                    us.IDRoleUser = Convert.ToInt32(reader["IDRole"]);
                 }
                 conn.Close();
                 return us;

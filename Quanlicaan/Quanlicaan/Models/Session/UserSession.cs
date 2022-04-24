@@ -11,5 +11,6 @@ namespace Quanlicaan.Models.Session
         public int UserID { get; set; }
         public int IdPhongBan { get; set; }
         public string TenPhongBan { get; set; }
+        public int IDRoleUser { get; set; }
     }
 }

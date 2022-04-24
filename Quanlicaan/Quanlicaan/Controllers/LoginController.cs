@@ -1,4 +1,4 @@
-﻿using Quanlicaan.Models;
+﻿using Quanlicaan.Models.DAO;
 using Quanlicaan.Models.Session;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -22,7 +22,6 @@ namespace Quanlicaan.Controllers
         {
             
             UserModel user = new UserModel();
-          //  bool check = user.CheckLogin(login);
             UserSession  us = user.GetNhanVienLogin(login);
 
             if (us!= null)

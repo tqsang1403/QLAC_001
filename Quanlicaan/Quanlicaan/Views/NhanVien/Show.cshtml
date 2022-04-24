@@ -1,10 +1,11 @@
-﻿
+﻿@using Quanlicaan.Models.Session
 @{
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var info = (UserSession)Session["UserSession"];
 
 }
-@model List<Quanlicaan.NhanVien>
+@model List<Quanlicaan.Models.Framework.NhanVien>
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,7 +34,7 @@
                     {
                         <div class="form-group">
                             <label>Tìm kiếm nhân viên </label>
-                            <input type="Text" class="form-control mx-sm-3" value="@ViewBag.Keyword"   name="tennv" placeholder="Nhập tên nhân viên cần tìm">
+                            <input type="Text" class="form-control mx-sm-3" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm">
                             <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
                         </div><hr />
                     }
@@ -51,8 +52,11 @@
                                 <th>username</th>
                                 <th>password</th>
                                 <th>trang thai</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                @if (info.IDRoleUser == 1)
+                                {
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                }
                             </tr>
                             <tbody>
                                 @foreach (var item in Model)
@@ -75,7 +79,7 @@
                                             <th>@item.SDT</th>
                                             <th>@item.IDPhongBan</th>
                                             <th>@item.ChucVu</th>
-                                            @if (item.IDrole==1)
+                                            @if (item.IDrole == 1)
                                             {
                                                 <th> Admin</th>
                                             }
@@ -94,8 +98,11 @@
                                             {
                                                 <th> Không hoạt động</th>
                                             }
-                                            <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
-                                            <th><a href="@Url.Action("Delete", "NhanVien" , new { id = item.ID})">Xóa nhân viên</a></th>
+                                            @if (info.IDRoleUser == 1)
+                                            {
+                                                <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
+                                                <th><a href="@Url.Action("Delete", "NhanVien" , new { id = item.ID})">Xóa nhân viên</a></th>
+                                            }
 
                                         </tr>
                                     }
@@ -106,9 +113,13 @@
                         </table>
                     </div>
 
-                    <div>
-                        <button> thêm mới nhân viên</button>
+                    @if (info.IDRoleUser == 1)
+                    {
+                         <div>
+                        <button class="btn btn-success">  <a href="@Url.Action("AddNV", "NhanVien" )" style="text-decoration: none ; color:white">thêm mới nhân viên</a></button>
+
                     </div>
+                    }
                 </div>
             </div>
         </div>

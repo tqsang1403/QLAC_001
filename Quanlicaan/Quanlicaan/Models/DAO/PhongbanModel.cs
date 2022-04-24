@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Quanlicaan.Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace Quanlicaan.Models
+namespace Quanlicaan.Models.DAO
 {
 
     public class PhongbanModel
@@ -20,17 +21,17 @@ namespace Quanlicaan.Models
 
         }
 
-        public void getAllPhongBan()
+        public DataSet getAllPhongBan()
         {
-            List<PhongBan> list = new List<PhongBan>();
             PhongBan pb = new PhongBan();
-            command.CommandText = "Select * form PhongBan";
+            command.CommandText = "Select * from PhongBan";
             SqlDataAdapter dataAdapter = new SqlDataAdapter();
-            dataAdapter.TableMappings.Add("Table", "Phongban");
             dataAdapter.SelectCommand = command;
             DataSet dataSet = new DataSet();
-            dataAdapter.Fill(dataSet);
+            dataAdapter.Fill(dataSet,"PhongBan");
             
+            conn.Close();
+            return dataSet;
             
         }
 

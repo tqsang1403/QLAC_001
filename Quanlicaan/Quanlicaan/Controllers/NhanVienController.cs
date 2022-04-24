@@ -3,9 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web.Mvc;
-using Quanlicaan.Models;
+using Quanlicaan.Models.DAO;
 using System.Linq;
 using System.Data.Entity;
+using System.Data;
+using Quanlicaan.Models.Framework;
+
 namespace Quanlicaan.Controllers
 {
     public class NhanVienController : Controller
@@ -28,6 +31,17 @@ namespace Quanlicaan.Controllers
         [HttpGet]
         public ActionResult EditNV(int id)
         {
+            //sử dụng cho việc chọn các phòng ban
+            var pb = new PhongbanModel();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.phongBan = ds.Tables["PhongBan"];
+
+            // sử dụng trong việc chọn phân quyền nhân viên
+            var role = new RolerModel();
+            ds = role.getAllRoler();
+            ViewBag.Role = ds.Tables["Role"];
+
+
             var nhanvien = new UserModel();
             NhanVien employee = nhanvien.ListnvUpdate(id);
             return View(employee);
@@ -61,6 +75,16 @@ namespace Quanlicaan.Controllers
         [HttpGet]
         public ActionResult AddNV(NhanVien nv)
         {
+            //sử dụng cho việc chọn các phòng ban
+            var pb = new PhongbanModel();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.phongBan = ds.Tables["PhongBan"];
+
+            // sử dụng trong việc chọn phân quyền nhân viên
+            var role = new RolerModel();
+            ds = role.getAllRoler();
+            ViewBag.Role = ds.Tables["Role"];
+
             if (ModelState.IsValid)
             {
                 var nhanvien = new UserModel();
@@ -69,6 +93,7 @@ namespace Quanlicaan.Controllers
                     return RedirectToAction("Show", "NhanVien");
                 else
                     return View();
+              
             }
             else
             {
