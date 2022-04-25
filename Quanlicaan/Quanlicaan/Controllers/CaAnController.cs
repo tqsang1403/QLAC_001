@@ -1,106 +1,77 @@
-﻿using Quanlicaan.Models;
+﻿using Quanlicaan.DataAccessLayer;
+using Quanlicaan.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace Quanlicaan.Controllers
 {
     public class CaAnController : Controller
     {
+        db dbLayer = new db();
+       
         // GET: CaAn
-        public ActionResult Index()
+        public ActionResult Index(string thongBao)
         {
+            ViewData["message"] = thongBao;
             DangKyCaNhanModel model = new DangKyCaNhanModel();
-            UserLoginModel userLogin =(UserLoginModel) Session["UserSession"];
+            UserLoginModel userLogin = (UserLoginModel)Session["UserSession"];
             model.hoTen = userLogin.hoTen;
             model.phongBan = userLogin.PhongBan;
-            model.ngayDK = DateTime.Now.AddDays(1);
+            model.ngayDK = DateTime.Now;
             return View(model);
-        }
-        [HttpPost]
-        public ActionResult XuLyDangKyCaNhan(DangKyCaNhanModel d)
-        {
-
-            return View();
         }
         public ActionResult TapThe()
         {
 
-            return View();
+            UserLoginModel userLogin = (UserLoginModel)Session["UserSession"];
+            DangKyTapTheModel model = new DangKyTapTheModel();
+            model.hoTenNDK = userLogin.hoTen;
+            model.phongBan = userLogin.PhongBan;
+            model.ngayDK = DateTime.Now;
+            model.khoiTaoDsNV(userLogin.IDPhongBan);
+            //model ở đây cần khởi tạo 4 thuộc tính có sẵn giá trị 
+            return View(model);
         }
-
-        // GET: CaAn/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: CaAn/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: CaAn/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult XuLyDangKyTapThe(DangKyTapTheModel model)
         {
+            String thongbao = "";
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                dbLayer.Add_New_GroupRegister(model);
+                thongbao = "them moi thanh cong";
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                thongbao = "them moi that bai";
             }
+            return RedirectToAction("Index", "CaAn", new { thongbao });
         }
-
-        // GET: CaAn/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CaAn/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult XuLyDangKyCaNhan(DangKyCaNhanModel model)
         {
+            String thongbao = "";
             try
             {
-                // TODO: Add update logic here
+                dbLayer.Add_New_PersonalRegister(model);
+                thongbao = "them moi thanh cong";
 
-                return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                thongbao = "them moi that bai";
             }
+            return RedirectToAction("Index", "CaAn", new { thongbao });
         }
 
-        // GET: CaAn/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: CaAn/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }

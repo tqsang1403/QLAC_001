@@ -38,6 +38,49 @@ namespace Quanlicaan.DataAccessLayer
             com.ExecuteNonQuery();
             con.Close();
         }
+        public DataSet Get_User_Session(string username, string password)
+        {
+            SqlCommand com = new SqlCommand("Sp_Login_Session", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            com.Parameters.AddWithValue("@username", username);
+            com.Parameters.AddWithValue("@password", password);
+
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+        public DataSet Get_Employee_By_IDPhongBan(int IDPhongBan)
+        {
+            SqlCommand com = new SqlCommand("Sp_Get_Employee_By_IDPhongBan", con);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            com.Parameters.AddWithValue("@IDPhongBan", IDPhongBan);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            return ds;
+        }
+        public void Add_New_PersonalRegister(DangKyCaNhanModel model)
+        {
+            SqlCommand com = new SqlCommand("Sp_DangKyCaNhan", con);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@hoTen", model.hoTen);
+            com.Parameters.AddWithValue("@phongBan", model.phongBan);
+            com.Parameters.AddWithValue("@ngayDK", model.ngayDK);
+            com.Parameters.AddWithValue("@SLCa1", model.SLCa1);
+            com.Parameters.AddWithValue("@SLCa2", model.SLCa2);
+            com.Parameters.AddWithValue("@SLCa3", model.SLCa3);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+
+        }
+        public void Add_New_GroupRegister(DangKyTapTheModel model)
+        {
+            SqlCommand com = new SqlCommand("Sp_Add_New_GroupRegister", con);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+
+        }
         public void Update_Record(NhanVienModel nv)
         {
             SqlCommand com = new SqlCommand("Sp_NhanVien_Update", con);
@@ -93,18 +136,7 @@ namespace Quanlicaan.DataAccessLayer
             }
             return (int)IDPhongBan;
         }
-        public DataSet Get_User_Session(string username, string password)
-        {
-            SqlCommand com = new SqlCommand("Sp_Login_Session", con);
-            com.CommandType = CommandType.StoredProcedure;
-            SqlDataAdapter da = new SqlDataAdapter(com);
-            com.Parameters.AddWithValue("@username", username);
-            com.Parameters.AddWithValue("@password", password);
-
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            return ds;
-        }
+      
         public DataSet Show_PhongBan_Record_ById(int id)
         {
             SqlCommand com = new SqlCommand("Sp_PhongBan_Id", con);
@@ -151,5 +183,6 @@ namespace Quanlicaan.DataAccessLayer
             com.ExecuteNonQuery();
             con.Close();
         }
+      
     }
 }

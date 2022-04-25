@@ -13,7 +13,7 @@ namespace Quanlicaan.Models
         [Required]
         public string hoTen { get; set; }
         [Required]
-        public int IDPhongBan { get;set; }
+        public int IDPhongBan { get; set; }
 
         [Required]
         public string username { get; set; }
@@ -25,7 +25,11 @@ namespace Quanlicaan.Models
         public string quyen { get; set; }
         [Required]
         public Boolean trangThai { get; set; }
+        public int SLCa1 { get; set; }
+        public int SLCa2 { get; set; }
+        public int SLCa3 { get; set; }
 
-       
+
+
     }
 }

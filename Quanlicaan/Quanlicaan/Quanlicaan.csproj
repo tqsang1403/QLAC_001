@@ -513,6 +513,7 @@
     <Compile Include="DataAccessLayer\DataAccessLayer.cs" />
     <Compile Include="DataAccessLayer\db.cs" />
     <Compile Include="Models\DangKyCaNhanModel.cs" />
+    <Compile Include="Models\DangKyTapTheModel.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />

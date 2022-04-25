@@ -43,8 +43,10 @@ namespace Quanlicaan.Controllers
                 UserLoginModel u = new UserLoginModel();
                 var res = dbLayer.Get_User_Session(username, password);
                 u.UserID = Convert.ToInt32(res.Tables[0].Rows[0]["ID"]);
+                u.IDPhongBan = Convert.ToInt32(res.Tables[0].Rows[0]["IDPhongBan"]);
                 u.PhongBan = Convert.ToString(res.Tables[0].Rows[0]["TenPB"]);
                 u.hoTen = Convert.ToString(res.Tables[0].Rows[0]["hoTen"]);
+                u.IDPhongBan = Convert.ToInt32(res.Tables[0].Rows[0]["IDPhongBan"]);
                 u.username = Convert.ToString(res.Tables[0].Rows[0]["username"]);
                 Session["UserSession"]= u;
                 return Redirect("/Home/Index");
@@ -53,6 +55,7 @@ namespace Quanlicaan.Controllers
             Response.Write("<script>alert('Login fail')</script>");
             return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
         }
+
         [HttpPost]
         public ActionResult logOut()
         {

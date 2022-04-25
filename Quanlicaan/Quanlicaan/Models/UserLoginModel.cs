@@ -10,6 +10,7 @@ namespace Quanlicaan.Models
     {
         public string hoTen { get; set; }
         public int UserID { get; set; } 
+        public int IDPhongBan { get; set; } 
         public string PhongBan { get; set; }
         public string username { get; set; }
     

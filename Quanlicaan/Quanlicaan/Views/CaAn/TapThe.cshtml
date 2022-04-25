@@ -1,96 +1,90 @@
-﻿
+﻿@model Quanlicaan.Models.DangKyTapTheModel
+
+@using Quanlicaan.Models;
 @{
     ViewBag.Title = "TapThe";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
 }
 
-<h2>TapThe</h2>
-
-<div>
-    <h1 class="title">ĐĂNG KÝ CA ĂN TẬP THỂ</h1>
-    <div class="thong-tin-phieu-dang-ky">
-        <div class="thong-tin-nguoi-dang-ky">
-            <label for="" class="ten-dau-muc">HỌ TÊN</label>
-            <input type="text" placeholder="Nguyễn Văn An" class="noi-dung-can-nhap__ho-ten"><br>
-            <label for="" class="ten-dau-muc">PHÒNG BAN</label>
-            <input type="text" placeholder="Phòng hành chính" class="noi-dung-can-nhap__phong-ban"><br>
-            <label for="" class="ten-dau-muc">NGÀY ĐĂNG KÝ</label>
-            <input type="date" class="noi-dung-can-nhap__ngay-dang-ky"><br>
-        </div>
-        <div class="danh-sach-nhan-vien-thuoc-phong-ban">
-            <div class="nhan-vien">
-                <label for="" class="ten-dau-muc">HỌ TÊN</label>Trần Xuân Độ
-                <div class="chon-ca-an">
-                    <div class="ca1">
-                        <label class="ten-dau-muc" for="checkbox-ca1">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca2">
-                        <label class="ten-dau-muc" for="checkbox-ca2">Ca 2:</label>
-                        <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca3">
-                        <label class="ten-dau-muc" for="checkbox-ca3">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-
-                </div>
 
 
+
+@using (Html.BeginForm("XuLyDangKyTapThe", "CaAn", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h1 class="page-header">ĐĂNG KÝ CA ĂN TẬP THỂ</h1>
+        <div class="form-group">
+            <div class="thong-tin-nguoi-dang-ky">
+                <label for="" class="ten-dau-muc">HỌ TÊN NGƯỜI ĐĂNG KÝ</label>
+                @Html.EditorFor(model => model.hoTenNDK, new { htmlAttributes = new { @class = "form-control" } })
+                <label for="" class="ten-dau-muc">PHÒNG BAN</label>
+                @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control" } })
+                <label for="" class="ten-dau-muc">NGÀY ĐĂNG KÝ</label>
+                @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-            <div class="nhan-vien">
-                <label for="" class="ten-dau-muc">HỌ TÊN</label>Trần Đức Hiệp
-                <div class="chon-ca-an">
-                    <div class="ca1">
-                        <label class="ten-dau-muc" for="checkbox-ca1">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca2">
-                        <label class="ten-dau-muc" for="checkbox-ca2">Ca 2:</label>
-                        <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca3">
-                        <label class="ten-dau-muc" for="checkbox-ca3">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
+            @for(int i = 0; i<Model.dsNV.Count; i++)
+            {
+                <div class="danh-sach-nhan-vien-thuoc-phong-ban">
+                    <div class="form-group">
+                        <div class="form-control">
+                            <div>
+                                <span class="label label-danger">Họ tên </span>
+                                @Html.EditorFor(model => model.dsNV[i].hoTen, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
 
+                            @*===================*@
+
+                            @{
+                                string idCheckBoxCa1 = "checkboxca1_" + count.ToString();
+                                string idTextBoxCa1 = "textboxca1_" + count.ToString();
+                                string idCheckBoxCa2 = "checkboxca2_" + count.ToString();
+                                string idTextBoxCa2 = "textboxca2_" + count.ToString();
+                                string idCheckBoxCa3 = "checkboxca3_" + count.ToString();
+                                string idTextBoxCa3 = "textboxca3_" + count.ToString();
+                                count++;
+                                <div class="">
+                                    <label class="label" for="checkbox_ca1">Ca 1:</label>
+                                    <input type="checkbox" class="checkbox" id=@idCheckBoxCa1 onclick="EnableDisableTextBox('@idCheckBoxCa1', '@idTextBoxCa1')" name="checkbox-ca1" value="">
+                                    @Html.EditorFor(model => model.dsNV[i].SLCa1, new { htmlAttributes = new { @class = "form-control", id = @idTextBoxCa1, disabled = "disabled" } })
+                                    suất
+                                </div>
+                                <div class="ca1">
+                                    <label class="label" for="checkbox_ca2">Ca 2:</label>
+                                    <input type="checkbox" class="checkbox" id=@idCheckBoxCa2 onclick="EnableDisableTextBox('@idCheckBoxCa2', '@idTextBoxCa2')" name="checkbox-ca1" value="">
+                                    @Html.EditorFor(model => model.dsNV[i].SLCa2, new { htmlAttributes = new { @class = "form-control", id = @idTextBoxCa2, disabled = "disabled" } })
+                                    suất
+                                </div>
+                                <div class="ca1">
+                                    <label class="label" for="checkbox_ca2">Ca 3:</label>
+                                    <input type="checkbox" class="checkbox" id=@idCheckBoxCa3 onclick="EnableDisableTextBox('@idCheckBoxCa3', '@idTextBoxCa3')" name="checkbox-ca1" value="">
+                                    @Html.EditorFor(model => model.dsNV[i].SLCa3, new { htmlAttributes = new { @class = "form-control", id = @idTextBoxCa3, disabled = "disabled" } })
+
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
-
-
-            </div>
-            <div class="nhan-vien">
-                <label for="" class="ten-dau-muc">HỌ TÊN</label>Đào Đức Danh
-                <div class="chon-ca-an">
-                    <div class="ca1">
-                        <label class="ten-dau-muc" for="checkbox-ca1">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca1" id="checkbox-ca1" name="checkbox-ca1" value="checkbox-ca1">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca2">
-                        <label class="ten-dau-muc" for="checkbox-ca2">Ca 2:</label>
-                        <input type="checkbox" class="checkbox-ca2" id="checkbox-ca2" name="checkbox-ca1" value="checkbox-ca2">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-                    <div class="ca3">
-                        <label class="ten-dau-muc" for="checkbox-ca3">Ca 1:</label>
-                        <input type="checkbox" class="checkbox-ca3" id="checkbox-ca3" name="checkbox-ca3" value="checkbox-ca3">
-                        <input type="text" class="input-ca1"> suất
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="button">
-                <button class="ok">OK</button>
-                <button class="cancel">CANCEL</button>
+            }
+            <div class="">
+                <button class="btn btn-info" type="submit">OK</button>
+                <button class="btn btn-warning">CANCEL</button>
             </div>
         </div>
     </div>
-</div>
+
+    <script type="text/javascript">
+       
+        function EnableDisableTextBox(checkbox_caAn, inputCaAn) {
+            var input_ca = document.getElementById(inputCaAn);
+            var checkbox_caAn = document.getElementById(checkbox_caAn)
+            input_ca.disabled = checkbox_caAn.checked ? false : true;
+            if (!input_ca.disabled) {
+                input_ca.focus();
+            }
+        }
+    </script>
+
+}

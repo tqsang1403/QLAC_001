@@ -4,8 +4,13 @@
 @{
     ViewBag.Title = "Đăng ký ca ăn cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    var message = ViewData["message"] ?? string.Empty; 
+    if (@message != "")
+    {
+        <script>alert('@message');</script>
+    }
 
+}
 <div>
     <style>
 
@@ -109,101 +114,83 @@
             display: inline-block;
         }
     </style>
-    <div>
-        <h1 class="title">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
+    <div class="page-header">
+        <h1 class="page-header">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
     </div>
-    @{
-        
-
-
+    @using (Html.BeginForm("XuLyDangKyCaNhan", "CaAn", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
         <div class="container">
-            @using (Html.BeginForm())
-            {
-                sfsdfss
-            }
-            <form action="~/CaAn/XuLyDangKyCaNhan" method="post">
-                <div class="">
-                    <div class="col-25">
-                        <label class="label" for="hoTen">HỌ TÊN</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" name="hoTen" value="@Model.hoTen" placeholder="Nguyễn Văn An">
-                    </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="">
+                <div class="col-25">
+                    <label class="label" for="hoTen">HỌ TÊN</label>
                 </div>
-                <div>
-                    <div class="col-25">
-                        <label class="label" for="hoTen">PHÒNG BAN</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" name="PhongBan" value="@Model.phongBan" placeholder="Phòng nhân sự">
-                    </div>
+                <div class="col-75">
+                    @Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
-                <div>
-                    <div class="col-25">
-                        <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
-                    </div>
-                    <div class="col-75">
-                        <input name="NgayDK" value="@Html.Raw(DateTime.Now.ToString("yyyy-MM-dd HH:mm").Replace(' ','T'))" type="datetime-local" />
-
-                    </div>
-
+            </div>
+            <div>
+                <div class="col-25">
+                    <label class="label" for="hoTen">PHÒNG BAN</label>
                 </div>
-                <div class="row">
-                    @{
-                      
-                        <div class="">
-                            <label class="label" for="checkbox_ca1">Ca 1:</label>
-                            <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca1" disabled="disabled" name="@Model.SLCa1" value=""> suất
-                        </div>
-                        <div class="ca1">
-                            <label class="label" for="checkbox_ca2">Ca 2:</label>
-                            <input type="checkbox" class="checkbox-ca2" id="checkbox_ca2" onclick="EnableDisableTextBox('checkbox_ca2', 'input_ca2')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca2" class="input-ca1" disabled="disabled" value="@Model.SLCa2"> suất
-                        </div>
-                        <div class="ca1">
-                            <label class="label" for="checkbox_ca2">Ca 3:</label>
-                            <input type="checkbox" class="checkbox-ca3" id="checkbox_ca3" onclick="EnableDisableTextBox('checkbox_ca3', 'input_ca3')" name="checkbox-ca1" value="">
-                            <input type="text" id="input_ca3" class="input-ca1" disabled="disabled" value="@Model.SLCa3"> suất
-                        </div>
-                        <div class="button">
-                            <input type="submit" name="name" value="OK" />
-                            <input type="button" name="name" value="Cancel" />
+                <div class="col-75">
+                    @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div>
+                <div class="col-25">
+                    <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
 
-                        </div>
+            </div>
+            <div class="row">
+                @{
 
+                    <div class="">
+                        <label class="label" for="checkbox_ca1">Ca 1:</label>
+                        <input type="checkbox" class="checkbox-ca1" id="checkbox_ca1" onclick="EnableDisableTextBox('checkbox_ca1', 'input_ca1')" name="checkbox-ca1" value="">
+                        @Html.EditorFor(model => model.SLCa1, new { htmlAttributes = new { @class = "form-control", id = "input_ca1", disabled = "disabled" } })
+                        suất
+                    </div>
+                    <div class="ca1">
+                        <label class="label" for="checkbox_ca2">Ca 2:</label>
+                        <input type="checkbox" class="checkbox-ca2" id="checkbox_ca2" onclick="EnableDisableTextBox('checkbox_ca2', 'input_ca2')" name="checkbox-ca1" value="">
+                        @Html.EditorFor(model => model.SLCa2, new { htmlAttributes = new { @class = "form-control", id = "input_ca2", disabled = "disabled" } })
+                        suất
+                    </div>
+                    <div class="ca1">
+                        <label class="label" for="checkbox_ca2">Ca 3:</label>
+                        <input type="checkbox" class="checkbox-ca3" id="checkbox_ca3" onclick="EnableDisableTextBox('checkbox_ca3', 'input_ca3')" name="checkbox-ca1" value="">
+                        @Html.EditorFor(model => model.SLCa3, new { htmlAttributes = new { @class = "form-control", id = "input_ca3", disabled = "disabled" } })
+
+                    </div>
+                    <div class="">
+                        <input type="submit" class="btn btn-info" value="OK" />
+                        <button class="">
+                            <a href="~/Home/Index">Cancel</a>
+                        </button>
+
+
+                    </div>
+
+                }
+            </div>
+            
+            <script type="text/javascript">
+                function EnableDisableTextBox(checkbox_caAn, inputCaAn) {
+                    var input_ca1 = document.getElementById(inputCaAn);
+                    var checkbox_caAn = document.getElementById(checkbox_caAn)
+                    input_ca1.disabled = checkbox_caAn.checked ? false : true;
+                    if (!input_ca1.disabled) {
+                        input_ca1.focus();
                     }
-                </div>
-                <script>
-                    $(document).ready(function () {
-                        var now = new Date();
-                        var month = (now.getMonth() + 1);
-                        var day = now.getDate();
-                        if (month < 10)
-                            month = "0" + month;
-                        if (day < 10)
-                            day = "0" + day;
-                        var today = now.getFullYear() + '-' + month + '-' + day;
-                        $('#datePicker').val(today);
-                    });
-                    Date.prototype.toDateInputValue = (function () {
-                        var local = new Date(this);
-                        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-                        return local.toJSON().slice(0, 10);
-                    });
-                </script>
-                <script type="text/javascript">
-                    function EnableDisableTextBox(checkbox_caAn, inputCaAn) {
-                        var input_ca1 = document.getElementById(inputCaAn);
-                        var checkbox_caAn = document.getElementById(checkbox_caAn)
-                        input_ca1.disabled = checkbox_caAn.checked ? false : true;
-                        if (!input_ca1.disabled) {
-                            input_ca1.focus();
-                        }
-                    }
-                </script>
-            </form>
+                }
+            </script>
         </div>
-
     }
 </div>
