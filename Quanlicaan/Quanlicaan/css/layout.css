@@ -20,3 +20,12 @@ footer {
     display:flex;
     flex-direction:row;
 }
+
+
+.divInfo {
+    display:flex;
+    justify-content:center;
+    margin-right:10px;
+    text-align:center;
+
+}

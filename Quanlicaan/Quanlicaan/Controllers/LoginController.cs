@@ -1,4 +1,7 @@
-﻿using System.Configuration;
+﻿
+using Quanlicaan.Models.Session;
+using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 
@@ -20,31 +23,47 @@ namespace Quanlicaan.Controllers
         {
             SqlConnection conn = new SqlConnection(connectionString);
             {
+
                 //kiem tra ten dang nhap va mat khau ok
                 string sqlQuery = "select * from NhanVien where username ='" + username + "' and upassword = '" + password + "'";
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
+                userSession us = new userSession();
 
                 conn.Open();
                 cmd.Connection = conn;
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
+
+                    us.HoTen = dr["HoTen"].ToString();
+                    us.ID = Convert.ToInt32(dr["ID"]);
+                    us.IDRole = Convert.ToInt32(dr["IDRole"]);
+                    us.RoleRegist = dr["RoleRegist"].ToString();
+                    Session["user"] = us;
+
                     conn.Close();
                     Response.Write("<script>alert('Login sucess')</script>");
-                    Session["username"] = username;
+               
                     return Redirect("/Home/Home");
 
 
                 }
 
-                conn.Close();
-                Response.Write("<script>alert('Đăng nhập thất bại')</script>");
-                return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
+                else
+                {
+                    conn.Close();
+                    return Content("<script language='javascript' type='text/javascript'>alert(' Đăng nhập thất bại! Vui lòng đăng nhập lại !');</script>");
 
 
-        }
+
+                    //return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
+                }
+
+
+
+            }
 
 
         }

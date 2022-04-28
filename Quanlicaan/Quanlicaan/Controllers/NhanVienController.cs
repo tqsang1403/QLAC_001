@@ -43,23 +43,28 @@ namespace Quanlicaan.Controllers
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-     
-
-                conn.Open();
-                string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, trangthai) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,@IDRole, @ChucVu, @username, @upassword, @trangthai)";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
-                cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
-                cmd.Parameters.AddWithValue("@DiaChi", nhanvienModel.DiaChi);
-                cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
-                cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
-                cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
-                cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
-                cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
-                cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword); 
-                cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai); 
-
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, trangthai, RoleRegist) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,@IDRole, @ChucVu, @username, @upassword, @trangthai,@RoleRegist)";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
+                    cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
+                    cmd.Parameters.AddWithValue("@DiaChi", nhanvienModel.DiaChi);
+                    cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
+                    cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
+                    cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
+                    cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
+                    cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
+                    cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword);
+                    cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai);
+                    cmd.Parameters.AddWithValue("@RoleRegist", nhanvienModel.RoleRegist);
+                    cmd.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    return Content("<script language='javascript' type='text/javascript'>alert(' Thêm mới thất bại ! Không được để trống');</script>");
+                }
             }
 
             return RedirectToAction("Index");
@@ -96,6 +101,7 @@ namespace Quanlicaan.Controllers
                 NhanVienModel.username = Convert.ToString(dtblNhanVien.Rows[0][8].ToString());
                 NhanVienModel.upassword = Convert.ToString(dtblNhanVien.Rows[0][9].ToString());
                 NhanVienModel.trangthai = Convert.ToBoolean(dtblNhanVien.Rows[0][10].ToString());
+                NhanVienModel.RoleRegist = Convert.ToString(dtblNhanVien.Rows[0][11].ToString());
                 return View(NhanVienModel);
             }
             else
@@ -111,7 +117,7 @@ namespace Quanlicaan.Controllers
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "update NhanVien(HoTen, GioiTinh, DiaChi,SDT, IDPhongBan, IDRole, ChucVu,username, upassword, trangthai) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan, @IDRole, @ChucVu,@username, @upassword, @trangthai where ID = @ID ";
+                string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, ChucVu = @ChucVu, username = @username, upassword = @upassword, trangthai = @trangthai, RoleRegist = @RoleRegist where ID = @ID ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
                 cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
@@ -124,9 +130,11 @@ namespace Quanlicaan.Controllers
                 cmd.Parameters.AddWithValue("@username", NhanVienModel.username);
                 cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
                 cmd.Parameters.AddWithValue("@trangthai", NhanVienModel.trangthai);
-
+                cmd.Parameters.AddWithValue("@RoleRegist", NhanVienModel.RoleRegist);
                 cmd.ExecuteNonQuery();
+                conn.Close();
             }
+            
 
             return RedirectToAction("Index");
         }

@@ -3,9 +3,10 @@
     "",
     "\\Quanlicaan",
     "\\Quanlicaan\\Quanlicaan",
+    "\\Quanlicaan\\Quanlicaan\\Controllers",
     "\\Quanlicaan\\Quanlicaan\\Views",
     "\\Quanlicaan\\Quanlicaan\\Views\\Login"
   ],
-  "SelectedNode": "\\Quanlicaan\\Quanlicaan\\Views\\Login\\Index.cshtml",
+  "SelectedNode": "\\Quanlicaan\\Quanlicaan\\Controllers\\PhongBanController.cs",
   "PreviewInSolutionExplorer": false
 }

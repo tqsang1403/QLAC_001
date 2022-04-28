@@ -1,14 +1,14 @@
-﻿@{
+﻿@using Quanlicaan.Models.Session
+@{
     <a href="~/Views/Shared/_Layout.cshtml"></a>
     ViewBag.Title = "Trang chủ";
     <link href="~/css/shome.css" rel="stylesheet" />
+    var info = (userSession)Session["user"];
 }
-<script> alert('@Session["username"] đã đăng nhập thành công') </script>
-<h1`>
-    Xin chào, đây là trang chủ !
-</h1`>
-<head>
+<script> alert('Xin chào, @info.HoTen !') </script>
 
+<head>
+  
 </head>
 
 

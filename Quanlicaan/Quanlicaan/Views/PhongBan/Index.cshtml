@@ -1,14 +1,15 @@
-﻿
+﻿@using Quanlicaan.Models.Session
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var per = (userSession)Session["user"];
 }
 
 <table class="table tab-content table-bordered table-striped">
-    <tr>
+    <tr style="text-align:center">
         <th>ID</th>
         <th>Tên Phòng Ban</th>
-      
+
 
         <th></th>
     </tr>
@@ -17,16 +18,23 @@
         <tr>
             <td>@Model.Rows[i][0]</td>
             <td>@Model.Rows[i][1]</td>
-            
+
 
             <td>
-                <a href="@Url.Action("Edit","PhongBan", new {@id = Model.Rows[i][0]})">Edit</a>
-                <br />
-                <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>
+                @if (per.IDRole == 1)
+                {
+                    <a href="@Url.Action("Edit", "PhongBan", new { @id = Model.Rows[i][0] })">Sửa</a>@*<br />
+                    <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>*@
+
+                }
+                else
+                {
+                    @*<a href="@Url.Action("Edit", "PhongBan", new { @id = Model.Rows[i][0] })">Edit</a>*@
+                }
             </td>
         </tr>
     }
 </table>
-<a href="@Url.Action("Create","PhongBan")">Add New</a>
+<a href="@Url.Action("Create","PhongBan")">Thêm mới</a>
 
 

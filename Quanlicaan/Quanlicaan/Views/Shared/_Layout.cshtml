@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Quanlicaan.Models.Session
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -11,6 +12,9 @@
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
     @RenderSection("head",required:false)
+    @{ 
+        var per = (userSession)Session["user"];
+    }
 </head>
 
 <body>
@@ -40,8 +44,9 @@
                                     Đăng ký ca ăn
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="@Url.Action("Canhan","Dangkycaan")">Cá nhân</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("Tapthe","Dangkycaan")">Tập thể</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("","")">Cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("","")">Tập thể</a></li>
+
 
                                 </ul>
                             </li>
@@ -60,10 +65,17 @@
                         </ul>
                         <form class="nav-item dropdown">
                             <li class="logout">
-                                <p>Xin chào, <b> @Session["username"]</b> !</p>
+                                <div class="divInfo">
+                                    @{ userSession info = (userSession)Session["user"];
+                                        <p> Xin chào <b>@info.HoTen</b></p>
+                                    }
+                                </div>
+                                
                                 <a class="nav-dangxuat" href="@Url.Action("Index","Login")">Đăng xuất</a>
                             </li>
+
                         </form>
+                        
                     </div>
                 </div>
             </nav>

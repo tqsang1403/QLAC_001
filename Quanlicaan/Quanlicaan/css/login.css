@@ -74,7 +74,8 @@ input {
     border: none;
 }
 input[type=text], input[type=password]{
-    font-size:13px;
+    font-size:23px;
+    block-size:auto;
 }
 
 textarea {
@@ -214,7 +215,7 @@ iframe {
 
 .wrap-login100 {
     width: 960px;
-    background: #fff;
+    background: #e6e6e6;
     border-radius: 10px;
     overflow: hidden;
     display: -webkit-box;

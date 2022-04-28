@@ -43,18 +43,28 @@ namespace Quanlicaan.Controllers
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
+                try
+                {
+                    conn.Open();
+                    string query = "insert into PhongBan values(@TenPB)";
+                    SqlCommand cmd = new SqlCommand(query, conn);
 
-                conn.Open();
-                string query = "insert into PhongBan values(@TenPB)";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                
-                cmd.Parameters.AddWithValue("@TenPB", phongbanModel.TenPB);
-                
+                    cmd.Parameters.AddWithValue("@TenPB", phongbanModel.TenPB);
 
-                cmd.ExecuteNonQuery();
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return Content("<script language='javascript' type='text/javascript'>alert(' Thêm mới thất bại ! Không được để trống');</script>");
+                }
+                
+                
+                    return RedirectToAction("Index");
+                
             }
-
-            return RedirectToAction("Index");
+            
         }
 
         // GET: PhongBan/Edit/5
@@ -88,11 +98,13 @@ namespace Quanlicaan.Controllers
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "update PhongBan(TenPB) values(@TenPB where ID = @ID ";
+                string query = "update PhongBan set TenPB = @TenPB where ID = @ID ";
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ID", phongbanModel.ID);
                 cmd.Parameters.AddWithValue("@TenPB", phongbanModel.TenPB);
                 
                 cmd.ExecuteNonQuery();
+                conn.Close();
             }
 
             return RedirectToAction("Index");

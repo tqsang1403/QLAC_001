@@ -1,22 +1,24 @@
-﻿
+﻿@using Quanlicaan.Models.Session
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var per = (userSession)Session["user"];
 }
 
 <table class="table tab-content table-bordered table-striped">
-    <tr>
+    <tr style="text-align:center">
         <th>ID</th>
         <th>Họ Tên</th>
         <th>Giới tính</th>
         <th>Địa chỉ</th>
-        <th>SDT</th>
-        <th>ID PhongBan</th>
-        <th>ID Role</th>
-        <th>Chuc Vu</th>
+        <th>Số điện thoại</th>
+        <th>ID Phòng Ban</th>
+        <th>Quyền truy cập</th>
+        <th>Chức vụ</th>
         <th>UserName</th>
-        <th>Password</th>
-        <th>status</th>
+        @*<th>Password</th>*@
+        <th>Trạng thái</th>
+        <th>Quyền đăng ký</th>
 
         <th></th>
     </tr>
@@ -25,22 +27,57 @@
 <tr>
     <td>@Model.Rows[i][0]</td>
     <td>@Model.Rows[i][1]</td>
-    <td>@Model.Rows[i][2]</td>
+
+    @if (@Model.Rows[i][2])
+    {
+        <td>
+            Nam
+        </td>
+    }
+    else
+    {
+        <td> Nữ</td>
+    }
+
+
     <td>@Model.Rows[i][3]</td>
     <td>@Model.Rows[i][4]</td>
     <td>@Model.Rows[i][5]</td>
+    
+    @if(Model.Rows[i][7] == 1)
+    {
+
+
+    <td>Admin</td>
+    }
+    else
+    {
+    <td>User</td>
+    }
     <td>@Model.Rows[i][6]</td>
-    <td>@Model.Rows[i][7]</td>
     <td>@Model.Rows[i][8]</td>
-    <td>@Model.Rows[i][9]</td>
-    <td>@Model.Rows[i][10]</td>
+    @*<td>@Model.Rows[i][9]</td>*@
+    @if (@Model.Rows[i][10])
+    {
+        <td>✔</td>
+    }
+    else
+    {
+        <td> ✘</td>
+    }
+    <td>@Model.Rows[i][11]</td>
+
     <td>
-        <a href="@Url.Action("Edit","NhanVien", new {@id = Model.Rows[i][0]})">Edit</a>
-        <br />
-        <a href="@Url.Action("Delete","NhanVien", new {@id = Model.Rows[i][0]})">Delete</a>
+
+        @if (per.IDRole == 1)
+        {
+            <a href="@Url.Action("Edit","NhanVien", new {@id = Model.Rows[i][0]})">Sửa</a>
+            @*<br />
+                <a href="@Url.Action("Delete","NhanVien", new {@id = Model.Rows[i][0]})">Delete</a>*@
+        }
     </td>
 </tr>
     }
-    </table>
-    <a href="@Url.Action("Create","NhanVien")">Add New</a>
+</table>
+<a href="@Url.Action("Create","NhanVien")">Thêm mới</a>
 

@@ -8,6 +8,8 @@
     width:100%;
     height:max-content;
     background-color:aliceblue;
+    border-block:thin;
+    padding:10px 12px;
 }
 
 
