@@ -8,7 +8,7 @@
     ViewBag.Title = "Thêm mới nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    
+
 
 }
 
@@ -18,112 +18,112 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        Họ và tên
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h2> <i>Vui lòng điền đầy đủ thông tin nhân viên </i></h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Họ và tên
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-       Giới tính
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.GioiTinh)
-                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Giới tính
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.GioiTinh)
+                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            Địa chỉ
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Số điện thoại
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            ID Phòng ban
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDPhongBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            ID Quyền truy cập
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDrole, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDrole, "1: Admin | 2:User", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            Chức vụ
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Username
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Password
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Quyền đăng ký ăn
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoleRegist, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoleRegist, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            Trạng thái hoạt động
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.trangthai)
+                    @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success active" />
+                
             </div>
         </div>
     </div>
-
-    <div class="form-group">
-       Địa chỉ
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-       Số điện thoại
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-       ID Phòng ban
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.IDPhongBan, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-      ID Quyền truy cập
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.IDrole, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.IDrole, "1: Admin | 2:User", new { @class = "text-danger" })
-        </div>
-    </div>
-    
-
-    <div class="form-group">
-        Chức vụ
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        Username
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        Password
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        Quyền đăng ký ăn
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.RoleRegist, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.RoleRegist, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        Trạng thái hoạt động
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.trangthai)
-                @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-success active" />
-        </div>
-    </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<button class="btn btn-outline-warning">
+    <a href="~/NhanVien/Index" style="text-decoration:none">Cancel</a>
+</button>
