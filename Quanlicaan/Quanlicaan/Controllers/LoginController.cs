@@ -25,7 +25,7 @@ namespace Quanlicaan.Controllers
             {
 
                 //kiem tra ten dang nhap va mat khau ok
-                string sqlQuery = "select * from NhanVien where username ='" + username + "' and upassword = '" + password + "'";
+                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where username ='" + username + "' and upassword = '" + password + "'"  ;
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
@@ -40,7 +40,9 @@ namespace Quanlicaan.Controllers
                     us.HoTen = dr["HoTen"].ToString();
                     us.ID = Convert.ToInt32(dr["ID"]);
                     us.IDRole = Convert.ToInt32(dr["IDRole"]);
+                    us.IDPhongBan = Convert.ToInt32(dr["IDPhongBan"]);
                     us.RoleRegist = dr["RoleRegist"].ToString();
+                    us.PhongBan = dr["TenPB"].ToString();
                     Session["user"] = us;
 
                     conn.Close();
@@ -55,7 +57,7 @@ namespace Quanlicaan.Controllers
                 {
                     conn.Close();
                     return Content("<script language='javascript' type='text/javascript'>alert(' Đăng nhập thất bại! Vui lòng đăng nhập lại !');</script>");
-
+                    
 
 
                     //return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
@@ -66,6 +68,13 @@ namespace Quanlicaan.Controllers
             }
 
 
+        }
+
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            Session.Clear();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

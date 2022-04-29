@@ -73,10 +73,7 @@ input {
     outline: none;
     border: none;
 }
-input[type=text], input[type=password]{
-    font-size:23px;
-    block-size:auto;
-}
+
 
 textarea {
     outline: none;

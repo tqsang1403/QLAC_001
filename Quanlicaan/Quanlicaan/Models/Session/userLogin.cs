@@ -5,14 +5,12 @@ using System.Web;
 
 namespace Quanlicaan.Models.Session
 {
-    public class userSession
+    public class userLogin
     {
-        public int ID { get; set; }
         public string HoTen { get; set; }
-
-        public int IDRole { get; set; }
-        public string RoleRegist { get; set; }
+        public int UserID { get; set; }
         public int IDPhongBan { get; set; }
         public string PhongBan { get; set; }
+        public string username { get; set; }
     }
 }

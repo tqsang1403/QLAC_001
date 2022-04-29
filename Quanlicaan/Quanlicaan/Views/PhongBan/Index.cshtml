@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
 }
+@if (per.IDRole == 1)
+{
+    <a href="@Url.Action("Create","PhongBan")">Thêm mới</a>
+}
 
 <table class="table tab-content table-bordered table-striped">
     <tr style="text-align:center">
@@ -24,7 +28,7 @@
                 @if (per.IDRole == 1)
                 {
                     <a href="@Url.Action("Edit", "PhongBan", new { @id = Model.Rows[i][0] })">Sửa</a>@*<br />
-                    <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>*@
+                        <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>*@
 
                 }
                 else
@@ -35,6 +39,5 @@
         </tr>
     }
 </table>
-<a href="@Url.Action("Create","PhongBan")">Thêm mới</a>
 
 

@@ -4,7 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
 }
-
+@if (per.IDRole == 1)
+{
+    <a href="@Url.Action("Create","NhanVien")">Thêm mới</a>
+}
 <table class="table tab-content table-bordered table-striped">
     <tr style="text-align:center">
         <th>ID</th>
@@ -16,7 +19,11 @@
         <th>Quyền truy cập</th>
         <th>Chức vụ</th>
         <th>UserName</th>
+
+
         @*<th>Password</th>*@
+
+
         <th>Trạng thái</th>
         <th>Quyền đăng ký</th>
 
@@ -24,60 +31,65 @@
     </tr>
     @for (int i = 0; i < Model.Rows.Count; i++)
     {
-<tr>
-    <td>@Model.Rows[i][0]</td>
-    <td>@Model.Rows[i][1]</td>
+        <tr>
+            <td>@Model.Rows[i][0]</td>
+            <td>@Model.Rows[i][1]</td>
 
-    @if (@Model.Rows[i][2])
-    {
-        <td>
-            Nam
-        </td>
-    }
-    else
-    {
-        <td> Nữ</td>
-    }
-
-
-    <td>@Model.Rows[i][3]</td>
-    <td>@Model.Rows[i][4]</td>
-    <td>@Model.Rows[i][5]</td>
-    
-    @if(Model.Rows[i][7] == 1)
-    {
+            @if (@Model.Rows[i][2])
+            {
+                <td>
+                    Nam
+                </td>
+            }
+            else
+            {
+                <td> Nữ</td>
+            }
 
 
-    <td>Admin</td>
-    }
-    else
-    {
-    <td>User</td>
-    }
-    <td>@Model.Rows[i][6]</td>
-    <td>@Model.Rows[i][8]</td>
-    @*<td>@Model.Rows[i][9]</td>*@
-    @if (@Model.Rows[i][10])
-    {
-        <td>✔</td>
-    }
-    else
-    {
-        <td> ✘</td>
-    }
-    <td>@Model.Rows[i][11]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
 
-    <td>
+            @if (Model.Rows[i][7] == 1)
+            {
 
-        @if (per.IDRole == 1)
-        {
-            <a href="@Url.Action("Edit","NhanVien", new {@id = Model.Rows[i][0]})">Sửa</a>
-            @*<br />
-                <a href="@Url.Action("Delete","NhanVien", new {@id = Model.Rows[i][0]})">Delete</a>*@
-        }
-    </td>
-</tr>
+
+                <td>Admin</td>
+            }
+            else
+            {
+                <td>User</td>
+            }
+            <td>@Model.Rows[i][6]</td>
+            <td>@Model.Rows[i][8]</td>
+
+
+            @*<td>@Model.Rows[i][9]</td>*@
+
+
+
+            @if (@Model.Rows[i][10])
+            {
+                <td>✔</td>
+            }
+            else
+            {
+                <td> ✘</td>
+            }
+            <td>@Model.Rows[i][11]</td>
+
+            <td>
+
+                @if (per.IDRole == 1)
+                {
+                    <a href="@Url.Action("Edit","NhanVien", new {@id = Model.Rows[i][0]})">Sửa</a>
+                    @*<br />
+                        <a href="@Url.Action("Delete","NhanVien", new {@id = Model.Rows[i][0]})">Delete</a>*@
+                }
+            </td>
+        </tr>
     }
 </table>
-<a href="@Url.Action("Create","NhanVien")">Thêm mới</a>
+
 

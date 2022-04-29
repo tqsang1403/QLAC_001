@@ -502,6 +502,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangkycanhanController.cs" />
+    <Compile Include="Controllers\DangkytaptheController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -509,12 +511,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\dbConnect.cs" />
     <Compile Include="Models\ModelADO\CaAn.cs" />
-    <Compile Include="Models\ModelADO\Chitietsuatan.cs" />
+    <Compile Include="Models\ModelADO\DangkyantaptheModel.cs" />
+    <Compile Include="Models\ModelADO\DangkycanhanModel.cs" />
     <Compile Include="Models\ModelADO\NhanVienModel.cs" />
     <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
     <Compile Include="Models\ModelADO\SuatAn.cs" />
+    <Compile Include="Models\Session\userLogin.cs" />
     <Compile Include="Models\Session\userSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource1.Designer.cs">
@@ -659,6 +664,8 @@
     <Content Include="Views\PhongBan\Edit.cshtml" />
     <Content Include="Views\PhongBan\Delete.cshtml" />
     <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\Dangkycanhan\Dangkycanhan.cshtml" />
+    <Content Include="Views\Dangkytapthe\TapThe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
