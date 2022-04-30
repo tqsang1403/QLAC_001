@@ -74,11 +74,9 @@ input {
     border: none;
 }
 
-
 textarea {
     outline: none;
     border: none;
-    font-size:30px
 }
 
     textarea:focus, input:focus {
@@ -212,7 +210,7 @@ iframe {
 
 .wrap-login100 {
     width: 960px;
-    background: #e6e6e6;
+    background: #fff;
     border-radius: 10px;
     overflow: hidden;
     display: -webkit-box;

@@ -14,7 +14,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <h1 class="page-header">ĐĂNG KÝ CA ĂN TẬP THỂ</h1>
         <div class="form-group">
-            <div class="thong-tin-nguoi-dang-ky">
+            <div class="thong-tin-nguoi-dang-ky" style="padding-bottom:20px">
                 <label for="" class="ten-dau-muc">HỌ TÊN NGƯỜI ĐĂNG KÝ</label>
                 @Html.EditorFor(model => model.HoTenNDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                 <label for="" class="ten-dau-muc">PHÒNG BAN</label>
@@ -22,11 +22,13 @@
                 <label for="" class="ten-dau-muc">NGÀY ĐĂNG KÝ</label>
                 @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
             </div>
+            <caption>Danh sách đăng ký ăn</caption>
             @for (int i = 0; i < Model.dsNV.Count; i++)
             {
                 <div class="danh-sach-nhan-vien-thuoc-phong-ban">
                     <div class="form-group">
                         <div class="form-control">
+
                             <table class="table tab-content table-bordered table-light table-responsive">
                                 <th>
                                     <span class="label label-danger">Họ tên </span>
@@ -65,7 +67,7 @@
                                     <th><label class="label" for="checkbox_ca2">Ca 3:</label></th>
                                     <td>
                                         <input type="checkbox" class="checkbox" id=@idCheckBoxCa3 onclick="EnableDisableTextBox('@idCheckBoxCa3', '@idTextBoxCa3')" name="checkbox-ca1" value="">
-                                        @Html.EditorFor(model => model.dsNV[i].SLCa3, new { htmlAttributes = new { @class = "form-control", id = @idTextBoxCa3, disabled = "disabled"  } }) suất
+                                        @Html.EditorFor(model => model.dsNV[i].SLCa3, new { htmlAttributes = new { @class = "form-control", id = @idTextBoxCa3, disabled = "disabled" } }) suất
                                     </td>
 
                                 }
