@@ -14,7 +14,8 @@ namespace Quanlicaan.Models.ModelADO
         public int IDPhongBan { get; set; }
 
         [DisplayName("ngày đăng kí")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy HH:mm}")]
         public DateTime ngayDK { get; set; }
 
         public int SLCa1 { get; set; }

@@ -12,7 +12,7 @@ namespace Quanlicaan.Models
     public class dbConnect
     {
         string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
-        
+        SqlCommand command = new SqlCommand();
 
         public int Get_IDPhongBan_ById(int id)
         {
@@ -60,6 +60,46 @@ namespace Quanlicaan.Models
                 com.CommandType = System.Data.CommandType.StoredProcedure;
             }
         }
+
+
+        //public DataSet getAllPhongBan()
+        //{
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        List<PhongBanModel> list = new List<PhongBanModel>();
+        //        PhongBanModel pb = new PhongBanModel();
+
+        //        command.CommandText = "Select * from PhongBan";
+        //        SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        //        dataAdapter.TableMappings.Add("Table", "Phongban");
+        //        dataAdapter.SelectCommand = command;
+        //        DataSet dataSet = new DataSet();
+                
+        //        dataAdapter.Fill(dataSet, "PhongBan");
+
+        //        conn.Close();
+        //        return dataSet;
+        //    }
+        //}
+
+
+
+        //public DataSet getAllRoler()
+        //{
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        Roles pb = new Roles();
+        //        command.CommandText = "Select * from Roles";
+        //        SqlDataAdapter dataAdapter = new SqlDataAdapter();
+        //        dataAdapter.SelectCommand = command;
+        //        DataSet dataSet = new DataSet();
+        //        dataAdapter.Fill(dataSet, "Roles");
+
+        //        conn.Close();
+        //        return dataSet;
+        //    }
+
+        //}
 
     }
 }

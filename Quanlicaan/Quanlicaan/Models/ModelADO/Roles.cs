@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -11,5 +12,7 @@ namespace Quanlicaan.Models.ModelADO
 
         
         public string URole { get; set; }
+
+       
     }
 }

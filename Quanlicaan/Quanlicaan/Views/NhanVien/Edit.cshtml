@@ -3,6 +3,20 @@
 @{
     ViewBag.Title = "Sửa thông tin nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<SelectListItem> listRR = new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Cá nhân", Value = "Cá nhân"},
+                new SelectListItem{Text = "Tập thể", Value = "Tập thể"}
+
+            };
+
+    List<SelectListItem> listRoles = new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Admin", Value = "1"},
+                new SelectListItem{Text = "User", Value = "2"}
+
+            };
 }
 
 
@@ -30,7 +44,7 @@
         <div class="col-md-10">
             <div class="checkbox">
                 @Html.EditorFor(model => model.GioiTinh)
-                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.GioiTinh, "Giới Tính(Nam: tích, Nữ: bỏ tích)", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -46,7 +60,7 @@
     <div class="form-group">
         Số điện thoại
         <div class="col-md-10">
-            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @maxlength = "10" } })
             @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -59,10 +73,10 @@
         </div>
     </div>
     <div class="form-group">
-        ID Quyền truy cập
+        Quyền truy cập
         <div class="col-md-10">
-            @Html.EditorFor(model => model.IDrole, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.IDrole, "1: Admin | 2:User", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.IDrole,listRoles, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -93,7 +107,7 @@
     <div class="form-group">
         Quyền đăng ký ăn
         <div class="col-md-10">
-            @Html.EditorFor(model => model.RoleRegist, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownListFor(model => model.RoleRegist, listRR,new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.RoleRegist, "", new { @class = "text-danger" })
         </div>
     </div>

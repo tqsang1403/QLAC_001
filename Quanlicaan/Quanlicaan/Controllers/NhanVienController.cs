@@ -1,4 +1,5 @@
-﻿using Quanlicaan.Models.ModelADO;
+﻿using Quanlicaan.Models;
+using Quanlicaan.Models.ModelADO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 
 namespace Quanlicaan.Controllers
 {
@@ -27,7 +29,7 @@ namespace Quanlicaan.Controllers
             return View(dtblNhanVien);
         }
 
-        
+
 
         [HttpGet]
 
@@ -61,9 +63,9 @@ namespace Quanlicaan.Controllers
                     cmd.Parameters.AddWithValue("@RoleRegist", nhanvienModel.RoleRegist);
                     cmd.ExecuteNonQuery();
                 }
-                catch(Exception ex)
+                catch (System.Data.SqlClient.SqlException sqlException)
                 {
-                    return Content("<script language='javascript' type='text/javascript'>alert(' Thêm mới thất bại ! Không được để trống');</script>");
+                    MessageBox.Show(sqlException.Message);
                 }
             }
 
@@ -78,6 +80,8 @@ namespace Quanlicaan.Controllers
         // GET: NhanVien/Edit/5
         public ActionResult Edit(int id)
         {
+          
+
             NhanVienModel NhanVienModel = new NhanVienModel();
             DataTable dtblNhanVien = new DataTable();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -116,8 +120,9 @@ namespace Quanlicaan.Controllers
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                try { 
                 conn.Open();
-                string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, ChucVu = @ChucVu, username = @username, upassword = @upassword, trangthai = @trangthai, RoleRegist = @RoleRegist where ID = @ID ";
+                string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, IDRole = @IDRole, ChucVu = @ChucVu, username = @username, upassword = @upassword, trangthai = @trangthai, RoleRegist = @RoleRegist where ID = @ID ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
                 cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
@@ -133,8 +138,14 @@ namespace Quanlicaan.Controllers
                 cmd.Parameters.AddWithValue("@RoleRegist", NhanVienModel.RoleRegist);
                 cmd.ExecuteNonQuery();
                 conn.Close();
+
+                }
+                catch (System.Data.SqlClient.SqlException sqlException)
+                {
+                    MessageBox.Show(sqlException.Message);
+                }
             }
-            
+
 
             return RedirectToAction("Index");
         }
@@ -156,5 +167,37 @@ namespace Quanlicaan.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        private static List<SelectListItem> PhongBan()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                string query = " SELECT * FROM PhongBan";
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["ID"].ToString(),
+                                Value = sdr["TenPB"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            return items;
+        }
+
+       
     }
 }

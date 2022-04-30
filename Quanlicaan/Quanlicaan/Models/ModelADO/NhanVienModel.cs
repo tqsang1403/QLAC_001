@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Quanlicaan.Models.ModelADO
 {
@@ -12,40 +13,43 @@ namespace Quanlicaan.Models.ModelADO
 
         public int ID { get; set; }
 
-        [Required(ErrorMessage ="Không được để trống ")]
+        [Required]
+        [StringLength(45)]
         public string HoTen { get; set; }
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public bool GioiTinh { get; set; }
 
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public string DiaChi { get; set; }
 
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
+        [StringLength(10)]
         public string SDT { get; set; }
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public int IDPhongBan { get; set; }
 
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public int IDrole { get; set; }
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public string ChucVu { get; set; }
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public string username { get; set; }
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public string upassword { get; set; }
 
 
-        [Required(ErrorMessage = "Không được để trống ")]
+        [Required]
         public bool trangthai { get; set; }
 
+        
         public string RoleRegist { get; set; }
 
         public int SLCa1 { get; set; }
