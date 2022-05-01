@@ -520,6 +520,7 @@
     <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
     <Compile Include="Models\ModelADO\SuatAn.cs" />
+    <Compile Include="Models\Models.2\PhongBanModels.cs" />
     <Compile Include="Models\Session\userLogin.cs" />
     <Compile Include="Models\Session\userSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

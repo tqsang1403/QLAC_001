@@ -32,7 +32,6 @@ namespace Quanlicaan.Models.ModelADO
                 x.IDPhongBan = Convert.ToInt32(res.Tables[0].Rows[i]["IDPhongBan"]);
                 x.username = Convert.ToString(res.Tables[0].Rows[i]["username"]);
                 x.upassword = Convert.ToString(res.Tables[0].Rows[i]["upassword"]);
-                x.username = Convert.ToString(res.Tables[0].Rows[i]["username"]);
                 x.IDrole = Convert.ToInt32(res.Tables[0].Rows[i]["IDRole"]);
                 x.RoleRegist = Convert.ToString(res.Tables[0].Rows[i]["RoleRegist"]);
                 x.trangthai = Convert.ToBoolean(res.Tables[0].Rows[i]["trangthai"]);

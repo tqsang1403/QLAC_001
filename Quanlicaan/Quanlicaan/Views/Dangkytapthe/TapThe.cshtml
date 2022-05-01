@@ -1,7 +1,7 @@
 ﻿@model Quanlicaan.Models.ModelADO.DangkyantaptheModel
 
 @{
-    ViewBag.Title = "TapThe";
+    ViewBag.Title = "Đăng ký ăn tập thể";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/css/dangkyannhom.css" rel="stylesheet" />
     int count = 0;
@@ -29,11 +29,11 @@
                     <div class="form-group">
                         <div class="form-control">
 
-                            <table class="table tab-content table-bordered table-light table-responsive">
+                            <table class="table tab-content table-striped " style="width:auto">
                                 <th>
                                     <span class="label label-danger">Họ tên </span>
                                 </th>
-                                <td>@Html.EditorFor(model => model.dsNV[i].HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })</td>
+                                <td >@Html.EditorFor(model => model.dsNV[i].HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })</td>
 
 
                                 @*===================*@

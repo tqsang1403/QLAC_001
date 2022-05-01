@@ -1,5 +1,6 @@
 ﻿using Quanlicaan.Models;
 using Quanlicaan.Models.ModelADO;
+using Quanlicaan.Models.Models._2;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,17 +18,33 @@ namespace Quanlicaan.Controllers
         string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string tennv)
         {
-            DataTable dtblNhanVien = new DataTable();
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select * from NhanVien", conn);
-                sqlDataAdapter.Fill(dtblNhanVien);
-            }
-            return View(dtblNhanVien);
+
+            ViewBag.Keyword = tennv;
+            var nhanvien = new dbConnect();
+            List<NhanVienModel> list = nhanvien.Listnv(tennv);
+            return View(list);
+
         }
+
+        //public ActionResult Index()
+        //{
+        //    DataTable dtblNhanVien = new DataTable();
+        //    using (SqlConnection conn = new SqlConnection(connectionString))
+        //    {
+        //        if ()
+        //        {
+
+        //        }
+        //        else { 
+        //        conn.Open();
+        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("Select * from NhanVien", conn);
+        //        sqlDataAdapter.Fill(dtblNhanVien);
+        //        }
+        //    }
+        //    return View(dtblNhanVien);
+        //}
 
 
 
@@ -36,6 +53,11 @@ namespace Quanlicaan.Controllers
         // GET: NhanVien/Create
         public ActionResult Create()
         {
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+
             return View(new NhanVienModel());
         }
 
@@ -43,6 +65,11 @@ namespace Quanlicaan.Controllers
         [HttpPost]
         public ActionResult Create(NhanVienModel nhanvienModel)
         {
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -80,7 +107,12 @@ namespace Quanlicaan.Controllers
         // GET: NhanVien/Edit/5
         public ActionResult Edit(int id)
         {
-          
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+
+
 
             NhanVienModel NhanVienModel = new NhanVienModel();
             DataTable dtblNhanVien = new DataTable();
@@ -118,6 +150,10 @@ namespace Quanlicaan.Controllers
         [HttpPost]
         public ActionResult Edit(NhanVienModel NhanVienModel)
         {
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try { 

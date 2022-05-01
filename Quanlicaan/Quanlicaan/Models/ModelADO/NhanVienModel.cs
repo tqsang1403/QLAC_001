@@ -56,6 +56,8 @@ namespace Quanlicaan.Models.ModelADO
         public int SLCa2 { get; set; }
         public int SLCa3 { get; set; }
 
+        public virtual PhongBanModel PhongBan { get; set; }
+
 
     }
 }

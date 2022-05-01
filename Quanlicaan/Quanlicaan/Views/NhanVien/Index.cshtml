@@ -4,38 +4,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
 }
+
 @if (per.IDRole == 1)
 {
-    <a href="@Url.Action("Create","NhanVien")">Thêm mới</a>
+    <a href="@Url.Action("Create","NhanVien")" style="margin-top:30px">Thêm mới</a>
+}
+
+@using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
+{
+    <div class="form-group" style="display:block; width:40%; border-radius:3px; padding-top:20px; padding-bottom:10px">
+
+        <input type="Text" class="form-control mx-0" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm">
+        <button type="submit" class="btn btn-secondary"> Tìm kiếm</button>
+    </div>
+    <hr />
 }
 <table class="table tab-content table-bordered table-striped">
     <tr style="text-align:center">
         <th>ID</th>
-        <th>Họ Tên</th>
+        <th>Họ và tên</th>
         <th>Giới tính</th>
         <th>Địa chỉ</th>
         <th>Số điện thoại</th>
         <th>ID Phòng Ban</th>
+
         <th>Quyền truy cập</th>
         <th>Chức vụ</th>
-        <th>UserName</th>
+        <th>username</th>
+        @*<th>password</th>*@
 
-
-        @*<th>Password</th>*@
-
-
+        <th>Quyền đăng ký ăn</th>
         <th>Trạng thái</th>
-        <th>Quyền đăng ký</th>
 
         <th></th>
     </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
+    @foreach (var Model in Model)
     {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
+            <td>@Model.ID</td>
+            <td>@Model.HoTen </td>
 
-            @if (@Model.Rows[i][2])
+            @if (@Model.GioiTinh)
             {
                 <td>
                     Nam
@@ -47,11 +56,11 @@
             }
 
 
-            <td>@Model.Rows[i][3]</td>
-            <td>@Model.Rows[i][4]</td>
-            <td>@Model.Rows[i][5]</td>
+            <td>@Model.DiaChi</td>
+            <td>@Model.SDT</td>
+            <td>@Model.IDPhongBan</td>
 
-            @if (Model.Rows[i][7] == 1)
+            @if (Model.IDrole == 1)
             {
 
 
@@ -61,15 +70,14 @@
             {
                 <td>User</td>
             }
-            <td>@Model.Rows[i][6]</td>
-            <td>@Model.Rows[i][8]</td>
-
-
-            @*<td>@Model.Rows[i][9]</td>*@
+            <td>@Model.ChucVu</td>
+            <td>@Model.username</td>
+            @*<td>@Model.upassword</td>*@
 
 
 
-            @if (@Model.Rows[i][10])
+            <td>@Model.RoleRegist</td>
+            @if (@Model.trangthai)
             {
                 <td>✔</td>
             }
@@ -77,15 +85,13 @@
             {
                 <td> ✘</td>
             }
-            <td>@Model.Rows[i][11]</td>
-
             <td>
 
                 @if (per.IDRole == 1)
                 {
-                    <a href="@Url.Action("Edit","NhanVien", new {@id = Model.Rows[i][0]})">Sửa</a>
+                    <a href="@Url.Action("Edit", "NhanVien", new { @id = Model.ID })">Sửa</a>
                     @*<br />
-                        <a href="@Url.Action("Delete","NhanVien", new {@id = Model.Rows[i][0]})">Delete</a>*@
+                    <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
                 }
             </td>
         </tr>

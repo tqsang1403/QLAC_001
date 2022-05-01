@@ -13,6 +13,13 @@ namespace Quanlicaan.Models
     {
         string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
         SqlCommand command = new SqlCommand();
+        SqlConnection conn = new SqlConnection(@"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
+
+        public dbConnect()
+        {
+            conn.Open();
+            command.Connection = conn;
+        }
 
         public int Get_IDPhongBan_ById(int id)
         {
@@ -61,27 +68,43 @@ namespace Quanlicaan.Models
             }
         }
 
+        public List<NhanVienModel> Listnv(string name)
+        {
 
-        //public DataSet getAllPhongBan()
-        //{
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        List<PhongBanModel> list = new List<PhongBanModel>();
-        //        PhongBanModel pb = new PhongBanModel();
+            if (!string.IsNullOrEmpty(name))
+            {
+                command.CommandText = "Select * from NhanVien where HoTen Like N'%" + name + "%' ";
 
-        //        command.CommandText = "Select * from PhongBan";
-        //        SqlDataAdapter dataAdapter = new SqlDataAdapter();
-        //        dataAdapter.TableMappings.Add("Table", "Phongban");
-        //        dataAdapter.SelectCommand = command;
-        //        DataSet dataSet = new DataSet();
-                
-        //        dataAdapter.Fill(dataSet, "PhongBan");
+            }
+            else
+            {
+                command.CommandText = "Select * from NhanVien";
+            }
 
-        //        conn.Close();
-        //        return dataSet;
-        //    }
-        //}
+            SqlDataReader reader = command.ExecuteReader();
+            List<NhanVienModel> listnv = new List<NhanVienModel>();
 
+            while (reader.Read())
+            {
+                NhanVienModel employ = new NhanVienModel();
+                employ.ID = Convert.ToInt32(reader["ID"]);
+                employ.HoTen = reader["HoTen"].ToString();
+                employ.GioiTinh = Convert.ToBoolean(reader["GioiTinh"].ToString());
+                employ.DiaChi = reader["DiaChi"].ToString();
+                employ.SDT = reader["SDT"].ToString();
+                employ.IDPhongBan = Convert.ToInt32(reader["IDPhongBan"].ToString());
+                employ.ChucVu = reader["ChucVu"].ToString();
+                employ.IDrole = Convert.ToInt32(reader["IDRole"]);
+                employ.username = reader["username"].ToString();
+                employ.upassword = reader["upassword"].ToString();
+                employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
+                employ.RoleRegist = reader["RoleRegist"].ToString();
+
+                listnv.Add(employ);
+            }
+            conn.Close();
+            return listnv;
+        }
 
 
         //public DataSet getAllRoler()

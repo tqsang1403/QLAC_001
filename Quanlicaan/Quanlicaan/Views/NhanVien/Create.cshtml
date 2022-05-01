@@ -24,6 +24,19 @@
             };
 
 
+    List<SelectListItem> listPB = new List<SelectListItem>();    
+    foreach (DataRow dr in ViewBag.PhongBan.Rows)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Value = dr["ID"].ToString();
+        item.Text = dr["TenPB"].ToString();
+        listPB.Add(item);
+    }
+
+   
+}
+
+
 }
 
 
@@ -73,8 +86,8 @@
         <div class="form-group">
             ID Phòng ban
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IDPhongBan, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.IDPhongBan,listPB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhongBan.TenPB, "", new { @class = "text-danger" })
             </div>
         </div>
 
