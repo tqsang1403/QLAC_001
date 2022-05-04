@@ -501,9 +501,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
+    <Compile Include="Controllers\SuatAnController.cs" />
     <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\ConnectDb.cs" />
+    <Compile Include="Models\DAO\DkiCaNhanModel.cs" />
     <Compile Include="Models\DAO\RolerModel.cs" />
+    <Compile Include="Models\DAO\SuatAnModel.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
@@ -514,7 +517,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
-    <Compile Include="Controllers\RegistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -661,19 +663,20 @@
     <Content Include="Views\Baocao\Baocaocanhan.cshtml" />
     <Content Include="Views\Baocao\baocaotheongay.cshtml" />
     <Content Include="Views\Baocao\baocaotheothang.cshtml" />
-    <Content Include="Views\Dangkycaan\dangkyancanhan.cshtml" />
-    <Content Include="Views\Dangkycaan\dangkyantheonhom.cshtml" />
     <Content Include="Views\Regist\Regist.cshtml" />
     <Content Include="Views\NhanVien\Show.cshtml" />
     <Content Include="Views\NhanVien\EditNV.cshtml" />
     <Content Include="Views\NhanVien\AddNV.cshtml" />
     <Content Include="Views\NhanVien\Delete.cshtml" />
-    <Content Include="Views\Dangkycaan\Canhan.cshtml" />
     <Content Include="Views\CaAn\Index.cshtml" />
     <Content Include="Views\PhongBan\ShowAll.cshtml" />
     <Content Include="Views\PhongBan\EditPB.cshtml" />
     <Content Include="Views\PhongBan\AddPB.cshtml" />
     <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\SuatAn\ShowSuatAn.cshtml" />
+    <Content Include="Views\SuatAn\CreateSuatAn.cshtml" />
+    <Content Include="Views\Dangkycaan\DkiCanhan.cshtml" />
+    <Content Include="Views\Dangkycaan\Tapthe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

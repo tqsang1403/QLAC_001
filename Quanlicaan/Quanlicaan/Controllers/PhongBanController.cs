@@ -17,7 +17,7 @@ namespace Quanlicaan.Controllers
         public ActionResult ShowAll()
         {
 
-            var entities = new Model1();
+            
             PhongbanModel pb = new PhongbanModel();
             DataSet ds = pb.getAllPhongBan();
             ViewBag.ListPhongBan = ds.Tables["PhongBan"];
@@ -71,23 +71,13 @@ namespace Quanlicaan.Controllers
 
 
 
-        public ActionResult AddPB(PhongBan pb)
+        public ActionResult AddPB()
 
         {
 
-            if (ModelState.IsValid)
+           
 
-            {
-
-                db.PhongBans.Add(pb);
-
-                db.SaveChanges();
-
-                return RedirectToAction("ShowAll");
-
-            }
-
-            return View(pb);
+            return View();
 
         }
 

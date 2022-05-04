@@ -23,7 +23,6 @@ namespace Quanlicaan.Models.DAO
 
         public DataSet getAllPhongBan()
         {
-            PhongBan pb = new PhongBan();
             command.CommandText = "Select * from PhongBan";
             SqlDataAdapter dataAdapter = new SqlDataAdapter();
             dataAdapter.SelectCommand = command;

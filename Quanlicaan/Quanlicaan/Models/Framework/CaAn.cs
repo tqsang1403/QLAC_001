@@ -19,7 +19,11 @@ namespace Quanlicaan.Models.Framework
 
         public DateTime Thoigian { get; set; }
 
+        public bool IsChecked { get; set; }
+        public int SoluongSuatan { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSuatAn> ChiTietSuatAns { get; set; }
+
     }
 }

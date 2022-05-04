@@ -28,16 +28,16 @@
     <title>Chỉnh sửa thông tin nhân viên </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href="~/css/editnv.css" rel="stylesheet">
+    @*<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>*@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="~/css/">
+
 
 </head>
 <body>
-    <section class="ftco-section">
+    <sec~/css/-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-4">
@@ -48,8 +48,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    @using (Html.BeginForm("EditNV", "NhanVien", FormMethod.Post, new { @class = "regist-form validate-form" }))
-                                {
+                    @using (Html.BeginForm("EditNV", "NhanVien", FormMethod.Post, new { @class = "editstaff-form validate-form" }))
+                       {
 
                                     <div class="wrap-input validate-input" data-validate="Id  is required">
                                         <p> Id nhân viên</p>
@@ -88,7 +88,7 @@
 
                                     <div class="wrap-input validate-input" data-validate="Department is required">
                                         <p>Chọn phòng ban</p>
-                                        @Html.DropDownListFor(model => model.IDPhongBan,list , new { @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.IDPhongBan,list , new { @class = "dropdown" })
                                         @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
                                     </div>
 
@@ -99,9 +99,9 @@
 
                                     </div>
 
-                                    <div class="wrap-input validate-input" data-validate="Id Role is required">
+                                    <div class="wrap-input validate-input " data-validate="Id Role is required">
                                         <p> ID Role</p>
-                                        @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "dropdown" })
                                         @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
 
                                     </div>

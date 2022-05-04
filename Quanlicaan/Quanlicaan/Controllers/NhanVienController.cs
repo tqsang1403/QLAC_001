@@ -90,7 +90,11 @@ namespace Quanlicaan.Controllers
                 var nhanvien = new UserModel();
                 bool check = nhanvien.AddNv(nv);
                 if (check)
+                {
+                    Response.Write("<script>alert('Thêm nhân viên thành công')</script>");
                     return RedirectToAction("Show", "NhanVien");
+                }
+                    
                 else
                     return View();
               

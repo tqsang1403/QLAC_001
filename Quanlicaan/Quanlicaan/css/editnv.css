@@ -1,8 +1,12 @@
-﻿.btn-bottom{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    width:80%;
+﻿editstaff-form validate-form {
+    width: 290px;
+}
+
+.btn-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
 }
 .form-group{
     width:50%;
@@ -20,4 +24,8 @@
 .btn {
     background: border-box;
     background-color: aquamarine;
+}
+
+.dropdown{
+    background-color:red;
 }
