@@ -20,14 +20,13 @@ namespace Quanlicaan.Models.DAO
 
         public SuatAnModel()
         {
-            conn.Open();
-            command.Connection = conn;
-
         }
 
         // thêm 1 bản ghi mới trong bảng suất ăn giá trị trả về là true hoặc false để biết thêm thành công hay không
         public bool InsertSuatAn( int ID , DateTime time)
-        { 
+        {
+            conn.Open();
+            command.Connection = conn;
             // insert vào bảng suất ăn
             command.CommandText = "insert into SuatAn(IDUser , Thoigiandat) values (@iduser, @time)";
             command.Parameters.AddWithValue("@iduser",ID);
@@ -75,10 +74,14 @@ namespace Quanlicaan.Models.DAO
         ////////// thực hiện thêm suất ăn với tập thể
         public DataSet getAllNhanVienCungPhongBan(int IDPhongBan)
         {
-            command.CommandText = "select NhanVien.* from PhongBan inner join NhanVien on NhanVien.IDPhongBan = PhongBan.ID where NhanVien.IDPhongBan = @idphongban ";
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "select NhanVien.* , PhongBan.TenPB from  NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where NhanVien.IDPhongBan = @idphongban ";
             command.Parameters.AddWithValue("@idphongban", IDPhongBan);
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds, "DanhSachNvCungPhong");
+            command.Parameters.Clear();
+            conn.Close();
             return ds;
         }
         

@@ -1,16 +1,8 @@
 ﻿@model Quanlicaan.Models.DAO.DkiCaNhanModel
-@using Quanlicaan.Models.Session
 @{
     ViewBag.Title = "Đăng ký ca ăn cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var message = ViewData["message"] ?? string.Empty;
-    if (@message != "")
-    {
-        <script>alert('@message');</script>
-    }
-
-    var info = (UserSession)Session["UserSession"];
-    var time = DateTime.Now;
+    int j = 1;
 
 }
 <div>
@@ -151,23 +143,25 @@
 
             <table>
 
-                @for (int i = 1; i <= Model.ListCaAn.Count; i++)
+                @for (int i = 0; i < Model.ListCaAn.Count; i++)
                  {
                     <tr>
-                        <td>
+                        <td >
                             @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked)
                             @Html.HiddenFor(m => Model.ListCaAn[i].ID)
                             @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian)
 
                         </td>
                         <td>
-                            Ca @i
+                            Ca @j
                         </td>
                         <td>
-                            @Html.EditorFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control" } })
+                            Số lượng suất ăn
+                            @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control" } })
                         </td>
                     </tr>
-                 }
+                    j++;
+                }
 
 
             </table>
@@ -176,7 +170,7 @@
 
                 <input type="submit" class="btn btn-info" value="OK" />
                 <button class="">
-                    <a href="~/Home/Index">Cancel</a>
+                    <a href="~/Home/Home">Cancel</a>
                 </button>
 
             </div>

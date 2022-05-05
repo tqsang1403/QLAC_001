@@ -504,6 +504,7 @@
     <Compile Include="Controllers\SuatAnController.cs" />
     <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\ConnectDb.cs" />
+    <Compile Include="Models\DAO\DkiCaAnTapTheModel.cs" />
     <Compile Include="Models\DAO\DkiCaNhanModel.cs" />
     <Compile Include="Models\DAO\RolerModel.cs" />
     <Compile Include="Models\DAO\SuatAnModel.cs" />
