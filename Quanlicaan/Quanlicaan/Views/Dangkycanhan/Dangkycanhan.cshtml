@@ -4,6 +4,11 @@
     ViewBag.Title = "Đăng ký ăn cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/css/dangkyancanhan.css" rel="stylesheet" />
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script>alert('@message');</script>
+    }
 }
 
 <div class="page-header">
@@ -20,7 +25,7 @@
                 <label class="label" for="HoTen">HỌ TÊN</label>
             </div>
             <div class="col-75">
-                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.TextBoxFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
             </div>
         </div>
         <div>
@@ -28,7 +33,7 @@
                 <label class="label" for="PhongBan">PHÒNG BAN</label>
             </div>
             <div class="col-75">
-                @Html.EditorFor(model => model.PhongBan, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.TextBoxFor(model => model.PhongBan, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
             </div>
         </div>
         <div>
@@ -36,7 +41,7 @@
                 <label class="label" for="hoTen">NGÀY ĐĂNG KÝ</label>
             </div>
             <div class="col-75">
-                @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.TextBoxFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
             </div>
 
         </div>

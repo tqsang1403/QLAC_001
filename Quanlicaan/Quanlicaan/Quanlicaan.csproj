@@ -568,6 +568,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\bglogin.jpg" />
     <Content Include="images\icons\favicon.ico" />
+    <Content Include="images\icons\loginn.jpg" />
     <Content Include="images\img-01.png" />
     <Content Include="fonts\BeVietnamPro-Black.ttf" />
     <Content Include="fonts\BeVietnamPro-BlackItalic.ttf" />
@@ -588,6 +589,7 @@
     <Content Include="fonts\BeVietnamPro-Thin.ttf" />
     <Content Include="fonts\BeVietnamPro-ThinItalic.ttf" />
     <Content Include="images\kkkk.jpg" />
+    <Content Include="images\login2.png" />
     <Content Include="images\ss1.jpg" />
     <Content Include="images\ss2.jpg" />
     <Content Include="images\ss3.jpg" />
@@ -619,6 +621,7 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="images\login2.webp" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -656,7 +659,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
     <Content Include="Views\NhanVien\Edit.cshtml" />
     <Content Include="Views\NhanVien\Delete.cshtml" />

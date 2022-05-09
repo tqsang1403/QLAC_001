@@ -15,7 +15,8 @@ namespace Quanlicaan.Controllers
     public class NhanVienController : Controller
     {
         // GET: NhanVien
-        string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+        string connectionString = @"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+
 
         [HttpGet]
         public ActionResult Index(string tennv)

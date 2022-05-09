@@ -9,11 +9,11 @@ namespace Quanlicaan.Controllers
 {
     public class LoginController : Controller
     {
-        string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+        string connectionString = @"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
 
         // GET: Login
         [HttpGet]
-        public ActionResult Index(string thongBao)
+        public ActionResult Login(string thongBao)
         {
             ViewBag.thongBao = thongBao;
             return View();
@@ -74,7 +74,7 @@ namespace Quanlicaan.Controllers
         {
             Session["user"] = null;
             Session.Clear();
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Login", "Login");
         }
     }
 }

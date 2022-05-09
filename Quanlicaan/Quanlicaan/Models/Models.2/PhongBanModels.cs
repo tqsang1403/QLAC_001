@@ -12,9 +12,9 @@ namespace Quanlicaan.Models.Models._2
 {
     public class PhongBanModels
     {
-        
+       
 
-        public SqlConnection conn = new SqlConnection(@"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
+        public SqlConnection conn = new SqlConnection(@"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
 
         public SqlCommand command = new SqlCommand();
 

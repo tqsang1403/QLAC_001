@@ -14,7 +14,7 @@ namespace Quanlicaan.Controllers
         dbConnect db = new dbConnect();
         public ActionResult TapThe()
         {
-
+        
             userSession userLogin = (userSession)Session["user"];
             DangkyantaptheModel model = new DangkyantaptheModel();
             model.HoTenNDK= userLogin.HoTen;
@@ -32,7 +32,7 @@ namespace Quanlicaan.Controllers
             String thongbao = "";
             try
             {
-                db.Add_New_GroupRegister(model);
+                
                 thongbao = "them moi thanh cong";
             }
             catch (Exception ex)

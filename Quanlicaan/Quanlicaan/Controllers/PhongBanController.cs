@@ -12,7 +12,7 @@ namespace Quanlicaan.Controllers
     public class PhongBanController : Controller
     {
 
-        string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+        string connectionString = @"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
         // GET: PhongBan
         [HttpGet]
         public ActionResult Index()

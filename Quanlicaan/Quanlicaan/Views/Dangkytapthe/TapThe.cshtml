@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     <link href="~/css/dangkyannhom.css" rel="stylesheet" />
     int count = 0;
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script>alert('@message');</script>
+    }
 }
 
 @using (Html.BeginForm("XuLyDangKyTapThe", "Dangkytapthe", FormMethod.Post))
@@ -33,7 +38,7 @@
                                 <th>
                                     <span class="label label-danger">Họ tên </span>
                                 </th>
-                                <td >@Html.EditorFor(model => model.dsNV[i].HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })</td>
+                                <td>@Html.EditorFor(model => model.dsNV[i].HoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })</td>
 
 
                                 @*===================*@

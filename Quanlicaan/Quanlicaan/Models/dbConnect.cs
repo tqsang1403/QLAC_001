@@ -11,14 +11,15 @@ namespace Quanlicaan.Models
 {
     public class dbConnect
     {
-        string connectionString = @"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
+        string connectionString = @"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
         SqlCommand command = new SqlCommand();
-        SqlConnection conn = new SqlConnection(@"Data Source=ADMIN-PC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
 
         public dbConnect()
         {
             conn.Open();
             command.Connection = conn;
+            
         }
 
         public int Get_IDPhongBan_ById(int id)
@@ -59,12 +60,22 @@ namespace Quanlicaan.Models
         }
 
 
-        public void Add_New_GroupRegister(DangkyantaptheModel model)
+        public void RegistGroupMeal(DangkyantaptheModel model)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlCommand com = new SqlCommand("Sp_Add_New_GroupRegister", conn);
+                SqlCommand com = new SqlCommand("Sp_Dangkyannhom", conn);
                 com.CommandType = System.Data.CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@HoTen", model.HoTenNDK);
+                com.Parameters.AddWithValue("@PhongBan", model.PhongBan);
+                com.Parameters.AddWithValue("@ngayDK", model.ngayDK);
+                com.Parameters.AddWithValue("@SLCa1", model.SLCa1);
+                com.Parameters.AddWithValue("@SLCa2", model.SLCa2);
+                com.Parameters.AddWithValue("@SLCa3", model.SLCa3);
+
+                conn.Open();
+                com.ExecuteNonQuery();
+                conn.Close();
             }
         }
 
@@ -105,6 +116,9 @@ namespace Quanlicaan.Models
             conn.Close();
             return listnv;
         }
+
+
+        
 
 
         //public DataSet getAllRoler()
