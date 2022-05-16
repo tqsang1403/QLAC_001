@@ -18,6 +18,8 @@
 
             };
 
+   
+
 
     List<SelectListItem> listPB = new List<SelectListItem>();
     foreach (DataRow dr in ViewBag.PhongBan.Rows)
@@ -54,7 +56,7 @@
         <div class="col-md-10">
             <div class="checkbox">
                 @Html.EditorFor(model => model.GioiTinh)
-                @Html.ValidationMessageFor(model => model.GioiTinh, "Giới Tính(Nam: tích, Nữ: bỏ tích)", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -76,7 +78,7 @@
     </div>
 
     <div class="form-group">
-       ID Phòng Ban
+       Phòng Ban
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.IDPhongBan,listPB, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PhongBan.TenPB, "", new { @class = "text-danger" })

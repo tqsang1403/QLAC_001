@@ -4,11 +4,18 @@
     ViewBag.Title = "Trang chủ";
     <link href="~/css/shome.css" rel="stylesheet" />
     var info = (userSession)Session["user"];
+
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
 }
-<script> alert('Xin chào, @info.HoTen thuộc phòng: @info.PhongBan !') </script>
+
+@*<script> alert('Xin chào, @info.HoTen !') </script>*@
 
 <head>
-  
+
 </head>
 
 

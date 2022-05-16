@@ -8,27 +8,19 @@ input[type=text] {
     background: transparent;
 }
 
-.title {
-    text-align: center;
-    padding: 12px 20px;
+.title{
+    width:60%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    padding:14px;
+
 }
 
-.companyname {
-    display: block;
-    text-align: center;
-    padding-left: 20px;
-   
-}
-
-.chxhcnvn {
-    display: block;
-    text-align: center;
-    padding-right: 20px;
-    width: 20%;
-}
-
-div.banner, .chxhcnvn, .companyname {
-    background-image: linear-gradient(rgb(197, 121, 121),rgb(170, 248, 117));
+.info_lable{
+    width:25%;
+    margin-left:10px;
+    padding-right:10px;
 }
 
 .banner {
@@ -39,14 +31,13 @@ div.banner, .chxhcnvn, .companyname {
 
 table, th, tr, td {
     border: 1px solid;
-    width: max-content;
+    width: auto;
 }
 
 table {
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
-    width: auto;
 }
 
 th {
@@ -54,39 +45,4 @@ th {
     text-align: center;
 }
 
-.content {
-    display: block;
-    width: 100%;
-}
 
-p {
-    background: transparent;
-  
-    font-size: 18px;
-}
-
-* {
-    background-color: rgb(227, 241, 228);
-}
-
-input[type=date], input[type=number] {
-    border: none;
-    font-size: 15px;
-    background: transparent;
-}
-
-#logo {
-    display: block;
-    width: 15%;
-    border-radius: 50%;
-    background: transparent;
-    padding-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.logocontainer {
-    margin-left: 160px;
-    text-align: center;
-    background-image: linear-gradient(rgb(197, 121, 121),rgb(170, 248, 117));
-}

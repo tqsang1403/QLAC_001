@@ -15,8 +15,9 @@ namespace Quanlicaan.Controllers
         string connectionString = @"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True";
         // GET: PhongBan
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string thongbao)
         {
+            ViewData["message"] = thongbao;
             DataTable dtblPhongBan = new DataTable();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -40,6 +41,7 @@ namespace Quanlicaan.Controllers
         [HttpPost]
         public ActionResult Create(PhongBanModel phongbanModel)
         {
+            string thongbao = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
@@ -53,16 +55,19 @@ namespace Quanlicaan.Controllers
 
 
                     cmd.ExecuteNonQuery();
+                    thongbao = "them moi thanh cong";
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {
+                    thongbao = "that bai, khong duoc de trong!";
                     Console.WriteLine(ex.Message);
-                    return Content("<script language='javascript' type='text/javascript'>alert(' Thêm mới thất bại ! Không được để trống');</script>");
+                    return RedirectToAction("Index", "PhongBan", new { thongbao });
                 }
+
                 
-                
-                    return RedirectToAction("Index");
-                
+                return RedirectToAction("Index", "PhongBan", new { thongbao });
+
             }
             
         }
@@ -95,19 +100,29 @@ namespace Quanlicaan.Controllers
         [HttpPost]
         public ActionResult Edit(PhongBanModel phongbanModel)
         {
+            string thongbao = "";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                conn.Open();
-                string query = "update PhongBan set TenPB = @TenPB where ID = @ID ";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ID", phongbanModel.ID);
-                cmd.Parameters.AddWithValue("@TenPB", phongbanModel.TenPB);
-                
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
+                if(phongbanModel.TenPB != null)
+                {
+                    conn.Open();
+                    string query = "update PhongBan set TenPB = @TenPB where ID = @ID ";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ID", phongbanModel.ID);
+                    cmd.Parameters.AddWithValue("@TenPB", phongbanModel.TenPB);
 
-            return RedirectToAction("Index");
+                    cmd.ExecuteNonQuery();
+                    thongbao = "sua thong tin thanh cong";
+                    conn.Close();
+                }
+                else
+                {
+                    thongbao = "sua thong tin that bai";
+                    return RedirectToAction("Index", "PhongBan", new { thongbao });
+                }
+            }
+            
+            return RedirectToAction("Index", "PhongBan", new { thongbao });
         }
 
      

@@ -8,8 +8,9 @@ namespace Quanlicaan.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Home()
+        public ActionResult Home(string thongbao)
         {
+            ViewData["message"] = thongbao;
             return View();
         }
 

@@ -1,0 +1,136 @@
+﻿@model Quanlicaan.Models.ShowModels.userModel
+
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/details.css" rel="stylesheet" />
+
+}
+
+<h2 style="margin-left:auto;margin-right:auto;">Thông tin cá nhân</h2>
+
+<div class="container">
+
+    <div class="info">
+
+        <p class="info_lable"> ID</p>
+
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.ID)</p>
+
+    </div>
+
+    <div class="info">
+
+        
+        <p class="info_lable"> Họ và tên</p>
+
+
+        <p class="info_detail"> @Html.DisplayFor(model => model.HoTen)</p>
+
+    </div>
+    <div class="info">
+
+
+        <p class="info_lable"> Giới Tính</p>
+
+        
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.GioiTinh)</p>
+
+    </div>
+
+    <div class="info">
+        <p class="info_lable">Địa chỉ</p>
+        
+
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.DiaChi)</p>
+
+    </div>
+
+    <div class="info">
+        <p class="info_lable">Số điện thoại</p>
+        
+
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.SDT)</p>
+
+    </div>
+
+    <div class="info">
+        <p class="info_lable"> Phòng Ban</p>
+       
+
+
+        <p class="info_detail"> @Html.DisplayFor(model => model.PhongBan)</p>
+
+    </div>
+
+    <div class="info">
+
+        <p class="info_lable">Quyền truy cập</p>
+        
+
+
+        <p class="info_detail">
+           @Html.DisplayFor(model => model.IDrole)
+           
+        </p>
+
+    </div>
+
+    <div class="info">
+
+        <p class="info_lable">Chức vụ</p>
+        
+
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.ChucVu)</p>
+
+    </div>
+
+    <div class="info">
+        <p class="info_lable">Tên đăng nhập</p>
+        
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.username)</p>
+
+    </div>
+
+    <div class="info">
+        <p class="info_lable">Mật khẩu</p>
+        
+
+
+        <p class="info_detail">@Html.DisplayFor(model => model.upassword)</p>
+
+
+    </div>
+    <div class="info">
+        <p class="info_lable">Quyền đăng ký ăn</p>
+        
+
+        <p class="info_detail"> @Html.DisplayFor(model => model.RoleRegist)</p>
+    </div>
+
+
+    <div class="info">
+        <p class="info_lable">Trạng thái</p>
+        
+        <p class="info_detail">@Html.DisplayFor(model => model.trangthai)</p>
+    </div>
+
+
+
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

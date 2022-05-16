@@ -3,6 +3,12 @@
     ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
+
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
 }
 @if (per.IDRole == 1)
 {

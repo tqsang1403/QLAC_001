@@ -14,5 +14,22 @@ namespace Quanlicaan.Models.Session
         public string RoleRegist { get; set; }
         public int IDPhongBan { get; set; }
         public string PhongBan { get; set; }
+
+        public string DiaChi { get; set; }
+
+
+        public string username { get; set; }
+
+        public string upassword { get; set; }
+        public bool trangthai { get; set; }
+
+        public string SDT { get; set; }
+
+        public bool GioiTinh { get; set; }
+
+        public string ChucVu { get; set; }
+
+
     }
+
 }

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelADO
 {
-    public class SuatAn
+    public class SuatAnModels
     {
 
         public int ID { get; set; }

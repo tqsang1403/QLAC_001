@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Quanlicaan.Models.ShowModels.ChiTietCaAnModel>
+@using Quanlicaan.Models.Session
+@{
+     ViewBag.Title = "Thống kê ca ăn cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var per = (userSession)Session["user"];
+
+ 
+}
+
+<div class="title" style="width:60%;margin-left:auto;margin-right:auto;padding:10px;" >
+    <h1 style="text-align:center">THỐNG KÊ CA ĂN CÁ NHÂN</h1>
+    <div class="info_container" style="display:block; width:70%; margin-left:auto;margin-right:auto; padding:4px;">
+        <div style="display:flex;justify-content:space-between;width:80%;margin-left:auto;margin-right:auto">
+
+            <Label for="ID" class="info_lable" style="width:20%;">Mã nhân viên:</Label>
+            <input type="text" name="ID" placeholder=" @per.ID" style="text-transform:uppercase;width:50%;" disabled>
+        </div>
+        
+        <div style="display:flex;justify-content:space-between;width:80%;margin-left:auto;margin-right:auto">
+
+            <Label for="uname" class="info_lable" style="width:20%;">Họ tên:</Label>
+            <input type="text" name="uname" placeholder=" @per.HoTen" style="text-transform:uppercase;width:50%" disabled>
+        </div> 
+        
+        
+        <div style="display:flex;justify-content:space-between;width:80%;margin-left:auto;margin-right:auto">
+            <Label for="pban" class="info_lable" style="width:20%;">Phòng ban:</Label>
+            <input type="text" name="pban" placeholder="@per.PhongBan" style="text-transform:uppercase;width:50%" disabled>
+        </div>
+     
+    </div>
+</div>
+
+<table class="table table-hover table-bordered table-striped" style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
+    <tr style="width:fit-content;">
+        <th>
+            Ngày đăng ký
+        </th>
+
+        <th>
+            Tên ca ăn
+        </th>
+        <th>
+            Số lượng
+        </th>
+        
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDk)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCaAn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            
+        </tr>
+    }
+
+</table>

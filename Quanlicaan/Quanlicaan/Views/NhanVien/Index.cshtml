@@ -3,11 +3,17 @@
     ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
+
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
 }
 
 @if (per.IDRole == 1)
 {
-    <a href="@Url.Action("Create","NhanVien")" style="margin-top:30px">Thêm mới</a>
+    <a href="@Url.Action("Create","NhanVien")" style="margin-top:30px"><i class="fa-solid fa-plus">Thêm mới</i></a>
 }
 
 @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
@@ -19,7 +25,7 @@
     </div>
     <hr />
 }
-<table class="table tab-content table-bordered table-striped">
+<table class="table table-hover table-active tab-content table-bordered table-striped">
     <tr style="text-align:center">
         <th>ID</th>
         <th>Họ và tên</th>
@@ -30,7 +36,7 @@
 
         <th>Quyền truy cập</th>
         <th>Chức vụ</th>
-        <th>username</th>
+        <th>Tên đăng nhập</th>
         @*<th>password</th>*@
 
         <th>Quyền đăng ký ăn</th>
@@ -91,7 +97,7 @@
                 {
                     <a href="@Url.Action("Edit", "NhanVien", new { @id = Model.ID })">Sửa</a>
                     @*<br />
-                    <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
+                        <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
                 }
             </td>
         </tr>

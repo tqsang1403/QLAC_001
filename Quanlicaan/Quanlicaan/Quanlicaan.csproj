@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -257,6 +258,9 @@
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcMailer.4.5\lib\45\Mvc.Mailer.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -509,6 +513,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
+    <Compile Include="Controllers\ReportPerMonthController.cs" />
+    <Compile Include="Controllers\ReportPersonalController.cs" />
+    <Compile Include="Controllers\ReportsPerDayController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -519,10 +527,14 @@
     <Compile Include="Models\ModelADO\NhanVienModel.cs" />
     <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
-    <Compile Include="Models\ModelADO\SuatAn.cs" />
-    <Compile Include="Models\Models.2\PhongBanModels.cs" />
+    <Compile Include="Models\ModelADO\SuatAnModels.cs" />
+    <Compile Include="Models\ShowModels\ChiTietCaAnModel.cs" />
+    <Compile Include="Models\ShowModels\PhongBanModels.cs" />
     <Compile Include="Models\Session\userLogin.cs" />
     <Compile Include="Models\Session\userSession.cs" />
+    <Compile Include="Models\ShowModels\ReportsPerDay.cs" />
+    <Compile Include="Models\ShowModels\ReportsPerMonth.cs" />
+    <Compile Include="Models\ShowModels\userModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -556,6 +568,7 @@
     <Content Include="css\dangkyannhom.css" />
     <Content Include="css\deletenv.css" />
     <Content Include="css\addnv.css" />
+    <Content Include="css\details.css" />
     <Content Include="css\layout.css" />
     <Content Include="css\login.css" />
     <Content Include="css\editnv.css" />
@@ -671,6 +684,11 @@
     <Content Include="Views\Shared\CustomError.cshtml" />
     <Content Include="Views\Dangkycanhan\Dangkycanhan.cshtml" />
     <Content Include="Views\Dangkytapthe\TapThe.cshtml" />
+    <Content Include="Views\UserLogin\Details.cshtml" />
+    <Content Include="Views\Login\RegistEmp.cshtml" />
+    <Content Include="Views\ReportPersonal\PersonalReport.cshtml" />
+    <Content Include="Views\ReportPerMonth\ReportPerMonth.cshtml" />
+    <Content Include="Views\ReportsPerDay\ReportPerDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

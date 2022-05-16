@@ -1,8 +1,16 @@
 ﻿@{
     Layout = null;
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
+
 }
 @model Quanlicaan.Models.ModelADO.NhanVienModel
 
+
+</script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +25,18 @@
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
 
-                    
-                    <img src="~/images/login2.png"  alt="IMG" style="margin: 20px 20px">
+
+                    <img src="~/images/login2.png" alt="IMG" style="margin: 20px 20px">
                 </div>
                 <form action="/Login/DangNhapHeThong" method="post">
+
+
+                    @if (@ViewBag.Message != null)
+                    {
+                        <div id="popupdiv" style="border: 1px solid red; display: none;">
+                            @ViewBag.Message
+                        </div>
+                    }
 
                     <span class="login100-form-title">
                         Đăng nhập tài khoản
@@ -44,7 +60,7 @@
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button type="submit" class="login100-form-btn">
+                        <button type="submit" class="login100-form-btn" id="submit" value="submit">
                             Đăng nhập
                         </button>
                     </div>
@@ -54,7 +70,7 @@
                         <a class="txt2" href="#">
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 
-                            @Html.ActionLink("Đăng kí tài khoản", "#", "#")
+                            @Html.ActionLink("Đăng kí tài khoản", "RegistEmp", "Login")
                         </a>
                     </div>
                 </form>
@@ -64,4 +80,7 @@
     </div>
 </body>
 
+
+
 </html>
+
