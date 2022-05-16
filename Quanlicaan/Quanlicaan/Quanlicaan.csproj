@@ -504,15 +504,17 @@
     <Compile Include="Controllers\SuatAnController.cs" />
     <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\ConnectDb.cs" />
-    <Compile Include="Models\DAO\DkiCaAnTapTheModel.cs" />
-    <Compile Include="Models\DAO\DkiCaNhanModel.cs" />
+    <Compile Include="Models\DAO\CaAnModel.cs" />
+    <Compile Include="Models\ModelsPage\DkiCaAnTapTheModel.cs" />
+    <Compile Include="Models\ModelsPage\DkiCaNhanModel.cs" />
     <Compile Include="Models\DAO\RolerModel.cs" />
     <Compile Include="Models\DAO\SuatAnModel.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
     <Compile Include="Models\Framework\Model1.cs" />
-    <Compile Include="Models\DAO\LoginModel.cs" />
+    <Compile Include="Models\ModelsPage\EdiDkiCaAn.cs" />
+    <Compile Include="Models\ModelsPage\LoginModel.cs" />
     <Compile Include="Controllers\BaocaoController.cs" />
     <Compile Include="Controllers\DangkycaanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -669,7 +671,7 @@
     <Content Include="Views\NhanVien\EditNV.cshtml" />
     <Content Include="Views\NhanVien\AddNV.cshtml" />
     <Content Include="Views\NhanVien\Delete.cshtml" />
-    <Content Include="Views\CaAn\Index.cshtml" />
+    <Content Include="Views\CaAn\ShowCaAn.cshtml" />
     <Content Include="Views\PhongBan\ShowAll.cshtml" />
     <Content Include="Views\PhongBan\EditPB.cshtml" />
     <Content Include="Views\PhongBan\AddPB.cshtml" />
@@ -678,6 +680,7 @@
     <Content Include="Views\SuatAn\CreateSuatAn.cshtml" />
     <Content Include="Views\Dangkycaan\DkiCanhan.cshtml" />
     <Content Include="Views\Dangkycaan\Tapthe.cshtml" />
+    <Content Include="Views\Dangkycaan\EditDkiCaanCanhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

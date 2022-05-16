@@ -22,9 +22,11 @@ create table NhanVien(
 	username char(10) not null,
 	upassword char(10) not null,
 	trangthai bit default 1 not null
+	
 
 )
-
+ALTER TABLE NhanVien
+ADD PhanQuyen bit not null;
 create table Roles(
 	ID int identity(1,1) not null primary key,
 	URole Nvarchar(25) not null,

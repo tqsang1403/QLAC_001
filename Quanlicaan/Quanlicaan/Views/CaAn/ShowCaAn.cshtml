@@ -1,0 +1,59 @@
+﻿@model List<Quanlicaan.Models.Framework.CaAn>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Tapthe</title>
+</head>
+<body>
+    <div style=" width: 80%; text-align: center; margin: auto;">
+        <h2> Quản lí Ca ăn</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Ca ăn</th>
+                    <th scope="col">Thời gian của ca ăn</th>
+                    <th> Edit</th>
+                    <th> Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <th scope="row">@item.ID</th>
+                    @if (item.Thoigian.TimeOfDay.ToString() == "09:00:00")
+                    {
+                        <td> Ca sáng</td>
+                    }
+                    @if (item.Thoigian.TimeOfDay.ToString() == "15:00:00")
+                    {
+                        <td> Ca chiều</td>
+                    }
+                    @if (item.Thoigian.TimeOfDay.ToString() == "20:00:00")
+                    {
+                        <td> Ca tối</td>
+                    }
+                    <td>@item.Thoigian.TimeOfDay.ToString()</td>
+                    <td>chỉnh sửa</td>
+                    <td>xóa</td>
+                </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
+
+

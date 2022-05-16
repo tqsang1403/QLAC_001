@@ -50,7 +50,11 @@ public partial class NhanVien
     [StringLength(10)]
     public string upassword { get; set; }
 
+    [Required]
     public bool trangthai { get; set; }
+    
+     [Required]
+    public bool PhanQuyen { get; set; }
 
    
 

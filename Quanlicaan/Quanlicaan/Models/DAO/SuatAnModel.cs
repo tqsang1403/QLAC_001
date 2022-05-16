@@ -1,4 +1,5 @@
 ﻿using Quanlicaan.Models.Framework;
+using Quanlicaan.Models.ModelsPage;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,7 +16,7 @@ namespace Quanlicaan.Models.DAO
         public SqlCommand command = new SqlCommand();
         public SqlDataAdapter dataAdapter = new SqlDataAdapter();
         public DataSet ds = new DataSet();
-        public  int IDSuatAn;
+        public int IDSuatAn;
 
 
         public SuatAnModel()
@@ -23,15 +24,15 @@ namespace Quanlicaan.Models.DAO
         }
 
         // thêm 1 bản ghi mới trong bảng suất ăn giá trị trả về là true hoặc false để biết thêm thành công hay không
-        public bool InsertSuatAn( int ID , DateTime time)
+        public bool InsertSuatAn(int ID, string time)
         {
             conn.Open();
             command.Connection = conn;
             // insert vào bảng suất ăn
             command.CommandText = "insert into SuatAn(IDUser , Thoigiandat) values (@iduser, @time)";
-            command.Parameters.AddWithValue("@iduser",ID);
-            command.Parameters.AddWithValue("@time",time);
-            var  check = command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@iduser", ID);
+            command.Parameters.AddWithValue("@time", time);
+            var check = command.ExecuteNonQuery();
             command.Parameters.Clear();
             conn.Close();
             if (check > 0)
@@ -45,7 +46,7 @@ namespace Quanlicaan.Models.DAO
         }
 
         // thêm mới bản ghi bảng chi tiết suất ăn
-        public void InsertCTSuatAn(int ID, DateTime time, int IDCaan, int Soluong)
+        public void InsertCTSuatAn(int ID, string time, int IDCaan, int Soluong)
         {
             conn.Open();
             command.Connection = conn;
@@ -61,7 +62,7 @@ namespace Quanlicaan.Models.DAO
                 IDSuatAn = Convert.ToInt32(dr["ID"]);
             }
             dr.Close();
-            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat) values (@iduser, @soluong , @idsuatan , @idcaan, @time)";
+            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat , Trangthai) values (@iduser, @soluong , @idsuatan , @idcaan, @time, 1)";
             command.Parameters.AddWithValue("@soluong", Soluong);
             command.Parameters.AddWithValue("@idsuatan", IDSuatAn);
             command.Parameters.AddWithValue("@idcaan", IDCaan);
@@ -84,7 +85,35 @@ namespace Quanlicaan.Models.DAO
             conn.Close();
             return ds;
         }
-        
+
+
+        // thực hiện chỉnh sửa thông tin đăng kí ca ăn
+        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDPb)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where IDPhongBan = @idphongban and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
+            command.Parameters.AddWithValue("@idphongban", IDPb);
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, "DsCtSuatAnDki");
+            command.Parameters.Clear();
+            conn.Close();
+
+            List<EdiDkiCaAn> list = new List<EdiDkiCaAn>();
+            foreach (DataRow dr in ds.Tables["DsCtSuatAnDki"].Rows)
+            {
+                EdiDkiCaAn ediDkiCaAn = new EdiDkiCaAn();
+                ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
+                ediDkiCaAn.hoTen = dr["HoTen"].ToString();
+                ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);
+                ediDkiCaAn.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
+                ediDkiCaAn.IDSuatAn = Convert.ToInt32(dr["IDSuatAn"]);
+                ediDkiCaAn.Soluong = Convert.ToInt32(dr["Soluong"]);
+                list.Add(ediDkiCaAn);
+            }
+            return list;
+
+        }
 
     }
 }

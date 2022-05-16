@@ -3,7 +3,7 @@ using Quanlicaan.Models.Session;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Configuration;
-
+using Quanlicaan.Models.ModelsPage;
 
 namespace Quanlicaan.Controllers
 {

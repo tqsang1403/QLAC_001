@@ -20,93 +20,80 @@
 
 </head>
 <body>
-    <section class="ftco-section">
+    <!--important link source from "https://bootsnipp.com/snippets/qNB2D"-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <section class="ready__started project__form">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-4">
-                    <h2 class="heading-section">Bạn có muốn xóa nhân viên </h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    @using (Html.BeginForm("Delete", "NhanVien", FormMethod.Post, new { @class = "regist-form validate-form" }))
-                    {
-
-                        <div class="wrap-input validate-input" data-validate="User's fullname is required">
-                            @Html.TextBoxFor(model => model.ID, new { @class = "input", @type = "text", @name = "id", @placeholder = Model.ID, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-
+            <h3 class="text-center">Form With Floating Label</h3>
+            <div class="ready__started-box">
+                <form class="main__form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="firstName" aria-describedby="firstName" placeholder="John" required>
+                                <label for="firstName">First Name*</label>
+                            </div>
                         </div>
-
-                        <div class="wrap-input validate-input" data-validate="User's fullname is required">
-                            @Html.TextBoxFor(model => model.HoTen, new { @class = "input", @type = "text", @name = "HoTen", @placeholder = Model.HoTen, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Doe" required>
+                                <label for="lastName">Last Name*</label>
+                            </div>
                         </div>
-
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.GioiTinh, new { @class = "input", @type = "text", @name = "GioiTinh", @placeholder = Model.GioiTinh, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="example@xyz.com" required>
+                                <label for="email">Email*</label>
+                            </div>
                         </div>
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.DiaChi, new { @class = "input", @type = "text", @name = "DiaChi", @placeholder = Model.DiaChi, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="contactNumber" aria-describedby="contactNumber" placeholder="xxx-xxx-xxxx" required>
+                                <label for="contactNumber">Contact Number*</label>
+                            </div>
                         </div>
-
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.SDT, new { @class = "input", @type = "text", @name = "SDT", @placeholder = Model.SDT, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="company" aria-describedby="company" placeholder="Company Name" required>
+                                <label for="company">Company*</label>
+                            </div>
                         </div>
-
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.IDPhongBan, new { @class = "input", @type = "text", @name = "IdPhongBan", @placeholder = Model.IDPhongBan, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
-
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="webSite" aria-describedby="webSite" placeholder="http://xyz.com" required>
+                                <label for="webSite">Website*</label>
+                            </div>
                         </div>
-
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.ChucVu, new { @class = "input", @type = "text", @name = "ChucVu", @placeholder = Model.ChucVu, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
-
-                        </div>
-
-                        <div class="wrap-input validate-input" data-validate="Username is required">
-                            @Html.TextBoxFor(model => model.username, new { @class = "input", @type = "text", @name = "username", @placeholder = Model.username, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-
-                        </div>
-
-                        <div class="wrap-input validate-input" data-validate="Password is required">
-                            @Html.TextBoxFor(model => model.upassword, new { @class = "input", @type = "password", @name = "pass", @placeholder = Model.upassword, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
-
-                        </div>
-
-                        <div class="wrap-input validate-input" data-validate="Password is required">
-                            @Html.TextBoxFor(model => model.trangthai, new { @class = "input", @type = "password", @name = "trangthai", @placeholder = Model.trangthai, htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-
-                        </div>
-
-
-
-                        <div class="container-login-form-btn">
-                            <input type="submit" value="Delete" class="login-form-btn" />
-                        </div>
-                    }
-
-                </div>
+                    </div>
+                    <div class="form-group form-message">
+                        <textarea class="form-control" id="message" rows="6" placeholder="Message"></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <div class="form-groups">
+                        <label class="btn-attached" for="attached_file"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach File</label>
+                        <input style="display: none" type="file" class="form-control-file" id="attached_file">
+                    </div>
+                    <div class="form-groups form-check">
+                        <input type="checkbox" class="form-check-input" id="checkBox">
+                        <label class="form-check-label" for="checkBox">I consent to receive communications from Resourcifi and collect my submitted data. For more details, check out our Privacy Policy.</label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class=" btn btn-get"><span> Submit Now!</span></button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
 
 </body>
 </html>

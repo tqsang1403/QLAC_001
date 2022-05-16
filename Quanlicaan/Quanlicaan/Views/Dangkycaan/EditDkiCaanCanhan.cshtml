@@ -1,0 +1,71 @@
+﻿@model List<Quanlicaan.Models.ModelsPage.EdiDkiCaAn>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int j = 1;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <title>Chỉnh sửa suất ăn cá nhân </title>
+</head>
+<body>
+    <div style="text-align:center">
+        <div>
+            <h4>Chỉnh sửa thông tin đăng kí ca ăn</h4>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Mã Nhân Viên</th>
+                    <th scope="col">Họ tên nhân viên</th>
+                    <th scope="col"> ID suất ăn</th>
+                    <th scope="col"> ID ca ăn</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col"> Thời gian đặt</th>
+                    <th scope="col"> Save</th>
+                    <th scope="col"> Remove</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@j</th>
+                        <td>
+                            @item.IDUser
+                        </td>
+                        <td>
+                            @item.hoTen
+                        </td>
+                        <td>
+                            @item.IDSuatAn
+                        </td>
+                        <td>
+                            @item.IDCaAn
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => item.Soluong)
+                        </td>
+                        <td>
+                            @item.ngayDK.TimeOfDay
+                        </td>
+                        <td> Lưu</td>
+                        <td> Xóa</td>
+                    </tr>
+                    j++;
+                }
+
+            </tbody>
+        </table>
+
+        <button> Quay lại </button>
+    </div>
+</body>
+</html>

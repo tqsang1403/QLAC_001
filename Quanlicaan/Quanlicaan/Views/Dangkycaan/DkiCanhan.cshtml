@@ -1,8 +1,14 @@
-﻿@model Quanlicaan.Models.DAO.DkiCaNhanModel
+﻿@model Quanlicaan.Models.ModelsPage.DkiCaNhanModel
 @{
     ViewBag.Title = "Đăng ký ca ăn cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int j = 1;
+    var now = DateTime.Now;
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script>alert('@message');</script>
+    }
 
 }
 <div>
@@ -120,7 +126,7 @@
                     <label class="label">HỌ TÊN</label>
                 </div>
                 <div class="col-75">
-                    @Html.TextBoxFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                 </div>
             </div>
             <div>
@@ -128,7 +134,7 @@
                     <label class="label">PHÒNG BAN</label>
                 </div>
                 <div class="col-75">
-                    @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                 </div>
             </div>
             <div>
@@ -136,7 +142,7 @@
                     <label class="label">NGÀY ĐĂNG KÝ</label>
                 </div>
                 <div class="col-75">
-                    @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
                 </div>
 
             </div>
@@ -144,23 +150,47 @@
             <table>
 
                 @for (int i = 0; i < Model.ListCaAn.Count; i++)
-                 {
-                    <tr>
-                        <td >
-                            @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked)
-                            @Html.HiddenFor(m => Model.ListCaAn[i].ID)
-                            @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian)
+                {
+                    if (now.TimeOfDay > Model.ListCaAn[i].Thoigian.TimeOfDay)
+                    {
+                        <tr style=" display: flex; align-items: flex-end;">
+                            <td>
+                                @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked, new { disabled = "disabled" })
+                                @Html.HiddenFor(m => Model.ListCaAn[i].ID, new { disabled = "disabled" })
+                                @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian, new { disabled = "disabled" })
 
-                        </td>
-                        <td>
-                            Ca @j
-                        </td>
-                        <td>
-                            Số lượng suất ăn
-                            @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control" } })
-                        </td>
-                    </tr>
-                    j++;
+                            </td>
+                            <td style=" margin-right :10px">
+                                Ca @j
+                            </td>
+                            <td>
+                                <h6> Quá thời gian đăng kí ca ăn</h6>
+                                @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { disabled = "disabled", htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
+                            </td>
+
+                        </tr>
+                        j++;
+                    }
+                    else
+                    {
+                        <tr style=" display: flex; align-items: flex-end;">
+                            <td>
+                                @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked)
+                                @Html.HiddenFor(m => Model.ListCaAn[i].ID)
+                                @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian)
+
+                            </td>
+                            <td style=" margin-right :10px">
+                                Ca @j
+                            </td>
+                            <td>
+                                <h6>Số lượng suất ăn</h6>
+                                @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
+                            </td>
+
+                        </tr>
+                        j++;
+                    }
                 }
 
 

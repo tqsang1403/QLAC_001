@@ -1,4 +1,5 @@
 ﻿using Quanlicaan.Models.Framework;
+using Quanlicaan.Models.ModelsPage;
 using Quanlicaan.Models.Session;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace Quanlicaan.Models.DAO
         {
             if (nhanvien != null)
             {
-                command.CommandText = "insert into NhanVien(HoTen, GioiTinh , DiaChi,SDT , IDPhongBan , ChucVu ,IDRole, username , upassword , trangthai) values(@Hoten , @gioitinh , @Diachi, @SDT ,@IdPb ,@Chucvu ,@IdRole,@username ,@pass ,@trangthai)";
+                command.CommandText = "insert into NhanVien(HoTen, GioiTinh , DiaChi,SDT , IDPhongBan , ChucVu ,IDRole, username , upassword , trangthai, PhanQuyen) values(@Hoten , @gioitinh , @Diachi, @SDT ,@IdPb ,@Chucvu ,@IdRole,@username ,@pass ,@trangthai, @phanquyen)";
 
                 command.Parameters.AddWithValue("@Hoten", nhanvien.HoTen);
                 command.Parameters.AddWithValue("@gioitinh", nhanvien.GioiTinh);
@@ -40,6 +41,7 @@ namespace Quanlicaan.Models.DAO
                 command.Parameters.AddWithValue("@username", nhanvien.username);
                 command.Parameters.AddWithValue("@pass", nhanvien.upassword);
                 command.Parameters.AddWithValue("@trangthai", nhanvien.trangthai);
+                command.Parameters.AddWithValue("@phanquyen", nhanvien.PhanQuyen);
 
                 command.ExecuteNonQuery();
 
@@ -93,6 +95,7 @@ namespace Quanlicaan.Models.DAO
                 employ.username = reader["username"].ToString();
                 employ.upassword = reader["upassword"].ToString();
                 employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
+                employ.PhanQuyen = Convert.ToBoolean(reader["PhanQuyen"]);
 
                 listnv.Add(employ);
             }
@@ -124,6 +127,8 @@ namespace Quanlicaan.Models.DAO
             employ.username = reader["username"].ToString();
             employ.upassword = reader["upassword"].ToString();
             employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
+            employ.PhanQuyen = Convert.ToBoolean(reader["PhanQuyen"]);
+
 
             conn.Close();
             return employ;
@@ -132,7 +137,7 @@ namespace Quanlicaan.Models.DAO
         // thực hiện update
         public void UpdateNv(NhanVien nhanvien)
         {
-            command.CommandText = "Update NhanVien Set HoTen =@hoten , GioiTinh = @Gioitinh , DiaChi = @Diachi, SDT = @sdt , IDPhongBan = @idpb, ChucVu =@ChucVu,IDRole = @idRole ,username = @username, upassword = @pass, trangthai=@trangthai where ID = @ID";
+            command.CommandText = "Update NhanVien Set HoTen =@hoten , GioiTinh = @Gioitinh , DiaChi = @Diachi, SDT = @sdt , IDPhongBan = @idpb, ChucVu =@ChucVu,IDRole = @idRole ,username = @username, upassword = @pass, trangthai=@trangthai , PhanQuyen=@phanquyen where ID = @ID";
             command.Parameters.AddWithValue("@ID", nhanvien.ID);
             command.Parameters.AddWithValue("@hoten", nhanvien.HoTen);
             command.Parameters.AddWithValue("@Gioitinh", nhanvien.GioiTinh);
@@ -144,6 +149,8 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.AddWithValue("@username", nhanvien.username);
             command.Parameters.AddWithValue("@pass", nhanvien.upassword);
             command.Parameters.AddWithValue("@trangthai", nhanvien.trangthai);
+            command.Parameters.AddWithValue("@phanquyen", nhanvien.PhanQuyen);
+
 
             command.ExecuteNonQuery();
             conn.Close();

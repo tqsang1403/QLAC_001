@@ -1,5 +1,6 @@
 ﻿using Quanlicaan.Models.DAO;
 using Quanlicaan.Models.Framework;
+using Quanlicaan.Models.ModelsPage;
 using Quanlicaan.Models.Session;
 using System;
 using System.Collections.Generic;
@@ -14,32 +15,30 @@ namespace Quanlicaan.Controllers
     public class DangkycaanController : Controller
     {
 
-        public ActionResult DkiCanhan()
+        public ActionResult DkiCanhan(string thongBao)
         {
-            List<CaAn> obj = new List<CaAn>()
-           {
-               new CaAn {ID=1,Thoigian = Convert.ToDateTime("2022-03-02 09:00:00.000") , IsChecked=false , SoluongSuatan=0 },
-               new CaAn {ID=2, Thoigian = Convert.ToDateTime("2022-03-02 15:00:00.000") , IsChecked=false ,SoluongSuatan=0},
-               new CaAn {ID=3, Thoigian = Convert.ToDateTime("2022-05-04 20:00:00.000") , IsChecked=false ,SoluongSuatan=0}
-           };
-
+            ViewData["message"] = thongBao;
+            CaAnModel caAnModel = new CaAnModel();
             DkiCaNhanModel model = new DkiCaNhanModel();
             UserSession us = (UserSession)Session["UserSession"];
             model.hoTen = us.hoTen;
             model.phongBan = us.TenPhongBan;
             model.ngayDK = DateTime.Now;
-            model.ListCaAn = obj;
+            model.ListCaAn = caAnModel.GetCaAns();
             return View(model);
 
         }
+
+
         [HttpPost]
         public ActionResult DkiCanhan(DkiCaNhanModel model)
         {
             if (ModelState.IsValid)
             {
+                string thongbao;
                 UserSession us1 = (UserSession)Session["UserSession"];
                 SuatAnModel samodel = new SuatAnModel();
-                var now = DateTime.Now;
+                string now = DateTime.Now.ToString();
                 var check =  samodel.InsertSuatAn(us1.UserID,now);
 
                 if (check)
@@ -64,13 +63,13 @@ namespace Quanlicaan.Controllers
                             
                         }
                     }
-                    Response.Write("<script>alert('Đăng kí ca ăn cá nhân thành công')</script>");
-                    return RedirectToAction("Home", "Home");
+                    thongbao = "them moi thanh cong ";
+                    return RedirectToAction("Home", "Home" , new { thongbao });
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Đăng kí ca ăn thất bại!");
-                    return View();
+                    thongbao = "them moi  không thành công thanh cong ";
+                    return View(new { thongbao});
                 }
 
                
@@ -82,17 +81,12 @@ namespace Quanlicaan.Controllers
             }
         }
 
+
         public ActionResult TapThe()
         {
-            List<CaAn> obj = new List<CaAn>()
-           {
-               new CaAn {ID=1,Thoigian = Convert.ToDateTime("2022-03-02 09:00:00.000") , IsChecked=false , SoluongSuatan=0 },
-               new CaAn {ID=2, Thoigian = Convert.ToDateTime("2022-03-02 15:00:00.000") , IsChecked=false ,SoluongSuatan=0},
-               new CaAn {ID=3, Thoigian = Convert.ToDateTime("2022-05-04 20:00:00.000") , IsChecked=false ,SoluongSuatan=0}
-           };
 
             SuatAnModel samodel = new SuatAnModel();
-            
+            CaAnModel caAnModel = new CaAnModel();
             UserSession us = (UserSession)Session["UserSession"];
             DataSet ds = samodel.getAllNhanVienCungPhongBan(us.IdPhongBan);
             List<DkiCaAnTapTheModel> list = new List<DkiCaAnTapTheModel>();
@@ -104,21 +98,23 @@ namespace Quanlicaan.Controllers
                 model.hoTen = dr["HoTen"].ToString();
                 model.phongBan = dr["TenPB"].ToString();
                 model.ngayDK =time;
-                model.ListCaAn = obj;
+                model.ListCaAn = caAnModel.GetCaAns();
                 list.Add(model);
             }
 
             return View(list);
         }
 
+
         [HttpPost]
         public ActionResult DkiTapThe(List<DkiCaAnTapTheModel> list)
         {
             if (ModelState.IsValid)
             {
+                string thongbao;
                 UserSession us = (UserSession)Session["UserSession"];
                 SuatAnModel samodel = new SuatAnModel();
-                var time = DateTime.Now;
+                string time =  DateTime.Now.ToString();
                 for (int i = 0; i < list.Count; i++)
                 {
                     if(list[i].TrangThai == true)
@@ -128,7 +124,7 @@ namespace Quanlicaan.Controllers
                         {
                             foreach (var item in list[i].ListCaAn)
                             {
-                                if (item.IsChecked && item.ID == 1 && item.SoluongSuatan > 0)
+                                if (item.IsChecked && item.ID == 1 && item.SoluongSuatan > 0 )
                                 {
                                     samodel.InsertCTSuatAn(list[i].IDUser, time, item.ID, item.SoluongSuatan);
 
@@ -159,8 +155,8 @@ namespace Quanlicaan.Controllers
                     }
 
                 }
-                Response.Write("<script>alert('Đăng kí ca ăn tập thể thành công')</script>");
-                return RedirectToAction("Home", "Home"); return View();
+                thongbao = "them moi thanh cong ";
+                return RedirectToAction("Home", "Home", new { thongbao });
 
             }
             else
@@ -170,6 +166,18 @@ namespace Quanlicaan.Controllers
             }
         }
 
+       
+
+
+        public ActionResult EditDkiCaanCanhan()
+        {
+            UserSession us = (UserSession)Session["UserSession"];
+            SuatAnModel suatAnModel = new SuatAnModel();
+            List<EdiDkiCaAn> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan);
+            return View( list);
+        }
+
 
     }
-}
+
+ }

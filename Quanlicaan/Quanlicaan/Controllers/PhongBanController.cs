@@ -27,59 +27,7 @@ namespace Quanlicaan.Controllers
         }
 
 
-        private Model1 db = new Model1();
-
-        public ActionResult EditPB(int id = 0)
-        {
-
-            PhongBan pb = db.PhongBans.Find(id);
-
-            if (pb == null)
-
-            {
-
-                return HttpNotFound();
-
-            }
-
-            return View(pb);
-
-        }
-
-
-        [HttpPost]
-
-        public ActionResult EditPB(PhongBan pb)
-
-        {
-
-            if (ModelState.IsValid)
-
-            {
-
-                db.Entry(pb).State = EntityState.Modified;
-
-                db.SaveChanges();
-
-                return RedirectToAction("ShowAll");
-
-            }
-
-            return View(pb);
-
-        }
-
-
-
-        public ActionResult AddPB()
-
-        {
-
-           
-
-            return View();
-
-        }
+        
 
     }
 }

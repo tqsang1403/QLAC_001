@@ -70,6 +70,7 @@ namespace Quanlicaan.Controllers
             return RedirectToAction("Show", "NhanVien");
 
         }
+       
 
         ///THÊM NHÂN VIÊN MƯỚI
         [HttpGet]

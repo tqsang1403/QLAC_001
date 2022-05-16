@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Quanlicaan.Models.DAO
+namespace Quanlicaan.Models.ModelsPage
 {
     public class DkiCaAnTapTheModel
     {

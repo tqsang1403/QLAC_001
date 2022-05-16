@@ -1,13 +1,14 @@
 ﻿@using System.Data
+@model Quanlicaan.Models.Framework.NhanVien
 @{
     ViewBag.Title = "Edit Nhan vien";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<SelectListItem> list = new List<SelectListItem>();
     List<SelectListItem> listRole = new List<SelectListItem>();
-    foreach(DataRow dr in ViewBag.phongBan.Rows)
+    foreach (DataRow dr in ViewBag.phongBan.Rows)
     {
         SelectListItem item = new SelectListItem();
-        item.Value =dr["ID"].ToString();
+        item.Value = dr["ID"].ToString();
         item.Text = dr["TenPB"].ToString();
         list.Add(item);
     }
@@ -21,7 +22,6 @@
     }
 
 }
-@model Quanlicaan.Models.Framework.NhanVien
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,120 +29,95 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="~/css/editnv.css" rel="stylesheet">
-    @*<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>*@
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 
 </head>
 <body>
-    <sec~/css/-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-4">
-                    <h2 class="heading-section">Chỉnh sửa thông tin nhân viên</h2>
 
-                    @*@Html.DropDownListFor("phong ban", , "Chọn phòng ban")*@
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    @using (Html.BeginForm("EditNV", "NhanVien", FormMethod.Post, new { @class = "editstaff-form validate-form" }))
-                       {
-
-                                    <div class="wrap-input validate-input" data-validate="Id  is required">
-                                        <p> Id nhân viên</p>
-                                        @Html.TextBoxFor(model => model.ID, new { @class = "input", @type = "text", @name = "id", @placeholder = Model.ID, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Họ tên is required">
-                                        <p>Họ Tên nhân viên</p>
-                                        @Html.TextBoxFor(model => model.HoTen, new { @class = "input", @type = "text", @name = "HoTen", @placeholder = Model.HoTen, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Giới tính is required">
-                                        <p> Giới tính</p>
-                                        @Html.TextBoxFor(model => model.GioiTinh, new { @class = "input", @type = "text", @name = "GioiTinh", @placeholder = Model.GioiTinh, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-
-                                    </div>
-                                    <div class="wrap-input validate-input" data-validate="Địa chỉ is required">
-                                        <p> Địa chỉ nhân viên</p>
-                                        @Html.TextBoxFor(model => model.DiaChi, new { @class = "input", @type = "text", @name = "DiaChi", @placeholder = Model.DiaChi, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="SDT is required">
-                                        <p> SDT</p>
-                                        @Html.TextBoxFor(model => model.SDT, new { @class = "input", @type = "text", @name = "SDT", @placeholder = Model.SDT, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-
-                                    </div>
-
-
-                                    <div class="wrap-input validate-input" data-validate="Department is required">
-                                        <p>Chọn phòng ban</p>
-                                        @Html.DropDownListFor(model => model.IDPhongBan,list , new { @class = "dropdown" })
-                                        @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Chuc vu is required">
-                                        <p> Chức vụ nhân viên</p>
-                                        @Html.TextBoxFor(model => model.ChucVu, new { @class = "input", @type = "text", @name = "ChucVu", @placeholder = Model.ChucVu, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input " data-validate="Id Role is required">
-                                        <p> ID Role</p>
-                                        @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "dropdown" })
-                                        @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Username is required">
-                                        <p> Username</p>
-                                        @Html.TextBoxFor(model => model.username, new { @class = "input", @type = "text", @name = "username", @placeholder = Model.username, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Password is required">
-                                        <p>Password</p>
-                                        @Html.TextBoxFor(model => model.upassword, new { @class = "input", @type = "password", @name = "pass", @placeholder = Model.upassword, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
-
-                                    </div>
-
-                                    <div class="wrap-input validate-input" data-validate="Password is required">
-                                        <p> Trạng Thái</p>
-                                        @Html.TextBoxFor(model => model.trangthai, new { @class = "input", @type = "text", @name = "trangthai", @placeholder = Model.trangthai, htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
-
-                                    </div>
-
-
-
-                                    <div class="container-login-form-btn">
-                                        <input type="submit" value="Save" class="login-form-btn" />
-                                    </div>
-                                }
+    <div class="container">
+        <section class="get-in-touch">
+            <h3 class="title">Chỉnh sửa thông tin nhân viên</h3>
+            @using (Html.BeginForm("EditNV", "NhanVien", FormMethod.Post, new { @class = "contact-form row" }))
+            {
+                <div class="form-field col-lg-6">
+                    <label class="label" for="iduser">ID User</label>
+                    @Html.TextAreaFor(model => model.ID, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser", disabled = "disabled" })
+                    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
 
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Họ Tên</label>
+                    @Html.TextAreaFor(model => model.HoTen, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Giới tính </label>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.GioiTinh)
+                        (Nam :Chọn  , Nữ : không tích)
+                        @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Địa chỉ</label>
+                    @Html.TextAreaFor(model => model.DiaChi, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Số điện thoại</label>
+                    @Html.TextAreaFor(model => model.SDT, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Chọn phòng ban</label>
+                    @Html.DropDownListFor(model => model.IDPhongBan, list, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Chức vụ nhân viên</label>
+                    @Html.TextAreaFor(model => model.ChucVu, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Quyền đăng nhập</label>
+                    @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.ValidationMessageFor(model => model.Role.URole, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Username</label>
+                    @Html.TextAreaFor(model => model.username, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Password</label>
+                    @Html.TextAreaFor(model => model.upassword, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-field col-lg-6 ">
+                    <label class="label" for="iduser">Trạng thái </label>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.trangthai)
+                        (Active :Chọn  , No Active : không tích)
+                        @Html.ValidationMessageFor(model => model.trangthai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-field col-lg-6">
+                    <label class="label" for="iduser">Quyền đăng kí ca ăn tập thể </label>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.PhanQuyen)
+                        (Yes :Chọn  , No : không tích)
+                        @Html.ValidationMessageFor(model => model.PhanQuyen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-field col-lg-6">
+                    <input class="submit-btn" type="submit" value="Submit">
+                </div>
+            }
+        </section>
+
+    </div>
 
 </body>
 </html>

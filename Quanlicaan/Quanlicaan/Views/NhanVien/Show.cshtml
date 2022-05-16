@@ -52,6 +52,7 @@
                                 <th>username</th>
                                 <th>password</th>
                                 <th>trang thai</th>
+                                <th>Quyền đăng kí tập thể</th>
                                 @if (info.IDRoleUser == 1)
                                 {
                                     <th>Edit</th>
@@ -98,7 +99,16 @@
                                             {
                                                 <th> Không hoạt động</th>
                                             }
-                                            @if (info.IDRoleUser == 1)
+
+                                            @if(item.PhanQuyen)
+                                            {
+                                                <th>  Yes</th>
+                                            }
+                                            else
+                                            {
+                                                <th> No</th>
+                                            }
+                                          @if (info.IDRoleUser == 1)
                                             {
                                                 <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
                                                 <th><a href="@Url.Action("Delete", "NhanVien" , new { id = item.ID})">Xóa nhân viên</a></th>
