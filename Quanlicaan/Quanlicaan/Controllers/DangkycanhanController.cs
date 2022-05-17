@@ -46,7 +46,7 @@ namespace Quanlicaan.Controllers
             {
                 thongbao = "Regist Failed !";
             }
-            return RedirectToAction("Dangkycanhan", "Dangkycanhan", new { thongbao });
+            return RedirectToAction("Home2", "Home", new { thongbao });
         }
     }
 }

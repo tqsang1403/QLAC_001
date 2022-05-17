@@ -13,7 +13,9 @@ namespace Quanlicaan.Models.ShowModels
      
         public DateTime NgayDk { get; set; }
 
-        
+        public int Thanhtien { get; set; }
+
+        public string tenPB { get; set; }
 
 
     }

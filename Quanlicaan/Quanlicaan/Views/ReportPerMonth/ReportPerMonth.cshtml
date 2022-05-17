@@ -3,20 +3,22 @@
 @{
     ViewBag.Title = "Thống kê theo tháng";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
+    int a;
+}
+@using System.Linq;
 <h2 style="text-align:center">Thống kê ca ăn theo tháng</h2>
 
 <div class="container" style="display:block;width:60%;margin-left:auto;margin-right:auto;padding:15px;text-align:center">
-    @using (Html.BeginForm("Index", "ReportPerMonth", FormMethod.Get))
+    @using (Html.BeginForm("ReportPerMonth", "ReportPerMonth", FormMethod.Get))
     {
         <div style="display:block;padding:4px;width:100%">
-            <label for="start" style="width:20%">Ngày bắt đầu</label>
+            <label for="start" style="width:20%">Từ ngày</label>
             <input type="date" name="start" />
         </div>
 
         <div style="display:block;padding:4px;width:100%">
-            <label for="end" style="width:20%">Ngày kết thúc</label>
+            <label for="end" style="width:20%">Đến ngày</label>
             <input type="date" name="end" />
         </div>
 
@@ -24,41 +26,59 @@
             <input type="submit" value="Tìm kiếm" class="btn btn-success" style="width:50%" />
         </div>
     }
-</div>
-<table class="table table-hover table-bordered table-striped" style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
-    <tr>
-        <th>
-            Mã nhân viên
-        </th>
-        <th>
-            Họ và tên
-        </th>
-        <th>
-            Tổng số lượng suất ăn đã đăng ký
-        </th>
-        <th>
-            Thời gian đăng ký
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+
+</div>
+@if (Model.Any())
+{
+    <table class="table table-hover table-bordered " style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDNV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soluong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayDk)
-            </td>
+
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Phòng ban
+            </th>
+            <th>
+                Tổng số lượng suất ăn
+                @*<th>
+                Thời gian đăng ký
+            </th>*@
+            <th>
+                Thành tiền(VND)
+            </th>
 
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenPB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.NgayDk)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem=>item.Thanhtien)
+            </td>
+
+            </tr>
+        }
+
+    </table>
+}
+ else
+
+{
+<h1 style="padding:15%;text-align:center;"> Không có thông tin phù hợp!</h1>
+}
+

@@ -23,85 +23,88 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="@Url.Action("Home","Home")">Quản lý ăn ca</a>
-                    @if (Session["user"] != null) 
-                    { 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            @if (per.IDRole == 1)
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Quản lý
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Giao diện</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","NhanVien")">Nhân viên</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Index","PhongBan")">Phòng ban</a></li>
+
+                    @if (Session["user"] != null)
+                    {
+                        <a class="navbar-brand" href="@Url.Action("Home2", "Home")">Quản lý ăn ca</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                @if (per.IDRole == 1)
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Quản lý
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Giao diện</a></li>
+                                            <li><a class="dropdown-item" href="@Url.Action("Index", "NhanVien")">Nhân viên</a></li>
+                                            <li><a class="dropdown-item" href="@Url.Action("Index", "PhongBan")">Phòng ban</a></li>
 
 
-                                    </ul>
-                                </li>
-                            }
+                                        </ul>
+                                    </li>
+                                }
 
-                            @if (per.RoleRegist == "Cá nhân")
-                            {
-                                <a class="dropdown-item" href="@Url.Action("Dangkycanhan","Dangkycanhan")">Đăng ký ăn cá nhân</a>
-                            }
-                            @if (per.RoleRegist == "Tập thể")
-                            {
-                                <a class="dropdown-item" href="@Url.Action("Dangkycanhan","Dangkycanhan")">Đăng ký ăn cá nhân</a>
-                                <a class="dropdown-item" href="@Url.Action("TapThe","Dangkytapthe")">Đăng ký ăn tập thể</a>
-                            }
-
-
-
-                            @if (per.IDRole != 1)
-                            {
-                                <a class="dropdown-item" href="@Url.Action("PersonalReport","ReportPersonal")">Thống kê cá nhân</a>
-                            }
-                            @if (per.IDRole == 1)
-                            {
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Thống kê
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="@Url.Action("PersonalReport","ReportPersonal")">Cá nhân</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("ReportPerDay","ReportsPerDay")">Theo ngày</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("ReportPerMonth","ReportPerMonth")">Theo Tháng</a></li>
-
-                                    </ul>
-                                </li>
-                            }
+                                @if (per.RoleRegist == "Cá nhân")
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Dangkycanhan", "Dangkycanhan")">Đăng ký ăn cá nhân</a>
+                                }
+                                @if (per.RoleRegist == "Tập thể")
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Dangkycanhan", "Dangkycanhan")">Đăng ký ăn cá nhân</a>
+                                    <a class="dropdown-item" href="@Url.Action("TapThe", "Dangkytapthe")">Đăng ký ăn tập thể</a>
+                                }
 
 
-                        </ul>
-                        <form class="nav-item dropdown">
+
+                                @if (per.IDRole != 1)
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("PersonalReport", "ReportPersonal")">Thống kê cá nhân</a>
+                                }
+                                @if (per.IDRole == 1)
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Thống kê
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="@Url.Action("PersonalReport", "ReportPersonal")">Cá nhân</a></li>
+                                            <li><a class="dropdown-item" href="@Url.Action("ReportPerDay", "ReportsPerDay")">Theo ngày</a></li>
+                                            <li><a class="dropdown-item" href="@Url.Action("ReportPerMonth", "ReportPerMonth")">Theo Tháng</a></li>
+
+                                        </ul>
+                                    </li>
+                                }
+
+
+                            </ul>
+                            <form class="nav-item dropdown">
+                                <li class="logout">
+                                    <div class="divInfo">
+                                        @{ userSession info = (userSession)Session["user"];
+                                        }
+                                            <p> Xin chào <a href="@Url.Action("Details","UserLogin")"><i class="fa-regular fa-circle-user"><b>@per.HoTen</b></i></a> </p>
+                                        </div>
+
+                                        <a href="~/Login/Logout" class="nav-dangxuat">Đăng xuất</a>
+                                    </li>
+
+                                </form>
+
+                            </div>
+
+                        }
+                        else
+                        {
+                            <a class="navbar-brand" href="@Url.Action("Home","Home")">Quản lý ăn ca</a>
                             <li class="logout">
                                 <div class="divInfo">
-                                    @{ userSession info = (userSession)Session["user"];
-                                        <p> Xin chào <a href="@Url.Action("Details","UserLogin")"><i class="fa-regular fa-circle-user"><b>@per.HoTen</b></i></a> </p>}
+                                    <a href="@Url.Action("Details","UserLogin")">Đăng nhập</a>
                                 </div>
-                                
-                                <a  href="~/Login/Logout" class="nav-dangxuat" >Đăng xuất</a>
+
+                                <a href="~/Login/RegistEmp" class="nav-dangxuat">Đăng ký</a>
                             </li>
-
-                        </form>
-                        
-                    </div>
-
-            }
-            else
-            {
-                <li class="logout">
-                    <div class="divInfo">
-                    <a href="@Url.Action("Details","UserLogin")">Đăng nhập</a>
-                    </div>
-
-                    <a href="~/Login/RegistEmp" class="nav-dangxuat">Đăng ký</a>
-                </li>
-            }
+                        }
                 </div>
             </nav>
         </div>

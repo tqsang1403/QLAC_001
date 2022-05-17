@@ -4,16 +4,16 @@
     ViewBag.Title = "Thống kê theo ngày";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using System.Linq;
 <h2 style="text-align:center">Thống kê theo ngày</h2>
 
 <div class="container" style="display:block;width:60%;margin-left:auto;margin-right:auto;padding:15px;text-align:center">
     @using (Html.BeginForm("ReportPerDay", "ReportsPerDay", FormMethod.Get))
     {
-       
+
         <div style="display:block;padding:4px;width:100%">
-            <label for="time" style="width:20%"  >Chọn ngày:</label>
-            <input type="date" name="time" format="dd-mm-yyyy" />
+            <label for="time" style="width:20%">Chọn ngày:</label>
+            <input type="date" name="time" value="" min="1997-01-01" max="2119-12-31" />
         </div>
 
         <div style="display:block;padding:4px;width:100%">
@@ -21,46 +21,49 @@
         </div>
     }
 </div>
-
-
-<table class="table table-hover table-bordered table-striped" style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
-    <tr>
-
-        <th>
-            Họ và tên
-        </th>
-        <th>
-            Ngày đăng ký
-        </th>
-        <th>
-            Ca ăn
-        </th>
-        <th>
-            Số lượng
-        </th>
-
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
+@if (Model.Any())
+{
+    <table class="table table-hover table-bordered " style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
         <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayDk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenCa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Soluong)
-            </td>
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Ngày đăng ký
+            </th>
+            <th>
+                Ca ăn
+            </th>
+            <th>
+                Số lượng
+            </th>
 
 
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDk)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenCa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+
+
+            </tr>
+        }
+
+    </table>
+
+}
+            else { <h1 style="padding:15%; text-align:center;"> Không có thông tin phù hợp!</h1>}

@@ -62,7 +62,7 @@ namespace Quanlicaan.Controllers
                     Thongbao = "Dang nhap thanh cong";
                     TempData["message"] = "Dang nhap thanh cong";
 
-                    return RedirectToAction("Home","Home",new {Thongbao});
+                    return RedirectToAction("Home2","Home",new {Thongbao});
 
 
                 }

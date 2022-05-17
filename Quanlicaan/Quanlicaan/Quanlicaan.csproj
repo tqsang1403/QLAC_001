@@ -689,6 +689,7 @@
     <Content Include="Views\ReportPersonal\PersonalReport.cshtml" />
     <Content Include="Views\ReportPerMonth\ReportPerMonth.cshtml" />
     <Content Include="Views\ReportsPerDay\ReportPerDay.cshtml" />
+    <Content Include="Views\Home\Home2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

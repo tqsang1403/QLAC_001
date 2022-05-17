@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Quanlicaan.Models.ShowModels.ChiTietCaAnModel>
+@using System.Linq;
+@{
+    <link href="~/css/shome.css" rel="stylesheet" />
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var day = (@DateTime.Today.Day);
+    var month = (DateTime.Today.Month);
+    var year = (DateTime.Today.Year);
+    var fullday = DateTime.Now;
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
+}
+<div class="container" style="padding-top:20px;margin-left:auto;margin-right:auto;">
+
+    @if (Model.Any())
+    {
+        <table class="table tab-content table-bordered">
+            <thead> Ca ăn đã đăng ký ngày @day - @month - @year   </thead>
+            <tr>
+                <th>
+                    Ca ăn
+                </th>
+                <th>
+                    Số lượng(suất)
+                </th>
+                <th>
+                    Thời gian đăng ký
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenCaAn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayDk)
+                    </td>
+
+
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <h2 style="text-align:center;padding:15%">Hôm nay bạn chưa đăng ký ăn !</h2>
+    }
+
+
+</div>

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 
 namespace Quanlicaan.Models.ModelADO
 {
@@ -44,6 +45,7 @@ namespace Quanlicaan.Models.ModelADO
             com.Parameters.AddWithValue("@SLCa3", model.SLCa3);
             conn.Open();
             com.ExecuteNonQuery();
+            com.Parameters.Clear();
             conn.Close();
         }
 

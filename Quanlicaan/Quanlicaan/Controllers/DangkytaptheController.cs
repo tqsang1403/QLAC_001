@@ -94,7 +94,7 @@ namespace Quanlicaan.Controllers
 
                 }
                 thongbao = "Success";
-                return RedirectToAction("TapThe", "Dangkytapthe", new {thongbao}); 
+                return RedirectToAction("Home2", "Home", new {thongbao}); 
 
             }
             else

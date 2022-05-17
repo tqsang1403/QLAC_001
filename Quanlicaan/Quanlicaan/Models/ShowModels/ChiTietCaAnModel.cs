@@ -20,7 +20,7 @@ namespace Quanlicaan.Models.ShowModels
         public int Soluong { get; set; }
 
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}")]
         public DateTime NgayDk { get; set; }
 
         SqlCommand command = new SqlCommand();
@@ -36,6 +36,20 @@ namespace Quanlicaan.Models.ShowModels
             command.Parameters.AddWithValue("@IDnv", IDnv);
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds,"Baocaocanhan");
+            command.Parameters.Clear();
+            conn.Close();
+            return ds;
+        }
+        
+        
+        public DataSet TodayRegist (int IDNV)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "Select ChiTietSuatAn.Soluong, NhanVien.*,SuatAn.*,CaAn.* from ChiTietSuatAn full join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID join SuatAn on NhanVien.ID = SuatAn.IDUser join CaAn on ChiTietSuatAn.IDCaan = CaAn.ID where ChiTietSuatAn.Soluong > 0 and(convert(varchar(10), SuatAn.Thoigiandat, 101)) = (SElect DATEADD(DAY, 0, CAST(GETDATE() AS date)))  AND NhanVien.ID = @IDNV";
+            command.Parameters.AddWithValue("@IDNV", IDNV);
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds,"CTtoday");
             command.Parameters.Clear();
             conn.Close();
             return ds;
