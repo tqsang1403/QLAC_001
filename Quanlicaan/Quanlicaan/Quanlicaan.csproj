@@ -528,6 +528,7 @@
     <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
     <Compile Include="Models\ModelADO\SuatAnModels.cs" />
+    <Compile Include="Models\Session\timeSession.cs" />
     <Compile Include="Models\ShowModels\ChiTietCaAnModel.cs" />
     <Compile Include="Models\ShowModels\PhongBanModels.cs" />
     <Compile Include="Models\Session\userLogin.cs" />

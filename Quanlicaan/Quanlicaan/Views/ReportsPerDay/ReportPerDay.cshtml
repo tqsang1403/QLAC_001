@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<Quanlicaan.Models.ShowModels.ReportsPerDay>
-
+@using Quanlicaan.Models.Session
 @{
     ViewBag.Title = "Thống kê theo ngày";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    var time = (timeSession)Session["time"];
 }
 @using System.Linq;
 <h2 style="text-align:center">Thống kê theo ngày</h2>
@@ -23,37 +26,46 @@
 </div>
 @if (Model.Any())
 {
+    
+   
     <table class="table table-hover table-bordered " style="table-layout: fixed; width: 100%;margin-left:auto; margin-right:auto;">
         <tr>
 
             <th>
                 Họ và tên
             </th>
-            <th>
-                Ngày đăng ký
-            </th>
-            <th>
-                Ca ăn
-            </th>
-            <th>
-                Số lượng
-            </th>
 
+            <th>
+                Ca 1
+            </th>
+            <th>
+                Ca 2
+            </th>
+            <th>
+                Ca 3
+            </th>
+            <th>
+                Tổng
+            </th>
 
         </tr>
 
         @foreach (var item in Model)
         {
+            
             <tr>
 
                 <td>
                     @Html.DisplayFor(modelItem => item.HoTen)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NgayDk)
+                    @Html.DisplayFor(modelItem => item.Soluongca1)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TenCa)
+                    @Html.DisplayFor(modelItem => item.Soluongca2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluongca3)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Soluong)
@@ -66,4 +78,4 @@
     </table>
 
 }
-            else { <h1 style="padding:15%; text-align:center;"> Không có thông tin phù hợp!</h1>}
+            else { <h1 style="padding:15%; text-align:center;"> Không có thông tin phù hợp cho ngày <b> @time.day</b>!</h1>}

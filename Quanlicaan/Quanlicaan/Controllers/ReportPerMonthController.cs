@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data;
 using Quanlicaan.Models.ShowModels;
 using System.Windows.Forms;
+using Quanlicaan.Models.Session;
 
 namespace Quanlicaan.Controllers
 {
@@ -22,13 +23,23 @@ namespace Quanlicaan.Controllers
                 {
                 //select nv.*, sa.Thoigiandat, (select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID) from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser where sa.Thoigiandat between between '" + start + "'       and      '" + end + " ' 
                 //string query = "SELECT   ( select sum(ChiTietSuatAn.Soluong) AS TONGCONG from ChiTietSuatAn where ChiTietSuatAn.IDUser = NhanVien.ID)Tongsoluong, SuatAn.*, NhanVien.HoTen FROM ChiTietSuatAn  full join SuatAn on ChiTietSuatAn.IDSuatAn = SuatAn.ID join NhanVien on SuatAn.IDUser = NhanVien.ID where SuatAn.Thoigiandat between '" + start + "'       and      '" + end + " '      ";
-                string query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID)Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'       and      '" + end + " ' ";
+                //string query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and   '" + end + " ' ")Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "' and   '" + end + "'  " ;
+
+                timeSession tm = new timeSession();
+
+
+                String query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and  '" + end + "' )Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'  and  '" + end + "' ";
                 command = new SqlCommand(query, conn);
 
                 conn.Open();
 
                 SqlDataAdapter sda = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
+                tm.startt = start;
+                tm.endd = end;
+
+                Session["time"] = tm;
+
                 sda.Fill(ds);
                 List<ReportsPerMonth> lc = new List<ReportsPerMonth>();
                 foreach (DataRow dr in ds.Tables[0].Rows)
@@ -66,6 +77,12 @@ namespace Quanlicaan.Controllers
                 command = new SqlCommand(query, conn);
 
                 conn.Open();
+                timeSession tm = new timeSession();
+                tm.startt = start;
+                tm.endd = end;
+
+                Session["time"] = tm;
+
 
                 SqlDataAdapter sda = new SqlDataAdapter(command);
                 DataSet ds = new DataSet();
