@@ -34,33 +34,42 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @if (Model.Count == 0)
                 {
-                    <tr>
-                        <th scope="row">@j</th>
-                        <td>
-                            @item.IDUser
-                        </td>
-                        <td>
-                            @item.hoTen
-                        </td>
-                        <td>
-                            @item.IDSuatAn
-                        </td>
-                        <td>
-                            @item.IDCaAn
-                        </td>
-                        <td>
-                            @Html.TextBoxFor(m => item.Soluong)
-                        </td>
-                        <td>
-                            @item.ngayDK.TimeOfDay
-                        </td>
-                        <td> Lưu</td>
-                        <td> Xóa</td>
-                    </tr>
-                    j++;
+                    <div style="color:red ; font-size:2.4rem ; font-weight:600"> @ViewBag.message</div> 
                 }
+
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@j</th>
+                            <td>
+                                @item.IDUser
+                            </td>
+                            <td>
+                                @item.hoTen
+                            </td>
+                            <td>
+                                @item.IDSuatAn
+                            </td>
+                            <td>
+                                @item.IDCaAn
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(m => item.Soluong)
+                            </td>
+                            <td>
+                                @item.ngayDK.TimeOfDay
+                            </td>
+                            <td> Lưu</td>
+                            <td> Xóa</td>
+                        </tr>
+                        j++;
+                    }
+                }
+
 
             </tbody>
         </table>

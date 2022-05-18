@@ -1,43 +1,72 @@
 ﻿@using Quanlicaan.Models.Session
+@using System
+@using System.Data
+@model dynamic
+
+
 @{
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var info = (UserSession)Session["UserSession"];
+    List<SelectListItem> list = new List<SelectListItem>();
+    foreach (DataRow dr in Model.Phongbans.Rows)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Value = dr["ID"].ToString();
+        item.Text = dr["TenPB"].ToString();
+        list.Add(item);
+    }
 
 }
-@model List<Quanlicaan.Models.Framework.NhanVien>
+
 <!doctype html>
 <html lang="en">
 <head>
     <title>Danh sách nhân viên </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="~/css/">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/shome.css">
 
 </head>
 <body>
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-4">
-                    <h2 class="heading-section">Danh sách nhân viên</h2>
+                <div class="col-md-12 text-center mb-4">
+                    <h2 class="title">Danh sách nhân viên</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get))
+                <div class="search">
+                    @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get, new { @class = "contact-form row" }))
                     {
-                        <div class="form-group">
-                            <label>Tìm kiếm nhân viên </label>
-                            <input type="Text" class="form-control mx-sm-3" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm">
-                            <button type="submit" class="btn btn-primary"> Tìm kiếm</button>
-                        </div><hr />
+                        <div>
+                            <input type="Text" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm" class="input_search">
+                            <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                        </div>
                     }
+
+                    @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get, new { @class = "contact-form row" }))
+                    {
+                        <div>
+                            @Html.DropDownList("idPhongBan", list , new { @class ="input_search"})
+                            <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                        </div>
+                    }
+
+                    @if (info.IDRoleUser == 1)
+                    {
+                        <div>
+                            <button class="submit-btn "> @Html.ActionLink("Thêm mới", "AddNV", null, new { @class = "add_link" })  </button>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-md-12">
                     <div class="table-wrap">
                         <table class="table">
                             <tr>
@@ -60,55 +89,55 @@
                                 }
                             </tr>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.Nhanviens)
                                 {
                                     if (item.trangthai == true)
                                     {
                                         <tr>
-                                            <th>@item.ID</th>
-                                            <th>@item.HoTen</th>
+                                            <td>@item.ID</td>
+                                            <td>@item.HoTen</td>
                                             @if (@item.GioiTinh)
                                             {
-                                                <th> Nam </th>
+                                                <td> Nam </td>
                                             }
                                             else
                                             {
-                                                <th> Nữ</th>
+                                                <td> Nữ</td>
                                             }
 
-                                            <th>@item.DiaChi</th>
-                                            <th>@item.SDT</th>
-                                            <th>@item.IDPhongBan</th>
-                                            <th>@item.ChucVu</th>
+                                            <td>@item.DiaChi</td>
+                                            <td>@item.SDT</td>
+                                            <td>@item.IDPhongBan</td>
+                                            <td>@item.ChucVu</td>
                                             @if (item.IDrole == 1)
                                             {
-                                                <th> Admin</th>
+                                                <td> Admin</td>
                                             }
                                             else
                                             {
-                                                <th> Nhân viên</th>
+                                                <td> Nhân viên</td>
                                             }
-                                            <th>@item.username</th>
-                                            <th>@item.upassword</th>
+                                            <td>@item.username</td>
+                                            <td>@item.upassword</td>
 
                                             @if (@item.trangthai)
                                             {
-                                                <th> Hoạt động </th>
+                                                <td> Hoạt động </td>
                                             }
                                             else
                                             {
-                                                <th> Không hoạt động</th>
+                                                <td> Không hoạt động</td>
                                             }
 
-                                            @if(item.PhanQuyen)
+                                            @if (item.PhanQuyen)
                                             {
-                                                <th>  Yes</th>
+                                                <td>  Yes</td>
                                             }
                                             else
                                             {
-                                                <th> No</th>
+                                                <td> No</td>
                                             }
-                                          @if (info.IDRoleUser == 1)
+                                            @if (info.IDRoleUser == 1)
                                             {
                                                 <th><a href="@Url.Action("EditNV", "NhanVien" , new { id = item.ID})">Chỉnh sửa thông tin</a></th>
                                                 <th><a href="@Url.Action("Delete", "NhanVien" , new { id = item.ID})">Xóa nhân viên</a></th>
@@ -123,13 +152,6 @@
                         </table>
                     </div>
 
-                    @if (info.IDRoleUser == 1)
-                    {
-                         <div>
-                             <button class="btn btn-success "> @Html.ActionLink("Thêm mới nhân viên", "AddNV",null , new { @class = "text-white"})  </button>
-
-                    </div>
-                    }
                 </div>
             </div>
         </div>

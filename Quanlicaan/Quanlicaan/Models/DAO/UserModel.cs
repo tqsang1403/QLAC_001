@@ -58,19 +58,58 @@ namespace Quanlicaan.Models.DAO
 
 
         // tìm kiếm nhân viên theo tên
-        public List<NhanVien> Listnv(string name)
+        public List<NhanVien> Listnv(string name , string idPhongBan)
         {
 
             if (!string.IsNullOrEmpty(name))
             {
                 command.CommandText = "Select * from NhanVien where HoTen Like N'%" + name + "%' ";
-                /*  command.CommandText = "Select * from NhanVien where HoTen Like N'%@Hoten%' ";
+                
 
-                  SqlParameter param = new SqlParameter();
-                  param.ParameterName = "@Hoten";
-                  param.Value = name;
-                  command.Parameters.Add(param);
-                  */
+            }
+            else if (!string.IsNullOrEmpty(idPhongBan))
+            {
+                command.CommandText = "select * from NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where PhongBan.ID ="+ idPhongBan;
+            }
+            else
+            {
+                command.CommandText = "Select * from NhanVien";
+            }
+
+            string sql = command.CommandText;
+            SqlDataReader reader = command.ExecuteReader();
+            List<NhanVien> listnv = new List<NhanVien>();
+
+            while (reader.Read())
+            {
+                NhanVien employ = new NhanVien();
+                employ.ID = Convert.ToInt32(reader["ID"]);
+                employ.HoTen = reader["HoTen"].ToString();
+                employ.GioiTinh = Convert.ToBoolean(reader["GioiTinh"].ToString());
+                employ.DiaChi = reader["DiaChi"].ToString();
+                employ.SDT = reader["SDT"].ToString();
+                employ.IDPhongBan = Convert.ToInt32(reader["IDPhongBan"].ToString());
+                employ.ChucVu = reader["ChucVu"].ToString();
+                employ.IDrole = Convert.ToInt32(reader["IDRole"]);
+                employ.username = reader["username"].ToString();
+                employ.upassword = reader["upassword"].ToString();
+                employ.trangthai = Convert.ToBoolean(reader["trangthai"]);
+                employ.PhanQuyen = Convert.ToBoolean(reader["PhanQuyen"]);
+
+                listnv.Add(employ);
+            }
+            conn.Close();
+            return listnv;
+        }
+
+
+        // tìm kiếm nhân viên theo phong ban
+        public List<NhanVien> FinPbNV(string tenPhongBan)
+        {
+
+            if (!string.IsNullOrEmpty(tenPhongBan))
+            {
+                command.CommandText = "select * from NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where PhongBan.TenPB like N' % "+tenPhongBan+" %' ";
 
             }
             else
@@ -102,6 +141,7 @@ namespace Quanlicaan.Models.DAO
             conn.Close();
             return listnv;
         }
+
 
         // trả về nhân viên cần update
         public NhanVien ListnvUpdate(int id)

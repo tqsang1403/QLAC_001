@@ -29,6 +29,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="~/css/editnv.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 
@@ -72,7 +73,7 @@
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Chọn phòng ban</label>
-                    @Html.DropDownListFor(model => model.IDPhongBan, list, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.DropDownListFor(model => model.IDPhongBan, list, new { @class = "col-lg-9 border border-primary rounded h-50  select_drop " })
                     @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
@@ -82,12 +83,12 @@
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Quyền đăng nhập</label>
-                    @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "col-lg-9 border border-primary rounded h-50 select_drop " })
                     @Html.ValidationMessageFor(model => model.Role.URole, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Username</label>
-                    @Html.TextAreaFor(model => model.username, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.username, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser"     })
                     @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
@@ -111,8 +112,9 @@
                         @Html.ValidationMessageFor(model => model.PhanQuyen, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-field col-lg-6">
+                <div class="form-field col-lg-12" style=" display: flex; justify-content: space-around;">
                     <input class="submit-btn" type="submit" value="Submit">
+                    <button class="submit-btn">  @Html.ActionLink("Quay lại", "Show", "", new { @class = "back" })</button>
                 </div>
             }
         </section>

@@ -174,7 +174,17 @@ namespace Quanlicaan.Controllers
             UserSession us = (UserSession)Session["UserSession"];
             SuatAnModel suatAnModel = new SuatAnModel();
             List<EdiDkiCaAn> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan);
-            return View( list);
+            if(list.Count == 0)
+            {
+                ModelState.AddModelError("", "Bạn chưa đăng kí ca ăn hôm nay");
+
+                ViewBag.message = "Bạn chưa đăng kí ca ăn hôm nay";
+                return View(list);
+            }
+            else
+            {
+                return View(list);
+            }
         }
 
 

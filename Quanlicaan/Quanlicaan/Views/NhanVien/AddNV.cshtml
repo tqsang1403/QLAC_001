@@ -32,6 +32,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/css/addnv.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/">
 
 </head>
@@ -39,13 +40,13 @@
 <body>
     <div class="container">
         <section class="get-in-touch">
-            <h3 class="title">Chỉnh sửa thông tin nhân viên</h3>
-            @using (Html.BeginForm("AddNV", "NhanVien", FormMethod.Post, new { @class = "contact-form row" }))
+            <h3 class="title">Thêm mới nhân viên</h3>
+            @using (Html.BeginForm("AddNV", "NhanVien", FormMethod.Get, new { @class = "contact-form row" }))
             {
 
                 <div class="form-field col-lg-12 ">
                     <label class="label" for="iduser">Họ Tên</label>
-                    @Html.TextAreaFor(model => model.HoTen, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.HoTen, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
@@ -58,37 +59,37 @@
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Địa chỉ</label>
-                    @Html.TextAreaFor(model => model.DiaChi, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.DiaChi, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Số điện thoại</label>
-                    @Html.TextAreaFor(model => model.SDT, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.SDT, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Chọn phòng ban</label>
-                    @Html.DropDownListFor(model => model.IDPhongBan, list, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.DropDownListFor(model => model.IDPhongBan, list, new { @class = "col-lg-9 border border-primary rounded h-50  select_drop" })
                     @Html.ValidationMessageFor(model => model.IDPhongBan, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Chức vụ nhân viên</label>
-                    @Html.TextAreaFor(model => model.ChucVu, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.ChucVu, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Quyền đăng nhập</label>
-                    @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "col-lg-9 border border-primary rounded h-50 " })
+                    @Html.DropDownListFor(model => model.IDrole, listRole, new { @class = "col-lg-9 border border-primary rounded h-50 select_drop " })
                     @Html.ValidationMessageFor(model => model.Role.URole, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Username</label>
-                    @Html.TextAreaFor(model => model.username, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.username, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Password</label>
-                    @Html.TextAreaFor(model => model.upassword, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.TextAreaFor(model => model.upassword, new { @class = "input-text js-input", @type = "text" })
                     @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">
@@ -111,7 +112,7 @@
                 <div class="form-field col-lg-12" style="display: flex; justify-content: space-around; ">
                     <input class="submit-btn" type="submit" value="Tạo mới">
 
-                    <button class="btn btn-primary">  @Html.ActionLink("Quay lại", "Show" ,"", new { @class = "back"})</button>
+                    <button class="submit-btn">  @Html.ActionLink("Quay lại", "Show" ,"", new { @class = "back"})</button>
                 </div>
 
                 

@@ -18,6 +18,8 @@ namespace Quanlicaan.Models.ModelsPage
         public int IDSuatAn { get; set; }
         public int IDCaAn { get; set; }
         public int Soluong { get; set; }
+
+        //List<EdiDkiCaAn> list;
          
     }
 }

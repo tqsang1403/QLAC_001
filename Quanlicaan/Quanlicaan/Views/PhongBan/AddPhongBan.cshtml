@@ -1,7 +1,7 @@
 ﻿@model Quanlicaan.Models.Framework.PhongBan
 
 @{
-    ViewBag.Title = "Chỉnh sửa phòng ban";
+    ViewBag.Title = "Thêm mới phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,14 +11,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Chỉnh sửa phòng ban</title>
+    <title>AddPhongBan</title>
     <link rel="stylesheet" href="~/css/main.css">
 </head>
 <body>
     <section class="get-in-touch">
-        <h2 class="title">Chỉnh sửa  phòng ban</h2>
+        <h2 class="title">Thêm mới  phòng ban</h2>
 
-        @using (Html.BeginForm("EditPB", "PhongBan", FormMethod.Post, new { @class = "contact-form row" }))
+        @using (Html.BeginForm("AddPhongBan", "PhongBan", FormMethod.Post, new { @class = "contact-form row" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
             </div>
 
         }
-    </section>
+      </section>
 </body>
 </html>
 

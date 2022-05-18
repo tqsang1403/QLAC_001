@@ -567,6 +567,7 @@
     <Content Include="css\layoutcss.css" />
     <Content Include="css\login.css" />
     <Content Include="css\editnv.css" />
+    <Content Include="css\main.css" />
     <Content Include="css\nv.css" />
     <Content Include="css\regist.css" />
     <Content Include="css\shome.css" />
@@ -674,13 +675,13 @@
     <Content Include="Views\CaAn\ShowCaAn.cshtml" />
     <Content Include="Views\PhongBan\ShowAll.cshtml" />
     <Content Include="Views\PhongBan\EditPB.cshtml" />
-    <Content Include="Views\PhongBan\AddPB.cshtml" />
     <Content Include="Views\_ViewImports.cshtml" />
     <Content Include="Views\SuatAn\ShowSuatAn.cshtml" />
     <Content Include="Views\SuatAn\CreateSuatAn.cshtml" />
     <Content Include="Views\Dangkycaan\DkiCanhan.cshtml" />
     <Content Include="Views\Dangkycaan\Tapthe.cshtml" />
     <Content Include="Views\Dangkycaan\EditDkiCaanCanhan.cshtml" />
+    <Content Include="Views\PhongBan\AddPhongBan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Data.Entity;
 using System.Data;
 using Quanlicaan.Models.Framework;
+using System.Dynamic;
+using System.Web.UI.WebControls;
 
 namespace Quanlicaan.Controllers
 {
@@ -16,13 +18,31 @@ namespace Quanlicaan.Controllers
    
 
         // select nhân viên
-        public ActionResult Show(string tennv)
+        public ActionResult Show(string tennv, string idPhongBan)
+        {
+            ViewBag.Keyword = tennv;
+           // ViewBag.TenPhongBan = tenPhongBan;
+            var nhanvien = new UserModel();
+            List<NhanVien> list = nhanvien.Listnv(tennv, idPhongBan);
+            var phongBan = new PhongbanModel();
+            DataSet ds = new DataSet();
+            ds = phongBan.getAllPhongBan();
+            dynamic multiModel = new ExpandoObject();
+            multiModel.Nhanviens = list;
+            multiModel.Phongbans = ds.Tables["PhongBan"];
+
+
+            return View(multiModel);
+
+        }
+
+        public ActionResult FindPBNV(string tenPhongBan)
         {
 
-            ViewBag.Keyword = tennv;
+            ViewBag.TenPhongBan = tenPhongBan;
             var nhanvien = new UserModel();
-            List<NhanVien> list = nhanvien.Listnv(tennv);
-            return View(list);
+            List<NhanVien> list = nhanvien.FinPbNV(tenPhongBan);
+            return RedirectToAction("Show");
 
         }
 

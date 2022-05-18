@@ -1,35 +1,77 @@
 ﻿@using System.Data
+@using Quanlicaan.Models.Session
 @{
     ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/css/nv.css" rel="stylesheet" />
+    var info = (UserSession)Session["UserSession"];
 }
 
-<h2>Danh sách</h2>
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Danh sách nhân viên </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<p>
-    @Html.ActionLink("Thêm mới", "AddPB")
-</p>
-<table class="table">
-    <tr class="header">
-        <th>
-            ID
-        </th>
-        <th>
-            Tên Phòng Ban
-        </th>
-    </tr>
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/shome.css">
 
-    @foreach (DataRow item in ViewBag.ListPhongBan.Rows)
-    {
-        <tr>
-            <td>
-               @item["ID"]
-            </td>
-            <td>@item["TenPB"]
-                
-            </td>
-        </tr>
-    }
+</head>
 
-</table>
+<body>
+
+    <section class="get-in-touch">
+        <h2 class="title">Danh sách phòng ban</h2>
+
+        <table class="table">
+            <tr class="header">
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên Phòng Ban
+                </th>
+                <th>
+                    Chỉnh sửa
+                </th>
+            </tr>
+
+            @foreach (DataRow item in ViewBag.ListPhongBan.Rows)
+            {
+                <tr>
+                    <td>
+                        @item["ID"]
+                    </td>
+                    <td>
+                        @item["TenPB"]
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Chỉnh sửa phòng ban", "EditPB" , new { id = item["ID"]}) 
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div class="form-field col-lg-12" style=" display: flex; justify-content: space-between;">
+            @if (info.IDRoleUser == 1)
+            {
+                <div>
+                    <button class="submit-btn "> @Html.ActionLink("Thêm mới", "AddPhongBan", null, new { @class = "add_link" })  </button>
+                </div>
+            }
+            <div>
+                <button class="submit-btn "><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a>  </button>
+            </div>
+        </div>
+
+
+    </section>
+
+</body>
+
+
+
+</html>

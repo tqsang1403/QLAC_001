@@ -1,32 +1,16 @@
-﻿img {
-    width: 30%;
-    height:30%;
-    border-radius:5%;
-    padding-right : 12px ; 
+﻿.search {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
 }
-.container{
-    width:100%;
-    height:max-content;
-    background-color:aliceblue;
+.add_link{
+    text-decoration: none;
+    color:white;
 }
-
-
-.hhhh{
-    width:100%;
-    display:flex;
-    padding: 20px 12px;
+.add_link :hover {
+    color:white;
 }
-
-a {
-    text-decoration:none;
-
-}
-a:hover {
-    color:red;
-}
-a:active{
-    color:green;
-}
-a:before a:after{
-    color : gray;
+.input_search {
+    width: 15rem;
+    height: 2.4rem;
 }
