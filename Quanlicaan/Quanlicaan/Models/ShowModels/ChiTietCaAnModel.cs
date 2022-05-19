@@ -46,7 +46,7 @@ namespace Quanlicaan.Models.ShowModels
         {
             conn.Open();
             command.Connection = conn;
-            command.CommandText = "Select ChiTietSuatAn.Soluong, NhanVien.*,SuatAn.*,CaAn.* from ChiTietSuatAn full join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID join SuatAn on NhanVien.ID = SuatAn.IDUser join CaAn on ChiTietSuatAn.IDCaan = CaAn.ID where ChiTietSuatAn.Soluong > 0 and(convert(varchar(10), SuatAn.Thoigiandat, 101)) = (SElect DATEADD(DAY, 0, CAST(GETDATE() AS date)))  AND NhanVien.ID = @IDNV";
+            command.CommandText = "Select ct.*, sa.Thoigiandat, nv.* from ChiTietSuatAn ct join SuatAn sa on ct.IDSuatAn = sa.ID join NhanVien nv on sa.IDUser = nv.ID where ct.Soluong > 0 and(convert(varchar(10), sa.Thoigiandat, 101)) = (SElect DATEADD(DAY, 0, CAST(GETDATE() AS date))) and nv.ID = @IDNV";
             command.Parameters.AddWithValue("@IDNV", IDNV);
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds,"CTtoday");

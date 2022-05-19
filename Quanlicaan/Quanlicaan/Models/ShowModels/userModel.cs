@@ -52,9 +52,9 @@ namespace Quanlicaan.Models.ShowModels
 
         [Required]
         public bool trangthai { get; set; }
+        public string QuyenTruyCap { get; set; }
 
 
-       
 
 
     }

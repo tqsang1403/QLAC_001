@@ -25,7 +25,7 @@ namespace Quanlicaan.Models.ShowModels
         public int Tongsoluongca1 { get; set; }
 
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}")]
         public DateTime NgayDk { get; set; }
 
         public string TenCa { get; set; }

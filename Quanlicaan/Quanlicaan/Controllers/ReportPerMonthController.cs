@@ -28,7 +28,10 @@ namespace Quanlicaan.Controllers
                 timeSession tm = new timeSession();
 
 
-                String query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and  '" + end + "' )Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'  and  '" + end + "' ";
+                String query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and  '" + end + "' + '12:00:00' )Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'  and  '" + end + "' + '12:00:00' ";
+
+
+
                 command = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -73,7 +76,7 @@ namespace Quanlicaan.Controllers
             }
             else
             {
-                string query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID)Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID";
+                string query = "select nv.HoTen, pb.TenPB , (select (cOALESCE(sum(Soluong),0)) from ChiTietSuatAn ct  where ct.IDUser = nv.ID )as Tongsoluong from NhanVien nv join PhongBan pb on nv.IDPhongBan = pb.ID";
                 command = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -94,12 +97,11 @@ namespace Quanlicaan.Controllers
                     {
                         lc.Add(new ReportsPerMonth
                     {
-                        IDNV = Convert.ToInt32(dr["IDUser"]),
+                        
                         HoTen = Convert.ToString(dr["HoTen"]),
                         Soluong = Convert.ToInt32(dr["Tongsoluong"]),
-                        NgayDk = Convert.ToDateTime(dr["Thoigiandat"]),
-                            tenPB = Convert.ToString(dr["TenPB"]), 
-                            Thanhtien = (Convert.ToInt32(dr["Tongsoluong"]) * 15000)
+                        tenPB = Convert.ToString(dr["TenPB"]), 
+                        Thanhtien = (Convert.ToInt32(dr["Tongsoluong"]) * 15000)
                         });
                     }
                     else

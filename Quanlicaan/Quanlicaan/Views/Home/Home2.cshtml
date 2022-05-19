@@ -16,13 +16,14 @@
 }
 <div class="container" style="padding-top:20px;margin-left:auto;margin-right:auto;">
 
-    @if (Model.Any())
+    @if(Model.Any())
     {
         <table class="table tab-content table-bordered">
             <thead> Ca ăn đã đăng ký ngày @day - @month - @year   </thead>
             <tr>
+              
                 <th>
-                    Ca ăn
+                    ID Ca Ăn
                 </th>
                 <th>
                     Số lượng(suất)
@@ -36,11 +37,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-
-
-
+                
                     <td>
-                        @Html.DisplayFor(modelItem => item.TenCaAn)
+                        @Html.DisplayFor(modelItem => item.IDCaAn)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Soluong)

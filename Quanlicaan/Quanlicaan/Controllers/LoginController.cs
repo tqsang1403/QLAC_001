@@ -29,7 +29,7 @@ namespace Quanlicaan.Controllers
             {
                 string Thongbao = "";
                 //kiem tra ten dang nhap va mat khau ok
-                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where username ='" + username + "' and upassword = '" + password + "'"  ;
+                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID join Roles on NhanVien.IDRole = Roles.ID where username ='" + username + "' and upassword = '" + password + "'"  ;
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
@@ -54,6 +54,7 @@ namespace Quanlicaan.Controllers
                     us.trangthai = Convert.ToBoolean(dr["trangthai"]);
                     us.GioiTinh = Convert.ToBoolean(dr["GioiTinh"]);
                     us.ChucVu = dr["ChucVu"].ToString();
+                    us.QuyenTruyCap = dr["URole"].ToString();
 
                     Session["user"] = us;
 

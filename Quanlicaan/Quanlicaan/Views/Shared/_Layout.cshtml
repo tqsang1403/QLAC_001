@@ -51,8 +51,18 @@
                                 }
                                 @if (per.RoleRegist == "Tập thể")
                                 {
-                                    <a class="dropdown-item" href="@Url.Action("Dangkycanhan", "Dangkycanhan")">Đăng ký ăn cá nhân</a>
-                                    <a class="dropdown-item" href="@Url.Action("TapThe", "Dangkytapthe")">Đăng ký ăn tập thể</a>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Đăng ký ăn
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            
+                                            <li> <a class="dropdown-item" href="@Url.Action("Dangkycanhan", "Dangkycanhan")">Đăng ký ăn cá nhân</a></li>
+                                            <li> <a class="dropdown-item" href="@Url.Action("TapThe", "Dangkytapthe")">Đăng ký ăn tập thể</a></li>
+                                         </ul>
+                                    </li>
+                                   
+                                   
                                 }
 
 

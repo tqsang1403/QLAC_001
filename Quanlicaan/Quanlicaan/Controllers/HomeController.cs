@@ -32,8 +32,8 @@ namespace Quanlicaan.Controllers
                 {
 
                     ChiTietCaAnModel model = new ChiTietCaAnModel();
-                    model.TenCaAn = dr["TenCa"].ToString();
-                  
+                    model.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
+                    model.IDUSer = Convert.ToInt32(dr["IDUser"]);
                     model.Soluong = Convert.ToInt32(dr["Soluong"]);
                     model.NgayDk = Convert.ToDateTime(dr["Thoigiandat"]);
 

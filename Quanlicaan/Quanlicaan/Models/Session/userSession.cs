@@ -30,6 +30,9 @@ namespace Quanlicaan.Models.Session
         public string ChucVu { get; set; }
 
 
+            public string QuyenTruyCap { get; set; }
+
+
     }
 
 }
