@@ -572,9 +572,11 @@
     <Content Include="css\regist.css" />
     <Content Include="css\shome.css" />
     <Content Include="favicon.ico" />
+    <Content Include="images\Banner1.jpg" />
     <Content Include="fonts\OFL.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Banner.png" />
     <Content Include="images\icons\favicon.ico" />
     <Content Include="images\img-01.png" />
     <Content Include="fonts\BeVietnamPro-Black.ttf" />
@@ -682,6 +684,7 @@
     <Content Include="Views\Dangkycaan\Tapthe.cshtml" />
     <Content Include="Views\Dangkycaan\EditDkiCaanCanhan.cshtml" />
     <Content Include="Views\PhongBan\AddPhongBan.cshtml" />
+    <Content Include="Views\Home\ReportPerson.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

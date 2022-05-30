@@ -62,7 +62,7 @@ namespace Quanlicaan.Models.DAO
                 IDSuatAn = Convert.ToInt32(dr["ID"]);
             }
             dr.Close();
-            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat , Trangthai) values (@iduser, @soluong , @idsuatan , @idcaan, @time, 1)";
+            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat ) values (@iduser, @soluong , @idsuatan , @idcaan, @time)";
             command.Parameters.AddWithValue("@soluong", Soluong);
             command.Parameters.AddWithValue("@idsuatan", IDSuatAn);
             command.Parameters.AddWithValue("@idcaan", IDCaan);
@@ -87,13 +87,15 @@ namespace Quanlicaan.Models.DAO
         }
 
 
-        // thực hiện chỉnh sửa thông tin đăng kí ca ăn
-        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDPb)
+        ///////// thực hiện chỉnh sửa thông tin đăng kí ca ăn
+        // lấy danh sách đăng kí ca ăn trong ngày hiện tại
+        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDPb , int IDUser)
         {
             conn.Open();
             command.Connection = conn;
-            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where IDPhongBan = @idphongban and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
+            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where  IDUser = @iduser and IDPhongBan = @idphongban and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
             command.Parameters.AddWithValue("@idphongban", IDPb);
+            command.Parameters.AddWithValue("@iduser", IDUser);
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds, "DsCtSuatAnDki");
             command.Parameters.Clear();
@@ -107,6 +109,7 @@ namespace Quanlicaan.Models.DAO
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
                 ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);
                 ediDkiCaAn.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
+                ediDkiCaAn.IDChiTietSuatAn = Convert.ToInt32(dr["ID"]);
                 ediDkiCaAn.IDSuatAn = Convert.ToInt32(dr["IDSuatAn"]);
                 ediDkiCaAn.Soluong = Convert.ToInt32(dr["Soluong"]);
                 list.Add(ediDkiCaAn);
@@ -114,6 +117,72 @@ namespace Quanlicaan.Models.DAO
             return list;
 
         }
+
+        // thực hiện lấy ra tất cả suất ăn nhân viên đã đăng kí
+        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDUser)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "select ChiTietSuatAn.* , NhanVien.HoTen from ChiTietSuatAn inner join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where IDUser = @idUser";
+            command.Parameters.AddWithValue("@idUser", IDUser);
+
+            SqlDataReader dr = command.ExecuteReader();
+
+            command.Parameters.Clear();
+            
+
+            List<EdiDkiCaAn> list = new List<EdiDkiCaAn>();
+           while(dr.Read())
+            {
+                EdiDkiCaAn ediDkiCaAn = new EdiDkiCaAn();
+                ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
+                ediDkiCaAn.hoTen = dr["HoTen"].ToString();
+                ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);
+                ediDkiCaAn.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
+                ediDkiCaAn.IDChiTietSuatAn = Convert.ToInt32(dr["ID"]);
+                ediDkiCaAn.IDSuatAn = Convert.ToInt32(dr["IDSuatAn"]);
+                ediDkiCaAn.Soluong = Convert.ToInt32(dr["Soluong"]);
+                list.Add(ediDkiCaAn);
+            }
+
+            conn.Close();
+            return list;
+        }
+
+
+
+        // thực hiện update dữ liệu mới
+        public void UpDateChiTietSuatAn(int idUser , int idChiTietSuatAn , int Soluong)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "update ChiTietSuatAn set Soluong = @soluong where IDUser = @iduser and ID = @idctsuatan";
+            command.Parameters.AddWithValue("@iduser", idUser);
+            command.Parameters.AddWithValue("@idctsuatan", idChiTietSuatAn);
+            command.Parameters.AddWithValue("@soluong", Soluong);
+
+            command.ExecuteNonQuery();
+
+            command.Parameters.Clear();
+            conn.Close();
+        }
+
+        // thực hiện xóa chi tiết suất ăn 
+        public void DeleteChiTietSuatAn(int IDChiTietSuatAn)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "Delete ChiTietSuatAn  where ID = @idctsuatan";
+            command.Parameters.AddWithValue("@idctsuatan", IDChiTietSuatAn);
+
+            command.ExecuteNonQuery();
+
+            command.Parameters.Clear();
+            conn.Close();
+        }
+
+
+       
 
     }
 }

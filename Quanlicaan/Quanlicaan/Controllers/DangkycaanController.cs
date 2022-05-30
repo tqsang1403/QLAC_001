@@ -168,16 +168,14 @@ namespace Quanlicaan.Controllers
 
        
 
-
+        // thực hiện chỉnh sửa đăng kí ca ăn cá nhân
         public ActionResult EditDkiCaanCanhan()
         {
             UserSession us = (UserSession)Session["UserSession"];
             SuatAnModel suatAnModel = new SuatAnModel();
-            List<EdiDkiCaAn> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan);
+            List<EdiDkiCaAn> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan , us.UserID);
             if(list.Count == 0)
             {
-                ModelState.AddModelError("", "Bạn chưa đăng kí ca ăn hôm nay");
-
                 ViewBag.message = "Bạn chưa đăng kí ca ăn hôm nay";
                 return View(list);
             }
@@ -187,6 +185,26 @@ namespace Quanlicaan.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult EditDkiCaanCanhan(List<EdiDkiCaAn> model)
+        {
+            SuatAnModel suatAnModel = new SuatAnModel();
+            for (int  i = 0; i< model.Count; i++)
+            {
+                suatAnModel.UpDateChiTietSuatAn(model[i].IDUser, model[i].IDChiTietSuatAn, model[i].Soluong);
+            }
+            ViewBag.updateSucess = "Bạn đã cập nhật thành công";
+            return RedirectToAction("Home","Home");
+        }
+
+        // thực hiện xóa thông tin nhân viên
+        [HttpGet]
+        public ActionResult Delete(int ID)
+        {
+            SuatAnModel suatAnModel = new SuatAnModel();
+            suatAnModel.DeleteChiTietSuatAn(ID);
+            return RedirectToAction("Home" , "Home");
+        }
 
     }
 

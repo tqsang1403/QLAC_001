@@ -14,20 +14,23 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Tapthe</title>
+    <link rel="stylesheet" href="~/css/main.css">
+
 </head>
+
+
 <body>
-    <div class="d-flex flex-column px-2">
-        <div style="margin:auto">
-            <h1>ĐĂNG KÍ ĂN CA TẬP THỂ</h1>
+    <div class="d-flex flex-column m-lg-4 ">
+        <div style="margin-top:30px">
+            <h2 class="title">ĐĂNG KÍ ĂN CA TẬP THỂ</h2>
         </div>
-        <div class="d-flex justify-content-around" style="margin-bottom:20px">
+        <div class="d-flex justify-content-between px-3" style="margin-bottom:20px">
             <h4>  Nhân viên đăng kí : @info.hoTen</h4>
             <h4>  Ngày đăng kí : @DateTime.Now</h4>
 
         </div>
         @using (Html.BeginForm("DkiTapThe", "Dangkycaan", FormMethod.Post))
         {
-
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
@@ -41,34 +44,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for(int k=0; k < Model.Count; k++)
+                    @for (int k = 0; k < Model.Count; k++)
                     {
                         int j = 1;
                         <tr>
                             <td>@a</td>
                             <td>
-                                @Html.HiddenFor(m=>Model[k].IDUser)
-                                @Model[k].IDUser 
+                                @Html.HiddenFor(m => Model[k].IDUser)
+                                @Model[k].IDUser
                             </td>
                             <td>
-                                @Html.HiddenFor(m=>Model[k].hoTen)
+                                @Html.HiddenFor(m => Model[k].hoTen)
                                 @Model[k].hoTen
                             </td>
                             <td>
-                                @Html.HiddenFor(m=>Model[k].phongBan)
+                                @Html.HiddenFor(m => Model[k].phongBan)
                                 @Model[k].phongBan
                             </td>
                             <td>
-                                @Html.CheckBoxFor(model => Model[k].TrangThai)
+                                @Html.CheckBoxFor(model => Model[k].TrangThai, new { id = "checkbbb" })
                             </td>
                             <td>
                                 <table>
                                     @for (int i = 0; i < Model[k].ListCaAn.Count; i++)
                                     {
-                                       
+
                                         if (now.TimeOfDay > Model[k].ListCaAn[i].Thoigian.TimeOfDay)
                                         {
-                                            <tr style=" display: flex; align-items: flex-end;">
+                                            <tr style=" display: flex; align-items: flex-end;" id="check_caan">
                                                 <td>
                                                     @Html.CheckBoxFor(m => Model[k].ListCaAn[i].IsChecked, new { disabled = "disabled" })
                                                     @Html.HiddenFor(m => Model[k].ListCaAn[i].ID, new { disabled = "disabled" })
@@ -100,7 +103,7 @@
                                                 </td>
                                                 <td>
                                                     <h6>Số lượng suất ăn</h6>
-                                                    @Html.TextBoxFor(m => Model[k].ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
+                                                    @Html.TextBoxFor(m => Model[k].ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn", id = " Check_caan" } })
                                                 </td>
 
                                             </tr>
@@ -113,16 +116,18 @@
                         </tr>
                         a++;
                     }
-                </tbody>
+             </tbody>
             </table>
 
-            <div style="text-align:center">
-                <button type="submit" class="btn btn-success btn-lg">Đăng kí  ca ăn</button>
-                <button class="btn btn-danger btn-lg"> <a style="text-decoration:none ; color:white " href="@Url.Action("Home","Home")">Cance</a></button>
-            </div>
-        }
+            <div class="btn_submit_back">
+                <button type="submit" class="submit-btn">Đăng kí  ca ăn</button>
+                <button class="submit-btn"> <a style="text-decoration:none ; color:white " href="@Url.Action("Home", "Home")">Cance</a></button>
 
+            </div>
+
+         }
     </div>
 
-</body>
+               
+ </body>
 </html>

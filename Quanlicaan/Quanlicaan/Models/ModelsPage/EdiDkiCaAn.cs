@@ -15,11 +15,11 @@ namespace Quanlicaan.Models.ModelsPage
         [DisplayName("ngày đăng kí")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime ngayDK { get; set; }
+        public int IDChiTietSuatAn { get; set; }
         public int IDSuatAn { get; set; }
         public int IDCaAn { get; set; }
         public int Soluong { get; set; }
 
-        //List<EdiDkiCaAn> list;
          
     }
 }

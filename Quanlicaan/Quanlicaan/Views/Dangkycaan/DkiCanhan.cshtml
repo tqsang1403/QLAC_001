@@ -11,200 +11,212 @@
     }
 
 }
-<div>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
 
-        input[type=submit] {
-            background-color: #58257b;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            float: right;
-        }
 
-            input[type=submit]:hover {
-                background-color: #45a049;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/main.css">
+
+</head>
+<body>
+    <div>
+        <style>
+            * {
+                box-sizing: border-box;
             }
 
-        .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-        .col-25 {
-            float: left;
-            width: 25%;
-            margin-top: 6px;
-        }
-
-        .col-75 {
-            float: left;
-            width: 75%;
-            margin-top: 6px;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        input [type=text] {
-            width: 100%;
-        }
-
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-
-        input[type=text] {
-            border: 2px solid purple;
-            border-radius: 4px;
-        }
-
-        input[type=text] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border: 3px solid #e9d8f4;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-        }
-
-            input[type=text]:focus {
-                border: 3px solid #58257b;
+            input[type=submit] {
+                background-color: #58257b;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                float: right;
             }
 
-        input[type=button] {
-            background-color: #e9d8f4;
-            border: none;
-            color: #58257b;
-            padding: 16px 32px;
-            text-decoration: none;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
-
-        input[type=submit] {
-            width: 100%;
-            background-color: #58257b;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        label {
-            padding: 12px 12px 12px 0;
-            display: inline-block;
-        }
-    </style>
-    <div class="page-header">
-        <h1 class="page-header">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
-    </div>
-    @using (Html.BeginForm("DkiCanhan", "Dangkycaan", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        <div class="container">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="">
-                <div class="col-25">
-                    <label class="label">HỌ TÊN</label>
-                </div>
-                <div class="col-75">
-                    @Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-            </div>
-            <div>
-                <div class="col-25">
-                    <label class="label">PHÒNG BAN</label>
-                </div>
-                <div class="col-75">
-                    @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-            </div>
-            <div>
-                <div class="col-25">
-                    <label class="label">NGÀY ĐĂNG KÝ</label>
-                </div>
-                <div class="col-75">
-                    @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-                </div>
-
-            </div>
-
-            <table>
-
-                @for (int i = 0; i < Model.ListCaAn.Count; i++)
-                {
-                    if (now.TimeOfDay > Model.ListCaAn[i].Thoigian.TimeOfDay)
-                    {
-                        <tr style=" display: flex; align-items: flex-end;">
-                            <td>
-                                @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked, new { disabled = "disabled" })
-                                @Html.HiddenFor(m => Model.ListCaAn[i].ID, new { disabled = "disabled" })
-                                @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian, new { disabled = "disabled" })
-
-                            </td>
-                            <td style=" margin-right :10px">
-                                Ca @j
-                            </td>
-                            <td>
-                                <h6> Quá thời gian đăng kí ca ăn</h6>
-                                @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { disabled = "disabled", htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
-                            </td>
-
-                        </tr>
-                        j++;
-                    }
-                    else
-                    {
-                        <tr style=" display: flex; align-items: flex-end;">
-                            <td>
-                                @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked)
-                                @Html.HiddenFor(m => Model.ListCaAn[i].ID)
-                                @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian)
-
-                            </td>
-                            <td style=" margin-right :10px">
-                                Ca @j
-                            </td>
-                            <td>
-                                <h6>Số lượng suất ăn</h6>
-                                @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
-                            </td>
-
-                        </tr>
-                        j++;
-                    }
+                input[type=submit]:hover {
+                    background-color: #45a049;
                 }
 
+            .container {
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
 
-            </table>
+            .col-25 {
+                float: left;
+                width: 25%;
+                margin-top: 6px;
+            }
 
-            <div class="">
+            .col-75 {
+                float: left;
+                width: 75%;
+                margin-top: 6px;
+            }
 
-                <input type="submit" class="btn btn-info" value="OK" />
-                <button class="">
-                    <a href="~/Home/Home">Cancel</a>
-                </button>
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
 
+            input [type=text] {
+                width: 100%;
+            }
+
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+            }
+
+            input[type=text] {
+                border: 2px solid purple;
+                border-radius: 4px;
+            }
+
+            input[type=text] {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: 3px solid #e9d8f4;
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+                outline: none;
+            }
+
+                input[type=text]:focus {
+                    border: 3px solid #58257b;
+                }
+
+            input[type=button] {
+                background-color: #e9d8f4;
+                border: none;
+                color: #58257b;
+                padding: 16px 32px;
+                text-decoration: none;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+
+            input[type=submit] {
+                width: 100%;
+                background-color: #58257b;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            label {
+                padding: 12px 12px 12px 0;
+                display: inline-block;
+            }
+        </style>
+        <div class="page-header">
+            <h1 class="title">ĐĂNG KÝ ĂN CA CÁ NHÂN</h1>
+        </div>
+        @using (Html.BeginForm("DkiCanhan", "Dangkycaan", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+    <div class="container">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="">
+            <div class="col-25">
+                <label class="label">HỌ TÊN</label>
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div>
+            <div class="col-25">
+                <label class="label">PHÒNG BAN</label>
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(model => model.phongBan, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            </div>
+        </div>
+        <div>
+            <div class="col-25">
+                <label class="label">NGÀY ĐĂNG KÝ</label>
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(model => model.ngayDK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
             </div>
 
         </div>
-    }
-</div>
+
+        <table>
+
+            @for (int i = 0; i < Model.ListCaAn.Count; i++)
+            {
+                if (now.TimeOfDay > Model.ListCaAn[i].Thoigian.TimeOfDay)
+                {
+                    <tr style=" display: flex; align-items: flex-end;">
+                        <td>
+                            @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked, new { disabled = "disabled" })
+                            @Html.HiddenFor(m => Model.ListCaAn[i].ID, new { disabled = "disabled" })
+                            @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian, new { disabled = "disabled" })
+
+                        </td>
+                        <td style=" margin-right :10px">
+                            Ca @j
+                        </td>
+                        <td>
+                            <h6> Quá thời gian đăng kí ca ăn</h6>
+                            @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { disabled = "disabled", htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
+                        </td>
+
+                    </tr>
+                    j++;
+                }
+                else
+                {
+                    <tr style=" display: flex; align-items: flex-end;">
+                        <td>
+                            @Html.CheckBoxFor(m => Model.ListCaAn[i].IsChecked)
+                            @Html.HiddenFor(m => Model.ListCaAn[i].ID)
+                            @Html.HiddenFor(m => Model.ListCaAn[i].Thoigian)
+
+                        </td>
+                        <td style=" margin-right :10px">
+                            Ca @j
+                        </td>
+                        <td>
+                            <h6>Số lượng suất ăn</h6>
+                            @Html.TextBoxFor(m => Model.ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
+                        </td>
+
+                    </tr>
+                    j++;
+                }
+            }
+
+
+        </table>
+
+        <div class="btn_submit_back">
+            <input type="submit" class="btn btn-info" value="OK" />
+            <button class="submit-btn"> <a class="back" href="~/Home/Home">Cancel</a> </button>
+
+        </div>
+
+        
+
+    </div>
+        }
+    </div>
+</body>
+</html>

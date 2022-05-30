@@ -1,4 +1,9 @@
 ﻿
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+}
 .get-in-touch {
     max-width: 800px;
     margin: 50px auto;
@@ -10,7 +15,7 @@
         text-transform: uppercase;
         letter-spacing: 3px;
         font-size: 3.2em;
-        line-height: 48px;
+        line-height: 70px;
         padding-bottom: 48px;
         color: #5543ca;
         background: #5543ca;
@@ -93,5 +98,16 @@
     text-decoration: none;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_submit_back {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 
