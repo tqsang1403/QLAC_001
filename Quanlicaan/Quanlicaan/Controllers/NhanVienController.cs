@@ -10,6 +10,8 @@ using System.Data;
 using Quanlicaan.Models.Framework;
 using System.Dynamic;
 using System.Web.UI.WebControls;
+using Quanlicaan.Models.ModelsPage;
+using Quanlicaan.Models.Session;
 
 namespace Quanlicaan.Controllers
 {
@@ -92,7 +94,7 @@ namespace Quanlicaan.Controllers
         }
        
 
-        ///THÊM NHÂN VIÊN MƯỚI
+        //THÊM NHÂN VIÊN MỚI
         [HttpGet]
         public ActionResult AddNV(NhanVien nv)
         {
@@ -127,6 +129,16 @@ namespace Quanlicaan.Controllers
         }
 
 
+        // LẤY THÔNG TIN CÁ NHÂN NGƯỜI ĐĂNG NHẬP
+        [HttpGet]
+        public ActionResult PerSonal()
+        {
+            UserSession us = (UserSession)Session["UserSession"];
+            UserModel usermodel = new UserModel();
+            PersonalModel personal = new PersonalModel();
+            personal = usermodel.getPerSonal(us.UserID);
+            return View();
+        }
     }
 
 }

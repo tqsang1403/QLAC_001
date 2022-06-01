@@ -21,7 +21,7 @@ namespace Quanlicaan.Controllers
                 ViewBag.message = "Bạn chưa đăng kí ca ăn ngày hôm nay ";
                 return View(list);
             }
-            else
+            else 
             {
                 return View(list);
             }

@@ -239,5 +239,33 @@ namespace Quanlicaan.Models.DAO
             
         }
 
+
+
+        // lấy thông tin cá nhân người đăng nhập
+        public PersonalModel getPerSonal(int IDUser)
+        {
+            PersonalModel nv = new PersonalModel();
+
+            command.CommandText = "select * from NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where NhanVien.id =@iduser";
+            command.Parameters.AddWithValue("@iduser", IDUser);
+            SqlDataReader reader = command.ExecuteReader();
+            command.Parameters.Clear();
+            while (reader.Read())
+            {
+                nv.ID =Convert.ToInt32( reader["ID"]);
+                nv.HoTen = reader["HoTen"].ToString();
+                nv.GioiTinh = Convert.ToBoolean(reader["GioiTinh"]);
+                nv.DiaChi = reader["DiaChi"].ToString();
+                nv.SDT = reader["SDT"].ToString();
+                nv.ChucVu = reader["Chucvu"].ToString();
+                nv.username = reader["username"].ToString();
+                nv.upassword = reader["upassword"].ToString();
+                nv.TenPhongBan = reader["TenPB"].ToString();
+
+            }
+            conn.Close();
+            return nv;
+        }
+
     }
 }

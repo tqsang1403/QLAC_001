@@ -45,7 +45,6 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li> <a class="dropdown-item" href="@Url.Action("DkiCanhan","Dangkycaan")"> Đăng kí suất ăn cá nhân</a></li>
                                     <li><a class="dropdown-item" href="@Url.Action("Tapthe","Dangkycaan")"> Đăng kí suất ăn tập thể</a></li>
-                                    <li><a class="dropdown-item" href="@Url.Action("EditDkiCaanCanhan","Dangkycaan")">Chỉnh sửa thông tin đăng kí </a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -69,13 +68,14 @@
                         </div>
                         <div>
 
-                            <a class="dropdown-item" href="@Url.Action("Show","NhanVien")">Thông tin cá nhân</a>
+                            <a class="dropdown-item" href="@Url.Action("PerSonal","NhanVien")">Thông tin cá nhân</a>
 
                         </div>
 
                         @using (Html.BeginForm("logOut", "Login", FormMethod.Post, new { @class = "nav-item dropdown" }))
                         {
-            <button type="submit" class="btn btn-danger"> Đăng xuất </button>}
+                            <button type="submit" class="btn btn-danger"> Đăng xuất </button>
+                        }
 
                     </div>
                 </div>
