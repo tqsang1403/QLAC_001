@@ -1,8 +1,10 @@
 ﻿
+using Quanlicaan.Models.Checking;
 using Quanlicaan.Models.ModelADO;
 using Quanlicaan.Models.Models._2;
 using Quanlicaan.Models.Session;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -29,7 +31,7 @@ namespace Quanlicaan.Controllers
             {
                 string Thongbao = "";
                 //kiem tra ten dang nhap va mat khau ok
-                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID join Roles on NhanVien.IDRole = Roles.ID where username ='" + username + "' and upassword = '" + password + "'"  ;
+                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID join Roles on NhanVien.IDRole = Roles.ID where username ='" + username + "' and upassword = '" + password + "' and trangthai = '1'"  ;
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
@@ -40,7 +42,7 @@ namespace Quanlicaan.Controllers
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-
+                   
                     us.HoTen = dr["HoTen"].ToString();
                     us.ID = Convert.ToInt32(dr["ID"]);
                     us.IDRole = Convert.ToInt32(dr["IDRole"]);
@@ -93,12 +95,46 @@ namespace Quanlicaan.Controllers
             return RedirectToAction("Login", "Login");
         }
 
-
-        public ActionResult RegistEmp()
+        public ActionResult GetUsername()
         {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string qr = "select username from NhanVien";
+                SqlCommand sqlcm = new SqlCommand(qr, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(sqlcm);
+                DataSet dss = new DataSet();
+                sda.Fill(dss);
+                List<userCheck> list = new List<userCheck>();
+                foreach (DataRow dr in dss.Tables[0].Rows)
+                {
+                    if (dss.Tables[0].Rows.Count != 0)
+                    {
+                        list.Add(new userCheck
+                        {
+                            usernamee = Convert.ToString(dr["username"])
+
+                        });
+                    }
+                    else
+                    {
+                        ViewBag.Message = "k co";
+                    }
+
+                }
+            }
+            return View();
+        }
+
+        public ActionResult RegistEmp(string thongbao)
+        {
+            ViewData["message"] = thongbao;
             var pb = new PhongBanModels();
             DataSet ds = pb.getAllPhongBan();
             ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+           
+
 
             return View(new NhanVienModel());
             
@@ -111,13 +147,17 @@ namespace Quanlicaan.Controllers
             DataSet ds = pb.getAllPhongBan();
             ViewBag.PhongBan = ds.Tables["PhongBan"];
 
+           
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                
                 try
                 {
+                    
+                     
                     conn.Open();
-                    string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,'2', @ChucVu, @username, @upassword)";
+                    string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, RoleRegist) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,'2', 'Nhân Viên', @username, @upassword, 'Cá nhân')";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
                     cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
@@ -125,7 +165,7 @@ namespace Quanlicaan.Controllers
                     cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
                     cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
                     //cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
-                    cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
+                    //cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
                     cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
                     cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword);
                     cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai);
@@ -137,6 +177,7 @@ namespace Quanlicaan.Controllers
                 catch (System.Data.SqlClient.SqlException sqlException)
                 {
                     thongbao = "tao moi tai khoan that bai";
+                    return RedirectToAction("RegistEmp", "Login", new { thongbao });
                 }
             }
 

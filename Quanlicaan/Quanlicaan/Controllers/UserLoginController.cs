@@ -87,8 +87,7 @@ namespace Quanlicaan.Controllers
                 NhanVienModel.IDPhongBan = Convert.ToInt32(dtblNhanVien.Rows[0][5].ToString());
                 NhanVienModel.IDrole = Convert.ToInt32(dtblNhanVien.Rows[0][7].ToString());
                 NhanVienModel.ChucVu = Convert.ToString(dtblNhanVien.Rows[0][6].ToString());
-                NhanVienModel.username = Convert.ToString(dtblNhanVien.Rows[0][8].ToString());
-                NhanVienModel.upassword = Convert.ToString(dtblNhanVien.Rows[0][9].ToString());
+                
                 NhanVienModel.trangthai = Convert.ToBoolean(dtblNhanVien.Rows[0][10].ToString());
                 NhanVienModel.RoleRegist = Convert.ToString(dtblNhanVien.Rows[0][11].ToString());
 
@@ -113,7 +112,7 @@ namespace Quanlicaan.Controllers
                 try
                 {
                     conn.Open();
-                    string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, username = @username, upassword = @upassword where ID = @ID ";
+                    string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan where ID = @ID ";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
                     cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
@@ -121,8 +120,7 @@ namespace Quanlicaan.Controllers
                     cmd.Parameters.AddWithValue("@DiaChi", NhanVienModel.DiaChi);
                     cmd.Parameters.AddWithValue("@SDT", NhanVienModel.SDT);
                     cmd.Parameters.AddWithValue("@IDPhongBan", NhanVienModel.IDPhongBan);
-                    cmd.Parameters.AddWithValue("@username", NhanVienModel.username);
-                    cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
+                    
 
                     cmd.ExecuteNonQuery();
 
@@ -134,6 +132,90 @@ namespace Quanlicaan.Controllers
                 {
 
                     thongbao = "Sua thong tin that bai";
+                    MessageBox.Show(sqlException.Message);
+                }
+            }
+
+
+            return RedirectToAction("Details", "UserLogin", new { thongbao });
+
+        }
+
+
+
+
+        // GET: UserLogin/Edit/5
+        public ActionResult EditAccount()
+        {
+            userSession us = (userSession)Session["user"];
+
+            int id = us.ID;
+
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+
+
+
+            NhanVienModel NhanVienModel = new NhanVienModel();
+            DataTable dtblNhanVien = new DataTable();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "Select * from NhanVien where ID=@ID";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, conn);
+                sqlDataAdapter.SelectCommand.Parameters.AddWithValue("@ID", id);
+                sqlDataAdapter.Fill(dtblNhanVien);
+            }
+            if (dtblNhanVien.Rows.Count == 1)
+            {
+                NhanVienModel.ID = Convert.ToInt32(dtblNhanVien.Rows[0][0].ToString());
+                NhanVienModel.username = Convert.ToString(dtblNhanVien.Rows[0][8].ToString());
+                NhanVienModel.upassword = Convert.ToString(dtblNhanVien.Rows[0][9].ToString());
+               
+
+                return View(NhanVienModel);
+            }
+            else
+                return RedirectToAction("Details");
+
+        }
+
+        // POST: UserLogin/Edit/5
+        [HttpPost]
+        public ActionResult EditAccount(NhanVienModel NhanVienModel)
+        {
+            string thongbao = "";
+
+            userSession us = (userSession)Session["user"];
+            string usernm = us.username;
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "Update NhanVien Set username = @username, upassword = @upassword where ID = @ID ";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
+                    
+                    cmd.Parameters.AddWithValue("@username", usernm);
+                    cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
+
+                    cmd.ExecuteNonQuery();
+
+                    thongbao = "Thay doi mat khau thanh cong! Vui long dang nhap lai de cap nhat thong tin !";
+                    conn.Close();
+
+                }
+                catch (System.Data.SqlClient.SqlException sqlException)
+                {
+
+                    thongbao = "Thay doi mat khau that bai";
                     MessageBox.Show(sqlException.Message);
                 }
             }

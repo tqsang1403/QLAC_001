@@ -8,6 +8,7 @@
     var month = (DateTime.Today.Month);
     var year = (DateTime.Today.Year);
     var fullday = DateTime.Now;
+    var hour = DateTime.Now.TimeOfDay;
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
     {
@@ -18,12 +19,13 @@
 
     @if(Model.Any())
     {
-        <table class="table tab-content table-bordered">
+        <table class="table table-hover table-active tab-content table-bordered table-striped">
             <thead> Ca ăn đã đăng ký ngày @day - @month - @year   </thead>
+
             <tr>
-              
+
                 <th>
-                    ID Ca Ăn
+                    Ca Ăn
                 </th>
                 <th>
                     Số lượng(suất)
@@ -37,9 +39,9 @@
             @foreach (var item in Model)
             {
                 <tr>
-                
+
                     <td>
-                        @Html.DisplayFor(modelItem => item.IDCaAn)
+                        @Html.DisplayFor(modelItem => item.TenCaAn)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Soluong)
@@ -53,9 +55,11 @@
             }
 
         </table>
+        <a href="@Url.Action("EditDkiCaanCanhan", "Home")">Chỉnh sửa</a>
     }
     else
     {
+
         <h2 style="text-align:center;padding:15%">Hôm nay bạn chưa đăng ký ăn !</h2>
     }
 

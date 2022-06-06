@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -42,6 +43,9 @@ namespace Quanlicaan.Models.ModelADO
         [Required]
         public string username { get; set; }
 
+
+        [DisplayName("Password")] //makes column title not split
+        [DataType(DataType.Password)]
         [Required]
         public string upassword { get; set; }
 
@@ -54,5 +58,11 @@ namespace Quanlicaan.Models.ModelADO
 
 
         public virtual PhongBanModel PhongBan { get; set; }
+
+
+
+        public string TenPB { get; set; }
+
+        public List<NhanVienModel> listnvien { get; set; }
     }
 }

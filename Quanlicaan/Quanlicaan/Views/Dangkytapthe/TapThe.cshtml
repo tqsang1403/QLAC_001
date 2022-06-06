@@ -23,13 +23,13 @@
     </div>
     <div class="d-flex justify-content-around" style="margin-bottom:20px">
         <h4>  Nhân viên đăng kí : @info.HoTen</h4>
-        <h4>  Ngày đăng kí : @DateTime.Now</h4>
+        <h4>  Ngày đăng kí : @DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")</h4>
 
     </div>
     @using (Html.BeginForm("DkiTapThe", "Dangkytapthe", FormMethod.Post))
     {
 
-        <table class="table table-bordered table-hover table-secondary">
+        <table class="table table-hover table-active tab-content table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">STT</th>

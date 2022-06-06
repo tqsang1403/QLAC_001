@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Sửa thông tin nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
+    <link href="~/css/one.css" rel="stylesheet" />
     List<SelectListItem> listRR = new List<SelectListItem>
             {
                 new SelectListItem{Text = "Cá nhân", Value = "Cá nhân"},
@@ -18,7 +18,12 @@
 
             };
 
-   
+    List<SelectListItem> listGT = new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Nam", Value = "true"},
+                new SelectListItem{Text = "Nữ", Value = "false"}
+
+            };
 
 
     List<SelectListItem> listPB = new List<SelectListItem>();
@@ -29,6 +34,8 @@
         item.Text = dr["TenPB"].ToString();
         listPB.Add(item);
     }
+
+
 }
 
 
@@ -55,8 +62,8 @@
        Giới tính
         <div class="col-md-10">
             <div class="checkbox">
-                @Html.EditorFor(model => model.GioiTinh)
-                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.GioiTinh,listGT)
+                @Html.ValidationMessageFor(model => model.GioiTinh, "Nam: ✔ || Nữ: để trống", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -111,7 +118,7 @@
     <div class="form-group">
         Password
         <div class="col-md-10">
-            @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control",@required = "required" } })
             @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
         </div>
     </div>

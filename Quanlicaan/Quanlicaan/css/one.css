@@ -1,0 +1,45 @@
+﻿
+.form-control{
+    width:100%;
+}
+.form-horizontal {
+    display: block;
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-control {
+    width: 80%;
+}
+
+.containerS-item {
+    display: block;
+    width: 40%
+}
+
+.container_s {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+

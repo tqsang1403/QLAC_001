@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -20,6 +22,9 @@ namespace Quanlicaan.Models.Session
 
         public string username { get; set; }
 
+
+        [DisplayName("Password")] //makes column title not split
+        [DataType(DataType.Password)]
         public string upassword { get; set; }
         public bool trangthai { get; set; }
 

@@ -1,0 +1,101 @@
+﻿
+@model List<Quanlicaan.Models.ModelADO.EditPersonalMeal>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int j = 1;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/main.css">
+
+    <title>Chỉnh sửa suất ăn cá nhân </title>
+
+</head>
+<body>
+    <script>function show() {
+            alert("Bạn đã cập nhật thành công");
+        }</script>
+    <div class="container">
+
+        <h2 class="title" style="margin-top:30px">Chỉnh sửa thông tin đăng kí ca ăn</h2>
+        @using (Html.BeginForm("EditDkiCaanCanhan", "Home", FormMethod.Post))
+        {
+            <table class="table table-hover table-active tab-content table-bordered table-striped">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Mã Nhân Viên</th>
+                        <th scope="col">Họ tên nhân viên</th>
+                        <th scope="col"> Chi tiết suất ăn</th>
+                        <th scope="col"> ID suất ăn</th>
+                        <th scope="col"> ID ca ăn</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col"> Thời gian đặt</th>
+                        <th scope="col"> Remove</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count == 0)
+                    {
+                        <div style="color:red ; font-size:2.4rem ; font-weight:600 ; text-align:center"> @ViewBag.message</div>
+
+                    }
+
+                    else
+                    {
+                        for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <th scope="row">@j</th>
+                                <td>
+                                    @Html.HiddenFor(m => Model[i].IDUSer)
+                                    @Html.DisplayTextFor(m => m[i].IDUSer)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => Model[i].HoTen)
+                                </td>
+                                <td>
+                                    @Html.HiddenFor(m => Model[i].IDChiTietSuatAn)
+                                    @Html.DisplayTextFor(m => m[i].IDChiTietSuatAn)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => Model[i].IDSuatAn)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => Model[i].IDCaAn)
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => @Model[i].Soluong)
+                                </td>
+                                <td>
+                                    @Html.DisplayTextFor(m => Model[i].NgayDk.TimeOfDay)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Home" , new { id = Model[i].IDChiTietSuatAn})">Xóa chi tiết suất ăn </a>
+                                </td>
+                            </tr>
+                            j++;
+                        }
+                    }
+
+
+                </tbody>
+            </table>
+            <div class="btn_submit_back">
+                <button type="submit" class="submit-btn" onclick="show()"> Lưu lại </button>
+                <button class="submit-btn "><a class="back" href=" @Url.Action("Home2","Home") "> Quay lại</a>  </button>
+            </div>
+        }
+
+    </div>
+
+</body>
+</html>

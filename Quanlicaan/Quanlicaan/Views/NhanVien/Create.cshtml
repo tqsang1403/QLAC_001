@@ -33,7 +33,12 @@
         listPB.Add(item);
     }
 
+    List<SelectListItem> listGT = new List<SelectListItem>
+            {
+                new SelectListItem{Text = "Nam", Value = "true"},
+                new SelectListItem{Text = "Nữ", Value = "false"}
 
+            };
 
 
 
@@ -62,7 +67,7 @@
             Giới tính
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.GioiTinh)
+                    @Html.DropDownListFor(model => model.GioiTinh,listGT)
                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -120,7 +125,7 @@
         <div class="form-group">
             Password
             <div class="col-md-10">
-                @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control",@type = "password" } })
                 @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
             </div>
         </div>

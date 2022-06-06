@@ -1,4 +1,5 @@
-﻿using Quanlicaan.Models.Session;
+﻿using Quanlicaan.Models.ModelADO;
+using Quanlicaan.Models.Session;
 using Quanlicaan.Models.ShowModels;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace Quanlicaan.Controllers
                     model.IDUSer = Convert.ToInt32(dr["IDUser"]);
                     model.Soluong = Convert.ToInt32(dr["Soluong"]);
                     model.NgayDk = Convert.ToDateTime(dr["Thoigiandat"]);
-
+                    model.TenCaAn = Convert.ToString(dr["TenCa"]);
                     list.Add(model);
                 }
                 else
@@ -47,5 +48,46 @@ namespace Quanlicaan.Controllers
             return View(list);
 
         }
+
+
+        public ActionResult EditDkiCaanCanhan()
+        {
+            userSession us = (userSession)Session["user"];
+            EditPersonalMeal edit = new EditPersonalMeal();
+            List<EditPersonalMeal> list = edit.getAllSuatAnDangKi(us.ID);
+            if (list.Count == 0)
+            {
+                ViewBag.message = "Bạn chưa đăng kí ca ăn hôm nay";
+                return View(list);
+            }
+            else
+            {
+                return View(list);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditDkiCaanCanhan(List<EditPersonalMeal> model)
+        {
+            EditPersonalMeal suatAnModel = new EditPersonalMeal();
+            for (int i = 0; i < model.Count; i++)
+            {
+                suatAnModel.UpDateChiTietSuatAn(model[i].IDUSer, model[i].IDChiTietSuatAn, model[i].Soluong);
+            }
+            ViewBag.updateSucess = "Bạn đã cập nhật thành công";
+            return RedirectToAction("Home2", "Home");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Delete(int ID)
+        {
+            EditPersonalMeal suatAnModel = new EditPersonalMeal();
+            suatAnModel.DeleteChiTietSuatAn(ID);
+            return RedirectToAction("Home2", "Home");
+        }
+
+
     }
 }

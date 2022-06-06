@@ -268,6 +268,12 @@
     <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
@@ -520,10 +526,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Checking\userCheck.cs" />
     <Compile Include="Models\dbConnect.cs" />
     <Compile Include="Models\ModelADO\CaAn.cs" />
     <Compile Include="Models\ModelADO\DangkyantaptheModel.cs" />
     <Compile Include="Models\ModelADO\DangkycanhanModel.cs" />
+    <Compile Include="Models\ModelADO\EditPersonalMeal.cs" />
     <Compile Include="Models\ModelADO\NhanVienModel.cs" />
     <Compile Include="Models\ModelADO\PhongBanModel.cs" />
     <Compile Include="Models\ModelADO\Roles.cs" />
@@ -536,6 +544,7 @@
     <Compile Include="Models\ShowModels\ReportsPerDay.cs" />
     <Compile Include="Models\ShowModels\ReportsPerMonth.cs" />
     <Compile Include="Models\ShowModels\userModel.cs" />
+    <Compile Include="Models\View\ModelViews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -562,6 +571,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="css\baocaocanhan.css" />
     <Content Include="css\baocaotheongay.css" />
     <Content Include="css\baocaotheothang.css" />
@@ -574,6 +584,7 @@
     <Content Include="css\login.css" />
     <Content Include="css\editnv.css" />
     <Content Include="css\nv.css" />
+    <Content Include="css\one.css" />
     <Content Include="css\regist.css" />
     <Content Include="css\shome.css" />
     <Content Include="favicon.ico" />
@@ -692,6 +703,8 @@
     <Content Include="Views\ReportsPerDay\ReportPerDay.cshtml" />
     <Content Include="Views\Home\Home2.cshtml" />
     <Content Include="Views\UserLogin\EditDetails.cshtml" />
+    <Content Include="Views\Home\EditDkiCaanCanhan.cshtml" />
+    <Content Include="Views\UserLogin\EditAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

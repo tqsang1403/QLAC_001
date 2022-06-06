@@ -1,21 +1,24 @@
-﻿@using Quanlicaan.Models.Session
+﻿@model PagedList.IPagedList<Quanlicaan.Models.ModelADO.PhongBanModel>
+@using Quanlicaan.Models.Session
+
+@using PagedList.Mvc
+@using PagedList
 @{
     ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var per = (userSession)Session["user"];
-
+    <link href="~/css/one.css" rel="stylesheet" />
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
     {
         <script> alert('@message');</script>
     }
 }
-@if (per.IDRole == 1)
-{
-    <a href="@Url.Action("Create","PhongBan")">Thêm mới</a>
-}
 
-<table class="table tab-content table-bordered table-striped">
+    <a href="@Url.Action("Create","PhongBan")">Thêm mới</a>
+
+
+<table class="table table-hover table-active tab-content table-bordered table-striped">
     <tr style="text-align:center">
         <th>ID</th>
         <th>Tên Phòng Ban</th>
@@ -23,27 +26,31 @@
 
         <th></th>
     </tr>
-    @for (int i = 0; i < Model.Rows.Count; i++)
+    @foreach (var Model in Model)
     {
         <tr>
-            <td>@Model.Rows[i][0]</td>
-            <td>@Model.Rows[i][1]</td>
+            <td>@Model.ID</td>
+            <td>@Model.TenPB </td>
+
+
+
 
 
             <td>
-                @if (per.IDRole == 1)
-                {
-                    <a href="@Url.Action("Edit", "PhongBan", new { @id = Model.Rows[i][0] })">Sửa</a>@*<br />
-                        <a href="@Url.Action("Delete","PhongBan", new {@id = Model.Rows[i][0]})">Delete</a>*@
 
-                }
-                else
-                {
-                    @*<a href="@Url.Action("Edit", "PhongBan", new { @id = Model.Rows[i][0] })">Edit</a>*@
-                }
+
+                <a href="@Url.Action("Edit", "PhongBan", new { @id = Model.ID })">Sửa</a>
+                @*<br />
+                    <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
+
             </td>
         </tr>
     }
 </table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+
+
 
 

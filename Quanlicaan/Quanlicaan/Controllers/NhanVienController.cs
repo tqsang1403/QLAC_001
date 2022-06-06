@@ -10,6 +10,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Windows.Forms;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace Quanlicaan.Controllers
 {
@@ -20,15 +23,36 @@ namespace Quanlicaan.Controllers
         SqlConnection conn = new SqlConnection(@"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
 
         [HttpGet]
-        public ActionResult Index(string tennv , string thongbao)
+        public ActionResult Index(string tennv, string tenPB, string thongbao, int? page)
         {
             ViewData["message"] = thongbao;
             ViewBag.Keyword = tennv;
+            ViewBag.Keyword = tenPB;
+            var pb = new PhongBanModels();
+            DataSet ds = pb.getAllPhongBan();
+            ViewBag.PhongBan = ds.Tables["PhongBan"];
+
+            NhanVienModel nvien = new NhanVienModel();
             var nhanvien = new dbConnect();
-            List<NhanVienModel> list = nhanvien.Listnv(tennv);
-            return View(list);
+            List<NhanVienModel> list = nhanvien.Listnv(tennv, tenPB).ToList();
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            nvien.listnvien = list;
+            IPagedList<NhanVienModel> stu = null;
+
+
+
+            stu = list.ToPagedList(pageNumber, pageSize);
+            return View(stu);
 
         }
+
+
+
+
+
+
 
         //public ActionResult Index()
         //{
@@ -66,7 +90,7 @@ namespace Quanlicaan.Controllers
         [HttpPost]
         public ActionResult Create(NhanVienModel nhanvienModel)
         {
-            string thongbao ="";
+            string thongbao = "";
 
             var pb = new PhongBanModels();
             DataSet ds = pb.getAllPhongBan();
@@ -93,16 +117,16 @@ namespace Quanlicaan.Controllers
                     cmd.Parameters.AddWithValue("@RoleRegist", nhanvienModel.RoleRegist);
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    thongbao = "them moi thanh cong";
+                    thongbao = "Thêm mới thành công";
                 }
                 catch (System.Data.SqlClient.SqlException sqlException)
                 {
                     //MessageBox.Show(sqlException.Message);
-                    thongbao = "them moi that bai ! Khong duoc de trong thong tin";
+                    thongbao = "Thêm mới thất bại! không được để trống";
                 }
             }
 
-            return RedirectToAction("Index","NhanVien",new {thongbao});
+            return RedirectToAction("Index", "NhanVien", new { thongbao });
         }
 
 
@@ -164,23 +188,24 @@ namespace Quanlicaan.Controllers
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                try { 
-                conn.Open();
-                string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, IDRole = @IDRole, ChucVu = @ChucVu, username = @username, upassword = @upassword, trangthai = @trangthai, RoleRegist = @RoleRegist where ID = @ID ";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
-                cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
-                cmd.Parameters.AddWithValue("@GioiTinh", NhanVienModel.GioiTinh);
-                cmd.Parameters.AddWithValue("@DiaChi", NhanVienModel.DiaChi);
-                cmd.Parameters.AddWithValue("@SDT", NhanVienModel.SDT);
-                cmd.Parameters.AddWithValue("@IDPhongBan", NhanVienModel.IDPhongBan);
-                cmd.Parameters.AddWithValue("@IDRole", NhanVienModel.IDrole);
-                cmd.Parameters.AddWithValue("@ChucVu", NhanVienModel.ChucVu);
-                cmd.Parameters.AddWithValue("@username", NhanVienModel.username);
-                cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
-                cmd.Parameters.AddWithValue("@trangthai", NhanVienModel.trangthai);
-                cmd.Parameters.AddWithValue("@RoleRegist", NhanVienModel.RoleRegist);
-                cmd.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    string query = "Update NhanVien Set HoTen = @HoTen, GioiTinh = @Gioitinh, DiaChi = @Diachi, SDT = @SDT, IDPhongBan = @IDPhongBan, IDRole = @IDRole, ChucVu = @ChucVu, username = @username, upassword = @upassword, trangthai = @trangthai, RoleRegist = @RoleRegist where ID = @ID ";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
+                    cmd.Parameters.AddWithValue("@HoTen", NhanVienModel.HoTen);
+                    cmd.Parameters.AddWithValue("@GioiTinh", NhanVienModel.GioiTinh);
+                    cmd.Parameters.AddWithValue("@DiaChi", NhanVienModel.DiaChi);
+                    cmd.Parameters.AddWithValue("@SDT", NhanVienModel.SDT);
+                    cmd.Parameters.AddWithValue("@IDPhongBan", NhanVienModel.IDPhongBan);
+                    cmd.Parameters.AddWithValue("@IDRole", NhanVienModel.IDrole);
+                    cmd.Parameters.AddWithValue("@ChucVu", NhanVienModel.ChucVu);
+                    cmd.Parameters.AddWithValue("@username", NhanVienModel.username);
+                    cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
+                    cmd.Parameters.AddWithValue("@trangthai", NhanVienModel.trangthai);
+                    cmd.Parameters.AddWithValue("@RoleRegist", NhanVienModel.RoleRegist);
+                    cmd.ExecuteNonQuery();
 
                     thongbao = "sua thong tin thanh cong";
                     conn.Close();
@@ -188,17 +213,17 @@ namespace Quanlicaan.Controllers
                 }
                 catch (System.Data.SqlClient.SqlException sqlException)
                 {
-                    
-                        thongbao = "sua thong tin that bai";
+
+                    thongbao = "sua thong tin that bai";
                     //MessageBox.Show(sqlException.Message);
                 }
             }
 
-            
-            return RedirectToAction("Index", "NhanVien", new {thongbao});
+
+            return RedirectToAction("Index", "NhanVien", new { thongbao });
         }
 
-   
+
 
         // GET: NhanVien/Delete/5
         public ActionResult Delete(int id)
@@ -248,6 +273,6 @@ namespace Quanlicaan.Controllers
             return items;
         }
 
-       
+
     }
 }

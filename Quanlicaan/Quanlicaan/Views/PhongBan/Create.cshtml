@@ -18,7 +18,7 @@
         <div class="form-group" style="padding:10px">
            Tên phòng ban
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.TenPB, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -13,6 +13,8 @@ namespace Quanlicaan.Models.ShowModels
         public int ID { get; set; }
 
         public int IDCaAn { get; set; }
+
+        public string HoTen { get; set; }
         public int IDUSer { get; set; }
         public int IDSuatAn { get; set; }
 
@@ -46,7 +48,7 @@ namespace Quanlicaan.Models.ShowModels
         {
             conn.Open();
             command.Connection = conn;
-            command.CommandText = "Select ct.*, sa.Thoigiandat, nv.* from ChiTietSuatAn ct join SuatAn sa on ct.IDSuatAn = sa.ID join NhanVien nv on sa.IDUser = nv.ID where ct.Soluong > 0 and(convert(varchar(10), sa.Thoigiandat, 101)) = (SElect DATEADD(DAY, 0, CAST(GETDATE() AS date))) and nv.ID = @IDNV";
+            command.CommandText = "Select ct.*, sa.Thoigiandat, nv.HoTen, ca.TenCa from ChiTietSuatAn ct join SuatAn sa on ct.IDSuatAn = sa.ID join NhanVien nv on sa.IDUser = nv.ID join CaAn ca on ct.IDCaan = ca.ID where ct.Soluong > 0 and(convert(varchar(10), sa.Thoigiandat, 101)) = (SElect DATEADD(DAY, 0, CAST(GETDATE() AS date))) and nv.ID = @IDNV";
             command.Parameters.AddWithValue("@IDNV", IDNV);
             dataAdapter.SelectCommand = command;
             dataAdapter.Fill(ds,"CTtoday");

@@ -44,8 +44,8 @@
             <th>
                 Tổng số lượng suất ăn
                 @*<th>
-                Thời gian đăng ký
-            </th>*@
+                        Thời gian đăng ký
+                    </th>*@
             <th>
                 Thành tiền(VND) : <i>15.000/suất</i>
             </th>
@@ -54,32 +54,43 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoTen)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tenPB)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Soluong)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.NgayDk)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem=>item.Thanhtien)
-            </td>
+           
+                <tr>
 
-            </tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.HoTen)
+
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.tenPB)
+
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Soluong)
+
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.NgayDk)
+                        </td>*@
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Thanhtien)
+
+
+                    </td>
+
+                </tr>
+            
         }
 
     </table>
 }
- else
+else
 
 {
-<h1 style="padding:15%;text-align:center;"><b>Từ ngày @time.startt đến ngày @time.endd</b> không có thông tin phù hợp !</h1>
+    <h1 style="padding:15%;text-align:center;"><b>Từ ngày @time.startt đến ngày @time.endd</b> không có thông tin phù hợp !</h1>
 }
 

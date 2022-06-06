@@ -1,30 +1,84 @@
-﻿@using Quanlicaan.Models.Session
+﻿@model PagedList.IPagedList<Quanlicaan.Models.ModelADO.NhanVienModel>
+
+@using PagedList.Mvc
+@using PagedList
+@using System.Data
+
 @{
+    
     ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var per = (userSession)Session["user"];
+   
 
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
     {
         <script> alert('@message');</script>
     }
+
+    List<SelectListItem> listPB = new List<SelectListItem>();
+    foreach (DataRow dr in ViewBag.PhongBan.Rows)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Value = dr["ID"].ToString();
+        item.Text = dr["TenPB"].ToString();
+        listPB.Add(item);
+    }
+    <style>
+        
+
+        .form-control {
+            width: 80%;
+        }
+
+        .containerS-item {
+            display: block;
+            width: 40%
+        }
+
+        .container_s {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            display: block;
+            width: 100%;
+            border-radius: 3px;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            margin-right:0px;
+        }
+
+    </style>
 }
 
-@if (per.IDRole == 1)
-{
-    <a href="@Url.Action("Create","NhanVien")" style="margin-top:30px"><i class="fa-solid fa-plus">Thêm mới</i></a>
-}
 
-@using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
-{
-    <div class="form-group" style="display:block; width:40%; border-radius:3px; padding-top:20px; padding-bottom:10px">
+<div class="container_s">
+    <div class="containerS-item">
+         @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get)) {
+             <div class="form-group">
 
-        <input type="Text" class="form-control mx-0" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm">
-        <button type="submit" class="btn btn-secondary"> Tìm kiếm</button>
+            <input type="Text" class="form-control mx-10" value="@ViewBag.Keyword" name="tennv" placeholder="Nhập tên nhân viên cần tìm">
+            <button type="submit" class="btn btn-secondary"> Tìm kiếm</button>
+        </div>
+
+
+    }
     </div>
-    <hr />
+    <div class="containerS-item" style="margin-left:20%;">
+         @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get, new { @class = "contact-form" })) {
+             <div class="form-group" >
+            @Html.DropDownList("tenPB", listPB, new { @class = "form-control", @value = "@ViewBag.Keyword", @name = "tenPB" })
+            <button type = "submit" class="btn btn-secondary"> Tìm kiếm</button>
+              </div>
 }
+</div>
+    <hr />
+</div>
+
+
+<a href="@Url.Action("Create","NhanVien")">Thêm mới</a>
 <table class="table table-hover table-active tab-content table-bordered table-striped">
     <tr style="text-align:center">
         <th>ID</th>
@@ -32,12 +86,12 @@
         <th>Giới tính</th>
         <th>Địa chỉ</th>
         <th>Số điện thoại</th>
-        <th>ID Phòng Ban</th>
+        <th> Phòng Ban</th>
 
         <th>Quyền truy cập</th>
         <th>Chức vụ</th>
         <th>Tên đăng nhập</th>
-        @*<th>password</th>*@
+        <th>Mật khẩu</th>
 
         <th>Quyền đăng ký ăn</th>
         <th>Trạng thái</th>
@@ -64,7 +118,7 @@
 
             <td>@Model.DiaChi</td>
             <td>@Model.SDT</td>
-            <td>@Model.IDPhongBan</td>
+            <td>@Model.TenPB</td>
 
             @if (Model.IDrole == 1)
             {
@@ -78,7 +132,7 @@
             }
             <td>@Model.ChucVu</td>
             <td>@Model.username</td>
-            @*<td>@Model.upassword</td>*@
+            <td>@Model.upassword</td>
 
 
 
@@ -93,15 +147,20 @@
             }
             <td>
 
-                @if (per.IDRole == 1)
-                {
-                    <a href="@Url.Action("Edit", "NhanVien", new { @id = Model.ID })">Sửa</a>
-                    @*<br />
-                        <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
-                }
+
+                <a href="@Url.Action("Edit", "NhanVien", new { @id = Model.ID })">Sửa</a>
+                @*<br />
+                    <a href="@Url.Action("Delete","NhanVien", new {@id = Model.ID})">Delete</a>*@
+
             </td>
         </tr>
     }
 </table>
+
+@*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 
 

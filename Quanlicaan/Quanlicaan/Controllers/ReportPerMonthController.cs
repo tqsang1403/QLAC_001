@@ -76,7 +76,7 @@ namespace Quanlicaan.Controllers
             }
             else
             {
-                string query = "select nv.HoTen, pb.TenPB , (select (cOALESCE(sum(Soluong),0)) from ChiTietSuatAn ct  where ct.IDUser = nv.ID )as Tongsoluong from NhanVien nv join PhongBan pb on nv.IDPhongBan = pb.ID";
+                string query = "select nv.ID as IDNV, nv.HoTen , pb.*, (select  (cOALESCE(sum(Soluong),0))  from ChiTietSuatAn ct  where ct.IDUser = nv.ID and ct.IDCaan = '1' and ct.Soluong >0)soluongca1 ,(select(cOALESCE(sum(Soluong), 0))  from ChiTietSuatAn ct  where ct.IDUser = nv.ID and ct.IDCaan = '2' and ct.Soluong > 0)soluongca2,(select(cOALESCE(sum(Soluong), 0))  from ChiTietSuatAn ct  where ct.IDUser = nv.ID and ct.IDCaan = '1002' and ct.Soluong > 0)soluongca3, (select(cOALESCE(sum(Soluong), 0))  from ChiTietSuatAn ct  where ct.IDUser = nv.ID and ct.Soluong > 0 )Tongsoluong,(select(cOALESCE(sum(Soluong), 0)) * 15000 from ChiTietSuatAn ct  where ct.IDUser = nv.ID )as Thanhtien from NhanVien nv JOIN PhongBan pb on nv.IDPhongBan = pb.ID ";
                 command = new SqlCommand(query, conn);
 
                 conn.Open();
@@ -101,7 +101,7 @@ namespace Quanlicaan.Controllers
                         HoTen = Convert.ToString(dr["HoTen"]),
                         Soluong = Convert.ToInt32(dr["Tongsoluong"]),
                         tenPB = Convert.ToString(dr["TenPB"]), 
-                        Thanhtien = (Convert.ToInt32(dr["Tongsoluong"]) * 15000)
+                        Thanhtien = (Convert.ToInt32(dr["Thanhtien"]))
                         });
                     }
                     else
