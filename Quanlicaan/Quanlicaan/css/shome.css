@@ -13,4 +13,7 @@
 .input_search {
     width: 15rem;
     height: 2.4rem;
+    border-radius: 20px;
+    text-align:center;
+    font-size:1.125rem;
 }

@@ -137,8 +137,45 @@ namespace Quanlicaan.Controllers
             UserModel usermodel = new UserModel();
             PersonalModel personal = new PersonalModel();
             personal = usermodel.getPerSonal(us.UserID);
-            return View();
+            return View(personal);
         }
+
+
+        //UPDATE THÔNG TIN CÁ NHÂN ĐĂNG NHẬP
+        [HttpPost]
+        public ActionResult PerSonal(PersonalModel model)
+        {
+            UserSession us = (UserSession)Session["UserSession"];
+            UserModel usermodel = new UserModel();
+            usermodel.UpdatePersonal(model, us.UserID);
+            ViewBag.success = "Bạn cập nhật thông tin thành công";
+            return RedirectToAction("PerSonal");
+        }
+
+
+        // LÂY THÔNG TIN TÀI KHOẢN MẬT KHẨU
+        [HttpGet]
+        public ActionResult EditPass()
+        {
+
+            UserSession us = (UserSession)Session["UserSession"];
+            UserModel usermodel = new UserModel();
+            PersonalModel personal = new PersonalModel();
+            personal = usermodel.getPerSonal(us.UserID);
+            return View(personal);
+        }
+
+        // UPDATE THÔNG TIN MẬT KHẨU
+        [HttpPost]
+        public ActionResult EditPass(PersonalModel model)
+        {
+            UserSession us = (UserSession)Session["UserSession"];
+            UserModel usermodel = new UserModel();
+            usermodel.UpdatePersonal(model.username, model.upassword, us.UserID);
+            ViewBag.success = "Bạn cập nhật thông tin thành công";
+            return RedirectToAction("PerSonal") ;
+        }
+
     }
 
 }

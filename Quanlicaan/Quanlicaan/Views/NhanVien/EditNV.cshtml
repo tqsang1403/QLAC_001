@@ -93,7 +93,7 @@
                 </div>
                 <div class="form-field col-lg-6 ">
                     <label class="label" for="iduser">Password</label>
-                    @Html.TextAreaFor(model => model.upassword, new { @class = "input-text js-input", @type = "text", @name = "id", @id = "iduser" })
+                    @Html.PasswordFor(model => model.upassword, new { @class = "input-text", @value = Model.upassword })
                     @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-field col-lg-6 ">

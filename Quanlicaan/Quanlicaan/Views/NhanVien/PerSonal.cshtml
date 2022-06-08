@@ -28,57 +28,107 @@
     <title>Thông tin cá nhân  </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="~/css/editnv.css" rel="stylesheet">
     <link href="~/css/main.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="~/css/fonteawsome/fontawesome-free-6.1.1-web/css/all.min.css">
 
-
+    
 </head>
+
 <body>
 
     <div class="container">
         <section class="get-in-touch">
             <h3 class="title">Thông tin cá  nhân</h3>
-
-
-            <div class="col-md-12">
-                <div class="table-wrap">
-                    <table class="table">
-                        <tbody>
-                           
-                            <tr>
-                                <th scope="row">Họ tên</th>
-                                <td>Jacob</td>
-                                <td> <div> <i class="fa-solid fa-pen-to-square"></i></div></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Giới tính</th>
-                                <td>Larry</td>
-                                <td> <div> <i class="fa-solid fa-pen-to-square"></i></div></td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">Địa chỉ</th>
-                                <td>John</td>
-                                <td> <div> <i class="fa-solid fa-pen-to-square"></i></div></td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">Tên phòng ban</th>
-                                <td>Gary</td>
-                                <td> <div> <i class="fa-solid fa-pen-to-square"></i></div></td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div style=" display: flex; justify-content: space-around; align-items: center">
+                <h4 style=" color: #fd7e14d4; font-family: emoji;"> Ngày :  @DateTime.Now.ToString("dd-MM-yyyy") </h4>
+                <button style="width:15rem;" class="submit-btn"><a class="back" href=" @Url.Action("EditPass","NhanVien") ">Thay đổi mật khẩu</a> </button>
             </div>
 
+            <div class="col-md-12">
+                @using (Html.BeginForm("PerSonal", "NhanVien", FormMethod.Post))
+                {
+                    @* Box chỉnh sửa thông tin cá nhân *@
+                    <div class="table-wrap personal_info">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Họ tên</th>
+                                    <td class="td_information">
+                                        @Html.TextAreaFor(m => m.HoTen, new { @class = "input-text", @type = "text" })
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Giới tính</th>
+                                    <td class="td_information">
+                                        <div id="gener" class="checkbox">
+                                            @Html.EditorFor(m => m.GioiTinh)
+                                            (Nam :Chọn  , Nữ : không tích)
+                                            @Html.ValidationMessageFor(m => m.GioiTinh, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div id="destroyGener"> </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Địa chỉ</th>
+                                    <td class="td_information">
+                                        @Html.TextAreaFor(m => m.DiaChi, new { @class = "input-text", @type = "text" })
+
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Tên phòng ban</th>
+                                    <td class="td_information">
+                                        <span style="color: #6c757d;font-size: 1.1rem;">@Model.TenPhongBan</span>
+
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <th scope="row"> Số điện thoại</th>
+                                    <td class="td_information">
+                                        @Html.TextAreaFor(m => m.SDT, new { @class = "input-text", @type = "text" })
+
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Chức vụ</th>
+                                    <td class="td_information">
+                                        <span style="color: #6c757d;font-size: 1.1rem;">@Model.ChucVu</span>
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="form-field col-lg-12 btn_submit_back">
+                        <button type="submit" id="btnSave" class="submit-btn" onclick="show()"> Lưu thông tin</button>
+                        <button class="submit-btn "><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a>  </button>
+                    </div>
+                }
+
+
+
+            </div>
         </section>
 
     </div>
 
+    <script>
+        function show() {
+            alert("Bạn đã cập nhật thành công");
+        }
+    </script>
 </body>
 </html>
 

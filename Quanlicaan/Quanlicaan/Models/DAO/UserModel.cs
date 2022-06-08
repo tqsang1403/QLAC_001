@@ -174,7 +174,7 @@ namespace Quanlicaan.Models.DAO
             return employ;
         }
 
-        // thực hiện update
+        // thực hiện update thông tin nhân viên
         public void UpdateNv(NhanVien nhanvien)
         {
             command.CommandText = "Update NhanVien Set HoTen =@hoten , GioiTinh = @Gioitinh , DiaChi = @Diachi, SDT = @sdt , IDPhongBan = @idpb, ChucVu =@ChucVu,IDRole = @idRole ,username = @username, upassword = @pass, trangthai=@trangthai , PhanQuyen=@phanquyen where ID = @ID";
@@ -265,6 +265,35 @@ namespace Quanlicaan.Models.DAO
             }
             conn.Close();
             return nv;
+        }
+        // upadate thông tin cá nhân đăng nhập
+
+        public void UpdatePersonal(PersonalModel model, int ID)
+        {
+            command.CommandText = "update NhanVien set HoTen = @hoten  , GioiTinh= @gioitinh , DiaChi= @diachi,  SDT= @sdt where ID = @id ";
+            command.Parameters.AddWithValue("@hoten", model.HoTen);
+            command.Parameters.AddWithValue("@gioitinh", model.GioiTinh);
+            command.Parameters.AddWithValue("@diachi", model.DiaChi);
+            command.Parameters.AddWithValue("@sdt", model.SDT);
+            command.Parameters.AddWithValue("@id", ID);
+
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
+
+            conn.Close();
+        }
+        // upadate thông tin mât khẩu cá nhân đăng nhập
+        public void UpdatePersonal(string username, string pass, int ID)
+        {
+            command.CommandText = "update NhanVien set username = @username , upassword= @pass where id =@id ";
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@pass", pass);
+            command.Parameters.AddWithValue("@id", ID);
+
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
+
+            conn.Close();
         }
 
     }

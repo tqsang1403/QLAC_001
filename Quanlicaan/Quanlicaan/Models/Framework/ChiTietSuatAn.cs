@@ -21,6 +21,7 @@ namespace Quanlicaan.Models.Framework
 
         public DateTime Thoigiandat { get; set; }
 
+
         public virtual CaAn CaAn { get; set; }
 
         public virtual SuatAn SuatAn { get; set; }

@@ -11,8 +11,6 @@ namespace Quanlicaan.Models.ModelsPage
     public class PersonalModel : NhanVien
     {
         public string TenPhongBan { get; set; }
-        [DisplayName("Ngày cập nhật")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd//MM/yyyy}")]
-        public DateTime time { get; set; }
+        
     }
 }

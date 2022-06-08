@@ -24,7 +24,7 @@ namespace Quanlicaan.Models.DAO
         }
 
         // thêm 1 bản ghi mới trong bảng suất ăn giá trị trả về là true hoặc false để biết thêm thành công hay không
-        public bool InsertSuatAn(int ID, string time)
+        public void InsertSuatAn(int ID, string time)
         {
             conn.Open();
             command.Connection = conn;
@@ -35,14 +35,7 @@ namespace Quanlicaan.Models.DAO
             var check = command.ExecuteNonQuery();
             command.Parameters.Clear();
             conn.Close();
-            if (check > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+          
         }
 
         // thêm mới bản ghi bảng chi tiết suất ăn
@@ -54,7 +47,6 @@ namespace Quanlicaan.Models.DAO
             command.CommandText = "select ID from SuatAn where IDUser= @iduser and Thoigiandat= @time";
             command.Parameters.AddWithValue("@time", time);
             command.Parameters.AddWithValue("@iduser", ID);
-            var sql = command.CommandText;
             SqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -62,15 +54,17 @@ namespace Quanlicaan.Models.DAO
                 IDSuatAn = Convert.ToInt32(dr["ID"]);
             }
             dr.Close();
+
             command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat ) values (@iduser, @soluong , @idsuatan , @idcaan, @time)";
             command.Parameters.AddWithValue("@soluong", Soluong);
             command.Parameters.AddWithValue("@idsuatan", IDSuatAn);
             command.Parameters.AddWithValue("@idcaan", IDCaan);
-
             command.ExecuteNonQuery();
+            
             command.Parameters.Clear();
             conn.Close();
         }
+
 
         ////////// thực hiện thêm suất ăn với tập thể
         public DataSet getAllNhanVienCungPhongBan(int IDPhongBan)
@@ -150,6 +144,33 @@ namespace Quanlicaan.Models.DAO
         }
 
 
+
+        // thực hiện lấy số lượng suất ăn của từng ca 
+            public int getSLSuatAn(int IDUser, int IDCaan)
+            {
+                int SL=0;
+                conn.Open();
+                command.Connection = conn;
+                command.CommandText = "select Soluong from ChiTietSuatAn where IDUser=@iduser  and IDCaan =@idcaan and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE())))";
+                command.Parameters.AddWithValue("@iduser", IDUser);
+                command.Parameters.AddWithValue("@idcaan", IDCaan);
+                SqlDataReader dr =  command.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                         SL = Convert.ToInt32(dr["Soluong"]);
+                    }
+                }
+                else
+                {
+                     SL = 0;
+                }
+
+                command.Parameters.Clear();
+                conn.Close();
+                return SL;
+            }
 
         // thực hiện update dữ liệu mới
         public void UpDateChiTietSuatAn(int idUser , int idChiTietSuatAn , int Soluong)

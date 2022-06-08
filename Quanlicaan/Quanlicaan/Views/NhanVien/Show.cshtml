@@ -52,7 +52,7 @@
 
                     @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get, new { @class = "contact-form row" }))
                     {
-                        <div>
+                        <div> 
                             @Html.DropDownList("idPhongBan", list , new { @class ="input_search"})
                             <button type="submit" class="submit-btn"> Tìm kiếm</button>
                         </div>
@@ -118,7 +118,7 @@
                                                 <td> Nhân viên</td>
                                             }
                                             <td>@item.username</td>
-                                            <td>@item.upassword</td>
+                                            <td> @item.upassword</td>
 
                                             @if (@item.trangthai)
                                             {

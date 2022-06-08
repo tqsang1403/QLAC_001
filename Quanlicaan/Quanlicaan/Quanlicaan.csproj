@@ -2783,6 +2783,7 @@
     <Content Include="Views\PhongBan\AddPhongBan.cshtml" />
     <Content Include="Views\Home\ReportPerson.cshtml" />
     <Content Include="Views\NhanVien\PerSonal.cshtml" />
+    <Content Include="Views\NhanVien\EditPass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
