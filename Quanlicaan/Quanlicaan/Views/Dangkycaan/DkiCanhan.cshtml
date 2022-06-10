@@ -22,7 +22,7 @@
 
 </head>
 <body>
-    <div>
+    <div >
         <style>
             * {
                 box-sizing: border-box;
@@ -158,22 +158,23 @@
 
                 </div>
 
-                <table>
+                <table class="table">
 
-                    @if (DateTime.Now > Model.TimeCa1)
+                    @* Đăng kí ca ăn ca 1 *@
+                    @if (DateTime.Now.TimeOfDay > Model.TimeCa1.TimeOfDay)
                     {
                         <tr>
-                            <td style="color: #41398cb8;font-weight: 700; font-size: 1.4rem;"> Đã quá thời gian đăng kí ca 1</td>
+                            <td colspan="3" style="color: red;font-weight: 500; font-size: 1.4rem;"> Đã quá thời gian đăng kí ca 1</td>
 
                         </tr>
                     }
                     else
                     {
-                        @* Đăng kí ca ăn ca 1 *@
+
                         if (Model.SLCa1 > 0)
                         {
                             <tr>
-                                <td style=" color:red"> Bạn đã đăng kí ca ăn</td>
+                                <td style=" color:red ; font-size: 1.4rem;"> Bạn đã đăng kí ca ăn</td>
                                 <td> Ca 1 </td>
                                 <td style="color : #5543ca"> @Html.DisplayFor(model => model.SLCa1, new { id = "ca1", disabled = "disabled" }) <span> Suất ăn</span> </td>
                             </tr>
@@ -190,51 +191,73 @@
                     }
 
 
+
+
                     @* Đăng kí ca ăn ca 2 *@
-                    @if (Model.SLCa2 > 0)
+                    @if (DateTime.Now.TimeOfDay > Model.TimeCa2.TimeOfDay)
                     {
                         <tr>
-                            <td style=" color:red"> Bạn đã đăng kí ca ăn</td>
-                            <td> Ca 2</td>
-                            <td style="color : #5543ca"> @Html.DisplayFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled" }) <span> Suất ăn</span> </td>
+                            <td style="color: red;font-weight: 500; font-size: 1.4rem;"> Đã quá thời gian đăng kí ca 2</td>
+
                         </tr>
                     }
                     else
                     {
-                        <tr>
-                            <td>  @Html.CheckBoxFor(model => model.check2, new { id = "box2", onclick = "clickCheck('box2','ca2')" }) </td>
-                            <td> Ca 2</td>
-                            <td> @Html.TextAreaFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled" })</td>
-                        </tr>
-                    }
+                        if (Model.SLCa2 > 0)
+                        {
+                            <tr>
+                                <td style=" color:red ; font-size: 1.4rem;"> Bạn đã đăng kí ca ăn</td>
+                                <td> Ca 2</td>
+                                <td style="color : #5543ca"> @Html.DisplayFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled" }) <span> Suất ăn</span> </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>  @Html.CheckBoxFor(model => model.check2, new { id = "box2", onclick = "clickCheck('box2','ca2')" }) </td>
+                                <td> Ca 2</td>
+                                <td> @Html.TextAreaFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled" })</td>
+                            </tr>
+                        }
 
+                    }
 
 
 
 
                     @* Đăng kí ca ăn ca 3 *@
-                    @if (Model.SLCa3 > 0)
+                    @if (DateTime.Now.TimeOfDay > Model.TimeCa3.TimeOfDay)
                     {
                         <tr>
-                            <td style=" color:red"> Bạn đã đăng kí ca ăn</td>
-                            <td> Ca 3</td>
-                            <td style="color : #5543ca"> @Html.DisplayFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled" }) <span> Suất ăn</span> </td>
+                            <td style="color: red;font-weight: 500; font-size: 1.4rem;"> Đã quá thời gian đăng kí ca 3</td>
+
                         </tr>
                     }
                     else
                     {
-                        <tr>
-                            <td>  @Html.CheckBoxFor(model => model.check3, new { id = "box3", onclick = "clickCheck('box3','ca3')" })</td>
-                            <td> Ca 3</td>
-                            <td> @Html.TextAreaFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled" })</td>
-                        </tr>
+                        if (Model.SLCa3 > 0)
+                        {
+                            <tr>
+                                <td style=" color:red ; font-size: 1.4rem;"> Bạn đã đăng kí ca ăn</td>
+                                <td> Ca 3</td>
+                                <td style="color : #5543ca"> @Html.DisplayFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled" }) <span> Suất ăn</span> </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>  @Html.CheckBoxFor(model => model.check3, new { id = "box3", onclick = "clickCheck('box3','ca3')" })</td>
+                                <td> Ca 3</td>
+                                <td> @Html.TextAreaFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled" })</td>
+                            </tr>
+                        }
+
+
                     }
-
-
 
                 </table>
 
-                <div class="btn_submit_back">
+                 <div class="btn_submit_back">
                     <button type="submit" class="submit-btn"> Submit </button>
                     <button class="submit-btn"> <a class="back" href="~/Home/Home">Cancel</a> </button>
 

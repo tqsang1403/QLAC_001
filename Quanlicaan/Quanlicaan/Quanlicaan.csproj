@@ -513,7 +513,7 @@
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
     <Compile Include="Models\Framework\Model1.cs" />
-    <Compile Include="Models\ModelsPage\EdiDkiCaAn.cs" />
+    <Compile Include="Models\ModelsPage\EdiDkiCaAnModel.cs" />
     <Compile Include="Models\ModelsPage\LoginModel.cs" />
     <Compile Include="Controllers\BaocaoController.cs" />
     <Compile Include="Controllers\DangkycaanController.cs" />

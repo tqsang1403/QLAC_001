@@ -21,6 +21,8 @@ namespace Quanlicaan.Models.Framework
 
         public DateTime Thoigiandat { get; set; }
 
+        public bool Loaisuatan { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSuatAn> ChiTietSuatAns { get; set; }
 

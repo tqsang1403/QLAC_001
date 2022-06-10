@@ -1,7 +1,16 @@
-﻿@model List<Quanlicaan.Models.ModelsPage.EdiDkiCaAn>
+﻿@model List<Quanlicaan.Models.ModelsPage.EdiDkiCaAnModel>
+@using Quanlicaan.Models.Framework
+@using Quanlicaan.Models.DAO
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     int j = 1;
+
+    CaAnModel caanmodel = new CaAnModel();
+    List<CaAn> listcaan = caanmodel.GetCaAns();
+
+     var TimeCa1 = listcaan[0].Thoigian;
+     var TimeCa2 = listcaan[1].Thoigian;
+     var TimeCa3 = listcaan[2].Thoigian;
 
 }
 
@@ -34,10 +43,10 @@
                         <th scope="col">Mã Nhân Viên</th>
                         <th scope="col">Họ tên nhân viên</th>
                         <th scope="col"> Chi tiết suất ăn</th>
-                        <th scope="col"> ID suất ăn</th>
-                        <th scope="col"> ID ca ăn</th>
+                        <th scope="col"> Mã suất ăn</th>
+                        <th scope="col"> Mã ca ăn</th>
                         <th scope="col">Số lượng</th>
-                        <th scope="col"> Thời gian đặt</th>
+                        <th scope="col"> Thời gian cập nhật</th>
                         <th scope="col"> Remove</th>
 
 
@@ -75,7 +84,11 @@
                                     @Html.DisplayTextFor(m => Model[i].IDCaAn)
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => @Model[i].Soluong)
+                                  
+                                        @Html.TextAreaFor(m => Model[i].Soluong)
+                                    
+
+
                                 </td>
                                 <td>
                                     @Html.DisplayTextFor(m => Model[i].ngayDK.TimeOfDay)

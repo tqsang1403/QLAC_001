@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelsPage
 {
-    public class EdiDkiCaAn
+    public class EdiDkiCaAnModel
     {
         public int IDUser { get; set; }
         public string hoTen { get; set; }
@@ -20,6 +20,21 @@ namespace Quanlicaan.Models.ModelsPage
         public int IDCaAn { get; set; }
         public int Soluong { get; set; }
 
-         
+        [ReadOnly(true)]
+        [DisplayName("giờ đăng kí ca 1")]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
+        public DateTime TimeCa1 { get; set; }
+
+        [ReadOnly(true)]
+        [DisplayName("giờ đăng kí ca 2")]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
+        public DateTime TimeCa2 { get; set; }
+
+        [ReadOnly(true)]
+        [DisplayName("giờ đăng kí ca 3")]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
+        public DateTime TimeCa3 { get; set; }
+
+
     }
 }

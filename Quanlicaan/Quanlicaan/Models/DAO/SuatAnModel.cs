@@ -1,4 +1,4 @@
-﻿using Quanlicaan.Models.Framework;
+﻿
 using Quanlicaan.Models.ModelsPage;
 using System;
 using System.Collections.Generic;
@@ -23,30 +23,35 @@ namespace Quanlicaan.Models.DAO
         {
         }
 
-        // thêm 1 bản ghi mới trong bảng suất ăn giá trị trả về là true hoặc false để biết thêm thành công hay không
-        public void InsertSuatAn(int ID, string time)
+        // thêm 1 bản ghi mới trong bảng suất ăn 
+        public void InsertSuatAn(int ID, string time, bool loaisuatan)
         {
             conn.Open();
             command.Connection = conn;
             // insert vào bảng suất ăn
-            command.CommandText = "insert into SuatAn(IDUser , Thoigiandat) values (@iduser, @time)";
+            command.CommandText = "insert into SuatAn(IDUser , Thoigiandat, Loaisuatan) values (@iduser, @time , @loaisuatan)";
             command.Parameters.AddWithValue("@iduser", ID);
             command.Parameters.AddWithValue("@time", time);
-            var check = command.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@loaisuatan", loaisuatan);
+            command.ExecuteNonQuery();
+
             command.Parameters.Clear();
             conn.Close();
           
         }
 
-        // thêm mới bản ghi bảng chi tiết suất ăn
-        public void InsertCTSuatAn(int ID, string time, int IDCaan, int Soluong)
+       
+
+        // thêm mới bản ghi bảng chi tiết suất ăn cho tập thể
+        public void InsertCTSuatAn(int ID, int IDUserDangKi, string time, int IDCaan, int Soluong, string tennvcapnhap)
         {
             conn.Open();
             command.Connection = conn;
-            //lấy idsuatan vừa đăng kí
-            command.CommandText = "select ID from SuatAn where IDUser= @iduser and Thoigiandat= @time";
+            //lấy id suat an vừa đăng kí
+            command.CommandText = "select ID from SuatAn where IDUser= @iduserdangki and Thoigiandat= @time";
             command.Parameters.AddWithValue("@time", time);
-            command.Parameters.AddWithValue("@iduser", ID);
+            command.Parameters.AddWithValue("@iduserdangki", IDUserDangKi);
+            string sql = command.CommandText;
             SqlDataReader dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -55,16 +60,47 @@ namespace Quanlicaan.Models.DAO
             }
             dr.Close();
 
-            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiandat ) values (@iduser, @soluong , @idsuatan , @idcaan, @time)";
+            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiancapnhat, Tennhanviencapnhat ) values (@iduser, @soluong , @idsuatan , @idcaan, @time, @tennvcapnhat)";
+            command.Parameters.AddWithValue("@iduser", ID);
             command.Parameters.AddWithValue("@soluong", Soluong);
             command.Parameters.AddWithValue("@idsuatan", IDSuatAn);
             command.Parameters.AddWithValue("@idcaan", IDCaan);
+            command.Parameters.AddWithValue("@tennvcapnhat", tennvcapnhap);
             command.ExecuteNonQuery();
             
             command.Parameters.Clear();
             conn.Close();
         }
 
+
+        // insert chi tiết suất ăn cho cá nhân
+        public void InsertCTSuatAn(int ID, string time, int IDCaan, int Soluong, string tennvcapnhap)
+        {
+            conn.Open();
+            command.Connection = conn;
+            //lấy id suat an vừa đăng kí
+            command.CommandText = "select ID from SuatAn where IDUser= @iduser and Thoigiandat= @time ";
+            command.Parameters.AddWithValue("@time", time);
+            command.Parameters.AddWithValue("@iduser", ID);
+            string sql = command.CommandText;
+            SqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                IDSuatAn = Convert.ToInt32(dr["ID"]);
+            }
+            dr.Close();
+
+            command.CommandText = "insert into ChiTietSuatAn(IDUser ,Soluong,IDSuatAn,IDCaan, Thoigiancapnhat, Tennhanviencapnhat ) values (@iduser, @soluong , @idsuatan , @idcaan, @time, @tennvcapnhat)";
+            command.Parameters.AddWithValue("@soluong", Soluong);
+            command.Parameters.AddWithValue("@idsuatan", IDSuatAn);
+            command.Parameters.AddWithValue("@idcaan", IDCaan);
+            command.Parameters.AddWithValue("@tennvcapnhat", tennvcapnhap);
+            command.ExecuteNonQuery();
+
+            command.Parameters.Clear();
+            conn.Close();
+        }
 
         ////////// thực hiện thêm suất ăn với tập thể
         public DataSet getAllNhanVienCungPhongBan(int IDPhongBan)
@@ -82,12 +118,12 @@ namespace Quanlicaan.Models.DAO
 
 
         ///////// thực hiện chỉnh sửa thông tin đăng kí ca ăn
-        // lấy danh sách đăng kí ca ăn trong ngày hiện tại
-        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDPb , int IDUser)
+        // lấy tất cả các chi tiết suất ăn nhân viên đã đăng kí trong ngày  sử dụng cho trang Home
+        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDPb, int IDUser)
         {
             conn.Open();
             command.Connection = conn;
-            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where  IDUser = @iduser and IDPhongBan = @idphongban and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
+            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where  IDUser = @iduser and IDPhongBan = @idphongban and Thoigiancapnhat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
             command.Parameters.AddWithValue("@idphongban", IDPb);
             command.Parameters.AddWithValue("@iduser", IDUser);
             dataAdapter.SelectCommand = command;
@@ -95,13 +131,13 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.Clear();
             conn.Close();
 
-            List<EdiDkiCaAn> list = new List<EdiDkiCaAn>();
+            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
             foreach (DataRow dr in ds.Tables["DsCtSuatAnDki"].Rows)
             {
-                EdiDkiCaAn ediDkiCaAn = new EdiDkiCaAn();
+                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
                 ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
-                ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);
+                ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiancapnhat"]);
                 ediDkiCaAn.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
                 ediDkiCaAn.IDChiTietSuatAn = Convert.ToInt32(dr["ID"]);
                 ediDkiCaAn.IDSuatAn = Convert.ToInt32(dr["IDSuatAn"]);
@@ -112,8 +148,43 @@ namespace Quanlicaan.Models.DAO
 
         }
 
-        // thực hiện lấy ra tất cả suất ăn nhân viên đã đăng kí
-        public List<EdiDkiCaAn> getAllSuatAnDangKi(int IDUser)
+
+        ///////// thực hiện chỉnh sửa thông tin đăng kí ca ăn
+        // lấy 1 mã chi tiết suất ăn trong trang chỉnh sửa thông tin suất ăn
+        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDPb, int IDUser, int IDCTsuatan)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "select ChiTietSuatAn.*, NhanVien.HoTen from ChiTietSuatAn join NhanVien on ChiTietSuatAn.IDUser = NhanVien.ID where ChiTietSuatAn.ID = @idchitietsuatan and  IDUser = @iduser and IDPhongBan = @idphongban and Thoigiancapnhat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE()))) ";
+            command.Parameters.AddWithValue("@idchitietsuatan", IDCTsuatan);
+            command.Parameters.AddWithValue("@idphongban", IDPb);
+            command.Parameters.AddWithValue("@iduser", IDUser);
+            dataAdapter.SelectCommand = command;
+            dataAdapter.Fill(ds, "DsCtSuatAnDki");
+            command.Parameters.Clear();
+            conn.Close();
+
+            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
+            foreach (DataRow dr in ds.Tables["DsCtSuatAnDki"].Rows)
+            {
+                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
+                ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
+                ediDkiCaAn.hoTen = dr["HoTen"].ToString();
+                ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiancapnhat"]);
+                ediDkiCaAn.IDCaAn = Convert.ToInt32(dr["IDCaan"]);
+                ediDkiCaAn.IDChiTietSuatAn = Convert.ToInt32(dr["ID"]);
+                ediDkiCaAn.IDSuatAn = Convert.ToInt32(dr["IDSuatAn"]);
+                ediDkiCaAn.Soluong = Convert.ToInt32(dr["Soluong"]);
+                list.Add(ediDkiCaAn);
+            }
+            return list;
+
+        }
+
+
+
+        // thực hiện lấy ra tất cả suất ăn nhân viên  đã đăng kí
+        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDUser)
         {
             conn.Open();
             command.Connection = conn;
@@ -125,10 +196,10 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.Clear();
             
 
-            List<EdiDkiCaAn> list = new List<EdiDkiCaAn>();
+            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
            while(dr.Read())
             {
-                EdiDkiCaAn ediDkiCaAn = new EdiDkiCaAn();
+                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
                 ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
                 ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);
@@ -145,50 +216,58 @@ namespace Quanlicaan.Models.DAO
 
 
 
-        // thực hiện lấy số lượng suất ăn của từng ca 
-            public int getSLSuatAn(int IDUser, int IDCaan)
-            {
-                int SL=0;
-                conn.Open();
-                command.Connection = conn;
-                command.CommandText = "select Soluong from ChiTietSuatAn where IDUser=@iduser  and IDCaan =@idcaan and Thoigiandat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE())))";
-                command.Parameters.AddWithValue("@iduser", IDUser);
-                command.Parameters.AddWithValue("@idcaan", IDCaan);
-                SqlDataReader dr =  command.ExecuteReader();
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                         SL = Convert.ToInt32(dr["Soluong"]);
-                    }
-                }
-                else
-                {
-                     SL = 0;
-                }
-
-                command.Parameters.Clear();
-                conn.Close();
-                return SL;
-            }
-
-        // thực hiện update dữ liệu mới
-        public void UpDateChiTietSuatAn(int idUser , int idChiTietSuatAn , int Soluong)
+        //// thực hiện lấy số lượng suất ăn của từng ca ăn của nhân viên đang đăng nhập
+        public int getSLSuatAn(int IDUser, int IDCaan )
         {
+            int SL=0;
             conn.Open();
             command.Connection = conn;
-            command.CommandText = "update ChiTietSuatAn set Soluong = @soluong where IDUser = @iduser and ID = @idctsuatan";
-            command.Parameters.AddWithValue("@iduser", idUser);
-            command.Parameters.AddWithValue("@idctsuatan", idChiTietSuatAn);
-            command.Parameters.AddWithValue("@soluong", Soluong);
-
-            command.ExecuteNonQuery();
+            command.CommandText = "select Soluong from ChiTietSuatAn where  IDUser=@iduser  and IDCaan =@idcaan and Thoigiancapnhat between CONVERT(datetime, CONVERT(date, GETDATE())) and CONVERT(datetime, CONVERT(date, dateadd(day,1,GETDATE())))";
+            command.Parameters.AddWithValue("@iduser", IDUser);
+            command.Parameters.AddWithValue("@idcaan", IDCaan);
+            SqlDataReader dr =  command.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                        SL = Convert.ToInt32(dr["Soluong"]);
+                }
+            }
+            else
+            {
+                    SL = 0;
+            }
 
             command.Parameters.Clear();
             conn.Close();
+            return SL;
         }
 
-        // thực hiện xóa chi tiết suất ăn 
+
+
+        
+
+
+        ////// thực hiện update dữ liệu mới
+        public void UpDateChiTietSuatAn(int idUser , int idChiTietSuatAn , int Soluong , string Thoigiancapnhat , string Nhanviecapnhat)
+        {
+            conn.Open();
+            command.Connection = conn;
+            command.CommandText = "update ChiTietSuatAn set Soluong = @soluong, Thoigiancapnhat = @time, Tennhanviencapnhat = @tennhanvien where IDUser = @iduser and ID = @idctsuatan";
+            command.Parameters.AddWithValue("@iduser", idUser);
+            command.Parameters.AddWithValue("@idctsuatan", idChiTietSuatAn);
+            command.Parameters.AddWithValue("@soluong", Soluong);
+            command.Parameters.AddWithValue("@time", Thoigiancapnhat);
+            command.Parameters.AddWithValue("@tennhanvien", Nhanviecapnhat);
+
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
+
+            
+            conn.Close();
+        }
+
+        ////// thực hiện xóa chi tiết suất ăn  
         public void DeleteChiTietSuatAn(int IDChiTietSuatAn)
         {
             conn.Open();

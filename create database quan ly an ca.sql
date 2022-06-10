@@ -1,4 +1,4 @@
-drop database QuanLiCaAn
+﻿drop database QuanLiCaAn
 create database QuanLiCaAn
 
 use QuanLiCaAn
@@ -47,20 +47,25 @@ create table CaAn(
 	Thoigian datetime not null
 
 )
+
 create table SuatAn(
 	ID int identity(1,1) not null primary key,
-	IDUser int foreign key references NhanVien(ID),	
-	Thoigiandat datetime not null
+	-- người đăng kí suất ăn 
+	IDUser int foreign key references NhanVien(ID),
+	Thoigiandat datetime not null,
+	Loaisuatan bit not null -- 0 là đăng kí cá nhân , 1 là đăng kí tập thế
 
 )
-	create table ChiTietSuatAn(
-		ID int identity(1,1) not null primary key,
-		IDUser int not null foreign key references NhanVien(ID),
-		Soluong int not null,
-		IDSuatAn int foreign key references SuatAn(ID),
-		IDCaan int not null foreign key references CaAn(ID),
-		Thoigiandat datetime not null
-	
-	)
+
+create table ChiTietSuatAn(
+	ID int identity(1,1) not null primary key,
+	-- người dùng ở đây có 2 trường hợp : 1 chính là người đã đăng kí suất ăn  hoặc là người nhờ đăng kí hộ
+	IDUser int not null foreign key references NhanVien(ID), 
+	Soluong int not null,
+	IDSuatAn int foreign key references SuatAn(ID),
+	IDCaan int not null foreign key references CaAn(ID),
+	Thoigiancapnhat datetime not null,
+	Tennhanviencapnhat nvarchar(30) not null
+)
 
 

@@ -15,7 +15,7 @@ namespace Quanlicaan.Controllers
         {
             UserSession us = (UserSession)Session["UserSession"];
             SuatAnModel suatAnModel = new SuatAnModel();
-            List<EdiDkiCaAn> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan ,us.UserID);
+            List<EdiDkiCaAnModel> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan ,us.UserID);
             if (list.Count == 0)
             {
                 ViewBag.message = "Bạn chưa đăng kí ca ăn ngày hôm nay ";

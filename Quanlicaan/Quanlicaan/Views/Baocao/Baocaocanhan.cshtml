@@ -12,66 +12,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Báo cáo cá nhân</title>
 
-    <link rel="stylesheet" href="~/css/baocaocanhan.css">
+    <link rel="stylesheet" href="~/css/main.css">
+
 </head>
 <body>
-    <div class="banner">
-        <div class="companyname">
-            <p>TỔNG CTY</p>
-            <P>CÔNG TY ABC</P>
 
-        </div>
-        @*<div class="logocontainer">
-            <img src="~/images/kkkk.jpg" alt="logo" id="logo">
-        </div>*@
-        <div class="chxhcnvn">
-            <p>CỘNG HÒA XHCN VIỆT NAM</p>
-            <P>Độc lập - Tự do - Hạnh phúc</P>
-        </div>
-    </div>
-    <div class="title">
-        <h1>THỐNG KÊ CA ĂN CÁ NHÂN</h1>
+    <div class="title">  Thống kê đăng kí ca ăn cá nhân</div>
+    <p style="text-align:center">Tên nhân viên : Lê Văn Toàn</p>
 
-        <Label for="uname">Họ tên</Label>
-        <input type="text" name="uname">
-        <br>
 
-        <Label for="pban">Phòng ban</Label>
-        <input type="text" name="pban">
-    </div>
+    @*  thống kê các ca ăn trong 1 ngày *@
+    <div style="padding : 0 5rem">
+        <div style="font-size :1.1rem; font-weight :700; margin:20px 20px;"> Ngày 6-9-2020</div>
+        <table class="table table-bordered border-primary">
 
-    <div class="content">
-        <table>
-            <tr>
-                <th>STT</th>
-                <th>Ngày</th>
-                <th>Ca 1</th>
-                <th>Ca 2</th>
-                <th>Ca 3</th>
-            </tr>
-            <tr>
-                <td>1  </td>
-                <td><input type="date" disabled></td>
-                <td> <input type="number" id="number" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-            </tr>
-            <tfoot>
+            <thead>
                 <tr>
-                    <td>Tổng</td>
-                    <td></td>
-                    <td></td>
-                    <td>  </td>
-                    <td> </td>
+                    <th scope="col">Mã suất ăn</th>
+                    <th scope="col">Thời gian đặt</th>
+                    <th scope="col">Loại suất ăn</th>
+                    <th scope="col">Mã chi tiết suất ăn</th>
+                    <th scope="col"> số lượng suất ăn đăng kí</th>
+                    <th scope="col"> Thời gian cập nhật</th>
+                    <th scope="col"> Người cập nhât</th>
+                    <th scope="col"> Thành tiền </th>
                 </tr>
-            </tfoot>
-
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>Otto</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>wat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <th scope="row">3</th>
+                    <th scope="row">3</th>
+                    <td>Larry the Bird</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>wmdo</td>
+                    <td>twitter</td>
+                </tr>
+            </tbody>
         </table>
 
+
+
     </div>
 
-
-
+    <div class="btn_submit_back">
+        <button class="submit-btn"><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a></button>
+    </div>
 </body>
 
 </html>

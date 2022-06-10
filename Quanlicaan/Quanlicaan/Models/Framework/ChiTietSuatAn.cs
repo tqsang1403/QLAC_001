@@ -19,7 +19,8 @@ namespace Quanlicaan.Models.Framework
 
         public int IDCaan { get; set; }
 
-        public DateTime Thoigiandat { get; set; }
+        public DateTime Thoigiancapnhat { get; set; }
+        public string Tennhanviencapnhat { get; set; }
 
 
         public virtual CaAn CaAn { get; set; }
