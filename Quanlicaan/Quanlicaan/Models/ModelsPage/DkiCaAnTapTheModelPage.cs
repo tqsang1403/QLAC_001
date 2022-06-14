@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quanlicaan.Models.Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,18 +8,24 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelsPage
 {
-    public class EdiDkiCaAnModel
+    public class DkiCaAnTapTheModelPage
     {
         public int IDUser { get; set; }
         public string hoTen { get; set; }
+        public string phongBan { get; set; }
         [ReadOnly(true)]
         [DisplayName("ngày đăng kí")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime ngayDK { get; set; }
-        public int IDChiTietSuatAn { get; set; }
-        public int IDSuatAn { get; set; }
-        public int IDCaAn { get; set; }
-        public int Soluong { get; set; }
+
+
+        public bool check1 { get; set; }
+        public bool check2 { get; set; }
+        public bool check3 { get; set; }
+        public int SLCa1 { get; set; }
+        public int SLCa2 { get; set; }
+        public int SLCa3 { get; set; }
+
 
         [ReadOnly(true)]
         [DisplayName("giờ đăng kí ca 1")]
@@ -36,5 +43,8 @@ namespace Quanlicaan.Models.ModelsPage
         public DateTime TimeCa3 { get; set; }
 
 
+        public bool TrangThai { get; set; }
+
+        public List<CaAn> ListCaAn { get; set; }
     }
 }

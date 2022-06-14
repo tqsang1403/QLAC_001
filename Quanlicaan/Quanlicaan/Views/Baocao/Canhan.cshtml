@@ -1,0 +1,124 @@
+﻿@model List<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
+@using Quanlicaan.Models.Session
+@{
+    ViewBag.Title = "Thống kê cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var info = (UserSession)Session["UserSession"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo cá nhân</title>
+
+    <link rel="stylesheet" href="~/css/main.css">
+
+</head>
+<body>
+
+    <div class="title">  Thống kê đăng kí ca ăn cá nhân</div>
+    <h2 style="text-align:center ; color: #f4524d;">Tên nhân viên  : @info.hoTen</h2>
+
+    
+
+
+    @*  thống kê các ca ăn trong 1 ngày *@
+    <div style="padding : 0 3rem">
+        <div style="font-size :1.1rem; font-weight :700; margin:20px 20px;"> Ngày 6-9-2020  Danh sách chi tiết suất ăn của nhân viên</div>
+
+        <div style="">
+            @using (Html.BeginForm("", "", FormMethod.Get, new { @class = "contact-form row" }))
+            {
+                <div style="margin:30px 0;">
+
+                    <label for="time" style="width:10%"> <h5>Chọn ngày :</h5></label>
+                    <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="time" value="" min="1997-01-01" max="2119-12-31" />
+
+                    <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                </div>
+            }
+
+            @using (Html.BeginForm("Show", "Baocao", FormMethod.Get, new { @class = "contact-form row" }))
+            {
+
+                <label for="time" style="width:10%"> <h5>Chọn Tháng :</h5></label>
+                <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="time" value="" min="1997-01-01" max="2119-12-31" />
+                <button type="submit" class="submit-btn"> Tìm kiếm</button>
+
+            }
+        </div>
+        <table class="table table-bordered border-primary">
+            @if (Model.Count == 0)
+            {
+                <div> Bạn chưa đăng kí</div>
+            }
+            else
+            {
+
+
+                <thead>
+                    <tr>
+                        <th scope="col">Mã suất ăn</th>
+                        <th scope="col">Nhân viên đăng kí </th>
+                        <th scope="col">Thời gian đặt</th>
+                        <th scope="col">Loại suất ăn</th>
+                        <th scope="col">Mã chi tiết suất ăn</th>
+                        <th scope="col">Ca ăn</th>
+                        <th scope="col">Nhân viên được đăng kí</th>
+                        <th scope="col"> Số lượng suất ăn </th>
+                        <th scope="col"> Thời gian cập nhật gần nhất</th>
+                        <th scope="col"> Người cập nhât gần nhất</th>
+                        <th scope="col"> Thành tiền </th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.MaSuatan</td>
+                            <td> @item.Hotennguoidangki</td>
+                            <td> @item.Thoigiandangki</td>
+
+                            @if (@item.LoaiSuatan == 1)
+                            {
+                                <td> Tập thể</td>
+                            }
+
+                            else
+                            {
+                                <td> Cá nhân</td>
+                            }
+
+                            <td>@item.MaCTSuatan</td>
+                            <td>@item.MaCaan</td>
+                            <td>@item.Hotennguoidungsuatan</td>
+                            <td>@item.Soluong</td>
+                            <td>@item.Thoigiancapnhat</td>
+                            <td>@item.Hotennguoicapnhat</td>
+                            <td> @item.Thantien</td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+
+            }
+
+        </table>
+
+
+    </div>
+
+    <div class="btn_submit_back">
+        <button class="submit-btn"><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a></button>
+    </div>
+</body>
+
+</html>

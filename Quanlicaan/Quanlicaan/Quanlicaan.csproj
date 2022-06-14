@@ -505,16 +505,18 @@
     <Compile Include="DataAccess\DataAccessLayer.cs" />
     <Compile Include="Models\ConnectDb.cs" />
     <Compile Include="Models\DAO\CaAnModel.cs" />
-    <Compile Include="Models\ModelsPage\DkiCaAnTapTheModel.cs" />
-    <Compile Include="Models\ModelsPage\DkiCaNhanModel.cs" />
+    <Compile Include="Models\DAO\ThongkeModels.cs" />
+    <Compile Include="Models\ModelsPage\BaocaocanhanModelPage.cs" />
+    <Compile Include="Models\ModelsPage\DkiCaAnTapTheModelPage.cs" />
+    <Compile Include="Models\ModelsPage\DkiCaNhanModelPage.cs" />
     <Compile Include="Models\DAO\RolerModel.cs" />
-    <Compile Include="Models\DAO\SuatAnModel.cs" />
+    <Compile Include="Models\DAO\ChiTietSuatAnModel.cs" />
     <Compile Include="Models\Framework\CaAn.cs" />
     <Compile Include="Models\Framework\ChiTietSuatAn.cs" />
     <Compile Include="Controllers\CaAnController.cs" />
     <Compile Include="Models\Framework\Model1.cs" />
-    <Compile Include="Models\ModelsPage\EdiDkiCaAnModel.cs" />
-    <Compile Include="Models\ModelsPage\LoginModel.cs" />
+    <Compile Include="Models\ModelsPage\EdiDkiCaAnModelPage.cs" />
+    <Compile Include="Models\ModelsPage\LoginModelPage.cs" />
     <Compile Include="Controllers\BaocaoController.cs" />
     <Compile Include="Controllers\DangkycaanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -524,7 +526,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\PhongbanModel.cs" />
-    <Compile Include="Models\ModelsPage\PersonalModel.cs" />
+    <Compile Include="Models\ModelsPage\PersonalModelPage.cs" />
     <Compile Include="Models\Session\UserSession.cs" />
     <Compile Include="Models\DAO\UserModel.cs" />
     <Compile Include="Models\Framework\NhanVien.cs" />
@@ -2784,6 +2786,7 @@
     <Content Include="Views\Home\ReportPerson.cshtml" />
     <Content Include="Views\NhanVien\PerSonal.cshtml" />
     <Content Include="Views\NhanVien\EditPass.cshtml" />
+    <Content Include="Views\Baocao\Canhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

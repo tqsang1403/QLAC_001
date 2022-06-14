@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
 @{
     ViewBag.Title = "Thống kê cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,53 +25,44 @@
     <div style="padding : 0 5rem">
         <div style="font-size :1.1rem; font-weight :700; margin:20px 20px;"> Ngày 6-9-2020</div>
         <table class="table table-bordered border-primary">
+            @if (Model.Count == 0)
+            {
+               <div> Bạn chưa đăng kí</div>
+            }
+            else
+            {
+                <thead>
+                    <tr>
+                        <th scope="col">Mã suất ăn</th>
+                        <th scope="col">Thời gian đặt</th>
+                        <th scope="col">Loại suất ăn</th>
+                        <th scope="col">Tên nhân viên đăng kí</th>
+                        <th scope="col">Mã chi tiết suất ăn</th>
+                        <th scope="col">Ca ăn</th>
+                        <th scope="col">Tên nhân viên được đăng kí</th>
+                        <th scope="col"> Số lượng suất ăn đăng kí</th>
+                        <th scope="col"> Thời gian cập nhật lần gần nhất</th>
+                        <th scope="col"> Người cập nhât gần nhất</th>
+                        <th scope="col"> Thành tiền </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+                        <td>wmdo</td>
+                        <td>wmdo</td>
+                        <td>wmdo</td>
+                        <td>wmdo</td>
+                    </tr>
 
-            <thead>
-                <tr>
-                    <th scope="col">Mã suất ăn</th>
-                    <th scope="col">Thời gian đặt</th>
-                    <th scope="col">Loại suất ăn</th>
-                    <th scope="col">Mã chi tiết suất ăn</th>
-                    <th scope="col"> số lượng suất ăn đăng kí</th>
-                    <th scope="col"> Thời gian cập nhật</th>
-                    <th scope="col"> Người cập nhât</th>
-                    <th scope="col"> Thành tiền </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>wat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <th scope="row">3</th>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>wmdo</td>
-                    <td>twitter</td>
-                </tr>
-            </tbody>
+                </tbody>
+
+            }
+
         </table>
-
 
 
     </div>

@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelsPage
 {
-    public class PersonalModel : NhanVien
+    public class PersonalModelPage : NhanVien
     {
         public string TenPhongBan { get; set; }
         

@@ -14,7 +14,7 @@ namespace Quanlicaan.Models
             connectionStringBuilder["Server"] = @"TOANLV\SQLEXPRESS";
             connectionStringBuilder["Initial Catalog"] = "QuanLiCaAn";
             connectionStringBuilder["User ID"] = "sa";
-            connectionStringBuilder["Password"] = "leanhtoan123";
+            connectionStringBuilder["Password"] = "123456";
 
             string connectionString = connectionStringBuilder.ToString();
             SqlConnection conn = new SqlConnection(connectionString);

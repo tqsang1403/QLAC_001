@@ -208,7 +208,7 @@ namespace Quanlicaan.Models.DAO
         }
         
         // thực hiện đăng nhập cho nhân viên
-        public UserSession  GetNhanVienLogin(LoginModel login)
+        public UserSession  GetNhanVienLogin(LoginModelPage login)
         {
            
             UserSession us = new UserSession();
@@ -242,9 +242,9 @@ namespace Quanlicaan.Models.DAO
 
 
         // lấy thông tin cá nhân người đăng nhập
-        public PersonalModel getPerSonal(int IDUser)
+        public PersonalModelPage getPerSonal(int IDUser)
         {
-            PersonalModel nv = new PersonalModel();
+            PersonalModelPage nv = new PersonalModelPage();
 
             command.CommandText = "select * from NhanVien inner join PhongBan on NhanVien.IDPhongBan = PhongBan.ID where NhanVien.id =@iduser";
             command.Parameters.AddWithValue("@iduser", IDUser);
@@ -268,7 +268,7 @@ namespace Quanlicaan.Models.DAO
         }
         // upadate thông tin cá nhân đăng nhập
 
-        public void UpdatePersonal(PersonalModel model, int ID)
+        public void UpdatePersonal(PersonalModelPage model, int ID)
         {
             command.CommandText = "update NhanVien set HoTen = @hoten  , GioiTinh= @gioitinh , DiaChi= @diachi,  SDT= @sdt where ID = @id ";
             command.Parameters.AddWithValue("@hoten", model.HoTen);

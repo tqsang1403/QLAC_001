@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.DAO
 {
-    public class SuatAnModel
+    public class ChiTietSuatAnModel
     {
         public SqlConnection conn = ConnectDb.ConnectionDb();
         public SqlCommand command = new SqlCommand();
@@ -19,7 +19,7 @@ namespace Quanlicaan.Models.DAO
         public int IDSuatAn;
 
 
-        public SuatAnModel()
+        public ChiTietSuatAnModel()
         {
         }
 
@@ -119,7 +119,7 @@ namespace Quanlicaan.Models.DAO
 
         ///////// thực hiện chỉnh sửa thông tin đăng kí ca ăn
         // lấy tất cả các chi tiết suất ăn nhân viên đã đăng kí trong ngày  sử dụng cho trang Home
-        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDPb, int IDUser)
+        public List<EdiDkiCaAnModelPage> getAllSuatAnDangKi(int IDPb, int IDUser)
         {
             conn.Open();
             command.Connection = conn;
@@ -131,10 +131,10 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.Clear();
             conn.Close();
 
-            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
+            List<EdiDkiCaAnModelPage> list = new List<EdiDkiCaAnModelPage>();
             foreach (DataRow dr in ds.Tables["DsCtSuatAnDki"].Rows)
             {
-                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
+                EdiDkiCaAnModelPage ediDkiCaAn = new EdiDkiCaAnModelPage();
                 ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
                 ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiancapnhat"]);
@@ -151,7 +151,7 @@ namespace Quanlicaan.Models.DAO
 
         ///////// thực hiện chỉnh sửa thông tin đăng kí ca ăn
         // lấy 1 mã chi tiết suất ăn trong trang chỉnh sửa thông tin suất ăn
-        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDPb, int IDUser, int IDCTsuatan)
+        public List<EdiDkiCaAnModelPage> getAllSuatAnDangKi(int IDPb, int IDUser, int IDCTsuatan)
         {
             conn.Open();
             command.Connection = conn;
@@ -164,10 +164,10 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.Clear();
             conn.Close();
 
-            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
+            List<EdiDkiCaAnModelPage> list = new List<EdiDkiCaAnModelPage>();
             foreach (DataRow dr in ds.Tables["DsCtSuatAnDki"].Rows)
             {
-                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
+                EdiDkiCaAnModelPage ediDkiCaAn = new EdiDkiCaAnModelPage();
                 ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
                 ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiancapnhat"]);
@@ -184,7 +184,7 @@ namespace Quanlicaan.Models.DAO
 
 
         // thực hiện lấy ra tất cả suất ăn nhân viên  đã đăng kí
-        public List<EdiDkiCaAnModel> getAllSuatAnDangKi(int IDUser)
+        public List<EdiDkiCaAnModelPage> getAllSuatAnDangKi(int IDUser)
         {
             conn.Open();
             command.Connection = conn;
@@ -196,10 +196,10 @@ namespace Quanlicaan.Models.DAO
             command.Parameters.Clear();
             
 
-            List<EdiDkiCaAnModel> list = new List<EdiDkiCaAnModel>();
+            List<EdiDkiCaAnModelPage> list = new List<EdiDkiCaAnModelPage>();
            while(dr.Read())
             {
-                EdiDkiCaAnModel ediDkiCaAn = new EdiDkiCaAnModel();
+                EdiDkiCaAnModelPage ediDkiCaAn = new EdiDkiCaAnModelPage();
                 ediDkiCaAn.IDUser = Convert.ToInt32(dr["IDUser"]);
                 ediDkiCaAn.hoTen = dr["HoTen"].ToString();
                 ediDkiCaAn.ngayDK = Convert.ToDateTime(dr["Thoigiandat"]);

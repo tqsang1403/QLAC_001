@@ -135,7 +135,7 @@ namespace Quanlicaan.Controllers
         {
             UserSession us = (UserSession)Session["UserSession"];
             UserModel usermodel = new UserModel();
-            PersonalModel personal = new PersonalModel();
+            PersonalModelPage personal = new PersonalModelPage();
             personal = usermodel.getPerSonal(us.UserID);
             return View(personal);
         }
@@ -143,7 +143,7 @@ namespace Quanlicaan.Controllers
 
         //UPDATE THÔNG TIN CÁ NHÂN ĐĂNG NHẬP
         [HttpPost]
-        public ActionResult PerSonal(PersonalModel model)
+        public ActionResult PerSonal(PersonalModelPage model)
         {
             UserSession us = (UserSession)Session["UserSession"];
             UserModel usermodel = new UserModel();
@@ -160,14 +160,14 @@ namespace Quanlicaan.Controllers
 
             UserSession us = (UserSession)Session["UserSession"];
             UserModel usermodel = new UserModel();
-            PersonalModel personal = new PersonalModel();
+            PersonalModelPage personal = new PersonalModelPage();
             personal = usermodel.getPerSonal(us.UserID);
             return View(personal);
         }
 
         // UPDATE THÔNG TIN MẬT KHẨU
         [HttpPost]
-        public ActionResult EditPass(PersonalModel model)
+        public ActionResult EditPass(PersonalModelPage model)
         {
             UserSession us = (UserSession)Session["UserSession"];
             UserModel usermodel = new UserModel();

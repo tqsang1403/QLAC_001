@@ -14,8 +14,8 @@ namespace Quanlicaan.Controllers
 
         public ActionResult DkiCanhan()
         {
-            SuatAnModel suatanmodel = new SuatAnModel();
-            DkiCaNhanModel model = new DkiCaNhanModel();
+            ChiTietSuatAnModel suatanmodel = new ChiTietSuatAnModel();
+            DkiCaNhanModelPage model = new DkiCaNhanModelPage();
             UserSession us = (UserSession)Session["UserSession"];
 
 
@@ -39,12 +39,12 @@ namespace Quanlicaan.Controllers
 
         // ĐĂNG KÍ CA ĂN CÁ NHÂN
         [HttpPost]
-        public ActionResult DkiCanhan(DkiCaNhanModel model)
+        public ActionResult DkiCanhan(DkiCaNhanModelPage model)
         {
             if (ModelState.IsValid)
             {
                 UserSession us1 = (UserSession)Session["UserSession"];
-                SuatAnModel samodel = new SuatAnModel();
+                ChiTietSuatAnModel samodel = new ChiTietSuatAnModel();
                 string now = DateTime.Now.ToString();
 
                 // đăng kí suất ăn cho cá nhân
@@ -87,11 +87,11 @@ namespace Quanlicaan.Controllers
         {
 
 
-            SuatAnModel suatanmodel = new SuatAnModel();
+            ChiTietSuatAnModel suatanmodel = new ChiTietSuatAnModel();
             CaAnModel caAnModel = new CaAnModel();
             UserSession us = (UserSession)Session["UserSession"];
             DataSet ds = suatanmodel.getAllNhanVienCungPhongBan(us.IdPhongBan);
-            List<DkiCaAnTapTheModel> list = new List<DkiCaAnTapTheModel>();
+            List<DkiCaAnTapTheModelPage> list = new List<DkiCaAnTapTheModelPage>();
             var time = DateTime.Now;
 
 
@@ -99,7 +99,7 @@ namespace Quanlicaan.Controllers
 
             foreach (DataRow dr in ds.Tables["DanhSachNvCungPhong"].Rows)
             {
-                DkiCaAnTapTheModel model = new DkiCaAnTapTheModel();
+                DkiCaAnTapTheModelPage model = new DkiCaAnTapTheModelPage();
                 model.IDUser = Convert.ToInt32(dr["ID"]);
                 model.hoTen = dr["HoTen"].ToString();
                 model.phongBan = dr["TenPB"].ToString();
@@ -128,13 +128,13 @@ namespace Quanlicaan.Controllers
 
         // THỰC HIỆN ĐĂNG KÍ TẬP THỂ
         [HttpPost]
-        public ActionResult DkiTapThe(List<DkiCaAnTapTheModel> list)
+        public ActionResult DkiTapThe(List<DkiCaAnTapTheModelPage> list)
         {
             if (ModelState.IsValid)
             {
                 string thongbao;
                 UserSession us = (UserSession)Session["UserSession"];
-                SuatAnModel samodel = new SuatAnModel();
+                ChiTietSuatAnModel samodel = new ChiTietSuatAnModel();
                 string now = DateTime.Now.ToString();
                samodel.InsertSuatAn(us.UserID, now, true);
 
@@ -197,8 +197,8 @@ namespace Quanlicaan.Controllers
         public ActionResult EditDkiCaanCanhan(int ID)
         {
             UserSession us = (UserSession)Session["UserSession"];
-            SuatAnModel suatAnModel = new SuatAnModel();
-            List<EdiDkiCaAnModel> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan, us.UserID , ID);
+            ChiTietSuatAnModel suatAnModel = new ChiTietSuatAnModel();
+            List<EdiDkiCaAnModelPage> list = suatAnModel.getAllSuatAnDangKi(us.IdPhongBan, us.UserID , ID);
             if (list.Count == 0)
             {
                 ViewBag.message = "Bạn chưa đăng kí ca ăn hôm nay";
@@ -214,10 +214,10 @@ namespace Quanlicaan.Controllers
 
         // Thực hiện chỉnh sửa thông tin đăng kí cá  nhân
         [HttpPost]
-        public ActionResult EditDkiCaanCanhan(List<EdiDkiCaAnModel> model)
+        public ActionResult EditDkiCaanCanhan(List<EdiDkiCaAnModelPage> model)
         {
             string now = DateTime.Now.ToString();
-            SuatAnModel suatAnModel = new SuatAnModel();
+            ChiTietSuatAnModel suatAnModel = new ChiTietSuatAnModel();
             UserSession us = (UserSession)Session["UserSession"];
             for (int i = 0; i < model.Count; i++)
             {
@@ -231,7 +231,7 @@ namespace Quanlicaan.Controllers
         [HttpGet]
         public ActionResult Delete(int ID)
         {
-            SuatAnModel suatAnModel = new SuatAnModel();
+            ChiTietSuatAnModel suatAnModel = new ChiTietSuatAnModel();
             suatAnModel.DeleteChiTietSuatAn(ID);
             return RedirectToAction("Home", "Home");
         }

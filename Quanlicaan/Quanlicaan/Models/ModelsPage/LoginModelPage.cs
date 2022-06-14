@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelsPage
 {
-    public class LoginModel
+    public class LoginModelPage
     {
         [Required]
         public string username { set; get; }

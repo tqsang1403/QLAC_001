@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Quanlicaan.Models.ModelsPage
 {
-    public class DkiCaNhanModel
+    public class DkiCaNhanModelPage
     {
         [ReadOnly(true)]
         public string hoTen { get; set; }

@@ -18,7 +18,7 @@ namespace Quanlicaan.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel login)
+        public ActionResult Login(LoginModelPage login)
         {
             
             UserModel user = new UserModel();
