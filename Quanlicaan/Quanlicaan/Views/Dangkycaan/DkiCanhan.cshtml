@@ -184,7 +184,7 @@
                             <tr>
                                 <td> @Html.CheckBoxFor(model => model.check1, new { id = "box1", onclick = "clickCheck('box1','ca1')" })</td>
                                 <td> Ca 1</td>
-                                <td> @Html.TextAreaFor(model => model.SLCa1, new { id = "ca1", disabled = "disabled" })</td>
+                                <td> @Html.TextAreaFor(model => model.SLCa1, new { id = "ca1", disabled = "disabled" , @class = "txt_soluong" })</td>
                             </tr>
                         }
 
@@ -216,7 +216,7 @@
                             <tr>
                                 <td>  @Html.CheckBoxFor(model => model.check2, new { id = "box2", onclick = "clickCheck('box2','ca2')" }) </td>
                                 <td> Ca 2</td>
-                                <td> @Html.TextAreaFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled" })</td>
+                                <td> @Html.TextAreaFor(model => model.SLCa2, new { id = "ca2", disabled = "disabled", @class = "txt_soluong" })</td>
                             </tr>
                         }
 
@@ -248,7 +248,7 @@
                             <tr>
                                 <td>  @Html.CheckBoxFor(model => model.check3, new { id = "box3", onclick = "clickCheck('box3','ca3')" })</td>
                                 <td> Ca 3</td>
-                                <td> @Html.TextAreaFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled" })</td>
+                                <td> @Html.TextAreaFor(model => model.SLCa3, new { id = "ca3", disabled = "disabled", @class = "txt_soluong" })</td>
                             </tr>
                         }
 

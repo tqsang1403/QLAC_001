@@ -121,6 +121,15 @@
     flex-direction: row;
     justify-content: space-around;
 }
+/*Trang đăng kí ca ăn cá nhân*/
+.txt_soluong{
+    height:2.5rem;
+}
+
+
+
+
+/* end trang đăng kí ca ăn cá nhân*/
 
 
 /* trang thông tin cá nhân*/
@@ -142,4 +151,14 @@
     width:5rem;
 }
 
+
+/*end trang thông tin cá nhân*/
+
+
+/*Trang báo cáo thông kê suất ăn theo ngày*/
+.form_thong_ke_theo_ngay {
+    display: flex;
+    align-items: center;
+}
+/* end trang báo cáo thống kê suất ăn theo ngày*/
 

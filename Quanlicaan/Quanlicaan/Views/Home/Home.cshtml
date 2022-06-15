@@ -37,7 +37,7 @@
                         <th scope="col"> ID suất ăn</th>
                         <th scope="col"> ID ca ăn</th>
                         <th scope="col">Số lượng</th>
-                        <th scope="col"> Thời gian đặt</th>
+                        <th scope="col"> Thời gian cập nhật </th>
                         <th scope="col"> Chỉnh sửa</th>
 
 
@@ -82,7 +82,7 @@
                                     @Html.DisplayTextFor(m => Model[i].ngayDK.TimeOfDay)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("EditDkiCaanCanhan", "Dangkycaan" , new { id = Model[i].IDChiTietSuatAn})"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                                     <a href="@Url.Action("EditDkiCaanCanhan", "Dangkycaan" , new { id = Model[i].IDChiTietSuatAn})"> <i class="fa-solid fa-pen-to-square"></i> </a>
                                 </td>
                                 
                             </tr>

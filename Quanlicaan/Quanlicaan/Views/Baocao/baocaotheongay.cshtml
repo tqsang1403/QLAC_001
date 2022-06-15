@@ -1,7 +1,11 @@
-﻿
+﻿@model List<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
+@using Quanlicaan.Models.Session
+
 @{
-    ViewBag.Title = "Thống kê theo ngày";
+    ViewBag.Title = "Thống kê suất ăn theo ngày";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var info = (UserSession)Session["UserSession"];
+    var message = ViewData["message"];
 }
 
 <!DOCTYPE html>
@@ -10,157 +14,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo theo ngày</title>
+    <title>Thống kê suất ăn theo ngày</title>
 
+    <link rel="stylesheet" href="~/css/main.css">
 
-    <link href="~/css/baocaotheongay.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="banner">
-        <div class="companyname">
-            <p>TỔNG CTY</p>
-            <P>CÔNG TY ABC</P>
-            
+
+    <div class="title">  Thống kê đăng kí ca ăn theo ngày</div>
+    <h2 style="text-align:center ; color: #f4524d;">Người quản lí  : @info.hoTen</h2>
+    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now</h4>
+
+
+
+
+    @*  thống kê các ca ăn trong 1 ngày *@
+    <div style="padding : 0 3rem">
+        <div>   <h3 style="color:#dd5e14c7">Danh sách suất ăn nhân viên đã đăng kí</h3></div>
+        <div style=" display: flex; justify-content: space-around; align-items: center;">
+            @* Tìm kiếm theo ngày *@
+
+            @using (Html.BeginForm("Baocaotheongay", "Baocao", FormMethod.Post, new { @class = "form_thong_ke_theo_ngay" }))
+            {
+                <div style="margin:30px;">
+
+                    <label for="timeStart" style="width:5.6rem ; font-weight:800;">Từ ngày</label>
+                    <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="fistDay" value="" min="1997-01-01" max="2119-12-31" />
+
+                </div>
+
+                <div style="margin:30px;">
+
+                    <label for="timeEnd" style="width:5.6rem ; font-weight:800;">Đến ngày</label>
+                    <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="endDay" value="" min="1997-01-01" max="2119-12-31" />
+
+
+                </div>
+
+                <button type="submit" class="submit-btn"> Tìm kiếm</button>
+            }
+
+
         </div>
-        @*<div class="logocontainer">
-            <img src="~/images/kkkk.jpg" alt="logo" id="logo">
-        </div>*@
-        <div class="chxhcnvn">
-            <p>CỘNG HÒA XHCN VIỆT NAM</p>
-            <P>Độc lập - Tự do - Hạnh phúc</P>
-        </div>
-    </div>
+        <table class="table table-bordered border-primary">
+            @if (Model.Count == 0)
+            {
+                <div> Bạn chưa đăng kí</div>
+                <div> @message</div>
+
+            }
+            else
+            {
 
 
-    <div class="ngaybaocao">
-        <p> <b>THỐNG KÊ ĂN CA NGÀY: <input type="date" name="date" id="iddate" >  </b> </p>
-    </div>
-
-    <div class="ca">
-        <p> <b>Ca: <input type="text" name="ca" id="idcaan" disabled> </b></p>
-
-    </div>
-
-
-    <div class="content">
-        <table>
-            <tr>
-                <th>STT</th>
-                <th>Họ tên người đăng ký</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-
-            </tr>
-            <tr>
-                <td colspan="4"> Phòng: <input type="text" name="tenphongban" id="tenphongban" disabled> </td>
-
-            </tr>
-
-            <tr>
-                <td>1  </td>
-                <td> <input type="text" id="name" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-            </tr>
-            <tfoot>
-                <tr>
-
-                    <td></td>
-                    <td style="text-align: center;">  <b>Tổng</b></td>
-                    <td> <input type="number" name="tong" id="tongsl" disabled>  </td>
-                    <td> </td>
-                </tr>
-            </tfoot>
-
-        </table>
-
-    </div>
-
-    <div class="ca">
-        <p> <b>Ca: <input type="text" name="ca" id="idcaan" disabled> </b></p>
-
-    </div>
+                <thead>
+                    <tr>
+                        <th scope="col">Mã suất ăn</th>
+                        <th scope="col">Nhân viên đăng kí </th>
+                        <th scope="col">Thời gian đặt</th>
+                        <th scope="col">Loại suất ăn</th>
+                        <th scope="col">Mã chi tiết suất ăn</th>
+                        <th scope="col">Ca ăn</th>
+                        <th scope="col">Nhân viên được đăng kí</th>
+                        <th scope="col"> Số lượng suất ăn </th>
+                        <th scope="col"> Thời gian cập nhật gần nhất</th>
+                        <th scope="col"> Người cập nhât gần nhất</th>
+                        <th scope="col"> Thành tiền </th>
+                    </tr>
+                </thead>
 
 
-    <div class="content">
-        <table>
-            <tr>
-                <th>STT</th>
-                <th>Họ tên người đăng ký</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
+                <tbody>
 
-            </tr>
-            <tr>
-                <td colspan="4"> Phòng: <input type="text" name="tenphongban" id="tenphongban" disabled> </td>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td> @item.MaSuatan</td>
+                            <td> @item.Hotennguoidangki</td>
+                            <td> @item.Thoigiandangki</td>
 
-            </tr>
+                            @if (@item.LoaiSuatan == 1)
+                            {
+                                <td> Tập thể</td>
+                            }
 
-            <tr>
-                <td>1  </td>
-                <td> <input type="text" id="name" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-            </tr>
-            <tfoot>
-                <tr>
+                            else
+                            {
+                                <td> Cá nhân</td>
+                            }
 
-                    <td></td>
-                    <td style="text-align: center;">  <b>Tổng</b></td>
-                    <td> <input type="number" name="tong" id="tongsl" disabled>  </td>
-                    <td> </td>
-                </tr>
-            </tfoot>
+                            <td>@item.MaCTSuatan</td>
+                            <td>@item.MaCaan</td>
+                            <td>@item.Hotennguoidungsuatan</td>
+                            <td>@item.Soluong</td>
+                            <td>@item.Thoigiancapnhat</td>
+                            <td>@item.Hotennguoicapnhat</td>
+                            <td> @item.Thantien</td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+
+            }
 
         </table>
 
-    </div>
-
-
-
-    <div class="ca">
-        <p> <b>Ca: <input type="text" name="ca" id="idcaan" disabled> </b></p>
 
     </div>
 
-
-    <div class="content">
-        <table>
-            <tr>
-                <th>STT</th>
-                <th>Họ tên người đăng ký</th>
-                <th>Số lượng</th>
-                <th>Thành tiền</th>
-
-            </tr>
-            <tr>
-                <td colspan="4"> Phòng: <input type="text" name="tenphongban" id="tenphongban" disabled> </td>
-
-            </tr>
-
-            <tr>
-                <td>1  </td>
-                <td> <input type="text" id="name" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-                <td> <input type="number" id="number" disabled> </td>
-            </tr>
-            <tfoot>
-                <tr>
-
-                    <td></td>
-                    <td style="text-align: center;">  <b>Tổng</b></td>
-                    <td> <input type="number" name="tong" id="tongsl" disabled>  </td>
-                    <td> </td>
-                </tr>
-            </tfoot>
-
-        </table>
-
+    <div class="btn_submit_back">
+        <button class="submit-btn"><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a></button>
     </div>
-
-
-
 </body>
 
 </html>
-

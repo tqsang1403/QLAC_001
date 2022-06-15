@@ -4,6 +4,7 @@
     ViewBag.Title = "Thống kê cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var info = (UserSession)Session["UserSession"];
+    var message = ViewData["message"];
 }
 
 <!DOCTYPE html>
@@ -21,39 +22,50 @@
 
     <div class="title">  Thống kê đăng kí ca ăn cá nhân</div>
     <h2 style="text-align:center ; color: #f4524d;">Tên nhân viên  : @info.hoTen</h2>
+    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now</h4>
 
-    
+
 
 
     @*  thống kê các ca ăn trong 1 ngày *@
     <div style="padding : 0 3rem">
-        <div style="font-size :1.1rem; font-weight :700; margin:20px 20px;"> Ngày 6-9-2020  Danh sách chi tiết suất ăn của nhân viên</div>
+        <div>   <h3 style="color:#dd5e14c7">Danh sách chi tiết suất ăn của nhân viên</h3></div>
+        <div style=" display: flex; justify-content: space-around; align-items: center;">
+            @* Tìm kiếm theo ngày *@
 
-        <div style="">
-            @using (Html.BeginForm("", "", FormMethod.Get, new { @class = "contact-form row" }))
+            @using (Html.BeginForm("Canhan", "Baocao", FormMethod.Post, new { @class = "contact-form row" }))
             {
                 <div style="margin:30px 0;">
 
-                    <label for="time" style="width:10%"> <h5>Chọn ngày :</h5></label>
+                    <label for="time" style="width:5.6rem ; font-weight:800;">Chọn ngày</label>
                     <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="time" value="" min="1997-01-01" max="2119-12-31" />
 
                     <button type="submit" class="submit-btn"> Tìm kiếm</button>
                 </div>
             }
 
-            @using (Html.BeginForm("Show", "Baocao", FormMethod.Get, new { @class = "contact-form row" }))
+
+            @* Tìm kiếm theo tháng *@
+
+            @using (Html.BeginForm("Thongketheothang", "Baocao", FormMethod.Post, new { @class = "contact-form row" }))
             {
+                <div style="margin:30px 0;">
 
-                <label for="time" style="width:10%"> <h5>Chọn Tháng :</h5></label>
-                <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="date" name="time" value="" min="1997-01-01" max="2119-12-31" />
-                <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                    <label for="month" style="width:6.0rem; font-weight:800;"> Chọn tháng </label>
+                    <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="month" name="month" value="" />
 
+                    <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                </div>
             }
+
+
         </div>
         <table class="table table-bordered border-primary">
             @if (Model.Count == 0)
             {
                 <div> Bạn chưa đăng kí</div>
+                <div> @message</div>
+
             }
             else
             {

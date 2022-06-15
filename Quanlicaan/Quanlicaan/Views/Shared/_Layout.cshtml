@@ -10,9 +10,10 @@
     <title>@ViewBag.Title </title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/layoutcss.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/main.css">
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
-   
+
     @RenderSection("head", required: false)
 </head>
 
@@ -56,8 +57,8 @@
                                     <li><a class="dropdown-item" href="@Url.Action("Canhan","Baocao")">Cá nhân</a></li>
                                     @if (info.IDRoleUser == 1)
                                     {
-                                         <li><a class="dropdown-item" href="@Url.Action("Theongay","Baocao")">Theo ngày</a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Theothang","Baocao")">Theo Tháng</a></li>
+                                         <li><a class="dropdown-item" href="@Url.Action("Baocaotheongay","Baocao")">Theo ngày</a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Baocaotheothang","Baocao")">Theo Tháng</a></li>
 }
                                 </ul>
                             </li>
@@ -75,7 +76,7 @@
 
                         @using (Html.BeginForm("logOut", "Login", FormMethod.Post, new { @class = "nav-item dropdown" }))
                         {
-            <button type="submit" class="btn btn-danger"> Đăng xuất </button>}
+            <button type="submit" class="submit-btn"> Đăng xuất </button>}
 
                     </div>
                 </div>

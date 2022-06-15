@@ -20,8 +20,16 @@ namespace Quanlicaan.Controllers
    
 
         // select nhân viên
-        public ActionResult Show(string tennv, string idPhongBan)
+        public ActionResult Show(string tennv, string idPhongBan /*, int? page*/)
         {
+
+            //if (page == null) page = 1;
+            //int pageSize = 10;
+            ////  Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
+            //// nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+            //int pageNumber = (page ?? 1);
+
+
             ViewBag.Keyword = tennv;
            // ViewBag.TenPhongBan = tenPhongBan;
             var nhanvien = new UserModel();

@@ -52,8 +52,8 @@
 
                     @using (Html.BeginForm("Show", "NhanVien", FormMethod.Get, new { @class = "contact-form row" }))
                     {
-                        <div> 
-                            @Html.DropDownList("idPhongBan", list , new { @class ="input_search"})
+                        <div>
+                            @Html.DropDownList("idPhongBan", list, new { @class = "input_search" })
                             <button type="submit" class="submit-btn"> Tìm kiếm</button>
                         </div>
                     }
@@ -84,8 +84,8 @@
                                 <th>Quyền đăng kí tập thể</th>
                                 @if (info.IDRoleUser == 1)
                                 {
-                                    <th >Edit</th>
-                                    <th >Delete</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 }
                             </tr>
                             <tbody>

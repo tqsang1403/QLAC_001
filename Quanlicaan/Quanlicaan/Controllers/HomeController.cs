@@ -1,4 +1,5 @@
 ﻿using Quanlicaan.Models.DAO;
+using Quanlicaan.Models.Framework;
 using Quanlicaan.Models.ModelsPage;
 using Quanlicaan.Models.Session;
 using System;
@@ -27,9 +28,5 @@ namespace Quanlicaan.Controllers
             }
         }
 
-        public ActionResult ReportPerson() 
-        {
-                return View();
-        } 
     }
 }

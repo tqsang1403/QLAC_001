@@ -90,7 +90,7 @@
                                             <tr style=" display: flex; flex-direction: row; align-items: center;justify-content: space-evenly;">
                                                 <td> @Html.CheckBoxFor(model => model[k].check1, new { id = "box1", onclick = "clickCheck('box1','ca1')" })</td>
                                                 <td> Ca 1</td>
-                                                <td> @Html.TextAreaFor(model => model[k].SLCa1, new { id = "ca1"@*, disabled = "disabled"*@ })</td>
+                                                <td> @Html.TextAreaFor(model => model[k].SLCa1, new { id = "ca1", @class = "txt_soluong" })</td>
                                             </tr>
                                         }
 
@@ -123,7 +123,7 @@
                                             <tr style=" display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;">
                                                 <td>  @Html.CheckBoxFor(model => model[k].check2, new { id = "box2", onclick = "clickCheck('box2','ca2')" }) </td>
                                                 <td> Ca 2</td>
-                                                <td> @Html.TextAreaFor(model => model[k].SLCa2, new { id = "ca2" })</td>
+                                                <td> @Html.TextAreaFor(model => model[k].SLCa2, new { id = "ca2", @class = "txt_soluong" })</td>
                                             </tr>
                                         }
 
@@ -156,7 +156,7 @@
                                             <tr style=" display: flex; flex-direction: row; align-items: center;     justify-content: space-evenly;">
                                                 <td>  @Html.CheckBoxFor(model => model[k].check3, new { id = "box3", onclick = "clickCheck('box3','ca3')" })</td>
                                                 <td> Ca 3</td>
-                                                <td> @Html.TextAreaFor(model => model[k].SLCa3, new { id = "ca3", @*disabled = "disabled"*@ })</td>
+                                                <td> @Html.TextAreaFor(model => model[k].SLCa3, new { id = "ca3", @class = "txt_soluong" })</td>
                                             </tr>
                                         }
 
