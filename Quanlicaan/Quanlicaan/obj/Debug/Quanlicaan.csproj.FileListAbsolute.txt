@@ -977,3 +977,7 @@ F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.csproj.CopyComplete
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.dll
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.pdb
 F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\obj\Debug\Quanlicaan.csprojAssemblyReference.cache
+F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\bin\PagedList.dll
+F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\bin\PagedList.Mvc.dll
+F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\bin\PagedList.xml
+F:\GitHub\QLAC_VT\Quanlicaan\Quanlicaan\bin\PagedList.Mvc.xml
