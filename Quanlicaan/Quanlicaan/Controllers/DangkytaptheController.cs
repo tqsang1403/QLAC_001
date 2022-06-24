@@ -45,8 +45,15 @@ namespace Quanlicaan.Controllers
         }
 
         [HttpPost]
-        public ActionResult DkiTapThe(List<DangkyantaptheModel> list)
+        public ActionResult DkiTapThe(List<DangkyantaptheModel> list,DangkyantaptheModel tapthe)
         {
+            var timeca1 = "09:00:00";
+            var timeca23 = "15:00:00";
+
+            var timedk = string.Format("{0:HH:mm:ss}", tapthe.ngayDK);
+            int checktimeca1 = String.Compare(timedk, timeca1, comparisonType: StringComparison.OrdinalIgnoreCase);
+            int checktimeca23 = String.Compare(timedk, timeca23, comparisonType: StringComparison.OrdinalIgnoreCase);
+            // checktime < 0 thi time1 < time2
             String thongbao;
             if (ModelState.IsValid)
             {
@@ -62,21 +69,40 @@ namespace Quanlicaan.Controllers
                         {
                             foreach (var item in list[i].ListCaAn)
                             {
-                                if (item.IsChecked && item.ID == 1 && item.SoluongSuatan > 0)
+                                //check ca 1
+                                if (item.IsChecked && item.ID == 1 && item.SoluongSuatan >= 0 && checktimeca1 < 0 )
                                 {
                                     samodel.InsertCTSuatAn(list[i].IDUser, time, item.ID, item.SoluongSuatan);
 
                                 }
+                                else if (item.IsChecked && item.ID == 1 && item.SoluongSuatan > 0 && checktimeca1 > 0)
+                                {
+                                    thongbao = "Dang ky an cho ca 1 that bai! Qua thoi gian quy dinh";
+                                    return RedirectToAction("Home2", "Home", new { thongbao });
 
-                                if (item.IsChecked && item.ID == 2 && item.SoluongSuatan > 0)
+                                }
+                                //check ca 2
+                                if (item.IsChecked && item.ID == 2 && item.SoluongSuatan >= 0 && checktimeca23 <0 )
                                 {
                                     samodel.InsertCTSuatAn(list[i].IDUser, time, item.ID, item.SoluongSuatan);
 
                                 }
+                                else if (item.IsChecked && item.ID == 2 && item.SoluongSuatan >= 0 && checktimeca23 > 0)
+                                {
+                                    thongbao = "Dang ky an cho ca 2 that bai! Qua thoi gian quy dinh";
+                                    return RedirectToAction("Home2", "Home", new { thongbao });
 
-                                if (item.IsChecked && item.ID == 1002 && item.SoluongSuatan > 0)
+                                }
+                                //check ca 3
+                                if (item.IsChecked && item.ID == 1002 && item.SoluongSuatan >= 0 && checktimeca23 < 0 )
                                 {
                                     samodel.InsertCTSuatAn(list[i].IDUser, time, item.ID, item.SoluongSuatan);
+
+                                }
+                                else if (item.IsChecked && item.ID == 1002 && item.SoluongSuatan > 0 && checktimeca23 > 0)
+                                {
+                                    thongbao = "Dang ky an cho ca 3 that bai! Qua thoi gian quy dinh";
+                                    return RedirectToAction("Home2", "Home", new { thongbao });
 
                                 }
                             }
@@ -93,13 +119,13 @@ namespace Quanlicaan.Controllers
                     }
 
                 }
-                thongbao = "Success";
+                thongbao = "Đang ký thành công!";
                 return RedirectToAction("Home2", "Home", new {thongbao}); 
 
             }
             else
             {
-                thongbao = "Failed";
+                thongbao = "Đăng ký ăn thất bại!";
                 return View();
             }
         }

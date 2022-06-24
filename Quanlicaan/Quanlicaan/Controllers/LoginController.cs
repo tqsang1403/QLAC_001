@@ -29,10 +29,13 @@ namespace Quanlicaan.Controllers
         {
             SqlConnection conn = new SqlConnection(connectionString);
             {
+                int trangthaihd = 1;
+                int trangthaivohieuhoa = 0;
                 string Thongbao = "";
                 //kiem tra ten dang nhap va mat khau ok
-                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID join Roles on NhanVien.IDRole = Roles.ID where username ='" + username + "' and upassword = '" + password + "' and trangthai = '1'"  ;
+                string sqlQuery = "select * from NhanVien join PhongBan on NhanVien.IDPhongBan = PhongBan.ID join Roles on NhanVien.IDRole = Roles.ID where username ='" + username + "' and upassword = '" + password + "' and trangthai = '"+trangthaihd+"'";
 
+                
                 SqlCommand cmd = new SqlCommand(sqlQuery, conn);
 
                 userSession us = new userSession();
@@ -42,7 +45,7 @@ namespace Quanlicaan.Controllers
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                   
+
                     us.HoTen = dr["HoTen"].ToString();
                     us.ID = Convert.ToInt32(dr["ID"]);
                     us.IDRole = Convert.ToInt32(dr["IDRole"]);
@@ -50,7 +53,7 @@ namespace Quanlicaan.Controllers
                     us.RoleRegist = dr["RoleRegist"].ToString();
                     us.PhongBan = dr["TenPB"].ToString();
                     us.SDT = dr["SDT"].ToString();
-                    us.DiaChi= dr["DiaChi"].ToString() ;
+                    us.DiaChi = dr["DiaChi"].ToString();
                     us.username = dr["username"].ToString();
                     us.upassword = dr["upassword"].ToString();
                     us.trangthai = Convert.ToBoolean(dr["trangthai"]);
@@ -62,20 +65,20 @@ namespace Quanlicaan.Controllers
 
                     conn.Close();
 
-                    Thongbao = "Dang nhap thanh cong";
+                    Thongbao = "Đăng nhập thành công";
                     TempData["message"] = "Dang nhap thanh cong";
 
-                    return RedirectToAction("Home2","Home",new {Thongbao});
+                    return RedirectToAction("Home2", "Home", new { Thongbao });
 
 
                 }
-
+               
                 else
                 {
-                    Thongbao = "Dang nhap that bai";
+                    Thongbao = "Sai tên đăng nhập hoặc mật khẩu / Tài khoản bị vô hiệu hoá";
                     conn.Close();
-                    return RedirectToAction("Login","Login", new {Thongbao});
-                    
+                    return RedirectToAction("Login", "Login", new { Thongbao });
+
 
 
                     //return RedirectToAction("Index", new { thongBao = "tên đăng nhập và mật khẩu không đúng" });
@@ -133,11 +136,9 @@ namespace Quanlicaan.Controllers
             DataSet ds = pb.getAllPhongBan();
             ViewBag.PhongBan = ds.Tables["PhongBan"];
 
-           
-
 
             return View(new NhanVienModel());
-            
+
         }
         [HttpPost]
         public ActionResult RegistEmp(NhanVienModel nhanvienModel)
@@ -147,41 +148,47 @@ namespace Quanlicaan.Controllers
             DataSet ds = pb.getAllPhongBan();
             ViewBag.PhongBan = ds.Tables["PhongBan"];
 
-           
+
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                
-                try
+                if (nhanvienModel.upassword == nhanvienModel.Retypeupassword)
                 {
-                    
-                     
-                    conn.Open();
-                    string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, RoleRegist) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,'2', 'Nhân Viên', @username, @upassword, 'Cá nhân')";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
-                    cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
-                    cmd.Parameters.AddWithValue("@DiaChi", nhanvienModel.DiaChi);
-                    cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
-                    cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
-                    //cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
-                    //cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
-                    cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
-                    cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword);
-                    cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai);
-                    
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    thongbao = "them moi thanh cong";
+                    try
+                    {
+
+                        conn.Open();
+                        string query = "insert into NhanVien(HoTen,GioiTinh,DiaChi,SDT, IDPhongBan,IDRole, ChucVu, username, upassword, RoleRegist) values(@HoTen, @GioiTinh, @DiaChi,@SDT, @IDPhongBan,'2', 'Nhân Viên', @username, @upassword, 'Cá nhân')";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@HoTen", nhanvienModel.HoTen);
+                        cmd.Parameters.AddWithValue("@GioiTinh", nhanvienModel.GioiTinh);
+                        cmd.Parameters.AddWithValue("@DiaChi", nhanvienModel.DiaChi);
+                        cmd.Parameters.AddWithValue("@SDT", nhanvienModel.SDT);
+                        cmd.Parameters.AddWithValue("@IDPhongBan", nhanvienModel.IDPhongBan);
+                        //cmd.Parameters.AddWithValue("@IDRole", nhanvienModel.IDrole);
+                        //cmd.Parameters.AddWithValue("@ChucVu", nhanvienModel.ChucVu);
+                        cmd.Parameters.AddWithValue("@username", nhanvienModel.username);
+                        cmd.Parameters.AddWithValue("@upassword", nhanvienModel.upassword);
+                        cmd.Parameters.AddWithValue("@trangthai", nhanvienModel.trangthai);
+
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        thongbao = "them moi thanh cong";
+                    }
+                    catch (System.Data.SqlClient.SqlException sqlException)
+                    {
+                        thongbao = "tao moi tai khoan that bai! Ten dang nhap da co nguoi dang ky !";
+                        return RedirectToAction("RegistEmp", "Login", new { thongbao });
+                    }
                 }
-                catch (System.Data.SqlClient.SqlException sqlException)
+                else
                 {
-                    thongbao = "tao moi tai khoan that bai";
+                    thongbao = "mat khau khong trung khop";
                     return RedirectToAction("RegistEmp", "Login", new { thongbao });
                 }
             }
 
-            return RedirectToAction("Login","Login", new {thongbao});
+            return RedirectToAction("Login", "Login", new { thongbao });
         }
     }
 }

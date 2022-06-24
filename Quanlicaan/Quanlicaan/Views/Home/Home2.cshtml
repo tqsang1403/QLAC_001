@@ -9,59 +9,77 @@
     var year = (DateTime.Today.Year);
     var fullday = DateTime.Now;
     var hour = DateTime.Now.TimeOfDay;
+
+
+
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
     {
         <script> alert('@message');</script>
     }
 }
-<div class="container" style="padding-top:20px;margin-left:auto;margin-right:auto;">
 
-    @if(Model.Any())
-    {
-        <table class="table table-hover table-active tab-content table-bordered table-striped">
-            <thead> Ca ăn đã đăng ký ngày @day - @month - @year   </thead>
 
-            <tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/fonteawsome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link href="~/css/shome.css" rel="stylesheet" />
+   
 
-                <th>
-                    Ca Ăn
-                </th>
-                <th>
-                    Số lượng(suất)
-                </th>
-                <th>
-                    Thời gian đăng ký
-                </th>
+</head>
+<body>
+    <div class="container" style="padding-top:20px;margin-left:auto;margin-right:auto;">
 
-            </tr>
+        @if (Model.Any())
+        {
+            <table class="table table-hover table-active tab-content table-bordered table-striped">
+                <thead> Ca ăn đã đăng ký ngày @day - @month - @year   </thead>
 
-            @foreach (var item in Model)
-            {
                 <tr>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TenCaAn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Soluong)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NgayDk)
-                    </td>
-
+                    <th>
+                        Ca Ăn
+                    </th>
+                    <th>
+                        Số lượng(suất)
+                    </th>
+                    <th>
+                        Thời gian đăng ký
+                    </th>
 
                 </tr>
-            }
 
-        </table>
-        <a href="@Url.Action("EditDkiCaanCanhan", "Home")">Chỉnh sửa</a>
-    }
-    else
-    {
+                @foreach (var item in Model)
+                {
+                    <tr>
 
-        <h2 style="text-align:center;padding:15%">Hôm nay bạn chưa đăng ký ăn !</h2>
-    }
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenCaAn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Soluong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayDk)
+                        </td>
 
 
-</div>
+                    </tr>
+                }
+
+            </table>
+            <a href="@Url.Action("EditDkiCaanCanhan", "Home")">Chỉnh sửa</a>
+        }
+        else
+        {
+
+            <h2 style="text-align:center;padding:15%">Hôm nay bạn chưa đăng ký ăn !</h2>
+        }
+
+
+    </div>
+</body>
+</html>

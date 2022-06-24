@@ -1,62 +1,108 @@
 ﻿@model Quanlicaan.Models.ModelADO.NhanVienModel
 
 @using System.Data
+@using Quanlicaan.Models.Session
 @{
-    ViewBag.Title = "EditDetails";
+    ViewBag.Title = "Thay đổi mật khẩu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    
+    var i = (userSession)Session["user"];
+
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/fonteawsome/fontawesome-free-6.1.1-web/css/all.min.css">
+    
     <link href="~/css/one.css" rel="stylesheet" />
-}
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h3 style="text-align:center">Thay đổi mật khẩu</h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
 
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+            <div class="form-group">
+                Tên đăng nhập:
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                Mật khẩu hiện tại:
+                <div class="col-md-10">
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+                    @Html.EditorFor(model => model.OldPass, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @name = "Password" } })
 
-        
+                    @Html.ValidationMessageFor(model => model.OldPass, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
-        <div class="form-group">
-            Tên đăng nhập:
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+            <div class="form-group">
+                Mật khẩu mới:
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @minlength = "6", @name = "Password" } })
+                    @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger", @minlength = "6" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Nhập lại mật khẩu mới:
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Retypeupassword, new { htmlAttributes = new { @class = "form-control", @name = "RetypePassword", @required = "required", @type = "password", @minlength = "6" } })
+                    @Html.ValidationMessageFor(model => model.Retypeupassword, "", new { @class = "text-danger", @minlength = "6" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success active" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            Mật khẩu cũ:
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
-            </div>
+    }
+    <div class="form-hori" style="margin-left:33%">
+        <div class="col-md-offset-2 col-md-10" ">
+            <button class="btn btn-outline-warning">
+                <a href="~/UserLogin/Details" style="text-decoration:none">Cancel</a>
+            </button>
         </div>
 
 
-        <div class="form-group">
-            Mật khẩu mới:
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @minlength = "6" } })
-                @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger", @minlength = "6" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success active" />
-            </div>
-        </div>
     </div>
-}
-<button class="btn btn-outline-warning">
-    <a href="~/UserLogin/Details" style="text-decoration:none">Cancel</a>
-</button>
+</body>
+</html>
 
+
+
+<script>
+    $('#Password, #RetypePassword').on('keyup', function () {
+        if ($('#password').val() == $('#confirm_password').val()) {
+            $('#message').html('Matching').css('color', 'green');
+        } else
+            $('#message').html('Not Matching').css('color', 'red');
+    });
+</script>

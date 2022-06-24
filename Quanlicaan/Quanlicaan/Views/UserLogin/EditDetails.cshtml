@@ -14,6 +14,12 @@
         item.Text = dr["TenPB"].ToString();
         listPB.Add(item);
     }
+
+    var message = ViewData["message"] ?? string.Empty;
+    if (@message != "")
+    {
+        <script> alert('@message');</script>
+    }
 }
 
 
@@ -84,20 +90,20 @@
 
 
         @*<div class="form-group">
-            Username
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                Username
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            Password
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+            <div class="form-group">
+                Password
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
 
 

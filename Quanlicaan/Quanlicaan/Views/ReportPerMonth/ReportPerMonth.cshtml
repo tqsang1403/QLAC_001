@@ -43,9 +43,9 @@
             </th>
             <th>
                 Tổng số lượng suất ăn
-                @*<th>
+                <th>
                         Thời gian đăng ký
-                    </th>*@
+                    </th>
             <th>
                 Thành tiền(VND) : <i>15.000/suất</i>
             </th>
@@ -72,9 +72,15 @@
                         @Html.DisplayFor(modelItem => item.Soluong)
 
                     </td>
-                    @*<td>
+                    <td>
+                        @if (item.NgayDk != null)
+                        {
                             @Html.DisplayFor(modelItem => item.NgayDk)
-                        </td>*@
+                        }else
+                    {
+                        @time.day
+                    }
+                    </td>
                     <td>
 
                         @Html.DisplayFor(modelItem => item.Thanhtien)

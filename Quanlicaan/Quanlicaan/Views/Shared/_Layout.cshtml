@@ -11,8 +11,8 @@
     <link href="~/css/layout.css" rel="stylesheet" />
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
-    @RenderSection("head",required:false)
-    @{ 
+    @RenderSection("head", required: false)
+    @{
         var per = (userSession)Session["user"];
     }
 </head>
@@ -90,8 +90,8 @@
                             </ul>
                             <form class="nav-item dropdown">
                                 <li class="logout">
-                                    @*<div class="divInfo">
-                @{ userSession info = (userSession)Session["user"];
+                                    @<div class="divInfo">
+               @* @{ userSession info = (userSession)Session["user"];
                 }
                     <p> Xin chào <a href="@Url.Action("Details","UserLogin")"><i class="fa-regular fa-circle-user"><b>@per.HoTen</b></i></a> </p>
                 </div>
@@ -102,7 +102,7 @@
 
                                 
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <b>@per.HoTen</b>
+                                        <i><b>@per.HoTen</b></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="@Url.Action("Details", "UserLogin")">Thông tin cá nhân</a></li>
@@ -111,7 +111,7 @@
 
                                     </ul>
                                 
-                                <a href="~/Login/Logout" class="nav-dangxuat">Đăng xuất</a>
+                                     <a href="~/Login/Logout" class="nav-dangxuat">Đăng xuất</a>
                                 
                             </form>
 
@@ -146,6 +146,7 @@
 
 
     @RenderSection("footer", required: false)
+    @RenderSection("scripts",required:false)
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Đăng ký nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/css/one.css" rel="stylesheet" />
+    
 
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
@@ -35,17 +35,25 @@
         listPB.Add(item);
     }
     List<SelectListItem> listGT = new List<SelectListItem>
-    {
+{
                 new SelectListItem{Text = "Nam", Value = "true"},
                 new SelectListItem{Text = "Nữ", Value = "false"}
 
             };
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/fonteawsome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <link href="~/css/one.css" rel="stylesheet" />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
     <div class="form-horizontal" style="width:50% ;margin-left:auto ;margin-right:auto">
         <h3> <i>Vui lòng điền đầy đủ thông tin nhân viên </i></h3>
@@ -94,21 +102,21 @@
         </div>
 
         @*<div class="form-group">
-                Quyền truy cập
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.IDrole, listRoles, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+            Quyền truy cập
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IDrole, listRoles, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IDrole, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
 
         @*<div class="form-group">
-                Chức vụ
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+            Chức vụ
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChucVu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             Username
@@ -119,28 +127,40 @@
         </div>
 
         <div class="form-group">
-            Password
+            Mật khẩu
             <div class="col-md-10">
-                @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password" } })
+                @Html.EditorFor(model => model.upassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @minlength = "6" } })
                 @Html.ValidationMessageFor(model => model.upassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
+            Nhập lại mật khẩu
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Retypeupassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @minlength = "6" } })
+                @Html.ValidationMessageFor(model => model.Retypeupassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10" style="padding-top:2px;width:100%">
-                <input type="submit" value="Đăng ký" class="btn btn-success active" style="width:84%" />
+                <input type="submit" value="Đăng ký" class="signupbtn" style="width:84%" />
 
             </div>
 
         </div>
     </div>
-}
-<div class="form-horizontal" style="width:50% ;margin-left:auto ;margin-right:auto">
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10" style="padding-top:2px;width:100%">
-            <button class="btn btn-outline-warning" style="margin-left:0%;margin-bottom:50px;width:84%;">
-                <a href="~/Login/Login" style="text-decoration:none">Cancel</a>
-            </button>
+    }
+    <div class="form-horizontal" style="width:50% ;margin-left:auto ;margin-right:auto">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="padding-top:2px;width:100%">
+                <button class="cancelbtn" style="margin-left:0%;margin-bottom:50px;width:84%;">
+                    <a href="~/Login/Login" style="text-decoration:none">Cancel</a>
+                </button>
+            </div>
         </div>
     </div>
-</div>
+</body>
+</html>
+
+

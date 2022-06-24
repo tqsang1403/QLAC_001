@@ -65,12 +65,7 @@ namespace Quanlicaan.Models
                 employ.TenPB = reader["TenPB"].ToString();
                 listnv.Add(employ);
             }
-
-            
-
-
-
-          
+     
             conn.Close();
             return listnv;
 

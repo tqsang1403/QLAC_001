@@ -35,7 +35,7 @@ namespace Quanlicaan.Controllers
             NhanVienModel nvien = new NhanVienModel();
             var nhanvien = new dbConnect();
             List<NhanVienModel> list = nhanvien.Listnv(tennv, tenPB).ToList();
-            int pageSize = 10;
+            int pageSize = 15;
             int pageNumber = (page ?? 1);
 
             nvien.listnvien = list;

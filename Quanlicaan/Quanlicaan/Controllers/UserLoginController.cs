@@ -54,8 +54,9 @@ namespace Quanlicaan.Controllers
 
 
         // GET: UserLogin/Edit/5
-        public ActionResult EditDetails()
+        public ActionResult EditDetails(string thongbao)
         {
+            ViewData["message"] = thongbao;
             userSession us = (userSession)Session["user"];
 
             int id = us.ID;
@@ -87,7 +88,7 @@ namespace Quanlicaan.Controllers
                 NhanVienModel.IDPhongBan = Convert.ToInt32(dtblNhanVien.Rows[0][5].ToString());
                 NhanVienModel.IDrole = Convert.ToInt32(dtblNhanVien.Rows[0][7].ToString());
                 NhanVienModel.ChucVu = Convert.ToString(dtblNhanVien.Rows[0][6].ToString());
-                
+
                 NhanVienModel.trangthai = Convert.ToBoolean(dtblNhanVien.Rows[0][10].ToString());
                 NhanVienModel.RoleRegist = Convert.ToString(dtblNhanVien.Rows[0][11].ToString());
 
@@ -120,7 +121,7 @@ namespace Quanlicaan.Controllers
                     cmd.Parameters.AddWithValue("@DiaChi", NhanVienModel.DiaChi);
                     cmd.Parameters.AddWithValue("@SDT", NhanVienModel.SDT);
                     cmd.Parameters.AddWithValue("@IDPhongBan", NhanVienModel.IDPhongBan);
-                    
+
 
                     cmd.ExecuteNonQuery();
 
@@ -132,7 +133,8 @@ namespace Quanlicaan.Controllers
                 {
 
                     thongbao = "Sua thong tin that bai";
-                    MessageBox.Show(sqlException.Message);
+                    //MessageBox.Show(sqlException.Message);
+                    return RedirectToAction("EditDetails", "UserLogin", new { thongbao });
                 }
             }
 
@@ -145,8 +147,9 @@ namespace Quanlicaan.Controllers
 
 
         // GET: UserLogin/Edit/5
-        public ActionResult EditAccount()
+        public ActionResult EditAccount(string thongbao)
         {
+            ViewData["message"] = thongbao;
             userSession us = (userSession)Session["user"];
 
             int id = us.ID;
@@ -173,7 +176,7 @@ namespace Quanlicaan.Controllers
                 NhanVienModel.ID = Convert.ToInt32(dtblNhanVien.Rows[0][0].ToString());
                 NhanVienModel.username = Convert.ToString(dtblNhanVien.Rows[0][8].ToString());
                 NhanVienModel.upassword = Convert.ToString(dtblNhanVien.Rows[0][9].ToString());
-               
+
 
                 return View(NhanVienModel);
             }
@@ -196,27 +199,43 @@ namespace Quanlicaan.Controllers
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                try
+                if (NhanVienModel.OldPass == us.upassword)
                 {
-                    conn.Open();
-                    string query = "Update NhanVien Set username = @username, upassword = @upassword where ID = @ID ";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
-                    
-                    cmd.Parameters.AddWithValue("@username", usernm);
-                    cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
+                    if (NhanVienModel.upassword == NhanVienModel.Retypeupassword)
+                    {
+                        try
+                        {
+                            conn.Open();
+                            string query = "Update NhanVien Set username = @username, upassword = @upassword where ID = @ID ";
+                            SqlCommand cmd = new SqlCommand(query, conn);
+                            cmd.Parameters.AddWithValue("@ID", NhanVienModel.ID);
 
-                    cmd.ExecuteNonQuery();
+                            cmd.Parameters.AddWithValue("@username", usernm);
+                            cmd.Parameters.AddWithValue("@upassword", NhanVienModel.upassword);
 
-                    thongbao = "Thay doi mat khau thanh cong! Vui long dang nhap lai de cap nhat thong tin !";
-                    conn.Close();
+                            cmd.ExecuteNonQuery();
 
+                            thongbao = "Thay doi mat khau thanh cong! Vui long dang nhap lai de cap nhat thong tin !";
+                            conn.Close();
+
+                        }
+                        catch (System.Data.SqlClient.SqlException sqlException)
+                        {
+
+                            thongbao = "Thay doi mat khau that bai";
+                            return RedirectToAction("EditAccount", "UserLogin", new { thongbao });
+                        }
+                    }
+                    else
+                    {
+                        thongbao = "Mật khẩu không khớp !";
+                        return RedirectToAction("EditAccount", "UserLogin", new { thongbao });
+                    }
                 }
-                catch (System.Data.SqlClient.SqlException sqlException)
+                else
                 {
-
-                    thongbao = "Thay doi mat khau that bai";
-                    MessageBox.Show(sqlException.Message);
+                    thongbao = "Mật khẩu hiện tại không đúng !";
+                    return RedirectToAction("EditAccount", "UserLogin", new { thongbao });
                 }
             }
 

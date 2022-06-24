@@ -4,7 +4,6 @@
 @{
     ViewBag.Title = "Đăng ký ăn tập thể";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    <link href="~/css/dangkyannhom.css" rel="stylesheet" />
 
     var info = (userSession)Session["user"];
 
@@ -17,105 +16,132 @@
 }
 
 
-<div class="d-flex flex-column px-2">
-    <div style="margin:auto">
-        <h1>ĐĂNG KÍ ĂN CA TẬP THỂ</h1>
-    </div>
-    <div class="d-flex justify-content-around" style="margin-bottom:20px">
-        <h4>  Nhân viên đăng kí : @info.HoTen</h4>
-        <h4>  Ngày đăng kí : @DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")</h4>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/fonteawsome/fontawesome-free-6.1.1-web/css/all.min.css">
+    <meta charset="utf-8" />
+    <link href="~/css/dangkyannhom.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-    </div>
-    @using (Html.BeginForm("DkiTapThe", "Dangkytapthe", FormMethod.Post))
-    {
-
-        <table class="table table-hover table-active tab-content table-bordered table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Mã nhân viên</th>
-                    <th scope="col">Tên nhân viên</th>
-                    <th scope="col">Tên Phòng Ban</th>
-                    <th scope="col">Chọn</th>
-                    <th scope="col">Đăng kí ca ăn</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @for (int k = 0; k < Model.Count; k++)
-                {
-                    int j = 1;
-                    <tr>
-                        <td>@a</td>
-                        <td>
-                            @Html.HiddenFor(m => Model[k].IDUser)
-                            @Model[k].IDUser
-                        </td>
-                        <td>
-                            @Html.HiddenFor(m => Model[k].HoTen)
-                            @Model[k].HoTen
-                        </td>
-                        <td>
-                            @Html.HiddenFor(m => Model[k].PhongBan)
-                            @Model[k].PhongBan
-                        </td>
-                        <td>
-                            @Html.CheckBoxFor(model => Model[k].TrangThai)
-                        </td>
-                        <td>
-                            <table>
-                                @for (int i = 0; i < Model[k].ListCaAn.Count; i++)
-                                {
-                                    <tr style=" display: flex; align-Model[k]s: flex-end;">
-                                        <td>
-                                            @Html.CheckBoxFor(m => Model[k].ListCaAn[i].IsChecked)
-                                            @Html.HiddenFor(m => Model[k].ListCaAn[i].ID)
-                                            @Html.HiddenFor(m => Model[k].ListCaAn[i].Thoigian)
-
-                                        </td>
-                                        <td style=" margin-right :10px">
-                                            Ca @j
-                                        </td>
-                                        <td>
-                                            <h6>Số lượng suất ăn</h6>
-                                            @Html.TextBoxFor(m => Model[k].ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng suất ăn" } })
-                                        </td>
-
-                                    </tr>
-                                    j++;
-                                }
-                            </table>
-                        </td>
-
-                    </tr>
-                    a++;
+    <script type="text/javascript">
+        $(function () {
+            $("#chondkan").change(function () {
+                var c = this.checked;
+                if (c) {
+                    $("#dkan").prop("disabled", false);
                 }
-            </tbody>
-        </table>
+                else {
+                    $("#dkan").prop("disabled", true);
+                }
+            });
 
-        <div style="text-align:center">
-            <button type="submit" class="btn btn-success btn-lg" style="width: 40%; ">Đăng kí  ca ăn</button>
+            $("#dkan").change(function () {
+                var b = this.checked;
+                if (b) {
+                    $("#slan").prop("disabled", false);
+                }
+                else {
+                    $("#slan").prop("disabled", true);
+                }
+            });
+        });
+
+    </script>
+    
+</head>
+<body>
+    <div class="d-flex flex-column px-2">
+        <div style="margin:auto">
+            <h1>ĐĂNG KÍ ĂN CA TẬP THỂ</h1>
+        </div>
+        <div class="d-flex justify-content-around" style="margin-bottom:20px;margin-top:25px;">
+            <h4>  Nhân viên đăng kí :<b><i>@info.HoTen</i></b> </h4>
+            <h4> Phòng ban: <b><i>@info.PhongBan</i></b></h4>
+            <h4> Thời gian : <i>@DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")</i></h4>
 
         </div>
-    }
+        @using (Html.BeginForm("DkiTapThe", "Dangkytapthe", FormMethod.Post))
+        {
 
-    <div style="text-align:center">
-        <button class="btn btn-danger btn-lg" style="width: 40%; "> <a style="text-decoration:none ; color:white; " href="@Url.Action("Home","Home")">Cancel</a></button>
-    </div>
-</div>
+            <table class="table table-hover table-active tab-content table-bordered ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Mã nhân viên</th>
+                        <th scope="col">Tên nhân viên</th>
+                        @*<th scope="col">Tên Phòng Ban</th>*@
+                        <th scope="col">Chọn</th>
+                        <th scope="col">Đăng kí ca ăn</th>
 
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int k = 0; k < Model.Count; k++)
+                    {
+                        int j = 1;
+                        <tr>
+                            <td>@a</td>
+                            <td>
+                                @Html.HiddenFor(m => Model[k].IDUser)
+                                @Model[k].IDUser
+                            </td>
+                            <td>
+                                @Html.HiddenFor(m => Model[k].HoTen)
+                                @Model[k].HoTen
+                            </td>
+                            @*<td>
+                                @Html.HiddenFor(m => Model[k].PhongBan)
+                                @Model[k].PhongBan
+                            </td>*@
+                            <td>
+                                @Html.CheckBoxFor(model => Model[k].TrangThai, new { @id = "chondkan" })
+                            </td>
+                            <td>
+                                <table class="dangkyan">
+                                    @for (int i = 0; i < Model[k].ListCaAn.Count; i++)
+                                    {
+                                        <tr style=" display: flex; align-Model[k]s: flex-end;">
+                                            <td>
+                                                @Html.CheckBoxFor(m => Model[k].ListCaAn[i].IsChecked, new { @disabled = "disabled", @id = "dkan" })
+                                                @Html.HiddenFor(m => Model[k].ListCaAn[i].ID, new { @disabled = "disabled" })
+                                                @Html.HiddenFor(m => Model[k].ListCaAn[i].Thoigian, new { @disabled = "disabled" })
 
-@*<script type="text/javascript">
+                                            </td>
+                                            <td style=" margin-right :10px">
+                                                Ca @j
+                                            </td>
+                                            <td>
+                                                <h6>Số lượng suất ăn</h6>
+                                                @Html.EditorFor(m => Model[k].ListCaAn[i].SoluongSuatan, new { htmlAttributes = new { @class = "slan", placeholder = "Số lượng suất ăn", @disabled = "disabled", @id = "slan" } })
+                                            </td>
 
-        function EnableDisableTextBox(checkbox_caAn, inputCaAn) {
-            var input_ca = document.getElementById(inputCaAn);
-            var checkbox_caAn = document.getElementById(checkbox_caAn)
-            input_ca.disabled = checkbox_caAn.checked ? false : true;
-            if (!input_ca.disabled) {
-                input_ca.focus();
-            }
+                                        </tr>
+                                        j++;
+                                    }
+                                </table>
+                            </td>
+
+                        </tr>
+                        a++;
+                    }
+                </tbody>
+            </table>
+
+            <div style="text-align:center">
+                <button type="submit" class="btn btn-success btn-lg" style="width: 40%; ">Đăng kí </button>
+
+            </div>
         }
-    </script>*@
+
+        <div style="text-align:center">
+            <button class="btn btn-danger btn-lg" style="width: 40%; "> <a style="text-decoration:none ; color:white; " href="@Url.Action("Home2","Home")">Cancel</a></button>
+        </div>
+    </div>
+</body>
+</html>
+
 
 
 

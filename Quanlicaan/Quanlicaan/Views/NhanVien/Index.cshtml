@@ -8,7 +8,7 @@
     
     ViewBag.Title = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
-   
+    <link href="~/css/one.css" rel="stylesheet" />
 
     var message = ViewData["message"] ?? string.Empty;
     if (@message != "")
@@ -24,33 +24,12 @@
         item.Text = dr["TenPB"].ToString();
         listPB.Add(item);
     }
-    <style>
+    
         
 
-        .form-control {
-            width: 80%;
-        }
+      
 
-        .containerS-item {
-            display: block;
-            width: 40%
-        }
-
-        .container_s {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .form-group {
-            display: block;
-            width: 100%;
-            border-radius: 3px;
-            padding-top: 20px;
-            padding-bottom: 10px;
-            margin-right:0px;
-        }
-
-    </style>
+   
 }
 
 
@@ -91,7 +70,7 @@
         <th>Quyền truy cập</th>
         <th>Chức vụ</th>
         <th>Tên đăng nhập</th>
-        <th>Mật khẩu</th>
+        @*<th>Mật khẩu</th>*@
 
         <th>Quyền đăng ký ăn</th>
         <th>Trạng thái</th>
@@ -132,7 +111,7 @@
             }
             <td>@Model.ChucVu</td>
             <td>@Model.username</td>
-            <td>@Model.upassword</td>
+            @*<td>@Model.upassword</td>*@
 
 
 
@@ -161,6 +140,6 @@
 
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
 
-@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, @class = "pagination" }))
 
 

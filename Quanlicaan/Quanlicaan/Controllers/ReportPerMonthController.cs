@@ -28,9 +28,10 @@ namespace Quanlicaan.Controllers
                 timeSession tm = new timeSession();
 
 
-                String query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and  '" + end + "' + '12:00:00' )Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'  and  '" + end + "' + '12:00:00' ";
+                // String query = "select nv.*, sa.*, pb.*,(select sum(ct.Soluong)  from ChiTietSuatAn ct where ct.IDUser = nv.ID and sa.Thoigiandat between '" + start + "'  and  '" + end + "')Tongsoluong from NhanVien nv join SuatAn sa on nv.ID = sa.IDUser JOIN PhongBan pb on nv.IDPhongBan = pb.ID where sa.Thoigiandat between '" + start + "'  and  '" + end + "'  ";
 
 
+                String query = " select nv.HoTen,pb.TenPB,sa.* ,(select(cOALESCE(sum(Soluong), 0)) from ChiTietSuatAn ct where sa.Thoigiandat between  '" + start + "'  and  '" + end + "' and ct.IDUser = nv.ID and ct.IDSuatAn = sa.ID)Tongsoluong,(select(cOALESCE(sum(Soluong), 0)) * 15000 from ChiTietSuatAn ct where sa.Thoigiandat between  '" + start + "'  and  '" + end + "' and ct.IDUser = nv.ID and ct.IDSuatAn = sa.ID)Thanhtien from NhanVien nv JOIN PhongBan pb on nv.IDPhongBan = pb.ID join ChiTietSuatAn ct on nv.ID = ct.IDUser join SuatAn sa on nv.ID = sa.IDUser where sa.Thoigiandat between  '" + start + "'  and  '" + end + "'";
 
                 command = new SqlCommand(query, conn);
 
@@ -56,7 +57,7 @@ namespace Quanlicaan.Controllers
                             Soluong = Convert.ToInt32(dr["Tongsoluong"]),
                             NgayDk = Convert.ToDateTime(dr["Thoigiandat"]),
                             tenPB = Convert.ToString(dr["TenPB"]),
-                            Thanhtien = (Convert.ToInt32(dr["Tongsoluong"])*15000)
+                            Thanhtien = Convert.ToInt32(dr["Thanhtien"])
 
                         });
                         

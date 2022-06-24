@@ -4,6 +4,7 @@ using Quanlicaan.Models.ShowModels;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,7 +20,33 @@ namespace Quanlicaan.Controllers
         }
         public ActionResult Home2(string thongbao)
         {
-            
+            SqlConnection conn = new SqlConnection(@"Data Source=SANGGTRANPC;Initial Catalog=QuanLiCaAn;Integrated Security=True");
+            {
+
+                
+                string sqlQuery = "  SELECT ca.TenCa,CONVERT(VARCHAR(8),ca.Thoigian,108)thoigian from CaAn ca";
+
+
+                SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+
+                CaAnSession ca = new CaAnSession();
+
+                conn.Open();
+                cmd.Connection = conn;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+
+                    ca.tenCa = dr["TenCa"].ToString();
+                    ca.thoigian = Convert.ToDateTime(dr["thoigian"]);
+
+
+                    Session["CaAn"] = ca;
+
+                    conn.Close();
+                }
+            }
+
             ViewData["message"] = thongbao;
 
             ChiTietCaAnModel ct = new ChiTietCaAnModel();
