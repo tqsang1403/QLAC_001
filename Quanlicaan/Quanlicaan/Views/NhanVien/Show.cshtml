@@ -1,15 +1,15 @@
 ﻿@using Quanlicaan.Models.Session
 @using System
 @using System.Data
-@model dynamic
-
+@using PagedList.Mvc
+@model PagedList.IPagedList<Quanlicaan.Models.Framework.NhanVien>
 
 @{
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var info = (UserSession)Session["UserSession"];
     List<SelectListItem> list = new List<SelectListItem>();
-    foreach (DataRow dr in Model.Phongbans.Rows)
+    foreach (DataRow dr in ViewBag.Phongbans.Rows)
     {
         SelectListItem item = new SelectListItem();
         item.Value = dr["ID"].ToString();
@@ -89,7 +89,7 @@
                                 }
                             </tr>
                             <tbody>
-                                @foreach (var item in Model.Nhanviens)
+                                @foreach (var item in Model)
                                 {
                                     if (item.trangthai == true)
                                     {
@@ -151,7 +151,14 @@
 
                         </table>
                     </div>
+                    <div style="text-align:center">
+                        <!-- Thêm mã phân trang -->
+                        <br />
+                        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
+                        @Html.PagedListPager(Model, page => Url.Action("Show", new { page, @class = "pagination" }))
+                        <!-- Kết thúc -->
+                    </div>
                 </div>
             </div>
         </div>

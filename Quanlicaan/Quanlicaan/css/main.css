@@ -3,27 +3,28 @@
     margin: 0;
     padding: 0;
 }
+
 .get-in-touch {
     max-width: 800px;
     margin: 50px auto;
     position: relative;
 }
 
-   .title {
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-size: 3.2em;
-        line-height: 70px;
-        padding-bottom: 48px;
-        color: #5543ca;
-        background: #5543ca;
-        background: -moz-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
-        background: -webkit-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
-        background: linear-gradient(to right,#f4524d 0%,#5543ca 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 3.2em;
+    line-height: 70px;
+    padding-bottom: 48px;
+    color: #5543ca;
+    background: #5543ca;
+    background: -moz-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
+    background: -webkit-linear-gradient(left,#f4524d 0%,#5543ca 100%) !important;
+    background: linear-gradient(to right,#f4524d 0%,#5543ca 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
 
 .contact-form .form-field {
     position: relative;
@@ -41,6 +42,7 @@
     line-height: 26px;
     font-weight: 400;
 }
+
 .input-text {
     display: block;
     width: 100%;
@@ -57,11 +59,11 @@
     outline: none;
 }
 
-        .contact-form .input-text:focus + .label,
-        .contact-form .input-text.not-empty + .label {
-            -webkit-transform: translateY(-24px);
-            transform: translateY(-24px);
-        }
+    .contact-form .input-text:focus + .label,
+    .contact-form .input-text.not-empty + .label {
+        -webkit-transform: translateY(-24px);
+        transform: translateY(-24px);
+    }
 
 .contact-form .label {
     font-size: 20px;
@@ -97,11 +99,11 @@
     border: none;
     width: 200px;
     cursor: pointer;
-    border-radius:20px;
+    border-radius: 20px;
 }
 
-.select_drop{
-    margin-top :8px;
+.select_drop {
+    margin-top: 8px;
 }
 
 .back {
@@ -122,8 +124,8 @@
     justify-content: space-around;
 }
 /*Trang đăng kí ca ăn cá nhân*/
-.txt_soluong{
-    height:2.5rem;
+.txt_soluong {
+    height: 2.5rem;
 }
 
 
@@ -143,12 +145,13 @@
     border: 2px solid #afa8a87a;
     padding: 20px;
     border-radius: 20px;
-    margin:20px
+    margin: 20px
 }
+
 .drop_list_gener {
     border: 2px solid #afa8a87a;
     border-radius: 20px;
-    width:5rem;
+    width: 5rem;
 }
 
 
@@ -161,4 +164,33 @@
     align-items: center;
 }
 /* end trang báo cáo thống kê suất ăn theo ngày*/
+
+
+
+/*Trang Phòng Ban*/
+.pagination {
+    display: flex;
+    text-align: center;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination a {
+    color: #e7710c;
+    float: left;
+    padding: 8px 16px;
+    border: 1px solid;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #31b3d1e0;
+}
+
+
+
+
+
+/* end trang Phòng Ban*/
 

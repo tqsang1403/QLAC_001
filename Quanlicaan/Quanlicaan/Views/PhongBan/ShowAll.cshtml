@@ -1,5 +1,8 @@
 ﻿@using System.Data
 @using Quanlicaan.Models.Session
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<Quanlicaan.Models.Framework.PhongBan>
 @{
     ViewBag.Title = "Danh sách phòng ban";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,24 +41,24 @@
                 </th>
             </tr>
 
-            @foreach (DataRow item in ViewBag.ListPhongBan.Rows)
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @item["ID"]
+                        @item.ID
                     </td>
                     <td>
-                        @item["TenPB"]
+                        @item.TenPB
 
                     </td>
                     <td>
-                        <a href="@Url.Action("EditPB", "PhongBan" , new { id = item["ID"]})"> <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="@Url.Action("EditPB", "PhongBan" , new { id = item.ID})"> <i class="fa-solid fa-pen-to-square"></i></a>
                     </td>
                 </tr>
             }
         </table>
 
-        <div class="form-field col-lg-12 btn_submit_back" >
+        <div class="form-field col-lg-12 btn_submit_back">
             @if (info.IDRoleUser == 1)
             {
                 <div>
@@ -67,8 +70,18 @@
             </div>
         </div>
 
+        <div style="text-align:center;">
+            <!-- Thêm mã phân trang -->
+            <br />
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("ShowAll", new { page, @class = "pagination" }))
+            <!-- Kết thúc -->
+        </div>
 
     </section>
+
+
 
 </body>
 

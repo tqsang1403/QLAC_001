@@ -1,4 +1,5 @@
-﻿@model List<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
 @using Quanlicaan.Models.Session
 @{
     ViewBag.Title = "Thống kê suất ăn theo tháng";
@@ -22,7 +23,7 @@
 
     <div class="title">  Thống kê đăng kí ca ăn theo tháng</div>
     <h2 style="text-align:center ; color: #f4524d;">Người quản lí  : @info.hoTen</h2>
-    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now</h4>
+    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt")</h4>
 
 
 
@@ -31,20 +32,20 @@
     <div style="padding : 0 3rem ; margin-top :3rem;">
         <div>   <h3 style="color:#dd5e14c7">Danh sách suất ăn nhân viên đăng kí trong tháng @DateTime.Now.ToString("MM")</h3></div>
         <div style=" display: flex; justify-content: space-around; align-items: center; justify-content:center">
-            
-                @* Tìm kiếm theo tháng *@
 
-                @using (Html.BeginForm("Baocaotheothang", "Baocao", FormMethod.Post, new { @class = "contact-form row" }))
-                {
-                    <div style="margin:30px 0;">
+            @* Tìm kiếm theo tháng *@
 
-                        <label for="month" style="width:6.0rem; font-weight:800;"> Chọn tháng </label>
-                        <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="month" name="month" value="" />
+            @using (Html.BeginForm("Baocaotheothang", "Baocao", FormMethod.Post, new { @class = "contact-form row" }))
+            {
+                <div style="margin:30px 0;">
 
-                        <button type="submit" class="submit-btn"> Tìm kiếm</button>
-                    </div>
-                }
-            
+                    <label for="month" style="width:6.0rem; font-weight:800;"> Chọn tháng </label>
+                    <input style="width: 10.4rem; height: 2.5rem; border-radius: 50px; padding: 0 6px;" type="month" name="month" value="" />
+
+                    <button type="submit" class="submit-btn"> Tìm kiếm</button>
+                </div>
+            }
+
 
 
         </div>
@@ -83,7 +84,7 @@
                         <tr>
                             <td> @item.MaSuatan</td>
                             <td> @item.Hotennguoidangki</td>
-                            <td> @item.Thoigiandangki</td>
+                            <td> @item.Thoigiandangki.ToString("dd-MM-yyyy hh:mm:ss tt")</td>
 
                             @if (@item.LoaiSuatan == 1)
                             {
@@ -99,7 +100,7 @@
                             <td>@item.MaCaan</td>
                             <td>@item.Hotennguoidungsuatan</td>
                             <td>@item.Soluong</td>
-                            <td>@item.Thoigiancapnhat</td>
+                            <td>@item.Thoigiancapnhat.ToString("dd-MM-yyyy hh:mm:ss tt")</td>
                             <td>@item.Hotennguoicapnhat</td>
                             <td> @item.Thantien</td>
                         </tr>
@@ -118,6 +119,15 @@
 
     <div class="btn_submit_back">
         <button class="submit-btn"><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a></button>
+    </div>
+
+    <div style="text-align:center">
+        <!-- Thêm mã phân trang -->
+        <br />
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Baocaotheothang", new { page, @class = "pagination" }))
+        <!-- Kết thúc -->
     </div>
 </body>
 

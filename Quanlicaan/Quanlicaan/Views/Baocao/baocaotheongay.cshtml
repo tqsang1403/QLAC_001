@@ -1,4 +1,5 @@
-﻿@model List<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Quanlicaan.Models.ModelsPage.BaocaocanhanModelPage>
 @using Quanlicaan.Models.Session
 
 @{
@@ -23,7 +24,7 @@
 
     <div class="title">  Thống kê đăng kí ca ăn theo ngày</div>
     <h2 style="text-align:center ; color: #f4524d;">Người quản lí  : @info.hoTen</h2>
-    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now</h4>
+    <h4 style="text-align:center ; color: #f4524d;">Ngày hiện tại : @DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss tt")</h4>
 
 
 
@@ -91,7 +92,7 @@
                         <tr>
                             <td> @item.MaSuatan</td>
                             <td> @item.Hotennguoidangki</td>
-                            <td> @item.Thoigiandangki</td>
+                            <td> @item.Thoigiandangki.ToString("dd-MM-yyyy hh:mm:ss tt")</td>
 
                             @if (@item.LoaiSuatan == 1)
                             {
@@ -107,7 +108,7 @@
                             <td>@item.MaCaan</td>
                             <td>@item.Hotennguoidungsuatan</td>
                             <td>@item.Soluong</td>
-                            <td>@item.Thoigiancapnhat</td>
+                            <td>@item.Thoigiancapnhat.ToString("dd-MM-yyyy hh:mm:ss tt")</td>
                             <td>@item.Hotennguoicapnhat</td>
                             <td> @item.Thantien</td>
                         </tr>
@@ -126,6 +127,15 @@
 
     <div class="btn_submit_back">
         <button class="submit-btn"><a class="back" href=" @Url.Action("Home","Home") "> Quay lại</a></button>
+    </div>
+
+    <div style="text-align:center">
+        <!-- Thêm mã phân trang -->
+        <br />
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Baocaotheongay", new { page, @class = "pagination" }))
+        <!-- Kết thúc -->
     </div>
 </body>
 
